@@ -1,10 +1,67 @@
-*A guide by Cacophony - and ported to Licentia Black by Katiefraggle42*
+**How to set up a controller for Licentia Next**
 
-**Using A Controller - New and improved and updated for Licentia Black**
+These are the steps to set up a controller for Licentia Next.
+    
+    1.  Enable all mods in the Controller section of MO2
+    2.  Enable Controller in Skyrim
+    3.  Change/Verfiy The Controls
+    4.  Setup CGO
+    5.  Setup The Ultimate Dodge Mod
+    6.  Setup Serios Hot Keys
 
-Controller mods are disabled by default. They can be found under "Controller Options", but serve no purpose so long as you use a mouse and keyboard. However, if you wish to play with a controller, you will have to enable all these mods and delete any `ControlMap_Custom` file(s) in your Licentia "Stock Game" folder install directory. If there is no such file in this directory, you do not need to worry about it. Just make certain one is not present. The Gamepad is also disabled in _Skyrim's_ default "Settings" menu, that option will need to be checked. 
+Seems like a lot but it only takes a few minutes.
 
-You will have to configure _CGO_ (I recommend D-Pad Left for grip shift and LB for Dual-Wield Blocking), and _The Ultimate Dodge Mod_ (I recommend D-Pad Down for Sneak). You also may need to enable "Gamepad Compatibility" in the _Ultimate Dodge_ MCM or that mod may not function. There is no good button for Target Lock, I typically assign the same one as Dual-Wield Blocking (LB). Finally, reconfigure your QuickSave and QuickLoad keys in-game. You must ALSO recall that almost ALL OStim navigation can only be accomplished via the keyboard, so you will have to switch back and forth. When all is said and done the Gamepad controls will be as follows:
+**Step 1.  Enable all mods in the Controller section of MO2.**
+
+![image](https://github.com/user-attachments/assets/dc4e9897-f21f-4ef4-baf2-6ef01f2c94c6)
+
+Auto Input Switch allows you to freely move between keyboard and the controller.  Handy in many cases especially using OStim controls.
+
+The Ultimate Control Scheme (TUCS) maps the controller to functions.  Look at the mod page for more info.
+
+Essential Favorites prevents favorited items from being sold, crafted, disarmed, disenchanted, or dropped.  Not really a controller mod but handy.
+
+Favorite Misc Items allows you to favorite books/soul gems/keys and other misc items.  Not really a controller mod but handy.
+
+Serios Hotkeys Allows players to map hotkeys or use the vanilla hotkeys to equip weapons, shields, shouts, and spells in the right hand, left hand, and shout/power slots.  It enables 8 Hotkeys on the controller.  Explained in TUCS
+
+**Step 2.  Enable Controller in Skyrim**
+
+![image](https://github.com/user-attachments/assets/82a2143b-0668-48f7-9386-2a9ee28e34ca)
+
+**Step 3. Change Verify the controls.**
+
+Change Sneak to B.  This is necessary for The Ultimate Dodge Mod.  
+
+**Step 4. Setup CGO**
+
+![image](https://github.com/user-attachments/assets/4d310faa-ad37-4df1-b143-82b3db70bb43)
+
+Switch Grip DPad UP
+
+Dual Wield Blocking DPAD Down
+
+**Step 5. Setup The Ultimate Dodge Mod (TUDM)**
+
+This is a little counter intuitive.  Set the Sneak Key to Left Arrow.  Your Dodge Key will now be "B" because that is what you set in Controls in Skyrim.  That's just the way things work.  Do Not set Gamepad/Controller Compatibility.  Makes it uncompatible.  Sprinting doesn't work as an example.  Why?  Ask Todd.
+
+![image](https://github.com/user-attachments/assets/43d9046f-f9b4-4cee-b6f0-8efc54a19b77)
+
+We use Left arrow for Sneak because we use QuickLoot.  Navigating that screen with the DPAD up and down causes sneaking hilarity.
+
+**Step 6.  Setup Serios Hot Keys.**
+
+The hotkey comes with the install as Home.  When you are in game and have weapons equipped, press Home amd its screens will come up. For that information, see the mod page.
+
+https://www.nexusmods.com/skyrimspecialedition/mods/27184
+
+You are done.
+
+A note about Target Lock.  That is in True Directional Movement and already configured.
+
+![image](https://github.com/user-attachments/assets/06b2b33f-26ba-45c4-b53c-9c18d6676915)
+
+Your configuration now looks like:
 
 Start: Journal
 
@@ -20,7 +77,7 @@ RB+Start: Tween menu (character menu)
 
 LB+RB: Shout (in that order, you kinda haveta roll your fingers across them)
 
-LB: Lock-on (toggle), Dual-Wield Block
+LB: Looking for something to do
 
 RB: Sprint
 
@@ -36,8 +93,10 @@ X: Ready weapon
 
 Y: Jump
 
-D-Pad Down: Sneak / Stop Sneaking
+DPad Left: Sneak / Stop Sneaking
 
-D-Pad Left: Switch grip between 1-handed and 2-handed (CGO)
+DPad Up: Switch grip between 1-handed and 2-handed (CGO)
 
-(Use the sticks to navigate menus instead!)
+DPad Down: Dual Wield Blocking
+
+Go kill something.
