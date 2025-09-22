@@ -17,25 +17,6 @@ The versioning system works the following way:
 
 ---
 
-## LICENTIA NEXT `13.6.0`
-
-:no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.5.3`** _(and any older versions)_
-
-### Added
-- 
-
-### Removed
-- `Sprint Swim Redux SKSE` - 1.0
-
-### Updated
-- 
-
-### Fixed/Patched
-- Arkngthamz - water is black/grey with no texture when ENB is on. It was `Water for ENB` issue, was reported it to the author, he'd fixed it;
-- Re-ran Nemesis
-
----
-
 ## LICENTIA NEXT `13.5.3`
 
 :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.2/13.5.1/13.5.0`** _(not save safe with older versions)_
