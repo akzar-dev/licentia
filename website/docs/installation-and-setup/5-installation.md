@@ -68,12 +68,24 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
 1. **Create a directory for Wabbajack.** Create a directory at the root of one of your Solid State drives (such as `D:\Wabbajack`) where you'd like to install _Wabbajack_ later on.
 
-2. **Create a directory for Licentia NEXT.** Now, do the same for Licentia &mdash; i.e. `D:\Licentia NEXT`.
+2. **Create directories for Licentia NEXT and Licentia Downloads.** Now, do the same for Licentia &mdash; e.g. `D:\Licentia NEXT` and `D:\Licentia Downloads`.
+
+    :::warning
+    These folders **MUST NOT** be located in a protected folder such as `Program Files` or `Program Files (x86)`, or the installation would fail.
+
+    Also, it's **STRONGLY RECOMMENDED** that these folders are located on a Solid State Drive (SSD) rather than a Hard Disk Drive (HDD) for performance reasons. That's especially important for the installation folder, as the modlist would run from there. Downloads folder can be on a slower drive if necessary (it would only be used during installation and affect only the installation process speed).
+    :::
+
+    :::tip
+    We're separating the installation folder and downloads folder for two reasons:
+    - If you ever need to re-install the modlist, you can just point _Wabbajack_ to the existing downloads folder and it would save you a lot of time and bandwidth.
+    - If you ever need to free up some space *(around 150-160 GB)*, you can just delete the downloads folder **AFTER THE INSTALLATION IS FULLY COMPLETE**. But keep in mind that if you ever need to re-install the modlist, _Wabbajack_ will have to re-download everything again.
+    :::
 
 3. **Make AV exceptions.**
     :::warning
     Ensure you have set antivirus exceptions for:
-    - _Licentia_ folder (`D:\Licentia NEXT`)
+    - _Licentia_ folders (`D:\Licentia NEXT` and `D:\Licentia Downloads`)
     - _Skyrim_ vanilla game folder (i.e. `D:\Games\Steam\steamapps\common\Skyrim Special Edition`)
     - _Wabbajack_ folder (i.e. `D:\Wabbajack`)
 
@@ -159,11 +171,9 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         className="zoomable"
     />
 
-    Two things to be aware of here:
-    - You can note that *Wabbjack* reports modlist version as `0.0.1.0` &mdash; once again, it's a bug in _Wabbajack_ version `4.0`+ and we can't do anything about it :feelsgood: &mdash; the list is actually the correct version!
-    - Don't worry about the error at the bottom, it is normal and will be fixed in the next step.
+    Don't worry about the error at the bottom, it is normal and will be fixed in the next step.
 
-5. In this window, select the directory we created for Licentia **(1)**, downloads folder would be populated automatically **(2)** _(you can change where downloads would be stored if you want, i.e. on another, slower drive)_, and hit `Install` button **(3)**:
+5. In this window, select the install directory we created for Licentia **(1)**, select the downloads directory we created **(2)** _(you can change where downloads would be stored if you want, i.e. on another, slower drive)_, and hit `Install` button **(3)**:
 
     <img 
         src={require('./img/5-installation/5_4_5_wabbajack_start_installation.png').default}
