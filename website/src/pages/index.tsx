@@ -206,10 +206,11 @@ function Showcase() {
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
+  const description = "An official website of Licentia NEXT - NSFW Skyrim Modlist with LotD, OStim, lots of fun and variety"
   return (
     <Layout
-      title={siteConfig.title}
-      description="Unleash Power, Indulge Desire, Leave Heads Rolling - Licentia NEXT NSFW Skyrim modlist">
+      title={siteConfig.tagline}
+      description={description}>
       <Hero />
       <main>
         <FeatureIcons />

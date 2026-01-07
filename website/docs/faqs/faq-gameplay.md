@@ -32,6 +32,15 @@ This will show you all the controls for the game, including those added by mods.
 The _OStim_ controls can be remapped in the `MCM` for that mod. It may be difficult to find enough free keys without a NUMPAD though.
 </details>
 
+### Where are my Screenshots?
+<details>
+  <summary>Expand</summary>
+
+Any screenshot you make is located inside this directory:
+
+`your_Licentia_installation_folder/Stock Game`
+</details>
+
 ### Leveling up is weird!
 <details>
   <summary>Expand</summary>

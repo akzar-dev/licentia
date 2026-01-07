@@ -5,7 +5,7 @@ description: "History of Licentia NEXT Skyrim modlist releases"
 image: /img/pages/changelog-social.png
 ---
 
-# ![Changelod](/img/pages/changelog.png)
+# ![Changelog](/img/pages/changelog.png)
 
 ---
 :::info
@@ -639,7 +639,7 @@ The versioning system works the following way:
 - Re-ran Nemesis
 
 ---
-# ![Old Changelod](/img/pages/old-changelog.png)
+# ![Old Changelog](/img/pages/old-changelog.png)
 ---
 
 :::info
