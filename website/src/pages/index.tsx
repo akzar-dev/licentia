@@ -139,50 +139,123 @@ function Showcase() {
     return a;
   }, []);
 
-  // Repeat enough times so the track is always wider than the viewport
-  const [repeat, setRepeat] = React.useState(2);
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
   const trackRef = React.useRef<HTMLDivElement | null>(null);
+  const unitWidthRef = React.useRef<number>(0); // width of one sequence
+  const isPausedRef = React.useRef<boolean>(false);
+  const autoResumeTimerRef = React.useRef<number | null>(null);
+  const speedRef = React.useRef<number>(0.35); // px per frame
 
-  // Build the repeated list (no mid-loop reshuffle)
-  const loop = React.useMemo(
-    () => Array.from({ length: repeat }).flatMap(() => SHOTS),
-    [SHOTS, repeat]
-  );
+  // Build 2x repeated list to keep DOM light while allowing seamless wrap
+  const loop = React.useMemo(() => [...SHOTS, ...SHOTS], [SHOTS]);
 
-  // Measure widths and ensure the track is at least 2× the viewport
-  const ensureRepeat = React.useCallback(() => {
+  // Initialize unit width (one sequence) and center on middle copy
+  React.useLayoutEffect(() => {
     const scroller = scrollerRef.current;
     const track = trackRef.current;
     if (!scroller || !track) return;
-
-    const total = track.scrollWidth || 0; // width of current repeats
+    const total = track.scrollWidth || 0;
     if (!total) return;
-    const one = total / repeat;           // width of one sequence
+    unitWidthRef.current = total / 2;
+    // jump to start of the second copy
+    scroller.scrollLeft = unitWidthRef.current;
+  }, [loop.length]);
 
-    const needed = Math.max(2, Math.ceil((scroller.clientWidth * 2) / one));
-    if (needed !== repeat) setRepeat(needed);
-  }, [repeat]);
+  // Wrap around when reaching edges to simulate infinite scroll
+  const wrapIfNeeded = React.useCallback(() => {
+    const scroller = scrollerRef.current;
+    const uw = unitWidthRef.current;
+    if (!scroller || !uw) return;
+    const left = scroller.scrollLeft;
+    const viewport = scroller.clientWidth || 0;
+    const total = uw * 2; // total width with 2× duplication
+    const near = Math.max(40, viewport * 0.1);
+    const maxScrollable = Math.max(0, total - viewport);
+    // If we get too close to the left edge of the first copy, jump forward
+    if (left <= near) {
+      scroller.scrollLeft = left + uw;
+      return;
+    }
+    // If we get too close to the right edge of the second copy, jump back
+    if (left >= maxScrollable - near) {
+      scroller.scrollLeft = left - uw;
+    }
+  }, []);
 
+  // Auto-scroll via rAF while not paused
   React.useEffect(() => {
-    const id = requestAnimationFrame(ensureRepeat);
-    return () => cancelAnimationFrame(id);
-  }, [ensureRepeat, loop.length]);
-
-  React.useEffect(() => {
-    const ro = new ResizeObserver(() => ensureRepeat());
-    if (trackRef.current) ro.observe(trackRef.current);
-    if (scrollerRef.current) ro.observe(scrollerRef.current);
-    const onResize = () => ensureRepeat();
-    window.addEventListener('resize', onResize);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', onResize);
+    let raf = 0;
+    const tick = () => {
+      const scroller = scrollerRef.current;
+      const zoomOpen =
+        typeof document !== 'undefined' &&
+        (document.querySelector('.medium-zoom-image--opened') ||
+          document.querySelector('.medium-zoom-overlay'));
+      if (scroller && !isPausedRef.current && unitWidthRef.current && !zoomOpen) {
+        scroller.scrollLeft += speedRef.current;
+        wrapIfNeeded();
+      }
+      raf = requestAnimationFrame(tick);
     };
-  }, [ensureRepeat]);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [wrapIfNeeded]);
 
-  // Move exactly 1 sequence per animation loop (seamless)
-  const marqueeEnd = `-${100 / repeat}%`;
+  // Pause/resume helpers
+  const pause = React.useCallback(() => {
+    isPausedRef.current = true;
+    if (autoResumeTimerRef.current) {
+      window.clearTimeout(autoResumeTimerRef.current);
+      autoResumeTimerRef.current = null;
+    }
+  }, []);
+  const resumeSoon = React.useCallback((ms = 1200) => {
+    if (autoResumeTimerRef.current) window.clearTimeout(autoResumeTimerRef.current);
+    autoResumeTimerRef.current = window.setTimeout(() => {
+      isPausedRef.current = false;
+      autoResumeTimerRef.current = null;
+    }, ms);
+  }, []);
+
+  // Handlers
+  const onMouseEnter = () => pause();
+  const onMouseLeave = () => resumeSoon(200);
+  const onTouchStart = () => pause();
+  const onTouchEnd = () => resumeSoon(1200);
+  const onWheel = () => {
+    pause();
+    resumeSoon(1500);
+  };
+  const onScroll = () => wrapIfNeeded();
+
+  // Nav buttons
+  const scrollByAmount = React.useCallback((dir: 1 | -1) => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    pause();
+    const delta = Math.max(200, Math.round(scroller.clientWidth * 0.6)) * dir;
+    scroller.scrollBy({ left: delta, behavior: 'smooth' });
+    resumeSoon(900);
+  }, [pause, resumeSoon]);
+
+  // Observe medium-zoom overlay to keep auto-scroll paused while zoomed
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handle = () => {
+      const zoomOpen = !!document.querySelector('.medium-zoom-overlay');
+      if (zoomOpen) {
+        pause();
+      } else {
+        // resume shortly after overlay closes
+        resumeSoon(300);
+      }
+    };
+    const observer = new MutationObserver(handle);
+    observer.observe(document.body, { childList: true, subtree: true, attributes: false });
+    // initial check
+    handle();
+    return () => observer.disconnect();
+  }, [pause, resumeSoon]);
 
   return (
     <section className={styles.showcase} data-nosnippet>
@@ -193,10 +266,46 @@ function Showcase() {
       </div>
 
       <div className={styles.marqueeOuter}>
-        <div className={styles.scroller} ref={scrollerRef}>
-          <div ref={trackRef} className={styles.marqueeTrack} style={{ ['--marqueeEnd' as any]: marqueeEnd }}>
+        <button
+          type="button"
+          aria-label="Scroll left"
+          className={clsx(styles.navBtn, styles.navBtnLeft)}
+          onClick={() => scrollByAmount(-1)}
+        >
+          <svg viewBox="0 0 24 24" className={styles.navIcon} aria-hidden="true">
+            <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          aria-label="Scroll right"
+          className={clsx(styles.navBtn, styles.navBtnRight)}
+          onClick={() => scrollByAmount(1)}
+        >
+          <svg viewBox="0 0 24 24" className={styles.navIcon} aria-hidden="true">
+            <path fill="currentColor" d="m10 6-1.41 1.41L13.17 12l-4.58 4.59L10 18l6-6z" />
+          </svg>
+        </button>
+        <div
+          className={styles.scroller}
+          ref={scrollerRef}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          onWheel={onWheel}
+          onScroll={onScroll}
+        >
+          <div ref={trackRef} className={styles.marqueeTrack}>
             {loop.map((src, i) => (
-              <img key={`${src}-${i}`} src={src} alt={`screenshot ${i + 1}`} className="zoomable" />
+              <img
+                key={`${src}-${i}`}
+                src={src}
+                alt={`screenshot ${i + 1}`}
+                className="zoomable"
+                loading="lazy"
+                decoding="async"
+              />
             ))}
           </div>
         </div>

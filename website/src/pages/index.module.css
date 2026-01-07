@@ -166,10 +166,7 @@ html[data-theme='light'] .tagline {
   font-weight: 700;
 }
 
-.iconText {
-  opacity: .85;
-  font-size: .95rem;
-}
+/* .iconText unused */
 
 @media (max-width: 996px) {
   .iconRow {
@@ -255,43 +252,31 @@ html[data-theme='light'] .tagline {
 /* Inner now non-scrollable; keep soft edges */
 .scroller {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   scrollbar-gutter: stable;
-  /* harmless; can keep or remove */
 }
 
-/* Track animates continuously; pause on hover or zoom overlay */
+/* Hide scrollbars (we use buttons/swipe) */
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+.scroller {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Track (JS-driven auto-scroll) */
 .marqueeTrack {
   display: flex;
   gap: 12px;
   padding: 8px 0;
   width: max-content;
-  animation: marquee 80s linear infinite;
-  will-change: transform;
-}
-
-/* Pause when the user is hovering the showcase */
-.marqueeOuter:hover .marqueeTrack {
-  animation-play-state: paused !important;
-}
-
-/* Pause whenever medium-zoom overlay is open */
-:global(body:has(.medium-zoom-overlay)) :local(.marqueeTrack) {
-  animation-play-state: paused !important;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(var(--marqueeEnd, -50%));
-  }
-
-  /* distance = one sequence */
+  /* JS-driven auto-scroll now; disable CSS animation */
+  animation: none;
+  will-change: scroll-position;
 }
 
 /* Images */
@@ -300,7 +285,6 @@ html[data-theme='light'] .tagline {
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
   cursor: zoom-in;
   user-select: none;
   -webkit-user-drag: none;
@@ -312,10 +296,39 @@ html[data-theme='light'] .tagline {
   }
 }
 
-/* Accessibility: respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .marqueeTrack {
-    animation: none !important;
-  }
+/* -------- Showcase nav buttons -------- */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: color-mix(in oklab, var(--ifm-background-surface-color) 90%, transparent);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
+.navBtn:hover {
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .35);
+}
+.navBtnLeft {
+  left: 8px;
+}
+.navBtnRight {
+  right: 8px;
+}
+.navIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--ifm-font-color-base);
+}
+
+/* (Reduced motion has no CSS animation to disable now) */
 
