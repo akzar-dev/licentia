@@ -241,6 +241,18 @@ h2 {
   color: #000 !important;
 }
 
+/* Replace external-link icon with a heart emoji on Ko‑fi button */
+.header-kofi-btn [class^="iconExternalLink_"],
+.header-kofi-btn [class*=" iconExternalLink_"] {
+  display: none !important;
+}
+
+.header-kofi-btn::after {
+  content: "❤️";
+  margin-left: 3px;
+  line-height: 1;
+}
+
 /* =========================
    DOCSEARCH Styling
    ========================= */
