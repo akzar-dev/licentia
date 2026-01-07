@@ -199,6 +199,18 @@ function Showcase() {
     return () => cancelAnimationFrame(raf);
   }, [wrapIfNeeded]);
 
+  // Respect reduced motion: disable auto-scroll when user prefers reduced motion
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => {
+      speedRef.current = media.matches ? 0 : 0.35;
+    };
+    apply();
+    media.addEventListener('change', apply);
+    return () => media.removeEventListener('change', apply);
+  }, []);
+
   // Pause/resume helpers
   const pause = React.useCallback(() => {
     isPausedRef.current = true;

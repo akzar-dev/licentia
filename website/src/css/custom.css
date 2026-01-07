@@ -96,14 +96,6 @@
   --ifm-color-danger-contrast-foreground: #ffd1d1;
 }
 
-/* Optional: make code highlight backgrounds match theme a bit better */
-:root {
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
-}
-
-[data-theme='dark'] {
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.06);
-}
 
 /* =========================
    COLLAPSIBLE SECTIONS
@@ -214,21 +206,22 @@ h2 {
    (for header)
    ========================= */
 
-.header-kofi-link::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background-image: url("https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/670f5a01229bf8a18f97a3c1_favion.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+/* KOFI NAVBAR BUTTON */
+.header-kofi-btn {
+  padding: 6px 12px !important;
+  border-radius: 999px;
+  background: var(--ifm-color-primary-dark);
+  color: #fff !important;
+  font-weight: 600;
+  border: 1px solid var(--ifm-color-primary-darker);
+  line-height: 1;
+  width: fit-content;
 }
 
-.header-kofi-link:hover::before {
-  transform: scale(1.1);
-  /* little zoom effect on hover */
+.header-kofi-btn:hover {
+  background: var(--ifm-color-primary);
+  color: #000 !important;
+  border-color: var(--ifm-color-primary);
 }
 
 /* =========================

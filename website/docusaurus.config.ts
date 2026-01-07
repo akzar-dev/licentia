@@ -110,7 +110,8 @@ const config: Config = {
         {
           href: 'https://ko-fi.com/akzar',
           position: 'right',
-          className: 'header-kofi-link',
+          label: 'Buy me a coffee',
+          className: 'header-kofi-btn',
           'aria-label': 'Support me on Ko-fi',
         },
         {
