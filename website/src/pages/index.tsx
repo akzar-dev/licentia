@@ -4,10 +4,11 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
+import Head from '@docusaurus/Head';
 
 /** ------- CONFIG -------- */
 /** Load every image in /static/img/screenshots */
-const req = require.context(
+const req = (require as any).context(
   '@site/static/img/screenshots',
   false,
   /\.(png|jpe?g|webp)$/i
@@ -60,7 +61,7 @@ function Hero() {
 /** Tiny icon row for Features */
 function FeatureIcons() {
   return (
-    <section className={styles.iconsSection}>
+    <section className={styles.iconsSection} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <img
@@ -184,7 +185,7 @@ function Showcase() {
   const marqueeEnd = `-${100 / repeat}%`;
 
   return (
-    <section className={styles.showcase}>
+    <section className={styles.showcase} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <img src="/img/pages/index-showcase.png" alt="Showcase" className={styles.headingImg} />
@@ -206,11 +207,16 @@ function Showcase() {
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
-  const description = "An official website of Licentia NEXT - NSFW Skyrim Modlist with LotD, OStim, lots of fun and variety"
+  const description = "Experience Licentia NEXT — a one-click install Skyrim AE modlist with LotD, non‑intrusive OStim, combat/graphics upgrades, new quests & followers!"
   return (
     <Layout
       title={siteConfig.tagline}
       description={description}>
+      <Head>
+        <meta name="description" content={description} />
+        <meta property="og:description" content={description} />
+        <meta name="twitter:description" content={description} />
+      </Head>
       <Hero />
       <main>
         <FeatureIcons />
