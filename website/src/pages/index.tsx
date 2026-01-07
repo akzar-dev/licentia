@@ -142,7 +142,9 @@ function Showcase() {
   const unitWidthRef = React.useRef<number>(0); // width of one sequence
   const isPausedRef = React.useRef<boolean>(false);
   const autoResumeTimerRef = React.useRef<number | null>(null);
-  const speedRef = React.useRef<number>(0.35); // px per frame
+  const speedRef = React.useRef<number>(36); // px per second
+  const posRef = React.useRef<number>(0); // fractional scroll position accumulator (Safari-safe)
+  const lastTsRef = React.useRef<number | null>(null); // rAF timestamp for time-based scrolling
 
   // Build 2x repeated list to keep DOM light while allowing seamless wrap
   const loop = React.useMemo(() => [...SHOTS, ...SHOTS], [SHOTS]);
@@ -157,8 +159,62 @@ function Showcase() {
     unitWidthRef.current = total / 2;
     // jump to start of the second copy
     scroller.scrollLeft = unitWidthRef.current;
+    posRef.current = unitWidthRef.current;
   }, [loop.length]);
 
+  // Safari/iOS: track width may be 0 until images load; observe and re-center when ready
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const scroller = scrollerRef.current;
+    const track = trackRef.current;
+    if (!scroller || !track) return;
+
+    const recompute = () => {
+      const total = track.scrollWidth || 0;
+      if (!total) return;
+      const half = total / 2;
+      unitWidthRef.current = half;
+      if (!isPausedRef.current) {
+        scroller.scrollLeft = half;
+        posRef.current = half;
+      }
+    };
+
+    // initial attempt
+    recompute();
+
+    let cleanup: (() => void) | undefined;
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => recompute());
+      ro.observe(track);
+      cleanup = () => ro.disconnect();
+    } else {
+      let timeoutId: number | null = null;
+      const poll = () => {
+        if (track.scrollWidth) {
+          recompute();
+          if (timeoutId) {
+            window.clearTimeout(timeoutId);
+            timeoutId = null;
+          }
+        } else {
+          timeoutId = window.setTimeout(poll, 400);
+        }
+      };
+      poll();
+      cleanup = () => {
+        if (timeoutId) window.clearTimeout(timeoutId);
+      };
+    }
+
+    window.addEventListener('resize', recompute);
+    window.addEventListener('orientationchange', recompute);
+    return () => {
+      window.removeEventListener('resize', recompute);
+      window.removeEventListener('orientationchange', recompute);
+      if (cleanup) cleanup();
+    };
+  }, [loop.length]);
   // Wrap around when reaching edges to simulate infinite scroll
   const wrapIfNeeded = React.useCallback(() => {
     const scroller = scrollerRef.current;
@@ -171,27 +227,39 @@ function Showcase() {
     const maxScrollable = Math.max(0, total - viewport);
     // If we get too close to the left edge of the first copy, jump forward
     if (left <= near) {
-      scroller.scrollLeft = left + uw;
+      const next = left + uw;
+      scroller.scrollLeft = next;
+      posRef.current = next;
       return;
     }
     // If we get too close to the right edge of the second copy, jump back
     if (left >= maxScrollable - near) {
-      scroller.scrollLeft = left - uw;
+      const next = left - uw;
+      scroller.scrollLeft = next;
+      posRef.current = next;
     }
   }, []);
 
   // Auto-scroll via rAF while not paused
   React.useEffect(() => {
     let raf = 0;
-    const tick = () => {
+    const tick = (ts: number) => {
+      if (lastTsRef.current == null) {
+        lastTsRef.current = ts;
+      }
+      const dtSec = (ts - lastTsRef.current) / 1000;
+      lastTsRef.current = ts;
       const scroller = scrollerRef.current;
       const zoomOpen =
         typeof document !== 'undefined' &&
-        (document.querySelector('.medium-zoom-image--opened') ||
-          document.querySelector('.medium-zoom-overlay'));
+        !!document.querySelector('.medium-zoom-image--opened');
       if (scroller && !isPausedRef.current && unitWidthRef.current && !zoomOpen) {
-        scroller.scrollLeft += speedRef.current;
+        posRef.current += speedRef.current * dtSec;
+        scroller.scrollLeft = posRef.current;
         wrapIfNeeded();
+      } else {
+        // keep timestamp fresh while paused or unavailable to avoid large jumps
+        lastTsRef.current = ts;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -204,11 +272,19 @@ function Showcase() {
     if (typeof window === 'undefined') return;
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const apply = () => {
-      speedRef.current = media.matches ? 0 : 0.35;
+      speedRef.current = media.matches ? 0 : 36;
     };
     apply();
-    media.addEventListener('change', apply);
-    return () => media.removeEventListener('change', apply);
+    // Safari compatibility: addEventListener not supported on older versions
+    const mql: any = media as any;
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', apply);
+      return () => mql.removeEventListener('change', apply);
+    } else if (typeof mql.addListener === 'function') {
+      mql.addListener(apply);
+      return () => mql.removeListener(apply);
+    }
+    return;
   }, []);
 
   // Pause/resume helpers
@@ -236,7 +312,11 @@ function Showcase() {
     pause();
     resumeSoon(1500);
   };
-  const onScroll = () => wrapIfNeeded();
+  const onScroll = () => {
+    const scroller = scrollerRef.current;
+    if (scroller) posRef.current = scroller.scrollLeft;
+    wrapIfNeeded();
+  };
 
   // Nav buttons
   const scrollByAmount = React.useCallback((dir: 1 | -1) => {
@@ -252,7 +332,7 @@ function Showcase() {
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
     const handle = () => {
-      const zoomOpen = !!document.querySelector('.medium-zoom-overlay');
+      const zoomOpen = !!document.querySelector('.medium-zoom-image--opened');
       if (zoomOpen) {
         pause();
       } else {
