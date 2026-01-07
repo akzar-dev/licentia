@@ -172,11 +172,19 @@ function Showcase() {
     const recompute = () => {
       const total = track.scrollWidth || 0;
       if (!total) return;
-      const half = total / 2;
-      unitWidthRef.current = half;
-      if (!isPausedRef.current) {
-        scroller.scrollLeft = half;
-        posRef.current = half;
+      const newHalf = total / 2;
+      const prevHalf = unitWidthRef.current || 0;
+      unitWidthRef.current = newHalf;
+      if (!isPausedRef.current && (prevHalf === 0 || Math.abs(newHalf - prevHalf) > 1)) {
+        if (prevHalf > 0) {
+          const relPrev = ((posRef.current % prevHalf) + prevHalf) % prevHalf;
+          const target = newHalf + relPrev;
+          scroller.scrollLeft = target;
+          posRef.current = target;
+        } else {
+          scroller.scrollLeft = newHalf;
+          posRef.current = newHalf;
+        }
       }
     };
 
@@ -207,11 +215,7 @@ function Showcase() {
       };
     }
 
-    window.addEventListener('resize', recompute);
-    window.addEventListener('orientationchange', recompute);
     return () => {
-      window.removeEventListener('resize', recompute);
-      window.removeEventListener('orientationchange', recompute);
       if (cleanup) cleanup();
     };
   }, [loop.length]);
