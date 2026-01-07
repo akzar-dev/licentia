@@ -210,25 +210,43 @@ h2 {
 .header-kofi-btn {
   padding: 6px 12px !important;
   border-radius: 999px;
-  background: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary);
   color: #fff !important;
   font-weight: 600;
-  border: 1px solid var(--ifm-color-primary-darker);
+  border: 1px solid var(--ifm-color-primary);
   line-height: 1;
   width: fit-content;
 }
 
 .header-kofi-btn:hover {
-  background: var(--ifm-color-primary);
+  background: var(--ifm-color-primary-dark);
   color: #000 !important;
-  border-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/* Theme-specific text colors for Ko‑fi button */
+[data-theme='light'] .header-kofi-btn {
+  color: #fff !important;
+}
+
+[data-theme='dark'] .header-kofi-btn {
+  color: #000 !important;
+}
+
+[data-theme='light'] .header-kofi-btn:hover {
+  color: #fff !important;
+}
+
+[data-theme='dark'] .header-kofi-btn:hover {
+  color: #000 !important;
 }
 
 /* =========================
    DOCSEARCH Styling
    ========================= */
 [data-theme='light'] .DocSearch {
-  /* --docsearch-primary-color: var(--ifm-color-primary); */
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-highlight-color: var(--ifm-color-primary);
   /* --docsearch-text-color: var(--ifm-font-color-base); */
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(94, 100, 112, 0.7);
@@ -237,6 +255,10 @@ h2 {
   /* Search box */
   --docsearch-searchbox-background: var(--ifm-color-secondary);
   --docsearch-searchbox-focus-background: var(--ifm-color-white);
+  /* Keycap gradient */
+  --docsearch-key-gradient: linear-gradient(-26.5deg,
+      var(--ifm-color-primary-lightest) 0%,
+      var(--ifm-color-primary) 100%);
   /* Hit */
   --docsearch-hit-color: var(--ifm-font-color-base);
   --docsearch-hit-active-color: var(--ifm-color-white);
@@ -246,6 +268,8 @@ h2 {
 }
 
 [data-theme='dark'] .DocSearch {
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-highlight-color: var(--ifm-color-primary);
   --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
@@ -261,8 +285,96 @@ h2 {
   /* Footer */
   --docsearch-footer-background: var(--ifm-background-surface-color);
   --docsearch-key-gradient: linear-gradient(-26.5deg,
-      var(--ifm-color-emphasis-200) 0%,
-      var(--ifm-color-emphasis-100) 100%);
+      var(--ifm-color-primary) 0%,
+      var(--ifm-color-primary-dark) 100%);
+}
+
+/* Keycaps (navbar button and modal command list) */
+/* Light theme */
+[data-theme='light'] .DocSearch-Button-Key,
+[data-theme='light'] .DocSearch-Commands-Key,
+[data-theme='light'] .DocSearch-KeyboardKey {
+  background: linear-gradient(-26.5deg,
+      var(--ifm-color-primary-lightest) 0%,
+      var(--ifm-color-primary) 100%) !important;
+  color: #000 !important;
+  border: 1px solid var(--ifm-color-primary-dark) !important;
+}
+
+/* Dark theme */
+[data-theme='dark'] .DocSearch-Button-Key,
+[data-theme='dark'] .DocSearch-Commands-Key,
+[data-theme='dark'] .DocSearch-KeyboardKey {
+  background: linear-gradient(-26.5deg,
+      var(--ifm-color-primary) 0%,
+      var(--ifm-color-primary-dark) 100%) !important;
+  color: #000 !important;
+  border: 1px solid var(--ifm-color-primary-darker) !important;
+}
+
+/* Rounded button in navbar */
+.DocSearch-Button {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--docsearch-searchbox-background);
+  transition: background .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.DocSearch-Button:hover {
+  background: var(--docsearch-searchbox-focus-background);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+  border-color: var(--ifm-navbar-link-hover-color);
+}
+
+.DocSearch-Button:focus {
+  outline: none;
+}
+
+.DocSearch-Button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Modal shape and inputs */
+.DocSearch-Modal {
+  border-radius: 16px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, .25) !important;
+  overflow: hidden;
+}
+
+.DocSearch-Form {
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--docsearch-searchbox-background);
+}
+
+.DocSearch-Input {
+  color: var(--docsearch-text-color);
+}
+
+/* Rounded hits */
+.DocSearch-Hit a {
+  border-radius: 10px;
+}
+
+/* =========================
+   NAVBAR COLOR MODE TOGGLE
+   ========================= */
+/* Make color mode toggle highlight use primary (match GitHub icon hover) */
+[class*="colorModeToggle"] .clean-btn,
+[class*="colorModeToggle"] button {
+  color: var(--ifm-navbar-link-color);
+  transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+[class*="colorModeToggle"] .clean-btn:hover,
+[class*="colorModeToggle"] .clean-btn:focus-visible,
+[class*="colorModeToggle"] button:hover,
+[class*="colorModeToggle"] button:focus-visible {
+  color: var(--ifm-color-primary);
 }
 
 /* =========================
