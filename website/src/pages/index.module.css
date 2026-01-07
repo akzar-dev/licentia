@@ -148,7 +148,6 @@ html[data-theme='light'] .tagline {
   border-radius: 12px;
   padding: 1rem .75rem;
   text-align: center;
-  text-align: center;
   /* keep titles/intro centered */
   display: flex;
   flex-direction: column;
@@ -166,7 +165,7 @@ html[data-theme='light'] .tagline {
   font-weight: 700;
 }
 
-/* .iconText unused */
+/* removed .iconText (unused) */
 
 @media (max-width: 996px) {
   .iconRow {
@@ -249,7 +248,7 @@ html[data-theme='light'] .tagline {
   overflow: hidden;
 }
 
-/* Inner now non-scrollable; keep soft edges */
+/* Showcase scroller */
 .scroller {
   position: relative;
   overflow-x: auto;
@@ -274,7 +273,6 @@ html[data-theme='light'] .tagline {
   gap: 12px;
   padding: 8px 0;
   width: max-content;
-  /* JS-driven auto-scroll now; disable CSS animation */
   animation: none;
   will-change: scroll-position;
 }
@@ -330,5 +328,5 @@ html[data-theme='light'] .tagline {
   color: var(--ifm-font-color-base);
 }
 
-/* (Reduced motion has no CSS animation to disable now) */
+/* reduced-motion handled implicitly (no CSS animation) */
 

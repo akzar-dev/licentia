@@ -20,7 +20,6 @@ function Hero() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <section className={styles.hero}>
-      {/* background */}
       <div className={styles.heroBg} />
       <div className={styles.heroOverlay} />
 
@@ -58,7 +57,6 @@ function Hero() {
   );
 }
 
-/** Tiny icon row for Features */
 function FeatureIcons() {
   return (
     <section className={styles.iconsSection} data-nosnippet>
