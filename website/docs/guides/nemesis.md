@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 title: "Nemesis Guide 👯‍♀️"
 hide_title: true
 slug: /nemesis-guide
@@ -23,10 +23,11 @@ You want to rerun Nemesis for any other reason.
 
 These are the general steps to **re-running Nemesis** for **Licentia NEXT**:
 1. (optional) Make sure `Nemesis Unlimited Behavior Engine.exe` is LAA patched
-2. Launch `Nemesis Unlimited Behavior Engine` from MO2
-3. Setup behavior patches and click `Update Engine`
-4. Click `Launch Nemesis Engine`
-5. Close the tool, remove `FNIS.esp`, done!
+2. Clear Nemesis Cache
+3. Launch `Nemesis Unlimited Behavior Engine` from MO2
+4. Setup behavior patches and click `Update Engine`
+5. Click `Launch Nemesis Engine`
+6. Close the tool, remove `FNIS.esp`, done!
 
 :::tip
 :clock1: This process takes around 10 minutes. Let's dive into the details!
@@ -91,24 +92,49 @@ It can be run without it, but it's **highly recommended** to patch it.
 
 ---
 
-## Step :two: &mdash; Launch `Nemesis Unlimited Behavior Engine` from MO2
+## Step :two: &mdash; Clear Nemesis cache inside `Licentia NEXT - Nemesis Output`
+
+1. Open your `MO2` and in the left pane find the mod called `Licentia NEXT - Nemesis Output`, right-click on it, press `Open in Explorer`:
+    <img 
+        src={require('./img/nemesis_guide/2_1_nemesis_output.png').default}
+        alt="Checking LAA flag"
+        style={{ width:'auto', maxHeight:150 }}
+        className="zoomable"
+    />
+
+2. In the newly opened File Explorer window, navigate inside the `Nemesis_Engine\cache` folder and **DELETE** all files inside it:
+    <img 
+        src={require('./img/nemesis_guide/2_2_nemesis_output_delete_cache.png').default}
+        alt="Checking LAA flag"
+        style={{ width:'auto', maxHeight:150 }}
+        className="zoomable"
+    />
+
+3. You can close the File Explorer window and proceed to the next step.
+---
+
+## Step :three: &mdash; Launch `Nemesis Unlimited Behavior Engine` from MO2
 
 :::tip
 Ensure that **all antivirus and antimalware applications are temporarily disabled**. They often prevent _Nemesis_ from completing correctly.
 :::
 
-Open your `MO2`, in top right corner of the window, click on the dropdown menu and select `Nemesis Unlimited Behavior Engine`, then click `Run`:
+In `MO2`, in top right corner of the window, click on the dropdown menu and select `Nemesis Unlimited Behavior Engine`, then click `Run`:
 
 <img 
-    src={require('./img/nemesis_guide/2_1_run_nemesis_from_mo2.png').default}
+    src={require('./img/nemesis_guide/3_1_run_nemesis_from_mo2.png').default}
     alt="Opening Nemesis in MO2"
     style={{ width:'auto', maxHeight:150 }}
     className="zoomable"
 />
 
+:::warning
+You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM**, just click `Ok` and proceed. They appear because we've cleared the cache, which is fine.
+:::
+
 ---
 
-## Step :three: &mdash; Setup behavior patches and click `Update Engine`
+## Step :four: &mdash; Setup behavior patches and click `Update Engine`
 
 1. When `Nemesis` window opens, in it's top part tick the boxes for the following patches:
    - Archery Gameplay Overhaul SE
@@ -118,16 +144,16 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
    - Extra Drawing Animations
    - Combat Gameplay Overhaul SE
    - Dual Wield Behavior Fixes
+   - Horsepower - Modernized Horse Riding
    - Skyrim's Paraglider
-   - Sprint Swimming Redux
-   - Retimed Hit Frame
+   - True Directional Movement - 360 Horse Archery
    - The Ultimate Dodge Mod
    - USSEP Behaviour Patch
 
     That's where you should tick them:
 
     <img 
-        src={require('./img/nemesis_guide/3_1_select_patches.png').default}
+        src={require('./img/nemesis_guide/4_1_select_patches.png').default}
         alt="Selecting Nemesis patches"
         style={{ width:'auto', maxHeight:350 }}
         className="zoomable"
@@ -139,7 +165,7 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
 
 2. Click `Update Engine`:
     <img 
-        src={require('./img/nemesis_guide/3_2_update_engine.png').default}
+        src={require('./img/nemesis_guide/4_2_update_engine.png').default}
         alt="Updating Nemesis Engine"
         style={{ width:'auto', maxHeight:250 }}
         className="zoomable"
@@ -148,7 +174,7 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
     Wait for the process to finish _(wait for the bar on the bottom to reach 100%)_. **It will take a few minutes**, so be patient:
 
     <img 
-        src={require('./img/nemesis_guide/3_2_update_engine_done.png').default}
+        src={require('./img/nemesis_guide/4_2_update_engine_done.png').default}
         alt="Updating Nemesis Engine done"
         style={{ width:'auto', maxHeight:250 }}
         className="zoomable"
@@ -161,11 +187,11 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
 
 ---
 
-## Step :four: &mdash; Click `Launch Nemesis Engine`
+## Step :five: &mdash; Click `Launch Nemesis Engine`
 
 1. Click `Launch Nemesis Behavior Engine`. 
     <img 
-        src={require('./img/nemesis_guide/4_1_launch_engine.png').default}
+        src={require('./img/nemesis_guide/5_1_launch_engine.png').default}
         alt="Launching Nemesis Engine"
         style={{ width:'auto', maxHeight:250 }}
         className="zoomable"
@@ -173,7 +199,7 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
 
     The tool will now _slowly_ integrate your animation files into the behaviors:
     <img 
-        src={require('./img/nemesis_guide/4_1_engine_running.png').default}
+        src={require('./img/nemesis_guide/5_1_engine_running.png').default}
         alt="Nemesis Engine running"
         style={{ width:'auto', maxHeight:220 }}
         className="zoomable"
@@ -194,7 +220,7 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
 
 2. When you see that the engine is fully done (bar at the bottom reaches 100% and disappears, and the log says `Behavior generation complete`) - close `Nemesis` and return to `MO2`.
     <img 
-        src={require('./img/nemesis_guide/4_1_engine_done.png').default}
+        src={require('./img/nemesis_guide/5_1_engine_done.png').default}
         alt="Nemesis Engine done"
         style={{ width:'auto', maxHeight:220 }}
         className="zoomable"
@@ -203,7 +229,7 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
     :::warning
     Nemesis is prone to crashing during generating behaviours, especially if you didn't do the first (optional) step.
 
-    But don't worry! You can just relaunch it and start from [step 3](#step-three--setup-behavior-patches-and-click-update-engine), it won't break anything.
+    But don't worry! You can just relaunch it and start from [step 4](#step-four--setup-behavior-patches-and-click-update-engine), it won't break anything.
     :::
 
 <details>
@@ -212,7 +238,7 @@ Open your `MO2`, in top right corner of the window, click on the dropdown menu a
 Sometimes this step will never complete regardless of how many times you try and additional troubleshooting is needed.
 There are still options to fix this however! 
 1. Find the `Licentia NEXT - Nemesis Output` mod on the left pane in MO2, open it in explorer and delete **every file located inside,** then **refresh MO2** by striking the `F5` key.
-2. Ensure that your `Licentia NEXT - Nemesis Output` folder is still empty and launch _Nemesis_ a final time. It will prompt for your language - make certain that it is English - and you will need to check all the proper boxes again as in [step 3](#step-three--setup-behavior-patches-and-click-update-engine). Then do next part of [step 3](#step-three--setup-behavior-patches-and-click-update-engine) and [step 4](#step-four--click-launch-nemesis-engine) once more.
+2. Ensure that your `Licentia NEXT - Nemesis Output` folder is still empty and launch _Nemesis_ a final time. It will prompt for your language - make certain that it is English - and you will need to check all the proper boxes again as in [step 4](#step-four--setup-behavior-patches-and-click-update-engine). Then do next part of [step 4](#step-four--setup-behavior-patches-and-click-update-engine) and [step 5](#step-five--click-launch-nemesis-engine) once more.
 3. If this **STILL** does not work, you must reset all default behavior files by reinstalling the mod `Project New Reign - Nemesis Unlimited Behavior Engine - BLACK Profile` under the **SFW Animations** section of MO2. You can do this by simply right-clicking on it and choosing `Reinstall`. There shouldn't be any options you need to configure. It should be almost guaranteed to work this time. If it doesn't, I am stumped, and you will need to resort to Google.
 4. Once you do finish running _Nemesis_ successfully, **refresh MO2** with the `F5` key.
 
@@ -220,10 +246,10 @@ There are still options to fix this however!
 
 ---
 
-## Step :five: &mdash; Close the tool, remove `FNIS.esp`, done!
+## Step :six: &mdash; Close the tool, remove `FNIS.esp`, done!
 1. As the tool is now closed, in right MO2 pane in `Plugins` section you'll see that a wild `FNIS.esp` appeared at the end!
     <img 
-        src={require('./img/nemesis_guide/5_1_fnis_in_plugins.png').default}
+        src={require('./img/nemesis_guide/6_1_fnis_in_plugins.png').default}
         alt="Wild FNIS.esp"
         style={{ width:'auto', maxHeight:100 }}
         className="zoomable"
@@ -233,7 +259,7 @@ There are still options to fix this however!
    
    - Right-click it, select `Open Origin in Explorer`:
         <img 
-            src={require('./img/nemesis_guide/5_1_fnis_open_origin.png').default}
+            src={require('./img/nemesis_guide/6_1_fnis_open_origin.png').default}
             alt="FNIS.esp open origin"
             style={{ width:'auto', maxHeight:100 }}
             className="zoomable"
@@ -241,7 +267,7 @@ There are still options to fix this however!
 
    - Delete the `FNIS.esp` in the opened explorer window:
         <img 
-            src={require('./img/nemesis_guide/5_1_fnis_delete.png').default}
+            src={require('./img/nemesis_guide/6_1_fnis_delete.png').default}
             alt="Deleting FNIS.esp"
             style={{ width:'auto', maxHeight:200 }}
             className="zoomable"

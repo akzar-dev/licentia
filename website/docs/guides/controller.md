@@ -111,7 +111,7 @@ This is a little counter intuitive, so read carefully!
 Make these changes:
 - Set the **Sneak Key** to `Left Arrow`. _We use Left arrow for Sneak because we use QuickLoot. Navigating that screen with the DPAD up and down causes sneaking hilarity._
 - Your **Dodge Key** will now be `B` because that is what you've set in `Controls` ([Step 3](#step-three--verify-the-controls)). That's just the way things work.
-- **DO NOT SET** `Gamepad/Controller Compatibility`, leave it _unticked_. Enabling it makes things incompatible, i.e. sprinting doesn't work. Why? Ask Todd :suspect:
+- **DO NOT SET** `Gamepad/Controller Compatibility`, leave it _unticked_. Enabling it makes things incompatible, i.e. sprinting doesn't work. Why? Ask Todd 🤷‍♂️
 
 Anyway, your settings **should look like this**:
 

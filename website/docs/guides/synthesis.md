@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 title: "Synthesis Guide ♻️"
 hide_title: true
 slug: /synthesis-guide
@@ -61,6 +61,13 @@ These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
 Ensure that **all antivirus and antimalware applications are temporarily disabled**. They can prevent _Synthesis_ from running correctly.
 :::
 
+
+:::warning
+You would need `.NET 8` SDK installed on your system for Synthesis to run. You can download it from [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+
+**IF YOU HAVE** `.NET 9` **or** `.NET 10` **SDK's installed** - remove them! `Synthesis` would fail otherwise. Bug report [is here](https://github.com/Mutagen-Modding/Synthesis/issues/557).
+:::
+
 In `MO2`, in top right corner of the window, click on the dropdown menu and select `Synthesis`, then click `Run`:
     <img 
         src={require('./img/synthesis_guide/2_running_synthesis_in_mo2.png').default}
@@ -75,23 +82,33 @@ In `MO2`, in top right corner of the window, click on the dropdown menu and sele
 
 When `Synthesis` is launched, check out the left pane with patches. They should match this:
 
-    <img 
-        src={require('./img/synthesis_guide/3_1_synthesis0.png').default}
-        alt="Synthesis 0 patch list"
-        style={{ width:'auto', maxHeight:150 }}
-        className="zoomable"
-    /> <img 
-        src={require('./img/synthesis_guide/3_2_synthesis1.png').default}
-        alt="Synthesis 1 patch list"
-        style={{ width:'auto', maxHeight:150 }}
-        className="zoomable"
-    /> <img 
-        src={require('./img/synthesis_guide/3_3_synthesis2.png').default}
-        alt="Synthesis 2 patch list"
-        style={{ width:'auto', maxHeight:150 }}
-        className="zoomable"
-    />
+    - `Synthesis0` block:
+        <img 
+            src={require('./img/synthesis_guide/3_1_synthesis0.png').default}
+            alt="Synthesis 0 patch list"
+            style={{ width:'auto', maxHeight:150 }}
+            className="zoomable"
+        />
 
+    - `Synthesis1` block:
+        <img 
+            src={require('./img/synthesis_guide/3_2_synthesis1.png').default}
+            alt="Synthesis 1 patch list"
+            style={{ width:'auto', maxHeight:150 }}
+            className="zoomable"
+        />
+
+    - `Synthesis2` block:
+        <img 
+            src={require('./img/synthesis_guide/3_3_synthesis2.png').default}
+            alt="Synthesis 2 patch list"
+            style={{ width:'auto', maxHeight:170 }}
+            className="zoomable"
+        />
+
+        :::note
+        If you re-run `Synthesis2`, TUDM patch breaks 2 records. In xEdit, find `CACO'S BODY` mod and forward its changes to Synthesis2.esp (it would be `NakedTorsoHighElf` and `NakedTorsoWoodElf`)
+        :::
 ---
 
 ## Step :four: &mdash; Run `Synthesis` 3 times
