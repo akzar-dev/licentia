@@ -189,8 +189,11 @@
 
 ### 🧑‍💻 How to run locally
 
-1. Make sure you have `node` installed.
-   - For MacOS:
+1. Make sure you have `git` and `node` installed.
+   - For **MacOS/Linux**:
+
+        Open up your terminal and run the following commands:
+
         ```bash
         # Download and install Homebrew
         curl -o- https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
@@ -204,37 +207,67 @@
         # Verify npm version:
         npm -v # Should print the version
         ```
-    - For Windows:
-        ```bash
-        # Download and install Chocolatey:
+
+        `Git` is usually pre-installed on MacOS/Linux.
+    - For **Windows**:
+
+        Open up your Powershell with "Run as Administrator" selected and run the following commands:
+
+        ```powershell
+        # Check if your execution policy allows running scripts:
+        Get-ExecutionPolicy # Should print "RemoteSigned" or "Unrestricted"
+
+        # If it's restricted, do this:
+        Set-ExecutionPolicy RemoteSigned
+        # and then install Chocolatey like this:
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+        # If it's not restricted - download and install Chocolatey normally:
         powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
 
-        # Download and install Node.js:
-        choco install nodejs
+        # Restart Powershell to apply PATH changes, then run the following commands:
+
+        # Verify Chocolatey installation:
+        choco --version # Should print the version
+
+        # Download and install Git and Node.js:
+        choco install git nodejs
 
         # Verify the Node.js version:
         node -v # Should print the version
 
         # Verify npm version:
         npm -v # Should print the version
+
+        # Verify git version:
+        git --version # Should print the version
+
+        # Move to your user directory (or any other directory you want to clone the repo in):
+        cd ~
         ```
 2. Clone the repository:
     ```bash
     git clone https://github.com/akzar-dev/licentia.git
     ```
-3. Go inside `website` folder:
+    It would be cloned in the `licentia` folder in your current directory.
+3. *(Optional)* If you want to work on any of the development branches, make sure to checkout to the right one:
     ```bash
+    git checkout <branch_name>
+    ```
+4. Go inside `licentia\website` folder:
+    ```bash
+    cd licentia
     cd website
     ```
-4. Run the following commands to install packages and build the project for the first time:
+5. Run the following commands to install packages and build the project for the first time:
     ```bash
     npm install
     npm run build
     ```
-5. To run the project locally:
+6. To run the project locally:
     ```bash
-    npm run start
+    npm start
     ```
     The project would be available at `localhost:3000`
 
-    You can make changes on the go now, and they'd be rendered immediately
+    You can make changes on the go now, and they'd be rendered immediately.
