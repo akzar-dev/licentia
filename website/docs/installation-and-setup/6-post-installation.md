@@ -51,6 +51,18 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
         className="zoomable"
     />
 
+:::warning
+**IF YOUR MONITOR IS 60 HZ OR LOWER**, you would need to apply `VSync` *(Vertical Sync, or Vertical Synchronization)* to `SkyrimSE.exe` to avoid screen tearing in-game.
+
+To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to `Manage 3D settings` **(1)**, switch to `Program Settings` tab **(2)**, find `SkyrimSE.exe` in the drop-down list of programs **(3)**, set `Vertical sync` to `On` for it **(4)**, and click `Apply` to save the changes **(5)**:
+    <img 
+        src={require('./img/6-post-installation/6_0_5_vsync.png').default}
+        alt="VSync settings"
+        style={{ width:'auto', maxHeight:300 }}
+        className="zoomable"
+    />
+:::
+
 ---
 
 ## ![Start MO2 and launch the list](./img/6-post-installation/6-1-start-mo2-and-launch-the-list.png)
@@ -199,9 +211,21 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
       <details>
          <summary>:eyes: Visual tips on **how to start** the game</summary>
 
-         * After you've clicked `OK` on all the pop-up messages, walk to the **table on your left** and **interact** with the note on it.
+         * After you've clicked `OK` on all the pop-up messages, walk to the **table on your left** and **interact** with the `How to start the game!` note on it:
+            <img 
+                src={require('./img/6-post-installation/6_5_find_note.png').default}
+                alt="Start tips - Find the note"
+                style={{ width:'auto', maxHeight:300 }}
+                className="zoomable"
+            />
 
-         * **Read the note** for a detailed explanation on how to start the game, and **close it** when you're done *(it would be in your inventory, so you can read it later if you want to)*.
+         * **Read the note** for a detailed explanation on how to start the game, and **take it** when you're done reading *(it would be stored in your inventory, so you can read it later if you want to)*:
+            <img 
+                src={require('./img/6-post-installation/6_5_read_note.png').default}
+                alt="Start tips - Read the note"
+                style={{ width:'auto', maxHeight:300 }}
+                className="zoomable"
+            />
 
          * Now approach the **Shrine of Akatosh** on your right and **interact** with it:
             <img 
@@ -226,14 +250,7 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
                 className="zoomable"
             />
 
-            <img 
-                src={require('./img/6-post-installation/6_5_recommended_choice_3.png').default}
-                alt="Start tips - Recommended choice step 3"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
-
-         * After you've made your choices, go to the door on the right and open it:
+         * After you've made your choices, the interface window would **auto-close**. **Go** to the door on the right and **open** it:
             <img 
                 src={require('./img/6-post-installation/6_5_door.png').default}
                 alt="Start tips - Door"
@@ -241,7 +258,7 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
                 className="zoomable"
             />
 
-         * You'd see the **black void** behind the door - walk straight into it, and you'll be teleported to the **starting location** you chose in the previous step:
+         * You'd see the **black void** behind the door - **walk** straight into it:
             <img 
                 src={require('./img/6-post-installation/6_5_door_void.png').default}
                 alt="Start tips - Door Void"
@@ -249,10 +266,21 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
                 className="zoomable"
             />
 
+            Now **if you've followed the recommended steps above**, you'd be asked about a choice between *Hadvar* and *Ralof* - choose *Ralof* here *(it would give you an additional `Amorous Adventures` quest with his sister)*:
+            <img 
+                src={require('./img/6-post-installation/6_5_recommended_choice_3.png').default}
+                alt="Start tips - Recommended choice step 3"
+                style={{ width:'auto', maxHeight:300 }}
+                className="zoomable"
+            />
+
+            And you'll be teleported to the **starting location** you chose in the previous step *(end of Helgen Keep for this particular choice)*.
+
+
          * That's it! You're now in the world of Skyrim, and you can start your adventure! :tada:
 
             :::tip
-            If you've chosen any random **NON-DRAGONBORN** start, make sure to read the part of the starting note that explains how to avoid potential issues with such starts, and how to do **Helgen**.
+            If you've chosen any random **NON-DRAGONBORN** start, make sure to **carefully re-read** the part of the `How to start the game!` note that explains how to avoid potential issues with such starts, and how to do **Helgen** to trigger the main quest.
             :::
 
       </details>

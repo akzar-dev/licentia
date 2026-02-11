@@ -48,7 +48,7 @@ The versioning system works the following way:
 - `Inertia (Floating Gear Fix)` - 1.1.0
 - `Death Idle Fix` - 1.0.1
 - `Fantaze - Himbo Body Preset Collection` - 1.0
-- `PPA - Procedural Penis Animations` - 0.0.27
+- `PPA - Procedural Penis Animations` - 0.0.28
 - `Goetia Animations - Enchanted Staves` - 1.5.1
 - `Switch Camera During Dialogue` - 1.1
 - `Proper journal entries for 3dnpcs` - 1.2
@@ -57,6 +57,8 @@ The versioning system works the following way:
 - `Relic Hunter- Guildmaster Start` - 2.0.3 + `Legacy of the Dragonborn - Alternate Perspective Patch` - 1.0.2 (both files) + `Legacy of the Dragonborn - Alternate Perspective Patch for The Curator's Companion` - 1.0
 - `Auri VIGILANT commentary patch tweaks` - 1.0
 - `VIGILANT - HIMBO V5 Refits` - 2.2.1
+- `Wyrmstooth CBBE 3BA and (or) HIMBO Patch` - 1.1
+- `Legacy of the Dragonborn CBBE 3BA and (or) HIMBO Patch` - 1.3
 - `Delphine Skyhaven Fix` - 1.0
 - `Spark of Life - A Lives-based Death Alternative` - 1.0.2
 - `Kick them All` - 1.3 (+ updated controls setup, `G` is now kick, and `]` is to switch dodge type)
@@ -68,6 +70,7 @@ The versioning system works the following way:
 - `Save and Load Accelerator For SKSE Cosaves` - 1.3.2
 - `Reactable Spellsword Attack` - 0.0.1
 - `Horsepower - Modernized Horse Riding` - 1.0.2 + activated `360 horse archery` in TDM
+- `Dynamic Bloodpool Framework` - 1.0
 - `Assorted Nordic UI Tweaks and Patches` - 1.1.2
 - `Disable Turn Animation V2 SE I AE` - 2.0 (+ added `Behavior Data Injector` and `Behavior Data Injector Universal Support`)
 - `Alt-Tab Stuck Key Fix NG` - 1.1
@@ -107,7 +110,7 @@ The versioning system works the following way:
 - `powerofthree's Tweaks` - 1.14.1 -> 1.15.1
 - `Stagger Effect Fix` - 1.0.2 -> 1.0.3
 - `Papyrus Tweaks` - 4.1.0 -> 4.1.1
-- `Crash Logger SSE AE VR` - 1.15 -> 1.19.2
+- `Crash Logger SSE AE VR` - 1.15 -> 1.20.1
 - `Comprehensive Attack Speed Patch - SKSE` - 1.1.2.14 -> 1.1.2.15
 - `powerofthree's Papyrus Extender` - 6.1.1 -> 6.3.0
 - `Quickport` - 1.0 -> 1.1
@@ -142,7 +145,7 @@ The versioning system works the following way:
 - `Simplicity of Snow` - 0.2.5 -> 0.2.6
 - `Next-Gen Decapitations` - 1.3.4 -> 1.4.3
 - `Mesh Improvement Compilation` - 0.6.2 -> 0.6.4
-- `Assorted Mesh Fixes` - 0.127 -> 0.139
+- `Assorted Mesh Fixes` - 0.127 -> 0.139.1
 - `Skyrim Landscape and Water Fixes` - 9.8 -> 10.0.1
 - `Snowy Surfaces Sound Collision and Aesthetics` - 2.5 -> 2.6
 - `Simple Snow Improvements - Skyrim Fixes (BOS)` - 2.2 -> 2.4
@@ -187,7 +190,7 @@ The versioning system works the following way:
 - `Precision Creatures` - 2.41 -> 2.42
 - `Know Your Enemy 2` - 2.0 -> 2.1 (+ Armors and Intergration patches)
 - `Embers XD` - 3.1.7 -> 3.2.0
-- `Core Impact Framework (CIF)` - 1.2.1 -> 1.2.5
+- `Core Impact Framework (CIF)` - 1.2.1 -> 1.2.6
 - `Frozen Electrocuted Combustion` - 5.1 -> 6.1.0
 - `Enhanced Invisibility` - 1.3 -> 1.4.1
 - `Dismembering Framework` - 1.2.1 -> 1.2.2 (+ updated patches)
@@ -217,11 +220,13 @@ The versioning system works the following way:
 - `Lux - Patch Hub` and `Lux` - 7.0 -> 7.1
 - `No Grass In Objects` - 1.5.2 -> 1.5.11
 - `Genesis Unleashed Levelled - Dungeon Spawns` - 6.2 -> 6.5
+- `Sanguine Symphony` - 1.1.0 -> 1.2.0
 
 ### Fixed/Patched
 - Arkngthamz - water is black/grey with no texture when ENB is on. It was `Water for ENB` issue, was reported it to the author, he'd fixed it;
 - Bow with backpack double drawing (https://discord.com/channels/1201567388248834108/1399696495464419358) - fix with IED variables, included in default config now;
 - Reverted `FSMP` to 2.2.1 to work with `SMP-NPC crash fix` properly; Added `HDT-SMP Slot 32 Fix` (built on FSMP 2.21 source), this should fix bones getting stuck on some outfits on NPCs;
+- CBPC configs are set with `BellyBulge=0.0` now
 - Fixed Maven skin issue (basically de-standalone'd her)
 - Fixed Myriah(Kaidan NPC) with blue hands (again, de-standalone fix)
 - Fixed one of LotD Safehouse windows not changing correctly (Lux issue)
