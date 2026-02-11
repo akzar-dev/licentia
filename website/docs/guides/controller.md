@@ -13,6 +13,9 @@ image: ./img/controller-guide-social.png
 
 # :video_game: How to set up a controller for Licentia NEXT
 
+This is a test of the emergency broadcast system
+
+
 :::note
 **WHY YOU MIGHT NEED THIS?**
 
