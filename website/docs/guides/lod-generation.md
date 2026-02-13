@@ -572,7 +572,7 @@ Any grass records that has no object bounds set will not generate anything durin
 Note that this process would **require** installing `Creation Kit`!
 
 Also this process presumes that you're using the `Grass FPS Booster` mod for your grass.
-If you don't - just ommit anything related to it.
+If you don't - just omit anything related to it.
 :::
 
 :::tip
