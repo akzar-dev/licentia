@@ -13,6 +13,7 @@ image: ./img/controller-guide-social.png
 
 # :video_game: How to set up a controller for Licentia NEXT
 
+
 :::note
 **WHY YOU MIGHT NEED THIS?**
 
@@ -20,58 +21,80 @@ You want to use a controller with Licentia NEXT. This guide will help you set it
 :::
 
 These are the general steps to set up a **controller** for **Licentia NEXT**:
-1. Enable all mods in the `Controller` section of MO2
-2. Enable Controller in Skyrim
-3. Change/Verfiy The Controls
-4. Setup `CGO`
-5. Setup `The Ultimate Dodge Mod`
-6. Setup `Serio’s Cycle Hotkeys` and `True Directional Movement`
+1. Turn on **Your Controller**
+2. Run **Setup Controller** in the MCM
+
+That's it.  Go play the Game.
+
 
 :::tip
-:clock1: This process takes around 10 minutes. Let's dive into the details!
+:clock1: This process takes around 30 seconds. 
 :::
+
+Read through the entire guide for explanation of changes, mods used and finally, all the keybinds.
 
 ---
 
-## Step :one: &mdash; Enable all mods in the Controller section of MO2
+## Step :one: &mdash; Turn on Your controller
+You are your own here
+
+## Step :two: &mdash; Run the Controller Setup MCM
+
+To do that go the the MCM and find MCM Recorder.
 
 <img 
-    src={require('./img/controller_guide/1_enable_controller_mods.png').default}
+    src={require('./img/controller_guide/8_MCM_Setup1.png').default}
     alt="List of controller mods"
     style={{ width:'auto', maxHeight:200 }}
     className="zoomable"
 />
 
-Here's a **brief description** of these mods:
-- **Auto Input Switch** allows you to freely move between keyboard and the controller. Handy in many cases especially using `OStim` controls.
-
-- **The Ultimate Control Scheme** (or `TUCS`) maps the controller to functions. Look at the mod's page for more info.
-
-- **Licentia NEXT - The Ultimate Control Scheme patch** changes **keyboard** setup of `TUCS` to be compatible with the default Licentia NEXT's keyboard controls.
-
-- **Essential Favorites** prevents favorite items from being sold, crafted, disarmed, disenchanted, or dropped. Not _really_ a controller mod but handy.
-
-- **Favorite Misc Items** allows you to favorite books/soul gems/keys and other misc items. Also not really a controller mod, but again - handy!
-
-- **Serio's Cycle Hotkeys** allows players to map hotkeys or use the vanilla hotkeys to equip weapons, shields, shouts, and spells in the right hand, left hand, and shout/power slots. It enables **8** Hotkeys on the controller. Explained at [TUCS modpage](https://www.nexusmods.com/skyrimspecialedition/mods/29381).
-
-- **Wait Menu Redirected AE Support** makes the wait menu only able to open inside tween menu, in order to free the usage of wait button outside menu mode for gamepad.
-
----
-
-## Step :two: &mdash; Enable Controller in Skyrim
-
-In standard Skyrim's **settings menu**, enable controller like this:
+Click that then run Setup Controller 
 
 <img 
-    src={require('./img/controller_guide/2_enable_controller.png').default}
+    src={require('./img/controller_guide/9_MCM_Setup2.png').default}
+    alt="List of controller mods"
+    style={{ width:'auto', maxHeight:200 }}
+    className="zoomable"
+/>
+
+Follow the on screen instructions.  When it completes your are done.
+
+:::note
+**If you want to revert the changes**
+
+Run the Revert Controller recording.  That will put everyting back to default.
+:::
+
+## Notable Changes
+
+Wait has been removed from the controller.  That function is now available on the **tween** menu.  Scroll to the right and you will find it.
+
+The individual menus Magik/Power, Leveling, Inventory and Map have been added.  Available through Wait + XYBA respectively
+
+Sprinting can now be done with the Left Stick (LS).  By pushing the stick forward, you can walk, run and now sprint.  When you first want to sprint push LS completely forward and tap RB.  You don't need to hold it.  
+
+This behaviour stays in place until it is interrupted by dodging or some other disrupting action.  To re-establish, tap RB.
+
+## Mods Involved in Controller Setup 
+
+<img 
+    src={require('./img/controller_guide/10_Controller_Mods.png').default}
     alt="Controller enabled in settings"
     style={{ width:'auto', maxHeight:300 }}
     className="zoomable"
 />
 
----
-## Step :three: &mdash; Verify the controls
+
+- **Licentia NEXT - Control Map** changes **keyboard** setup of `TUCS` to be compatible with the default Licentia NEXT's keyboard controls and adds individual menu selection.
+
+- **Auto Input Switch** allows you to freely move between keyboard and the controller. Handy in many cases especially using `OStim` controls.
+
+- **Serio's Cycle Hotkeys** allows players to map hotkeys or use the vanilla hotkeys to equip weapons, shields, shouts, and spells in the right hand, left hand, and shout/power slots. It enables **8** Hotkeys on the controller. Explained at [TUCS modpage](https://www.nexusmods.com/skyrimspecialedition/mods/29381).
+
+- **Special Sprinting Revamped** Provides sprint capability on Left Stick. For any questions see the [modpage](https://www.nexusmods.com/skyrimspecialedition/mods/151533).
+
+## Reference - MCM Changes and Control Verification
 
 Verify that **Sneak** is set to `B` *(it should be, but just in case)*. This is necessary for `The Ultimate Dodge Mod`.
 
@@ -82,11 +105,7 @@ Verify that **Sneak** is set to `B` *(it should be, but just in case)*. This is 
     className="zoomable"
 />
 
----
-## Step :four: &mdash; Setup CGO
-
-Open `Mod Configuration` (MCM) menu, find `CGO`, it's settings should look like this:
-
+**CGO**
 <img 
     src={require('./img/controller_guide/4_setup_CGO.png').default}
     alt="CGO settings"
@@ -94,27 +113,10 @@ Open `Mod Configuration` (MCM) menu, find `CGO`, it's settings should look like 
     className="zoomable"
 />
 
-Here set:
 - **Switch Grip** - `DPad UP`
 - **Dual Wield Blocking** - `DPad Down`
 
----
-
-## Step :five: &mdash; Setup The Ultimate Dodge Mod
-
-Again, in `Mod Configuration` (MCM) menu find `The Ultimate Dodge Mod`.
-
-:::warning 
-This is a little counter intuitive, so read carefully!
-:::
-
-Make these changes:
-- Set the **Sneak Key** to `Left Arrow`. _We use Left arrow for Sneak because we use QuickLoot. Navigating that screen with the DPAD up and down causes sneaking hilarity._
-- Your **Dodge Key** will now be `B` because that is what you've set in `Controls` ([Step 3](#step-three--verify-the-controls)). That's just the way things work.
-- **DO NOT SET** `Gamepad/Controller Compatibility`, leave it _unticked_. Enabling it makes things incompatible, i.e. sprinting doesn't work. Why? Ask Todd 🤷‍♂️
-
-Anyway, your settings **should look like this**:
-
+**The Ultimate Dodge Mod**
 <img 
     src={require('./img/controller_guide/5_setup_The_Ultimate_Dodge_Mod.png').default}
     alt="TUDM settings"
@@ -122,21 +124,18 @@ Anyway, your settings **should look like this**:
     className="zoomable"
 />
 
----
-## Step :six: &mdash; Setup Serio's Cycle Hotkeys and True Directional Movement
+- Your **Dodge Key** will now be `B`
+- **Sneak** is `DPad Left`
 
-Let's setup `Serio's Cycle Hotkeys` mod:
-- Open the mod's `MCM` and configure _setter_ hotkey as `Home` _(you can also tick `Use vanilla keys`, but we really don't see much of a difference one way or the other)_:
-    <img 
-        src={require('./img/controller_guide/6_setup_Serios_Cycle_Hotkeys.png').default}
-        alt="SCH settings"
-        style={{ width:'auto', maxHeight:200 }}
-        className="zoomable"
-    />
+**Serios Hotkeys**
+<img 
+    src={require('./img/controller_guide/6_setup_Serios_Cycle_Hotkeys.png').default}
+    alt="SCH settings"
+    style={{ width:'auto', maxHeight:200 }}
+    className="zoomable"
+/>
 
 - Press `Home` when you are in game and have weapons equipped - **the mod's dialog will pop up, where you can set your keys**. Refer to the [mod page](https://www.nexusmods.com/skyrimspecialedition/mods/27184) for detailed instructions!
-
-As for `True Directional Movement` mod - just read the note below.
 
 :::note
 A note about **Target Lock** - that setting is located inside `True Directional Movement` MCM, and should be already configured - **just verify it looks like the screenshot:**
@@ -157,7 +156,7 @@ Your control map now looks like this:
 | Button | Action |
 | :--- | :--- |
 |**Start** | Journal |
-|**Back** | Wait |
+|**Back** | Used as Modifier Key - Wait is on tween menu |
 |**LT** | Left Attack |
 |**RT** | Right attack |
 |**LB+Back** | Quicksave |
@@ -166,16 +165,25 @@ Your control map now looks like this:
 |**LB** | Looking for something to do |
 |**RB** | Sprint |
 |**LS** | Favorites |
-|**RS** | Switch POV/Long Press Target Lock |
+|**RS** | Target Lock/Long Press Switch POV |
 |**A** | Activate |
 |**B** | Roll/Dodge |
 |**X** | Ready weapon |
 |**Y** | Jump |
 |**DPad Left** | Sneak / Stop Sneaking |
+|**DPad Right**| Unused |
 |**DPad Up** | Switch grip between 1-handed and 2-handed (CGO) |
 |**DPad Down** | Dual Wield Blocking |
+|**Wait+X**| Magik/Powers Menu
+|**Wait+Y**| Leveling
+|**Wait+B**| Inventory
+|**Wait+A**| Map
 
 ---
 
-**That's it!**
+**That's all Folks!**
 Go kill a dragon! :dragon:
+
+
+
+
