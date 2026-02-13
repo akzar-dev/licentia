@@ -22,7 +22,7 @@ The versioning system works the following way:
 :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.5.3`** _(and any older versions)_
 
 ### Added
-- `Ultimate Optimized Scripts Compilation` - 1.6 (because it's now removed from USMP)
+- `Ultimate Optimized Scripts Compilation` - 1.7 (because it's now not included in USMP)
 - A couple of mesh fixes (I can't stop can I)
 - `SkyALERT - Detection Meter Redesign` - 1.0 (Nodric UI style detection meter)
 - `ENB Terrain Blending Fix` - 1.1.0 (+ turned on ENB terrain blending in enbseries.ini)
@@ -48,7 +48,7 @@ The versioning system works the following way:
 - `Inertia (Floating Gear Fix)` - 1.1.0
 - `Death Idle Fix` - 1.0.1
 - `Fantaze - Himbo Body Preset Collection` - 1.0
-- `PPA - Procedural Penis Animations` - 0.0.28
+- `Know Your Limits` - 0.4
 - `Goetia Animations - Enchanted Staves` - 1.5.1
 - `Switch Camera During Dialogue` - 1.1
 - `Proper journal entries for 3dnpcs` - 1.2
@@ -75,6 +75,8 @@ The versioning system works the following way:
 - `Disable Turn Animation V2 SE I AE` - 2.0 (+ added `Behavior Data Injector` and `Behavior Data Injector Universal Support`)
 - `Alt-Tab Stuck Key Fix NG` - 1.1
 - `SKSE Menu Framework` - 3.7 (hotkey is set to `F10`, it can be changed in the config)
+- `The Wheel of Time` - 2.02 (and `The Wheel of Time - the Stone Quest Fix` + `The Wheel of Time - NPC Overhaul` + `The Wheel of Time - Aviendha Ostim Patch` + `The Wheel of Time - Aviendha - NOT IN MY BRIDGE`)
+- `Where Are You` - 2.0.2
 - `ninjawaffle's Licentia Patch Hub - No Starting Config Items` - 13.5.4
 - `Essential Favorites`, `Favorite Misc Items`, `Auto Input Switch`, `Serio Hotkeys` - were already included before but disabled, now they're on for everyone!
 - `Special Sprinting Revamped` - 1.1.3
@@ -206,7 +208,7 @@ The versioning system works the following way:
 - `Nibbles' animations for Ostim Standalone` - 2.2 -> 2.3.2
 - `OCum Ascended` - 4.1 -> 4.1.1
 - `Oromance Plus` - 2.11 -> 2.15 (+ updated the patch hub)
-- `More Adventutres For Ostim - ESL flagged` - 1.2 -> 1.2.3
+- `More Adventutres For Ostim - ESL flagged` - 1.2 -> 1.2.4
 - `Comfy Camping - Missile's Cut` - 1.1 -> 1.1.1
 - `Alternate Perspective - Alternate Start` - 4.0.3 -> 4.1.0 (+ updated our startup scripts)
 - `Fluffworks - Auto Patches` - 2.2 -> 2.3
@@ -218,6 +220,7 @@ The versioning system works the following way:
 - `Skyrim on Skooma` - 69.69b -> 69.69c
 - `Lux Orbis (patch hub)` - 4.6 -> 4.7
 - `Lux - Patch Hub` and `Lux` - 7.0 -> 7.1
+- `Missile's IED Preset` - 3.1.2 -> 3.2.0 (+ updated our merged default)
 - `No Grass In Objects` - 1.5.2 -> 1.5.11
 - `Genesis Unleashed Levelled - Dungeon Spawns` - 6.2 -> 6.5
 - `Sanguine Symphony` - 1.1.0 -> 1.2.0
