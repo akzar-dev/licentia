@@ -23,11 +23,11 @@
     "force_down": false,
     "links": {
       "image": "https://raw.githubusercontent.com/akzar-dev/licentia/main/backup/images/Licentia_Next_logo_v1_4k_transparent.png",
-      "readme": "https://github.com/akzar-dev/licentia/blob/main/README.md",
+      "readme": "https://licentia.quest/",
       "download": "https://authored-files.wabbajack.org/Licentia NEXT.wabbajack_eefd948f-5095-4b2d-8236-6ed3559c5a40",
       "machineURL": "licentia_next",
       "discordURL": "https://discord.gg/vermishub",
-      "websiteURL": ""
+      "websiteURL": "https://licentia.quest/"
     },
     "download_metadata": {
       "Hash": "G3O46901fsU=",
