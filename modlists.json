@@ -22,7 +22,7 @@
     "DisplayVersionOnlyInInstallerView": false,
     "force_down": false,
     "links": {
-      "image": "https://raw.githubusercontent.com/akzar-dev/licentia/main/images/Licentia_Next_logo_v1_4k_transparent.png",
+      "image": "https://raw.githubusercontent.com/akzar-dev/licentia/main/backup/images/Licentia_Next_logo_v1_4k_transparent.png",
       "readme": "https://github.com/akzar-dev/licentia/blob/main/README.md",
       "download": "https://authored-files.wabbajack.org/Licentia NEXT.wabbajack_2775e5fc-e96e-4a89-81e8-fa985887bd42",
       "machineURL": "licentia_next",
