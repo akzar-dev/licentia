@@ -52,7 +52,7 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
     />
 
 :::warning
-**IF YOUR MONITOR IS 60 HZ OR LOWER**, you would need to apply `VSync` *(Vertical Sync, or Vertical Synchronization)* to `SkyrimSE.exe` to avoid screen tearing in-game.
+**IF YOUR MONITOR IS 60 HZ OR LOWER** *([here's a guide](https://www.corsair.com/us/en/explorer/gamer/monitors/how-to-check-your-monitor-refresh-rate/) on how to check that)*, you would need to apply `VSync` *(Vertical Sync, or Vertical Synchronization)* to `SkyrimSE.exe` to avoid screen tearing in-game.
 
 To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to `Manage 3D settings` **(1)**, switch to `Program Settings` tab **(2)**, find `SkyrimSE.exe` in the drop-down list of programs **(3)**, set `Vertical sync` to `On` for it **(4)**, and click `Apply` to save the changes **(5)**:
     <img 
@@ -174,7 +174,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_mods_config_messages.png').default}
             alt="Mod configuration in progress"
-            style={{ width:'auto', maxHeight:250 }}
+            style={{ width:'auto', maxHeight:150 }}
             className="zoomable"
         />
 
@@ -182,7 +182,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_our_config_messages.png').default}
             alt="Auto-configuration progress"
-            style={{ width:'auto', maxHeight:250 }}
+            style={{ width:'auto', maxHeight:150 }}
             className="zoomable"
         />
 
@@ -194,79 +194,78 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
             className="zoomable"
         />
 
-    - Read it for basic start tips _(don't forget the note on the table!)_, then just click `OK` and you're good to go &mdash; **THE LIST IS COMPLETELY CONFIGURED NOW!** 🎉
-
-    - The last thing before you embark on your Skyrim adventure &mdash; you'll be offered a **divine blessing** with **LVL 5** and/or **1000 gold**. Choose according to your preference:
+    - Next you'd be offered a **divine blessing** with **LVL 5** and/or **1000 gold**. Choose according to your preference:
         <img 
             src={require('./img/6-post-installation/6_2_3_final_gift.png').default}
             alt="Divine blessing"
+            style={{ width:'auto', maxHeight:150 }}
+            className="zoomable"
+        />
+
+         **THE LIST IS COMPLETELY CONFIGURED NOW!**
+
+4. Save your game by pressing `F5` *(or from the main menu)*, exit the game **COMPLETELY TO THE DESKTOP**, start it again via MO2 as described above in step 3, and load that save.
+
+5. Follow these **recommended steps** on how to *properly* leave the starting room and **begin your playthrough**:
+
+    - **LOOT THE ROOM** for any valuables you may find!
+    
+    - Then walk to the **table on your left** and **interact** with the `How to start the game!` note on it:
+        <img
+            src={require('./img/6-post-installation/6_5_find_note.png').default}
+            alt="Start tips - Find the note"
             style={{ width:'auto', maxHeight:300 }}
             className="zoomable"
         />
 
-4. Save your game by pressing `F5` (or from the main menu), exit the game **COMPLETELY TO THE DESKTOP**, start it again via MO2 as described above in step 3, and load that save.
+    - **Read the note** for a detailed explanation on how to start the game, and **take it** when you're done reading *(it would be stored in your inventory so you can read it later if you want to)*:
+        <img 
+            src={require('./img/6-post-installation/6_5_read_note.png').default}
+            alt="Start tips - Read the note"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-5. **That's it!** Go play the game already :birthday: *(and read the [Final Notes](/final-notes) for more beginner tips and tricks)*.
+    - Now approach the **Shrine of Akatosh** on your right and **interact** with it:
+        <img 
+            src={require('./img/6-post-installation/6_5_shrine_of_akatosh.png').default}
+            alt="Start tips - Shrine of Akatosh"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-      <details>
-         <summary>:eyes: Visual tips on **how to start** the game</summary>
+    - You would be prompted with the **game start** choices. Here's the example of the **recommended** choices for the **normal** game start:
+        <img 
+            src={require('./img/6-post-installation/6_5_recommended_choice_1.png').default}
+            alt="Start tips - Recommended choice step 1"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-         * After you've clicked `OK` on all the pop-up messages, walk to the **table on your left** and **interact** with the `How to start the game!` note on it:
-            <img 
-                src={require('./img/6-post-installation/6_5_find_note.png').default}
-                alt="Start tips - Find the note"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
+        <img 
+            src={require('./img/6-post-installation/6_5_recommended_choice_2.png').default}
+            alt="Start tips - Recommended choice step 2"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-         * **Read the note** for a detailed explanation on how to start the game, and **take it** when you're done reading *(it would be stored in your inventory, so you can read it later if you want to)*:
-            <img 
-                src={require('./img/6-post-installation/6_5_read_note.png').default}
-                alt="Start tips - Read the note"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
+    - After you've made your choices, the interface window would **auto-close**. **Go** to the door on the right and **open** it:
+        <img 
+            src={require('./img/6-post-installation/6_5_door.png').default}
+            alt="Start tips - Door"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-         * Now approach the **Shrine of Akatosh** on your right and **interact** with it:
-            <img 
-                src={require('./img/6-post-installation/6_5_shrine_of_akatosh.png').default}
-                alt="Start tips - Shrine of Akatosh"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
+    - You'd see the **black void** behind the door - **walk STRAIGHT into it**:
+        <img 
+            src={require('./img/6-post-installation/6_5_door_void.png').default}
+            alt="Start tips - Door Void"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-         * You would be prompted with the **game start** choices. Here's the example of the **recommended** choices for the **normal** game start:
-            <img 
-                src={require('./img/6-post-installation/6_5_recommended_choice_1.png').default}
-                alt="Start tips - Recommended choice step 1"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
-
-            <img 
-                src={require('./img/6-post-installation/6_5_recommended_choice_2.png').default}
-                alt="Start tips - Recommended choice step 2"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
-
-         * After you've made your choices, the interface window would **auto-close**. **Go** to the door on the right and **open** it:
-            <img 
-                src={require('./img/6-post-installation/6_5_door.png').default}
-                alt="Start tips - Door"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
-
-         * You'd see the **black void** behind the door - **walk** straight into it:
-            <img 
-                src={require('./img/6-post-installation/6_5_door_void.png').default}
-                alt="Start tips - Door Void"
-                style={{ width:'auto', maxHeight:300 }}
-                className="zoomable"
-            />
-
-            Now **if you've followed the recommended steps above**, you'd be asked about a choice between *Hadvar* and *Ralof* - choose *Ralof* here *(it would give you an additional `Amorous Adventures` quest with his sister)*:
+        Now **if you've followed the recommended steps above**, you'd be asked about a choice between *Hadvar* and *Ralof* - choose *Ralof* here *(it would give you an additional `Amorous Adventures` quest with his sister)*:
             <img 
                 src={require('./img/6-post-installation/6_5_recommended_choice_3.png').default}
                 alt="Start tips - Recommended choice step 3"
@@ -274,13 +273,10 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
                 className="zoomable"
             />
 
-            And you'll be teleported to the **starting location** you chose in the previous step *(end of Helgen Keep for this particular choice)*.
+        And you'll be teleported to the **starting location** you chose in the previous step *(end of Helgen Keep for this particular choice)*.
 
+        :::tip
+        If you've chosen any random **NON-DRAGONBORN** start, make sure to **carefully re-read** the part of the `How to start the game!` note that explains how to avoid potential issues with such starts, and how to do **Helgen** to trigger the main quest.
+        :::
 
-         * That's it! You're now in the world of Skyrim, and you can start your adventure! :tada:
-
-            :::tip
-            If you've chosen any random **NON-DRAGONBORN** start, make sure to **carefully re-read** the part of the `How to start the game!` note that explains how to avoid potential issues with such starts, and how to do **Helgen** to trigger the main quest.
-            :::
-
-      </details>
+5. **That's it!** You're now in the world of Skyrim, go play the game already :birthday: *(and read the [Final Notes](/final-notes) for more beginner tips and tricks)*.

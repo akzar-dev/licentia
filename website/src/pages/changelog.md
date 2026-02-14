@@ -18,8 +18,10 @@ The versioning system works the following way:
 ---
 
 ## LICENTIA NEXT `13.6.0`
-
-:no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.5.3`** _(and any older versions)_
+:::note
+- 🗓️ **Released** 14 February 2026
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.5.3`** _(and any older versions)_
+:::
 
 ### Added
 - `Ultimate Optimized Scripts Compilation` - 1.7 (because it's now not included in USMP)
@@ -70,13 +72,15 @@ The versioning system works the following way:
 - `Save and Load Accelerator For SKSE Cosaves` - 1.3.2
 - `Reactable Spellsword Attack` - 0.0.1
 - `Horsepower - Modernized Horse Riding` - 1.0.2 + activated `360 horse archery` in TDM
-- `Dynamic Bloodpool Framework` - 1.0
+- `Dynamic Bloodpool Framework` - 1.0.1
 - `Assorted Nordic UI Tweaks and Patches` - 1.1.2
 - `Disable Turn Animation V2 SE I AE` - 2.0 (+ added `Behavior Data Injector` and `Behavior Data Injector Universal Support`)
 - `Alt-Tab Stuck Key Fix NG` - 1.1
 - `SKSE Menu Framework` - 3.7 (hotkey is set to `F10`, it can be changed in the config)
-- `The Wheel of Time` - 2.02 (and `The Wheel of Time - the Stone Quest Fix` + `The Wheel of Time - NPC Overhaul` + `The Wheel of Time - Aviendha Ostim Patch` + `The Wheel of Time - Aviendha - NOT IN MY BRIDGE`)
+- `The Wheel of Time` - 2.02 (and `The Wheel of Time - the Stone Quest Fix` + `The Wheel of Time - NPC Overhaul` + `The Wheel of Time - Aviendha Ostim Patch`)
 - `Where Are You` - 2.0.2
+- `UIExtensions Fixed ESP Plugin` - 1.0
+- `60 FPS WheelMenu Patch for UIExtensions` - 1.0
 - `ninjawaffle's Licentia Patch Hub - No Starting Config Items` - 13.5.4
 - `Essential Favorites`, `Favorite Misc Items`, `Auto Input Switch`, `Serio Hotkeys` - were already included before but disabled, now they're on for everyone!
 - `Special Sprinting Revamped` - 1.1.3
@@ -126,6 +130,7 @@ The versioning system works the following way:
 - `DynDOLOD DLL NG` - Alpha-36 -> Alpha-39
 - `DynDOLOD TexGen Fixes (Gray Cowl-Beyond Reach-Midwood Isle-Rigmor-The Shire)` - 2.3 -> 2.4
 - `Synthesis` - 0.35.0 -> 0.35.5
+- `Completionist Addons` - 2.0.7 -> 2.0.8
 - `Illustrious Whiterun - Complex Materials Parallax` - many 2.x -> 3.8
 - `Improved Camera SE` - 1.1.1 -> 1.1.2
 - `Hotkey Reminder` - 1.0.2 -> 1.0.6
@@ -223,7 +228,7 @@ The versioning system works the following way:
 - `Missile's IED Preset` - 3.1.2 -> 3.2.0 (+ updated our merged default)
 - `No Grass In Objects` - 1.5.2 -> 1.5.11
 - `Genesis Unleashed Levelled - Dungeon Spawns` - 6.2 -> 6.5
-- `Sanguine Symphony` - 1.1.0 -> 1.2.0
+- `Sanguine Symphony` - 1.1.0 -> 1.2.1
 
 ### Fixed/Patched
 - Arkngthamz - water is black/grey with no texture when ENB is on. It was `Water for ENB` issue, was reported it to the author, he'd fixed it;
@@ -235,12 +240,13 @@ The versioning system works the following way:
 - Fixed one of LotD Safehouse windows not changing correctly (Lux issue)
 - Fixed Irkgnthand Grand Cavern mountain hole (and probably a few more that use `MountainCliff01.nif` from Majestic Mountains, this mesh was broken and I fixed it)
 - Fixed Runoff Caverns black water bug
-- Fixed Crash on Sleep in LotD Safehouse (tentative)
-- Fixed OStim + Improved Camera causing head to disappear. The downside is that 1st person animations in OStim would clip with PC head. Waiting for IC 2.0 release for a proper fix.
-- Fixed NFF overriding SDA traps script + Attack Dogs script.
-- Took a deep dive through OWL and its patches, fixed a lot of issues with leveled lists, added missing patches, fixed our own custom patches; i.e. Immersive Weapons should properly appear now, as well as crossbows and other stuff;
-- Grass patch is now split in 2 (main + boost), recalculated bounds for both;
-- Removed a few of our unneeded patches; reorganized some others;
+- (tentative) Fixed Crash on Sleep in LotD Safehouse
+- Fixed OStim + Improved Camera causing head to disappear. The downside is that 1st person animations in OStim would clip with PC head. Waiting for IC 2.0 release for a proper fix
+- Fixed NFF overriding SDA traps script + Attack Dogs script
+- Made a patch to replace `slot 52` with `slot 60` for all armors (mostly jewelry) that don't need it to prevent TNG crashes
+- Took a deep dive through OWL and its patches, fixed a lot of issues with leveled lists, added missing patches, fixed our own custom patches; i.e. Immersive Weapons should properly appear now, as well as crossbows and other stuff
+- Grass patch is now split in 2 (main + boost), recalculated bounds for both
+- Removed a few of our unneeded patches; reorganized some others
 - Switched `SSE Display Tweaks` to work as Borderless without Vsync with `BorderlessUpscale=false` (causes problems and doesn't work with Frame Gen)
 - Re-ran xLODGen, ACMOS, Grass Cache, TexGen and DynDOLOD
 - Re-ran Bodyslide
@@ -250,7 +256,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.3`
 
-:white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.2/13.5.1/13.5.0`** _(not save safe with older versions)_
+:::note
+- 🗓️ **Released** 10 August 2025
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.2/13.5.1/13.5.0`** _(not save safe with older versions)_
+:::
 
 ### Added
 - `Natural Waterfalls - AOS - Patch` - 1.0 (makes AOS Waterfall and Rapids volume sliders work with Natural Waterfalls)
@@ -285,7 +294,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.2`
 
-:white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.1/13.5.0`** _(not save safe with older versions)_
+:::note
+- 🗓️ **Released** 6 August 2025
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.1/13.5.0`** _(not save safe with older versions)_
+:::
 
 ### Added
 - `Rally's SMIM Chests` - 1.0 (+ LotD patch) - previously we've had a mismatch of regular and SMIM chests textures causing snow textures to look like ass on them, now it's fixed and looks better
@@ -343,7 +355,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.1`
 
-:white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.0`** _(not save safe with older versions)_
+:::note
+- 🗓️ **Released** 17 July 2025
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.0`** _(not save safe with older versions)_
+:::
 
 ### Added
 - `Security Overhaul SKSE - Extra Locks` - 1.0
@@ -372,7 +387,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.0`
 
-:no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.4.1`** _(and any older versions of NEXT/BLACK)_
+:::note
+- 🗓️ **Released** 16 July 2025
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.4.1`** _(and any older versions of NEXT/BLACK)_
+:::
 
 ### Added
 - Follower Dialogue Expansion suite:
@@ -552,10 +570,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.4.1`
 :::note
-`13.4.0` is skipped for technical reasons
+- 🗓️ **Released** 11 February 2025
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT 13.3.2** _(and any older Licentia BLACK)_
+- `13.4.0` is skipped for technical reasons
 :::
-
-:no_entry: **NOT SAVE SAFE** with **Licentia NEXT 13.3.2** _(and any older Licentia BLACK)_
 
 ### Added
 - `Hunters Not Bandits` - 4.1 (because in was removed from USMP and now installed separately)
@@ -797,8 +815,11 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.3.2`
 
-:white_check_mark: **SAVE SAFE** with **Licentia BLACK `13.3.0/13.3.1`**
+:::note
+- 🗓️ **Released** 3 November 2024
+- :white_check_mark: **SAVE SAFE** with **Licentia BLACK `13.3.0/13.3.1`**
 (_you'd get missing plugins notification, but it's safe to ignore cause that's just texture mods.)_
+:::
 
 ### Added
 - `Optimised Scripts for Ordinator` - 1.0
