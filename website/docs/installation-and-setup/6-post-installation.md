@@ -17,6 +17,54 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
 
 ---
 
+## ![Fix High DPI Scaling](./img/6-post-installation/6-0-fix-high-dpi-scaling.png)
+
+1. Navigate to your Licentia NEXT installation directory, open the `Stock Game` folder, right click `SkyrimSE.exe` and left click `Properties` on the bottom:
+    <img 
+        src={require('./img/6-post-installation/6_0_1_skyrimse_properties.png').default}
+        alt="SkyrimSE properties"
+        style={{ width:'auto', maxHeight:150 }}
+        className="zoomable"
+    />
+
+2. In the newly opened _Properties_ window, navigate to `Compatibility` tab:
+    <img 
+        src={require('./img/6-post-installation/6_0_2_skyrimse_compatibility.png').default}
+        alt="SkyrimSE compatibility"
+        style={{ width:'auto', maxHeight:100 }}
+        className="zoomable"
+    />
+
+3. Click on `Change High DPI settings`:
+    <img 
+        src={require('./img/6-post-installation/6_0_3_skyrimse_highdpi.png').default}
+        alt="SkyrimSE compatibility"
+        style={{ width:'auto', maxHeight:250 }}
+        className="zoomable"
+    />
+
+4. In the newly opened _High DPI Settings_ window tick `Override High DPI scaling behavior` **(1)**, in the dropdown list select `Application` **(2)**, and then click `OK` two times (for this window and the _Properties_ one that was in the background) to save your changes **(3)**:
+    <img 
+        src={require('./img/6-post-installation/6_0_4_skyrimse_application.png').default}
+        alt="SkyrimSE compatibility"
+        style={{ width:'auto', maxHeight:250 }}
+        className="zoomable"
+    />
+
+:::warning
+**IF YOUR MONITOR IS 60 HZ OR LOWER** *([here's a guide](https://www.corsair.com/us/en/explorer/gamer/monitors/how-to-check-your-monitor-refresh-rate/) on how to check that)*, you would need to apply `VSync` *(Vertical Sync, or Vertical Synchronization)* to `SkyrimSE.exe` to avoid screen tearing in-game.
+
+To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to `Manage 3D settings` **(1)**, switch to `Program Settings` tab **(2)**, find `SkyrimSE.exe` in the drop-down list of programs **(3)**, set `Vertical sync` to `On` for it **(4)**, and click `Apply` to save the changes **(5)**:
+    <img 
+        src={require('./img/6-post-installation/6_0_5_vsync.png').default}
+        alt="VSync settings"
+        style={{ width:'auto', maxHeight:300 }}
+        className="zoomable"
+    />
+:::
+
+---
+
 ## ![Start MO2 and launch the list](./img/6-post-installation/6-1-start-mo2-and-launch-the-list.png)
 
 1. Navigate to your Licentia NEXT directory and **execute** `ModOrganizer.exe`:
@@ -51,7 +99,7 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
     />
 
     :::tip
-    Wabbajack auto-detects and sets your **game resolution**, but if you wish to change it **manually** &mdash; select the `INI Editor` from the `Tools` menu along the icon bar of MO2:
+    Wabbajack auto-detects and sets your **game resolution**, but if you wish to change it **manually/or if the game is launching with the wrong one** &mdash; select the `INI Editor` from the `Tools` menu along the icon bar of MO2:
         <img 
             src={require('./img/6-post-installation/6_1_3_mo2_change_resolution.png').default}
             alt="MO2 ini editor"
@@ -85,6 +133,9 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
     :::
 
 5. When you're in the **main Skyrim menu** &mdash; proceed to the next step.
+
+    :::tip
+    If your game menu looks **zoomed in** and/or **too small** &mdash; read the resolution section above and make sure you've applied the `High DPI Scaling` fix [at the top of this page](#fix-high-dpi-scaling)!
 
 ---
 
@@ -123,7 +174,7 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
         <img 
             src={require('./img/6-post-installation/6_2_3_mods_config_messages.png').default}
             alt="Mod configuration in progress"
-            style={{ width:'auto', maxHeight:250 }}
+            style={{ width:'auto', maxHeight:150 }}
             className="zoomable"
         />
 
@@ -131,7 +182,7 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
         <img 
             src={require('./img/6-post-installation/6_2_3_our_config_messages.png').default}
             alt="Auto-configuration progress"
-            style={{ width:'auto', maxHeight:250 }}
+            style={{ width:'auto', maxHeight:150 }}
             className="zoomable"
         />
 
@@ -143,16 +194,89 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
             className="zoomable"
         />
 
-    - Read it for basic start tips, then just click `OK` and you're good to go &mdash; **THE LIST IS COMPLETELY CONFIGURED NOW!** 🎉
-
-    - The last thing before you embark on your Skyrim adventure &mdash; you'll be offered a **divine blessing** with **LVL 5** and/or **1000 gold**. Choose according to your preference:
+    - Next you'd be offered a **divine blessing** with **LVL 5** and/or **1000 gold**. Choose according to your preference:
         <img 
             src={require('./img/6-post-installation/6_2_3_final_gift.png').default}
             alt="Divine blessing"
+            style={{ width:'auto', maxHeight:150 }}
+            className="zoomable"
+        />
+
+         **THE LIST IS COMPLETELY CONFIGURED NOW!**
+
+4. Save your game by pressing `F5` *(or from the main menu)*, exit the game **COMPLETELY TO THE DESKTOP**, start it again via MO2 as described above in step 3, and load that save.
+
+5. Follow these **recommended steps** on how to *properly* leave the starting room and **begin your playthrough**:
+
+    - **LOOT THE ROOM** for any valuables you may find!
+    
+    - Then walk to the **table on your left** and **interact** with the `How to start the game!` note on it:
+        <img
+            src={require('./img/6-post-installation/6_5_find_note.png').default}
+            alt="Start tips - Find the note"
             style={{ width:'auto', maxHeight:300 }}
             className="zoomable"
         />
 
-4. Save your game by pressing `F5` (or from the main menu), exit the game **COMPLETELY TO THE DESKTOP**, start it again via MO2 as described above in step 3, and load that save.
+    - **Read the note** for a detailed explanation on how to start the game, and **take it** when you're done reading *(it would be stored in your inventory so you can read it later if you want to)*:
+        <img 
+            src={require('./img/6-post-installation/6_5_read_note.png').default}
+            alt="Start tips - Read the note"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
 
-5. **That's it!** Go play the game already :birthday: *(and read the [Final Notes](/final-notes) for more beginner tips and tricks)*.
+    - Now approach the **Shrine of Akatosh** on your right and **interact** with it:
+        <img 
+            src={require('./img/6-post-installation/6_5_shrine_of_akatosh.png').default}
+            alt="Start tips - Shrine of Akatosh"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
+
+    - You would be prompted with the **game start** choices. Here's the example of the **recommended** choices for the **normal** game start:
+        <img 
+            src={require('./img/6-post-installation/6_5_recommended_choice_1.png').default}
+            alt="Start tips - Recommended choice step 1"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
+
+        <img 
+            src={require('./img/6-post-installation/6_5_recommended_choice_2.png').default}
+            alt="Start tips - Recommended choice step 2"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
+
+    - After you've made your choices, the interface window would **auto-close**. **Go** to the door on the right and **open** it:
+        <img 
+            src={require('./img/6-post-installation/6_5_door.png').default}
+            alt="Start tips - Door"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
+
+    - You'd see the **black void** behind the door - **walk STRAIGHT into it**:
+        <img 
+            src={require('./img/6-post-installation/6_5_door_void.png').default}
+            alt="Start tips - Door Void"
+            style={{ width:'auto', maxHeight:300 }}
+            className="zoomable"
+        />
+
+        Now **if you've followed the recommended steps above**, you'd be asked about a choice between *Hadvar* and *Ralof* - choose *Ralof* here *(it would give you an additional `Amorous Adventures` quest with his sister)*:
+            <img 
+                src={require('./img/6-post-installation/6_5_recommended_choice_3.png').default}
+                alt="Start tips - Recommended choice step 3"
+                style={{ width:'auto', maxHeight:300 }}
+                className="zoomable"
+            />
+
+        And you'll be teleported to the **starting location** you chose in the previous step *(end of Helgen Keep for this particular choice)*.
+
+        :::tip
+        If you've chosen any random **NON-DRAGONBORN** start, make sure to **carefully re-read** the part of the `How to start the game!` note that explains how to avoid potential issues with such starts, and how to do **Helgen** to trigger the main quest.
+        :::
+
+5. **That's it!** You're now in the world of Skyrim, go play the game already :birthday: *(and read the [Final Notes](/final-notes) for more beginner tips and tricks)*.

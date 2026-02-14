@@ -77,7 +77,7 @@ This mod uses _Alternate Perspective_, in which you can observe and walk through
 <details>
   <summary>Expand</summary>
 
-A lot of quest stages in later quests are directly reliant on **ALL** the quest triggers -- including event, interaction, and location-based triggers -- being activated during the intro sequence in which Alduin destroys Helgen. If you are finding that Uthgerd will not brawl with you, Ysolda will not ask you for the mammoth tusk, you can't talk to the Creation Club pets, or _Saints and Seducers_ NPCs are not responding, go back and do Helgen. I am also extremely skeptical of all starts which skip this part of the game, including the "Dragonborn" start from the dragon statue in the opening room as well as the "Skip Intro" start in the Helgen Inn's basement.
+A lot of quest stages in later quests are directly reliant on **ALL** the quest triggers -- including event, interaction, and location-based triggers -- being activated during the intro sequence in which Alduin destroys Helgen. If you are finding that Uthgerd will not brawl with you, Ysolda will not ask you for the mammoth tusk, you can't talk to the Creation Club pets, or _Saints and Seducers_ NPCs are not responding, go back and trigger Helgen (as explained in the Note you find in the staring room).
 </details>
 
 ### I'm not receiving the extra Thane weapons from Balgruuf (or others, when I complete their quests).

@@ -17,9 +17,249 @@ The versioning system works the following way:
 
 ---
 
+## LICENTIA NEXT `13.6.0`
+:::note
+- 🗓️ **Released** 14 February 2026
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.5.3`** _(and any older versions)_
+:::
+
+### Added
+- `Ultimate Optimized Scripts Compilation` - 1.7 (because it's now not included in USMP)
+- A couple of mesh fixes (I can't stop can I)
+- `SkyALERT - Detection Meter Redesign` - 1.0 (Nodric UI style detection meter)
+- `ENB Terrain Blending Fix` - 1.1.0 (+ turned on ENB terrain blending in enbseries.ini)
+- `Smart Talk (Dialogue Menu Enhancer)` - 1.0.5
+- `Follower Dialogue Expansion - Borgakh the Steel Heart` - 1.1
+- `Follower Dialogue Expansion - Eola` - 1.0
+- `Follower Dialogue Expansion - Illia` - 3.0 + added `Illia leaves Darklight Tower` patch
+- `Ashe - Crystal Heart SE` - 1.3.3 + Serana Banter Patch
+- `FYX - Alpha Blood Blending Bug - NG` - 1.0
+- `Amorous Adventures - OStim Standalone Sequence` - 1.1 (+ patched it for our text overhaul)
+- `Dragons (Actually) Fall Down` - 1.1.5
+- `Dragons - True Ragdoll Physics` - 1.0.4
+- `Precision Trail Replacer - Simple` + `Precision - Enchanted Weapon Trails` + `Precision - Summermyst Patch`
+- `Patch for Combat Gameplay Overhaul to use Spell Perk Item Distributor` - 1.5 (removed `CGO remove debug message` unfortunately, they conflict)
+- `A-Pose Bug Fix - Universal Behavior Runtime` - 1.1.0
+- `Dynamic Activation Key - Papyrus vers - Suspended Stack Fix` - 1.0
+- `Spell Knight Armors Retexture SE` - 1.2.0
+- `Vigil Enforcer Retexture SE` - 1.0
+- `Divine Crusader Retexture SE` - 1.0
+- `Common Clothing Retexture SE` - 1.0
+- `Saints and Seducers Retexture SE` - 1.1.0
+- `Faction Armors and Weapons Retexture SE` - 1.1.0
+- `Inertia (Floating Gear Fix)` - 1.1.0
+- `Death Idle Fix` - 1.0.1
+- `Fantaze - Himbo Body Preset Collection` - 1.0
+- `Know Your Limits` - 0.4
+- `Goetia Animations - Enchanted Staves` - 1.5.1
+- `Switch Camera During Dialogue` - 1.1
+- `Proper journal entries for 3dnpcs` - 1.2
+- `Nether's Elana` - 2.1 (from Patreon)
+- `Kaidan 2 - CBBE and HIMBO Refits` - 4.0
+- `Relic Hunter- Guildmaster Start` - 2.0.3 + `Legacy of the Dragonborn - Alternate Perspective Patch` - 1.0.2 (both files) + `Legacy of the Dragonborn - Alternate Perspective Patch for The Curator's Companion` - 1.0
+- `Auri VIGILANT commentary patch tweaks` - 1.0
+- `VIGILANT - HIMBO V5 Refits` - 2.2.1
+- `Wyrmstooth CBBE 3BA and (or) HIMBO Patch` - 1.1
+- `Legacy of the Dragonborn CBBE 3BA and (or) HIMBO Patch` - 1.3
+- `Delphine Skyhaven Fix` - 1.0
+- `Spark of Life - A Lives-based Death Alternative` - 1.0.2
+- `Kick them All` - 1.3 (+ updated controls setup, `G` is now kick, and `]` is to switch dodge type)
+- `Scabbards for JaySuS Swords` - 1.1
+- `Aetherium Ore Respawns` - 1.1
+- `Loading Menu Overhaul` + `Loading Menu Overhaul - Nordic UI` - 1.2
+- `Ricochet - Arrow Physics Framework` - 1.0.2 + `Broken Feathers (Full Skyrim Arrow Pack)` - 1.0
+- `SSE Engine Fixes - Save Corrupt Fix AE` - 1.5 (small edits, mostly makes quicksaves into full saves)
+- `Save and Load Accelerator For SKSE Cosaves` - 1.3.2
+- `Reactable Spellsword Attack` - 0.0.1
+- `Horsepower - Modernized Horse Riding` - 1.0.2 + activated `360 horse archery` in TDM
+- `Dynamic Bloodpool Framework` - 1.0.1
+- `Assorted Nordic UI Tweaks and Patches` - 1.1.2
+- `Disable Turn Animation V2 SE I AE` - 2.0 (+ added `Behavior Data Injector` and `Behavior Data Injector Universal Support`)
+- `Alt-Tab Stuck Key Fix NG` - 1.1
+- `SKSE Menu Framework` - 3.7 (hotkey is set to `F10`, it can be changed in the config)
+- `The Wheel of Time` - 2.02 (and `The Wheel of Time - the Stone Quest Fix` + `The Wheel of Time - NPC Overhaul` + `The Wheel of Time - Aviendha Ostim Patch`)
+- `Where Are You` - 2.0.2
+- `UIExtensions Fixed ESP Plugin` - 1.0
+- `60 FPS WheelMenu Patch for UIExtensions` - 1.0
+- `ninjawaffle's Licentia Patch Hub - No Starting Config Items` - 13.5.4
+- `Essential Favorites`, `Favorite Misc Items`, `Auto Input Switch`, `Serio Hotkeys` - were already included before but disabled, now they're on for everyone!
+- `Special Sprinting Revamped` - 1.1.3
+- `True Directional Movement - Mounted Archery Fix`, `True Directional Movement Lock-on Fixes`, `First Person Target Locking Fix`
+- Synthesis patches:
+	- SpeedAndReachFixes
+	- Z-Floor-Patcher
+	- Water Seams Fix - Synthesis Patcher
+- As optional:
+	- `ENB Frame Generation` - 1.0.2
+	- `DisplayTweaks settings for Frame Generation (CS or ENB)` - 1.0
+
+### Removed
+- `Sprint Swim Redux SKSE` - 1.0 (the "fix" for followers doesn't work properly unfortunately, so removed it for now);
+- `Magic Student (WIChangeLocation04) Quest Fix` - superseded by UOSC;
+- `High Gate Ruins Puzzle Reset Fix`, `College of Winterhold Quest Start Fixes`, `King Olaf's Fire Festival Not Ending Fix`, `Neloth's Experimental Subject Quest (DLC2TTR4a) Fix` - redundant, now included in USSEP;
+- `ENB Light - patch for Quick Light Nordic Lanterns Mesh` and `ENB Light - patch for Quick Light SMIM Mesh` - redundant, newer FOMOD patch is used;
+- `Object Impact Framework (OIF)` and `Hit to Switch - OIF` - causing CTD, would bring back when OIF is in a better state;
+- `Dragons Fall Down - Immersive Airborne Death` - replaced with a newer type of this mod;
+- `CGO and Retimed Hit Frames Compatibility Patch` - not needed with Precision;
+- A few of xavbio's retextures removed because they were replaced with AIO mods;
+- `OStim Improved Camera Configuration`, replaced with `Licentia NEXT - Improved Camera Configuration`
+- `Horses Simply Turn Better` and `Faster Horses` (+ their consistency patch) + `Jump Slide Fix OAR - Horses` (not needed with `HorsePower`)
+- `Expressive Remiel` - outdated and removed from Nexus
+
+### Updated
+- `ENB` - updated to latest version of `0.504` (enabled new `LODShadow` instead of `DistantShadow` for better performance and looks, added `DisableDistantReflection=true` to fix distant reflections in water looking weird, small other adjustments);
+- `ninjawaffle's Licentia Scripts` - 1.2 -> 1.2.1
+- `Unofficial Skyrim Special Edition Patch` - 4.3.6a -> 4.3.6c
+- `Unofficial Skyrim Modder's Patch - USMP SE` - 2.6.6 -> 2.6.7
+- `CritterSpawn - Script Call Reduction` - 1.3 -> 2.0 (+ now included in UOSC, but this is the latest version)
+- `SSE Engine Fixes` - 6.2 -> 7.0.19
+- `powerofthree's Tweaks` - 1.14.1 -> 1.15.1
+- `Stagger Effect Fix` - 1.0.2 -> 1.0.3
+- `Papyrus Tweaks` - 4.1.0 -> 4.1.1
+- `Crash Logger SSE AE VR` - 1.15 -> 1.20.1
+- `Comprehensive Attack Speed Patch - SKSE` - 1.1.2.14 -> 1.1.2.15
+- `powerofthree's Papyrus Extender` - 6.1.1 -> 6.3.0
+- `Quickport` - 1.0 -> 1.1
+- `ImGui Icons` - 1.1 -> 1.2
+- `PhotoMode` - 1.9.1 -> 2.0.3
+- `Navigator - Navmesh Fixes` - 1.6.1 -> 1.8.0
+- `Zero Bounty Hostility Fix` - 0.4 -> 0.5
+- `Widescreen Scale Removed` - 1.0.3 -> 1.0.4
+- `DynDOLOD Resources SE 3.00` - Alpha-57 -> Alpha-58
+- `Dyndolod (TexGen and Dyndolod)` - Alpha-193 -> Alpha-198
+- `DynDOLOD DLL NG` - Alpha-36 -> Alpha-39
+- `DynDOLOD TexGen Fixes (Gray Cowl-Beyond Reach-Midwood Isle-Rigmor-The Shire)` - 2.3 -> 2.4
+- `Synthesis` - 0.35.0 -> 0.35.5
+- `Completionist Addons` - 2.0.7 -> 2.0.8
+- `Illustrious Whiterun - Complex Materials Parallax` - many 2.x -> 3.8
+- `Improved Camera SE` - 1.1.1 -> 1.1.2
+- `Hotkey Reminder` - 1.0.2 -> 1.0.6
+- `Skyrim Extended Cut - Saints and Seducers` - 1.0.0.6 -> 1.1.1
+- `VIGILANT SE` - 1.7.3 -> 1.8.0
+- `VIGILANT SE HiRes Pack` - 1.7beta - 1.8.0
+- `VIGILANT Voiced - English Addon` - 1.7.3 -> 1.8.0 + added `VIGILANT(missing lines) - ElevenLabs Voiced`
+- `VIGILANT - NPC Overhaul` - 2.8.2 -> 2.8.3
+- `The Wheels of Lull SE` - 5.3 -> 5.3.2.1
+- `Wyrmstooth` - 1.20.2 -> 1.20.3 (+ added Dragonborn and Hearthfire patches)
+- `Headhunter - Bounties Redone` - 1.57 -> 1.60
+- `Extended Encounters` - 1.6.9 -> 1.7.0
+- `Skyland Happy Little Trees Bark` - 1.2 -> 1.3
+- `Icy Cave Remaster` - 2.1.5 -> 2.2.3
+- `The New Gentleman` - 4.2.3 -> 4.2.5
+- `NORDIC UI - RaceMenu Patch - DIP` - 1.1 -> 1.2 (+ added automatic patcher)
+- `ECE Sliders Addon for Racemenu` - 2.3 -> 2.4
+- `Vanity Mirror 2` - 1.0 -> 1.1
+- `Simplicity of Snow` - 0.2.5 -> 0.2.6
+- `Next-Gen Decapitations` - 1.3.4 -> 1.4.3
+- `Mesh Improvement Compilation` - 0.6.2 -> 0.6.4
+- `Assorted Mesh Fixes` - 0.127 -> 0.139.1
+- `Skyrim Landscape and Water Fixes` - 9.8 -> 10.0.1
+- `Snowy Surfaces Sound Collision and Aesthetics` - 2.5 -> 2.6
+- `Simple Snow Improvements - Skyrim Fixes (BOS)` - 2.2 -> 2.4
+- `Water for ENB` - 2.12 -> 2.17
+- `Natural Waterfalls` - 3.2 -> 3.7
+- `GKB Waves Reborn` - 3.1.1 -> 3.1.2
+- `GKB Waves For Various Mods` - 1.0 -> 1.1
+- `Alchemy Station Variants` - 1.4.3 -> 1.4.5
+- `wd - Barrels` - 1.2.1 -> 1.3.0
+- `Dynamic Things Alternative - Base Object Swapper` - 0.3 -> 0.4.1
+- `Xelzaz - Custom Fully Voiced Argonian Telvanni Follower` - 1.13 -> 1.13.2
+- `Redcap the Riekling - A Fully Voice-Acted Immersive Follower and Quest` - 1.4.16 -> 1.4.20
+- `Gore - A Companion Mod` - 1.7.5 -> 1.8.18 (+ patches)
+- `Follower Dialogue Expansion - Aela the Huntress` - 6.0.2 -> 8.0
+- `Follower Dialogue Expansion - Jenassa` - 5.0 -> 6.0.1
+- `Follower Dialogue Expansion - Lydia` - 1.4 -> 1.5
+- `Follower Dialogue Expansion - Mjoll the Lioness` - 1.3 -> 1.5
+- `Serana Dialogue Add-On` - 4.2.0 -> 4.3.0
+- `High Poly Head UV Stretch Fix` - 2.0 -> 3.0
+- `KS Hairdos SMP` - 1.4.3 -> 1.4.4
+- `OBody Next Generation` - 4.3.7 -> 4.4.3
+- `OBody Next Generation ORefit JSON Master List` - 2025.05 -> 2026.01
+- `Growl - Werebeasts of Skyrim` - 3.3.1 -> 3.4.1
+- `Nordic UI - Tween Menu Reskin and Fixes - Custom Skills Menu` - 2.1 -> 2.1.1
+- `Optimised Scripts for SPERG` - 1.0.1 -> 1.0.2 (+ updated for Lotd + Wintersun, and ECSS)
+- `Ordinator` - 9.31 -> 9.35
+- `Optimised Scripts for Ordinator` - 1.2 -> 1.3
+- `Experience NG` - 3.6.2 -> 3.7.3 (+ updated our config)
+- `Open World Loot` - 1.3.5 -> 2.4.0 + updated a few patches + our own LVLI changes
+- `Open World Loot - Creation Club Integration` - 3.0.3 -> 3.2.0
+- `Immersive Armor HIMBO Conversion V2` - 2.3.0 -> 2.3.1
+- `Heavy Armory - New Weapons` - 6.1.6 -> 6.1.7
+- `CBBE 3BA Vanilla Outfits Redone` - 4.1.8 -> 5.1.3
+- `Ancient Nord Armors and Weapons Retexture SE` - 1.1 -> 2.0
+- `Elven Armors and Weapons Retexture SE` - 1.0.1 -> 2.0
+- `Steel Armors and Weapons Retexture SE` - 2.0 -> 2.1.1
+- `Unique Armors and Weapons Retexture SE` - 1.2 -> 1.4
+- `Dragon Armors and Weapons Retexture SE` - 2.2 -> 2.2.1
+- `Daedric Armors and Weapons Retexture SE` - 2.0 -> 2.1
+- `Orcish Armors and Weapons Retexture SE` - 2.0.1 -> 2.0.2
+- `Apocalypse - Magic of Skyrim` - 10.2.1 -> 10.2.2
+- `Precision Creatures` - 2.41 -> 2.42
+- `Know Your Enemy 2` - 2.0 -> 2.1 (+ Armors and Intergration patches)
+- `Embers XD` - 3.1.7 -> 3.2.0
+- `Core Impact Framework (CIF)` - 1.2.1 -> 1.2.6
+- `Frozen Electrocuted Combustion` - 5.1 -> 6.1.0
+- `Enhanced Invisibility` - 1.3 -> 1.4.1
+- `Dismembering Framework` - 1.2.1 -> 1.2.2 (+ updated patches)
+- `Ostim Standalone` - 7.3.5beta-hotfix2 -> 7.3.5d
+- `Lovemaking Compendium for OStim Standalone` - 1.17.1 -> 1.23
+- `Drago's Enchant Those Potions for OStim Standalone` - 1.1 -> 1.3
+- `Drago's Foot Animation Add On for OStim Standalone` - 1.0 -> 1.1
+- `Sole Purpose for OStim Standalone` - 1.0 -> 1.2
+- `Anub's animations for Ostim Standalone` - 2.2.1 -> 2.3.2
+- `Billyy's animations for Ostim Standalone` - 3.0.2 -> 3.2.2
+- `Leito's animations for Ostim Standalone` - 1.2 -> 1.3.2
+- `M2M Animations by Tweens for OStim Standalone` - 1.2 -> 2.0
+- `Nibbles' animations for Ostim Standalone` - 2.2 -> 2.3.2
+- `OCum Ascended` - 4.1 -> 4.1.1
+- `Oromance Plus` - 2.11 -> 2.15 (+ updated the patch hub)
+- `More Adventutres For Ostim - ESL flagged` - 1.2 -> 1.2.4
+- `Comfy Camping - Missile's Cut` - 1.1 -> 1.1.1
+- `Alternate Perspective - Alternate Start` - 4.0.3 -> 4.1.0 (+ updated our startup scripts)
+- `Fluffworks - Auto Patches` - 2.2 -> 2.3
+- `Legacy of the Dragonborn Patches (Official)` - 6.11 -> 6.10.2 (version was wrong before)
+- `Legacy of the Dragonborn - Creation Club Patch Hub` - 6.0.11 -> 6.0.12
+- `Legacy of the Dragonborn SSE - The Curators Companion` - 7.0.7 -> 7.0.8
+- `Security Overhaul SKSE - Some More Locks` - 1.0.9 -> 1.0.12
+- `Caught Red Handed - Quest Expansion` - 1.06 -> 1.07
+- `Skyrim on Skooma` - 69.69b -> 69.69c
+- `Lux Orbis (patch hub)` - 4.6 -> 4.7
+- `Lux - Patch Hub` and `Lux` - 7.0 -> 7.1
+- `Missile's IED Preset` - 3.1.2 -> 3.2.0 (+ updated our merged default)
+- `No Grass In Objects` - 1.5.2 -> 1.5.11
+- `Genesis Unleashed Levelled - Dungeon Spawns` - 6.2 -> 6.5
+- `Sanguine Symphony` - 1.1.0 -> 1.2.1
+
+### Fixed/Patched
+- Arkngthamz - water is black/grey with no texture when ENB is on. It was `Water for ENB` issue, was reported it to the author, he'd fixed it;
+- Bow with backpack double drawing (https://discord.com/channels/1201567388248834108/1399696495464419358) - fix with IED variables, included in default config now;
+- Reverted `FSMP` to 2.2.1 to work with `SMP-NPC crash fix` properly; Added `HDT-SMP Slot 32 Fix` (built on FSMP 2.21 source), this should fix bones getting stuck on some outfits on NPCs;
+- CBPC configs are set with `BellyBulge=0.0` now
+- Fixed Maven skin issue (basically de-standalone'd her)
+- Fixed Myriah(Kaidan NPC) with blue hands (again, de-standalone fix)
+- Fixed one of LotD Safehouse windows not changing correctly (Lux issue)
+- Fixed Irkgnthand Grand Cavern mountain hole (and probably a few more that use `MountainCliff01.nif` from Majestic Mountains, this mesh was broken and I fixed it)
+- Fixed Runoff Caverns black water bug
+- (tentative) Fixed Crash on Sleep in LotD Safehouse
+- Fixed OStim + Improved Camera causing head to disappear. The downside is that 1st person animations in OStim would clip with PC head. Waiting for IC 2.0 release for a proper fix
+- Fixed NFF overriding SDA traps script + Attack Dogs script
+- Made a patch to replace `slot 52` with `slot 60` for all armors (mostly jewelry) that don't need it to prevent TNG crashes
+- Took a deep dive through OWL and its patches, fixed a lot of issues with leveled lists, added missing patches, fixed our own custom patches; i.e. Immersive Weapons should properly appear now, as well as crossbows and other stuff
+- Grass patch is now split in 2 (main + boost), recalculated bounds for both
+- Removed a few of our unneeded patches; reorganized some others
+- Switched `SSE Display Tweaks` to work as Borderless without Vsync with `BorderlessUpscale=false` (causes problems and doesn't work with Frame Gen)
+- Re-ran xLODGen, ACMOS, Grass Cache, TexGen and DynDOLOD
+- Re-ran Bodyslide
+- Re-ran Nemesis
+
+---
+
 ## LICENTIA NEXT `13.5.3`
 
-:white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.2/13.5.1/13.5.0`** _(not save safe with older versions)_
+:::note
+- 🗓️ **Released** 10 August 2025
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.2/13.5.1/13.5.0`** _(not save safe with older versions)_
+:::
 
 ### Added
 - `Natural Waterfalls - AOS - Patch` - 1.0 (makes AOS Waterfall and Rapids volume sliders work with Natural Waterfalls)
@@ -54,7 +294,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.2`
 
-:white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.1/13.5.0`** _(not save safe with older versions)_
+:::note
+- 🗓️ **Released** 6 August 2025
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.1/13.5.0`** _(not save safe with older versions)_
+:::
 
 ### Added
 - `Rally's SMIM Chests` - 1.0 (+ LotD patch) - previously we've had a mismatch of regular and SMIM chests textures causing snow textures to look like ass on them, now it's fixed and looks better
@@ -112,7 +355,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.1`
 
-:white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.0`** _(not save safe with older versions)_
+:::note
+- 🗓️ **Released** 17 July 2025
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.5.0`** _(not save safe with older versions)_
+:::
 
 ### Added
 - `Security Overhaul SKSE - Extra Locks` - 1.0
@@ -141,7 +387,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.5.0`
 
-:no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.4.1`** _(and any older versions of NEXT/BLACK)_
+:::note
+- 🗓️ **Released** 16 July 2025
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.4.1`** _(and any older versions of NEXT/BLACK)_
+:::
 
 ### Added
 - Follower Dialogue Expansion suite:
@@ -229,7 +478,7 @@ The versioning system works the following way:
 - `Legacy of the Dragonborn Patches (Official)` - 6.7.3 -> 6.11.0
 - `Legacy of the Dragonborn - Creation Club Patch Hub` - 6.0.8 -> 6.0.11
 - `Legacy of the Dragonborn SSE - The Curators Companion` - 7.0.6 -> 7.0.7
-- `Legacy of the Dragonborn - Follower Room Patches` - 4.0.8 -> 4.0.12
+- `Legacy of the Dragonborn - Follower Room Patches` - 4.0.8 -> 4.0.13
 - `The Wheels of Lull SE` - 5.2.0 -> 5.3.0
 - `Headhunter - Bounties Redone` - 1.56-> 1.57
 - `Extended Encounters` - 1.6.8 -> 1.6.9
@@ -321,10 +570,10 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.4.1`
 :::note
-`13.4.0` is skipped for technical reasons
+- 🗓️ **Released** 11 February 2025
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT 13.3.2** _(and any older Licentia BLACK)_
+- `13.4.0` is skipped for technical reasons
 :::
-
-:no_entry: **NOT SAVE SAFE** with **Licentia NEXT 13.3.2** _(and any older Licentia BLACK)_
 
 ### Added
 - `Hunters Not Bandits` - 4.1 (because in was removed from USMP and now installed separately)
@@ -566,8 +815,11 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.3.2`
 
-:white_check_mark: **SAVE SAFE** with **Licentia BLACK `13.3.0/13.3.1`**
+:::note
+- 🗓️ **Released** 3 November 2024
+- :white_check_mark: **SAVE SAFE** with **Licentia BLACK `13.3.0/13.3.1`**
 (_you'd get missing plugins notification, but it's safe to ignore cause that's just texture mods.)_
+:::
 
 ### Added
 - `Optimised Scripts for Ordinator` - 1.0

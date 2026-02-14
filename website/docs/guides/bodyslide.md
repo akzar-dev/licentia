@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: "Bodyslide Guide 👚"
 hide_title: true
 slug: /bodyslide-guide
