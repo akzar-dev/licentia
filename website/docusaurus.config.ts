@@ -46,6 +46,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           breadcrumbs: false,
           routeBasePath: '/',
+          remarkPlugins: [require('./plugins/remark-image-dimensions.cjs')],
           // editUrl:
           //   'https://github.com/akzar-dev/licentia/edit/main/website/',
           // showLastUpdateTime: true,

@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
+import { useColorMode } from '@docusaurus/theme-common';
 
 /** ------- CONFIG -------- */
 /** Load every image in /static/img/screenshots */
@@ -14,13 +15,32 @@ const req = (require as any).context(
   /\.(png|jpe?g|webp)$/i
 );
 const ALL_SHOTS: string[] = req.keys().map((k: string) => req(k).default as string);
+const HERO_DESCRIPTION =
+  'One-click install Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive NSFW, combat/graphics upgrades, new quests & followers!';
+const FEATURES_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
+const HOME_META_DESCRIPTION =
+  'Experience Licentia NEXT - a one-click install Skyrim AE modlist with LotD, non-intrusive OStim NSFW, combat/graphics upgrades, new quests & followers!';
+const HERO_BG_DARK = '/img/pages/licentia-social-card-bg.webp';
+const HERO_BG_LIGHT = '/img/pages/licentia-social-card-bg-light.webp';
 
 /** Main Hero function */
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
+  const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const bg = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
+    setHeroBgLoaded(false);
+    const img = new Image();
+    img.onload = () => setHeroBgLoaded(true);
+    img.onerror = () => setHeroBgLoaded(true);
+    img.src = bg;
+  }, [colorMode]);
+
   return (
     <section className={styles.hero}>
-      <div className={styles.heroBg} />
+      <div className={clsx(styles.heroBg, heroBgLoaded && styles.heroBgReady)} />
       <div className={styles.heroOverlay} />
 
       <div className={clsx('container', styles.heroInner)}>
@@ -28,13 +48,11 @@ function Hero() {
           className={styles.heroLogo}
           src="/img/licentia-social-card.webp"
           alt={`${siteConfig.title} logo`}
-          width={520}
+          width={400}
           height={260}
         />
 
-        <p className={styles.tagline}>
-          <i>"Unleash Power, Indulge Desire, Leave Heads Rolling"</i>
-        </p>
+        <p className={styles.description}>{HERO_DESCRIPTION}</p>
 
         <div className={styles.badges}>
           <span className={clsx('badge', styles.badge)}>Skyrim AE</span>
@@ -68,6 +86,9 @@ function FeatureIcons() {
             className={styles.headingImg}
           />
         </h2>
+        <p className={clsx(styles.tagline, styles.featuresTagline)}>
+          <i>{FEATURES_TAGLINE}</i>
+        </p>
         <div className={styles.iconRow}>
           {/* Combat */}
           <div className={styles.iconCard}>
@@ -127,6 +148,8 @@ function FeatureIcons() {
 }
 
 function Showcase() {
+  const LOOP_COPIES = 2;
+  const [loadedShots, setLoadedShots] = React.useState<Record<string, true>>({});
   // Shuffle ONCE for this page load
   const SHOTS = React.useMemo(() => {
     const a = [...ALL_SHOTS];
@@ -146,8 +169,15 @@ function Showcase() {
   const posRef = React.useRef<number>(0); // fractional scroll position accumulator (Safari-safe)
   const lastTsRef = React.useRef<number | null>(null); // rAF timestamp for time-based scrolling
 
-  // Build 2x repeated list to keep DOM light while allowing seamless wrap
-  const loop = React.useMemo(() => [...SHOTS, ...SHOTS], [SHOTS]);
+  // Build repeated list based on LOOP_COPIES.
+  const loop = React.useMemo(
+    () => Array.from({ length: LOOP_COPIES }, () => SHOTS).flat(),
+    [SHOTS]
+  );
+
+  React.useEffect(() => {
+    setLoadedShots({});
+  }, [loop.length]);
 
   // Initialize unit width (one sequence) and center on middle copy
   React.useLayoutEffect(() => {
@@ -156,11 +186,11 @@ function Showcase() {
     if (!scroller || !track) return;
     const total = track.scrollWidth || 0;
     if (!total) return;
-    unitWidthRef.current = total / 2;
-    // jump to start of the second copy
+    unitWidthRef.current = total / LOOP_COPIES;
+    // jump to start of the middle copy
     scroller.scrollLeft = unitWidthRef.current;
     posRef.current = unitWidthRef.current;
-  }, [loop.length]);
+  }, [loop.length, LOOP_COPIES]);
 
   // Safari/iOS: track width may be 0 until images load; observe and re-center when ready
   React.useEffect(() => {
@@ -172,18 +202,18 @@ function Showcase() {
     const recompute = () => {
       const total = track.scrollWidth || 0;
       if (!total) return;
-      const newHalf = total / 2;
-      const prevHalf = unitWidthRef.current || 0;
-      unitWidthRef.current = newHalf;
-      if (!isPausedRef.current && (prevHalf === 0 || Math.abs(newHalf - prevHalf) > 1)) {
-        if (prevHalf > 0) {
-          const relPrev = ((posRef.current % prevHalf) + prevHalf) % prevHalf;
-          const target = newHalf + relPrev;
+      const newUnit = total / LOOP_COPIES;
+      const prevUnit = unitWidthRef.current || 0;
+      unitWidthRef.current = newUnit;
+      if (!isPausedRef.current && (prevUnit === 0 || Math.abs(newUnit - prevUnit) > 1)) {
+        if (prevUnit > 0) {
+          const relPrev = ((posRef.current % prevUnit) + prevUnit) % prevUnit;
+          const target = newUnit + relPrev;
           scroller.scrollLeft = target;
           posRef.current = target;
         } else {
-          scroller.scrollLeft = newHalf;
-          posRef.current = newHalf;
+          scroller.scrollLeft = newUnit;
+          posRef.current = newUnit;
         }
       }
     };
@@ -218,7 +248,7 @@ function Showcase() {
     return () => {
       if (cleanup) cleanup();
     };
-  }, [loop.length]);
+  }, [loop.length, LOOP_COPIES]);
   // Wrap around when reaching edges to simulate infinite scroll
   const wrapIfNeeded = React.useCallback(() => {
     const scroller = scrollerRef.current;
@@ -226,7 +256,7 @@ function Showcase() {
     if (!scroller || !uw) return;
     const left = scroller.scrollLeft;
     const viewport = scroller.clientWidth || 0;
-    const total = uw * 2; // total width with 2× duplication
+    const total = uw * LOOP_COPIES; // total width with repeated copies
     const near = Math.max(40, viewport * 0.1);
     const maxScrollable = Math.max(0, total - viewport);
     // If we get too close to the left edge of the first copy, jump forward
@@ -236,13 +266,13 @@ function Showcase() {
       posRef.current = next;
       return;
     }
-    // If we get too close to the right edge of the second copy, jump back
+    // If we get too close to the right edge of the last copy, jump back
     if (left >= maxScrollable - near) {
       const next = left - uw;
       scroller.scrollLeft = next;
       posRef.current = next;
     }
-  }, []);
+  }, [LOOP_COPIES]);
 
   // Auto-scroll via rAF while not paused
   React.useEffect(() => {
@@ -322,6 +352,13 @@ function Showcase() {
     wrapIfNeeded();
   };
 
+  const markLoaded = React.useCallback((key: string) => {
+    setLoadedShots((prev) => {
+      if (prev[key]) return prev;
+      return { ...prev, [key]: true };
+    });
+  }, []);
+
   // Nav buttons
   const scrollByAmount = React.useCallback((dir: 1 | -1) => {
     const scroller = scrollerRef.current;
@@ -391,16 +428,24 @@ function Showcase() {
           onScroll={onScroll}
         >
           <div ref={trackRef} className={styles.marqueeTrack}>
-            {loop.map((src, i) => (
-              <img
-                key={`${src}-${i}`}
-                src={src}
-                alt={`screenshot ${i + 1}`}
-                className="zoomable"
-                loading="lazy"
-                decoding="async"
-              />
-            ))}
+            {loop.map((src, i) => {
+              const key = `${src}-${i}`;
+              const isLoaded = !!loadedShots[key];
+              return (
+                <div key={key} className={styles.shotFrame}>
+                  {!isLoaded && <span className={styles.shotSkeleton} aria-hidden="true" />}
+                  <img
+                    src={src}
+                    alt={`screenshot ${i + 1}`}
+                    className={clsx('zoomable', styles.shot, isLoaded && styles.shotLoaded)}
+                    loading="eager"
+                    decoding="sync"
+                    onLoad={() => markLoaded(key)}
+                    onError={() => markLoaded(key)}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -410,15 +455,14 @@ function Showcase() {
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
-  const description = "Experience Licentia NEXT — a one-click install Skyrim AE modlist with LotD, non‑intrusive OStim, combat/graphics upgrades, new quests & followers!"
   return (
     <Layout
       title={siteConfig.tagline}
-      description={description}>
+      description={HOME_META_DESCRIPTION}>
       <Head>
-        <meta name="description" content={description} />
-        <meta property="og:description" content={description} />
-        <meta name="twitter:description" content={description} />
+        <meta name="description" content={HOME_META_DESCRIPTION} />
+        <meta property="og:description" content={HOME_META_DESCRIPTION} />
+        <meta name="twitter:description" content={HOME_META_DESCRIPTION} />
       </Head>
       <Hero />
       <main>
