@@ -16,10 +16,11 @@ const req = (require as any).context(
 );
 const ALL_SHOTS: string[] = req.keys().map((k: string) => req(k).default as string);
 const HERO_DESCRIPTION =
-  'One-click install Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive NSFW, combat/graphics upgrades, new quests & followers!';
+  '1-click install NSFW Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
 const FEATURES_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
+const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may feature them here!';
 const HOME_META_DESCRIPTION =
-  'Experience Licentia NEXT - a one-click install Skyrim AE modlist with LotD, non-intrusive OStim NSFW, combat/graphics upgrades, new quests & followers!';
+  'Experience Licentia NEXT - a 1-click install NSFW Skyrim AE modlist with LotD, non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
 const HERO_BG_DARK = '/img/pages/licentia-social-card-bg.webp';
 const HERO_BG_LIGHT = '/img/pages/licentia-social-card-bg-light.webp';
 
@@ -394,6 +395,9 @@ function Showcase() {
         <h2 className={styles.sectionTitle}>
           <img src="/img/pages/index-showcase.png" alt="Showcase" className={styles.headingImg} />
         </h2>
+        <p className={clsx(styles.tagline, styles.showcaseTagline)}>
+          <i>{SHOWCASE_TAGLINE}</i>
+        </p>
       </div>
 
       <div className={styles.marqueeOuter}>
