@@ -176,10 +176,6 @@ function Showcase() {
     [SHOTS]
   );
 
-  React.useEffect(() => {
-    setLoadedShots({});
-  }, [loop.length]);
-
   // Initialize unit width (one sequence) and center on middle copy
   React.useLayoutEffect(() => {
     const scroller = scrollerRef.current;
