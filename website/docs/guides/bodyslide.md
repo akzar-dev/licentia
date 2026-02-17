@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Bodyslide Guide 👚"
 hide_title: true
-slug: /bodyslide-guide
+slug: /guides/bodyslide
 description: "How to build Outfits in Bodyslide for Licentia NEXT Skyrim modlist"
 image: ./img/bodyslide-guide-social.png
 ---
@@ -40,7 +40,7 @@ Since version `13.4.1` **OBody has returned** to Licentia NEXT, allowing random 
 
 This guide is primarily intended for **re-running** BodySlide as it is provided with the list *OR* **adding new outfit mods** to your NEXT installation.
 
-If you want to remove OBody from your installation, there is a [small tutorial](bodyslide-guide#%EF%B8%8F-removing-obody-from-your-installation) at the bottom of this guide following the same process with your selected preset instead of `Zeroed Sliders`.
+If you want to remove OBody from your installation, there is a [small tutorial](#%EF%B8%8F-removing-obody-from-your-installation) at the bottom of this guide following the same process with your selected preset instead of `Zeroed Sliders`.
 :::
 ---
 

@@ -511,3 +511,42 @@ img.img-loaded:not(.shot) {
     animation: none !important;
   }
 }
+
+/* =========================
+   SECTION INDEX CARDS
+   ========================= */
+.sectionCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 1rem 0 1.25rem;
+}
+
+.sectionCard {
+  display: block;
+  text-decoration: none !important;
+  color: inherit;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.sectionCard:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .14);
+}
+
+.sectionCard h3 {
+  margin: 0 0 .35rem;
+  font-size: 1.05rem;
+}
+
+.sectionCard p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--ifm-color-emphasis-700);
+}

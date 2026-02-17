@@ -25,7 +25,7 @@ image: ./img/7-final-notes-social.png
 
 ## :video_game: **Playing with the contriller**
 
-    **Want to play with a controller?** &mdash; read [this amazing Controller guide](/controller-guide) also written by [CatastrophicApathy](https://github.com/KMan9454)
+    **Want to play with a controller?** &mdash; read [this amazing Controller guide](/guides/controller) also written by [CatastrophicApathy](https://github.com/KMan9454)
 
 ---
 

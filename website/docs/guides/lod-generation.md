@@ -2,7 +2,7 @@
 sidebar_position: 5
 title: "LOD Generation Guide 🌄"
 hide_title: true
-slug: /lod-generation-guide
+slug: /guides/lod-generation
 description: "How to generate xLODGen, Grass Cache, TexGen and DynDOLOD for Licentia NEXT"
 image: ./img/lod-generation-guide-social.png
 ---

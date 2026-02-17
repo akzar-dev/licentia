@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: "Synthesis Guide ♻️"
 hide_title: true
-slug: /synthesis-guide
+slug: /guides/synthesis
 description: "How to re-run Synthesis for Licentia NEXT Skyrim modlist"
 image: ./img/synthesis-guide-social.png
 ---

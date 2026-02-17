@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: "Nemesis Guide 👯‍♀️"
 hide_title: true
-slug: /nemesis-guide
+slug: /guides/nemesis
 description: "How to re-run Nemesis for Licentia NEXT Skyrim modlist"
 image: ./img/nemesis-guide-social.png
 ---

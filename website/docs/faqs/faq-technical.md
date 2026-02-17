@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Technical FAQ 🛠️"
 hide_title: true
-slug: "/faq-technical"
+slug: "/faqs/technical"
 description: "Technical FAQ for Licentia NEXT Skyrim modlist"
 image: ./img/faq-technical-social.png
 ---
