@@ -1,7 +1,7 @@
 [
   {
     "title": "Licentia NEXT",
-    "description": "1-click install NSFW Skyrim AE modlist with LotD, non‑intrusive OStim, combat/graphics upgrades, new quests & followers!",
+    "description": "1-click install NSFW Skyrim AE modlist with LotD, non\u2011intrusive OStim, combat/graphics upgrades, new quests \u0026 followers!",
     "author": "akzar and Licentia team",
     "maintainers": [
       "github/akzar-dev"
@@ -24,23 +24,23 @@
     "links": {
       "image": "https://raw.githubusercontent.com/akzar-dev/licentia/main/backup/images/Licentia_Next_logo_v1_4k_transparent.png",
       "readme": "https://licentia.quest/",
-      "download": "https://authored-files.wabbajack.org/Licentia NEXT.wabbajack_eefd948f-5095-4b2d-8236-6ed3559c5a40",
+      "download": "https://authored-files.wabbajack.org/Licentia NEXT.wabbajack_234afce6-af8a-45a9-8e9d-72459bf0fc06",
       "machineURL": "licentia_next",
       "discordURL": "https://discord.gg/vermishub",
       "websiteURL": "https://licentia.quest/"
     },
     "download_metadata": {
-      "Hash": "G3O46901fsU=",
-      "Size": 588376450,
+      "Hash": "Q7thUnjBm1s=",
+      "Size": 588404235,
       "NumberOfArchives": 1773,
-      "SizeOfArchives": 205990321809,
-      "NumberOfInstalledFiles": 417987,
-      "SizeOfInstalledFiles": 327350363750,
-      "TotalSize": 533340685559
+      "SizeOfArchives": 206020742379,
+      "NumberOfInstalledFiles": 418018,
+      "SizeOfInstalledFiles": 327448660493,
+      "TotalSize": 533469402872
     },
-    "version": "13.6.0",
+    "version": "13.6.1",
     "dateCreated": "1970-01-01T00:00:00Z",
-    "dateUpdated": "2026-02-14T15:39:39.1180166Z",
+    "dateUpdated": "2026-02-17T14:30:04.7269216Z",
     "repositoryName": ""
   }
 ]
