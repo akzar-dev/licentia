@@ -17,8 +17,7 @@ If you don't find the answer here - visit our Discord server for further assista
 :::
 
 ### I crashed!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Slow down there pardner. Skyrim crashes **all the time**, less so in vanilla but more so with over 1000 mods.
 
@@ -28,8 +27,7 @@ So, your steps are:
 </details>
 
 ### I'm randomly crashing!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 You probably don't have enough paged RAM. Skyrim is very badly optimized. Try increasing your pagefile size. Refer to the primary [Pre-Installation](/pre-installation#general-pc-adjustments) document for details.
 
@@ -37,8 +35,7 @@ Alternatively, you don't have enough VRAM *(if your GPU has less than 8 GB of me
 </details>
 
 ### I gave something to a follower and it crashed!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Was it less than a full stack of arrows but more than half of that stack of arrows? Yeah, this is a bug and can't be fixed. Don't do that!
 
@@ -46,8 +43,7 @@ If it was something else, first launch the game and try it again. If it happens 
 </details>
 
 ### I can't get out of a crafting animation! OR My followers or other characters got stuck somewhere!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Bugs such as this are common to many lists, and `moveto player` consile command is the go-to solution. 
 
@@ -57,8 +53,7 @@ Bugs such as this are common to many lists, and `moveto player` consile command 
 </details>
 
 ### I have problems with the camera! Flickering, weird 1st person body clipping! Can't switch to 3rd person!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 These are all caused by the extremely janky customization that makes first person POV intercourse under OStim a possibility. 
 
@@ -73,8 +68,7 @@ For a compromise, you can switch _to_ third person with the `F` key, and _back_ 
 </details>
 
 ### My performance is really terrible, low FPS, input lag during combat!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Refer to the primary installation guide and ensure you meet all the [system specification requirements](/system-requirements)!
 
@@ -85,8 +79,7 @@ You can try:
 </details>
 
 ### I can't start an OStim scene or receive errors when attempting to do so!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 The first thing you can try is navigating to the _OStim_ MCM and selecting the `Update All` option near the bottom left. Close all menus and wait about 60 seconds, then attempt your adult interaction again.
 
@@ -96,15 +89,13 @@ If this *STILL* doesn't work, refer to the [Installation guide](/installation#do
 </details>
 
 ### I can no longer end an OStim scene!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Ensure that you **do not have** `Freecam At Start` enabled in _OStim_ MCM. Sometimes this stops functioning properly on long playthroughs.
 </details>
 
 ### I have a bug that's not in this list.
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 First of all, do the research by yourself first. Read the mod pages, check the comments, search the internet. 
 
@@ -112,8 +103,7 @@ If you still can't find a solution, then drop by our [Discord](https://discord.g
 </details>
 
 ### I added a mod (or mods) and something weird happened.
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Feel free to stop by our server and **talk about it in the modded support channel**. 
 
@@ -123,8 +113,7 @@ You can always browse _[Lively's Learn To Mod Series](https://github.com/LivelyD
 </details>
 
 ### There's more than 255 ESPs! Will this thing even launch?
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Yes!`ESP`s flagged as `ESL` don't count. 
 
@@ -132,8 +121,7 @@ If you're curious - hover over the little number of active plugins in top right 
 </details>
 
 ### My load order got messed up!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 You should always keep a backup of your load order and install order, especially before you start adding or removing mods.
 
 I have included default backups for both mods and plugins just in case you need them:
@@ -143,8 +131,7 @@ I have included default backups for both mods and plugins just in case you need 
 </details>
 
 ### I crash in Project AHO when I complete a certain quest!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Try this:
 - Load before you start the quest's conclusion
@@ -158,8 +145,7 @@ I have a confirmation that this does work.
 </details>
 
 ### My quests have started to disappear from my Quest Log.
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Skyrim uses a very tiny variable to keep track of these. The maximum number of quests you can have, both active **AND COMPLETED,** cannot exceed 255:
 

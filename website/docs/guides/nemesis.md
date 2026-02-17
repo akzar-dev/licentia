@@ -232,8 +232,7 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
     But don't worry! You can just relaunch it and start from [step 4](#step-four--setup-behavior-patches-and-click-update-engine), it won't break anything.
     :::
 
-<details>
-   <summary>:information_source: Here's some additional troubleshooting steps just in case</summary>
+<details summary=":information_source: Here's some additional troubleshooting steps just in case">
 
 Sometimes this step will never complete regardless of how many times you try and additional troubleshooting is needed.
 There are still options to fix this however! 

@@ -16,8 +16,7 @@ This is some sort of an agreement of the parties, them being **us** *(Licentia T
 
 Before you embark on your exciting _Wabbajack_ NSFW journey, **please read it** to understand _what_ you're getting into 👷
 
-<details>
-  <summary>Click me</summary>
+<details summary="Click me">
 
 1. **This is a modlist, not a professionally made game**
 

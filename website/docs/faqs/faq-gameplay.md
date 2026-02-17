@@ -17,8 +17,7 @@ If you don't find the answer here - visit our Discord server for further assista
 :::
 
 ### What are the controls in the list?
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 At any point in the game, you can press `F11` to open the controls menu. 
 
@@ -26,15 +25,13 @@ This will show you all the controls for the game, including those added by mods.
 </details>
 
 ### I don't have one of those ancient NUMPADs! How am I gonna use OStim?
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 The _OStim_ controls can be remapped in the `MCM` for that mod. It may be difficult to find enough free keys without a NUMPAD though.
 </details>
 
 ### Where are my Screenshots?
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Any screenshot you make is located inside this directory:
 
@@ -42,8 +39,7 @@ Any screenshot you make is located inside this directory:
 </details>
 
 ### Leveling up is weird!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 This modlist uses a modified version of _[Static Skill Leveling](https://www.nexusmods.com/skyrimspecialedition/mods/89940)_ which changes how you level up your skills and attributes.
 
@@ -59,8 +55,7 @@ Some advice:
 </details>
 
 ### I can't level up my skills!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 This is due to a _Static Skill Leveling_ conflict. 
 
@@ -76,8 +71,7 @@ This is due to a _Static Skill Leveling_ conflict.
 </details>
 
 ### How do I start the Main Story Quest? I went to Helgen but it is intact!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 - This modlist uses _[Alternate Perspective](https://www.nexusmods.com/skyrimspecialedition/mods/50307)_, in which you can observe and walk through Helgen's destruction as a neutral bystander. 
 
@@ -87,8 +81,7 @@ This is due to a _Static Skill Leveling_ conflict.
 </details>
 
 ### Certain quests (especially the Creation Club quests) will not start or complete!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 - A lot of quest stages in later quests are directly reliant on **ALL** the quest triggers &mdash; including event, interaction, and location-based triggers &mdash; being activated **during the intro sequence in which Alduin destroys Helgen**.
 
@@ -100,8 +93,7 @@ This is due to a _Static Skill Leveling_ conflict.
 </details>
 
 ### I'm not receiving the extra Thane weapons from Balgruuf (or others, when I complete their quests).
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 These quests are all on a rather buggy time delay. I don't know why, but this has been confirmed with multiple user reports, and it happens in clean game with LOTD and just its patches. 
 
@@ -114,8 +106,7 @@ So, how to circumvent this:
 </details>
 
 ### WARNING! DON'T LISTEN TO ORLANDO!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 - Upon entering a certain inn, you will be given the option to stab a certain Vigilant of Stendarr with a Needle. 
 - **DO NOT DO THIS.** This is basically a means by which veterans to the `VIGILANT` mod can skip 3/4 of the mod to get to the fun stuff at the end. You will be _extremely_ underpowered and _utterly_ clueless as to what is going on if you do this. 
@@ -124,8 +115,7 @@ So, how to circumvent this:
 </details>
 
 ### I love the paraglider mod, but I keep dying when I land!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 - Known bug I'm afraid, I guess it doesn't always perfectly detect the landing event.
 
@@ -133,15 +123,13 @@ So, how to circumvent this:
 </details>
 
 ### The tuning gloves in Winterhold seem to be acting up.
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Try removing them and equipping them in between attempts. I dunno either, man.
 </details>
 
 ### The Civil War questline is horribly messed up. I can't complete the Battle(s) of Whiterun / Solitude / Windhelm. People are inverting backwards off the ground. Enemies don't stop spawning. There's no Ulfric/Tullius!
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 The _Civil War_ questline is incredibly broken even in vanilla Skyrim partially due to the large actor count and infinitely spawning enemies. Pile on CGO scripting all attack patterns and animations and Ultimate Dodge scripting all movement and you have a recipe for disaster. Even if you do manage to complete it, countless other quests will be broken due to destroyed buildings / dead NPCs / flagged variables. **It's recommended that you complete this questchain near the very end of your playthrough**, if at all. 
 
@@ -155,15 +143,13 @@ If you choose to do so, I recommend keeping the following things in mind:
 </details>
 
 ### I can't complete the bandit raid quest for Whiterun (or another city)
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 The Quest Objective to keep the Guard Captain alive is **optional** and he is extremely weak. Most likely he will die. You can still complete the quest if he does, you will just not receive any reward from the city (which is a worthless reward not worth the work anyway IMHO).
 </details>
 
 ### I'm trying to kill the Necromancers for Undeath and the quest won't complete.
-<details>
-  <summary>Expand</summary>
+<details summary="Expand">
 
 Yeah, this is just a buggy part of this mod, at least when included in a large modlist like this. 
 
