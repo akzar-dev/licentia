@@ -441,12 +441,10 @@ function Showcase() {
                     loading="eager"
                     decoding="sync"
                     ref={(img) => {
-                      // On client-side navigation back to home, cached images can be
-                      // already complete before onLoad re-fires. Mark them loaded here
-                      // to avoid keeping the showcase visually hidden.
-                      if (img && img.complete && img.naturalWidth > 0) {
-                        markLoaded(key);
-                      }
+                      // Ensure initial hydration always reveals showcase shots.
+                      // In production, relying only on onLoad/complete checks can
+                      // miss some timing paths on first entry.
+                      if (img) markLoaded(key);
                     }}
                     onLoad={() => markLoaded(key)}
                     onError={() => markLoaded(key)}
