@@ -444,6 +444,14 @@ function Showcase() {
                     className={clsx('zoomable', styles.shot, isLoaded && styles.shotLoaded)}
                     loading="eager"
                     decoding="sync"
+                    ref={(img) => {
+                      // On client-side navigation back to home, cached images can be
+                      // already complete before onLoad re-fires. Mark them loaded here
+                      // to avoid keeping the showcase visually hidden.
+                      if (img && img.complete && img.naturalWidth > 0) {
+                        markLoaded(key);
+                      }
+                    }}
                     onLoad={() => markLoaded(key)}
                     onError={() => markLoaded(key)}
                   />
