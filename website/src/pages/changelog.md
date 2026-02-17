@@ -17,6 +17,32 @@ The versioning system works the following way:
 
 ---
 
+## LICENTIA NEXT `13.6.1`
+:::note
+- 🗓️ **Released** 17 February 2026
+- :white_check_mark: **SAVE SAFE** with **Licentia NEXT `13.6.0`** _(not older versions)_
+:::
+
+### Added
+- `Vigilant SE - TrueHUD Boss Bar` - 1.0
+- `Nordic Cows` - 1.1
+
+### Removed
+- `TrueHUD - Vigilant Boss Bars ini` - outdated, replaced with new patch
+
+### Updated
+- `Core Impact Framework` - 1.2.6 -> 1.2.8
+- `CritterSpawn Congestion Fix - Script Call Reduction` - 2.0 -> 2.1.5
+- `Skyrim Extended Cut Saints and Seducers - Quest Patch` - 2.0 -> 3.0
+
+### Fixed/Patched
+- Reverted `FSMP` changes (back to latest `2.5.1` with updated Slot 32 fix)
+- Patched `Nordic Cows` with `USSEP` changes
+- Replaced `Dynamic Activation Key` with `Dynamic Activation Key - DLL NG Edition`, removed `Dynamic Activation Key - Papyrus vers - Suspended Stack Fix`
+- Fixed **game freezes** (as reported [here](https://discord.com/channels/1201567388248834108/1473092688474800281) and [here](https://discord.com/channels/1201567388248834108/1472531162978193520)). It was caused by `Frozen Electrocuted Combustion` version `6.1.0` default configuration error. I had to set this: `Frost` -> `Effects (Creatures)` -> `Freeze` enabled.
+
+---
+
 ## LICENTIA NEXT `13.6.0`
 :::note
 - 🗓️ **Released** 14 February 2026
