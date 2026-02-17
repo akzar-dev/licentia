@@ -352,6 +352,8 @@ html[data-theme='light'] .description {
 .shotSkeleton {
   position: absolute;
   inset: 0;
+  z-index: 2;
+  pointer-events: none;
   border-radius: inherit;
   background: linear-gradient(
     90deg,
@@ -373,8 +375,8 @@ html[data-theme='light'] .description {
   cursor: zoom-in;
   user-select: none;
   -webkit-user-drag: none;
-  opacity: 0;
-  transition: opacity .22s ease;
+  opacity: 1;
+  transition: opacity .12s linear;
 }
 
 .shotLoaded {

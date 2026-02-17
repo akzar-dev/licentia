@@ -150,6 +150,7 @@ function FeatureIcons() {
 
 function Showcase() {
   const LOOP_COPIES = 2;
+  const FORCE_REVEAL_MS = 3500;
   const [loadedShots, setLoadedShots] = React.useState<Record<string, true>>({});
   // Shuffle ONCE for this page load
   const SHOTS = React.useMemo(() => {
@@ -175,6 +176,24 @@ function Showcase() {
     () => Array.from({ length: LOOP_COPIES }, () => SHOTS).flat(),
     [SHOTS]
   );
+
+  // Safety net for production hydration/cache timing edge-cases:
+  // never allow showcase placeholders to stay forever.
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const id = window.setTimeout(() => {
+      setLoadedShots((prev) => {
+        if (Object.keys(prev).length >= loop.length) return prev;
+        const next = { ...prev } as Record<string, true>;
+        for (let i = 0; i < loop.length; i++) {
+          const src = loop[i];
+          next[`${src}-${i}`] = true;
+        }
+        return next;
+      });
+    }, FORCE_REVEAL_MS);
+    return () => window.clearTimeout(id);
+  }, [loop]);
 
   // Initialize unit width (one sequence) and center on middle copy
   React.useLayoutEffect(() => {
