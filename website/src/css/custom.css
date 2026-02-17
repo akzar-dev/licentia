@@ -24,6 +24,14 @@
   --ifm-color-primary-lightest: #facb35;
   /* lightest (our brand gold) */
 
+  /* Mirror dark-mode layering:
+     - page background = base layer
+     - surface/navbar/footer/cards = same elevated layer */
+  --ifm-background-color: #eceff4;
+  --ifm-background-surface-color: #f6f8fb;
+  --ifm-navbar-background-color: #f6f8fb;
+  --ifm-footer-background-color: #f6f8fb;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
 }
@@ -40,6 +48,12 @@
   --ifm-color-primary-light: #fbd55d;
   --ifm-color-primary-lighter: #fbda71;
   --ifm-color-primary-lightest: #fce28f;
+
+  /* Explicit dark surfaces so light-mode softening never leaks */
+  --ifm-background-color: #1b1b1d;
+  --ifm-background-surface-color: #242526;
+  --ifm-navbar-background-color: #242526;
+  --ifm-footer-background-color: #242526;
 
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.06);
 }
@@ -259,14 +273,14 @@ h2 {
 [data-theme='light'] .DocSearch {
   --docsearch-primary-color: var(--ifm-color-primary);
   --docsearch-highlight-color: var(--ifm-color-primary);
-  /* --docsearch-text-color: var(--ifm-font-color-base); */
+  --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(94, 100, 112, 0.7);
   /* Modal */
   --docsearch-modal-background: var(--ifm-color-secondary-lighter);
   /* Search box */
-  --docsearch-searchbox-background: var(--ifm-color-secondary);
-  --docsearch-searchbox-focus-background: var(--ifm-color-white);
+  --docsearch-searchbox-background: #ffffff;
+  --docsearch-searchbox-focus-background: #ffffff;
   /* Keycap gradient */
   --docsearch-key-gradient: linear-gradient(-26.5deg,
       var(--ifm-color-primary-lightest) 0%,
@@ -277,6 +291,11 @@ h2 {
   --docsearch-hit-background: var(--ifm-color-white);
   /* Footer */
   --docsearch-footer-background: var(--ifm-color-white);
+}
+
+[data-theme='light'] .DocSearch-Button {
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
 }
 
 [data-theme='dark'] .DocSearch {
@@ -390,6 +409,93 @@ h2 {
 }
 
 /* =========================
+  NAVBAR MEDIUM-WIDTH FIT
+  (prevents overlap before mobile hamburger breakpoint)
+  ========================= */
+@media (max-width: 1240px) and (min-width: 997px) {
+  .navbar__inner {
+    gap: 0.25rem;
+  }
+
+  .navbar__brand {
+    margin-right: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .navbar__logo img {
+    height: 30px;
+    width: auto;
+  }
+
+  .navbar__item,
+  .navbar__link {
+    font-size: 0.95rem;
+  }
+
+  .navbar__item {
+    padding: 0 0.3rem;
+  }
+
+  .navbar__link {
+    padding-inline: 0.35rem;
+  }
+
+  .header-kofi-btn {
+    padding: 5px 10px !important;
+    font-size: 0.9rem;
+  }
+
+  .DocSearch-Button {
+    height: 34px;
+    padding: 0 10px;
+  }
+}
+
+/* =========================
+   GLOBAL IMAGE SKELETONS
+   ========================= */
+.img-inline-skeleton {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-emphasis-200) 0%,
+    var(--ifm-color-emphasis-100) 45%,
+    var(--ifm-color-emphasis-200) 100%
+  );
+  background-size: 300% 100%;
+  animation: global-image-shimmer 4.2s linear infinite;
+  opacity: 1;
+  transition: opacity .12s linear;
+}
+
+img.img-loading:not(.shot) {
+  opacity: 0 !important;
+  transition: opacity .12s linear;
+}
+
+img.img-loaded:not(.shot) {
+  opacity: 1;
+  transition: opacity .12s linear;
+}
+
+.img-inline-skeleton-fadeout {
+  opacity: 0;
+}
+
+@keyframes global-image-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================
    ZOOM Styling
    ========================= */
 
@@ -398,4 +504,49 @@ h2 {
 .medium-zoom-image--opened {
   z-index: 10000 !important;
   /* higher than navbar/sidebar/backdrop */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-inline-skeleton {
+    animation: none !important;
+  }
+}
+
+/* =========================
+   SECTION INDEX CARDS
+   ========================= */
+.sectionCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 1rem 0 1.25rem;
+}
+
+.sectionCard {
+  display: block;
+  text-decoration: none !important;
+  color: inherit;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.sectionCard:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .14);
+}
+
+.sectionCard h3 {
+  margin: 0 0 .35rem;
+  font-size: 1.05rem;
+}
+
+.sectionCard p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--ifm-color-emphasis-700);
 }

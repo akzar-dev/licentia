@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: "Controller Guide 🎮"
 hide_title: true
-slug: /controller-guide
+slug: /guides/controller
 description: "How to set up a controller for Licentia NEXT Skyrim modlist"
 image: ./img/controller-guide-social.png
 ---

@@ -1,0 +1,1075 @@
+{
+  "version": "optimize-images-v2",
+  "entries": {
+    "static/img/pages/changelog-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "0f81f3e29aa43cad551d99ae0235b336cf846b90",
+      "updatedAt": "2026-02-17T17:21:00.968Z"
+    },
+    "static/img/pages/changelog.png": {
+      "version": "optimize-images-v2",
+      "hash": "91b2f38158619a3d7830d3623384bc43f1db9f89",
+      "updatedAt": "2026-02-17T17:21:01.014Z"
+    },
+    "static/img/pages/how-to-update-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "48fb0cede810f7d2d2c9636a491b39edaa1d9ae9",
+      "updatedAt": "2026-02-17T17:21:01.168Z"
+    },
+    "static/img/pages/how-to-update.png": {
+      "version": "optimize-images-v2",
+      "hash": "463465e37cd51f6ec57e21cc8f1616d416b8ad67",
+      "updatedAt": "2026-02-17T17:21:01.218Z"
+    },
+    "static/img/pages/index-features.png": {
+      "version": "optimize-images-v2",
+      "hash": "c640acc0c2293302db9265bd2d8b825d03a72acd",
+      "updatedAt": "2026-02-17T17:21:01.254Z"
+    },
+    "static/img/pages/index-showcase.png": {
+      "version": "optimize-images-v2",
+      "hash": "99e3cddc5db78e938ca14247007384a3ecf3f839",
+      "updatedAt": "2026-02-17T17:21:01.297Z"
+    },
+    "static/img/pages/old-changelog.png": {
+      "version": "optimize-images-v2",
+      "hash": "ab7849d0950b7f2eede972bc2dec092d42a7ac57",
+      "updatedAt": "2026-02-17T17:21:01.345Z"
+    },
+    "docs/installation-and-setup/img/1-welcome-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "e8351c5b0bc9067ba751127e519e720f7b5c6fc1",
+      "updatedAt": "2026-02-17T17:21:01.505Z"
+    },
+    "docs/installation-and-setup/img/1-welcome.png": {
+      "version": "optimize-images-v2",
+      "hash": "e6a03fbf581c27ee2e6cf328f7a347a00dc84e7b",
+      "updatedAt": "2026-02-17T17:21:01.544Z"
+    },
+    "docs/installation-and-setup/img/2-modlist-user-agreement-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "a3a575564520e61b901569e56e9a3b558776a445",
+      "updatedAt": "2026-02-17T17:21:01.714Z"
+    },
+    "docs/installation-and-setup/img/2-modlist-user-agreement.png": {
+      "version": "optimize-images-v2",
+      "hash": "aa194e09f20719ee96284ab37736c14dccf187c3",
+      "updatedAt": "2026-02-17T17:21:01.782Z"
+    },
+    "docs/installation-and-setup/img/3-system-requirements-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "b7b693e443e347a006737baac2bfce5fde8563e2",
+      "updatedAt": "2026-02-17T17:21:01.947Z"
+    },
+    "docs/installation-and-setup/img/3-system-requirements.png": {
+      "version": "optimize-images-v2",
+      "hash": "ba198ce9a520517cbf61c1cf2078721af14ab02d",
+      "updatedAt": "2026-02-17T17:21:02.009Z"
+    },
+    "docs/installation-and-setup/img/4-pre-installation-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "b80de7f98f98e49fcc05b029396b193d88918e99",
+      "updatedAt": "2026-02-17T17:21:02.168Z"
+    },
+    "docs/installation-and-setup/img/4-pre-installation.png": {
+      "version": "optimize-images-v2",
+      "hash": "d9dc156329991310105cab68b82ad46087beaedc",
+      "updatedAt": "2026-02-17T17:21:02.220Z"
+    },
+    "docs/installation-and-setup/img/5-installation-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "7f26aaa072d13019578f03d5f23ae38309741a1a",
+      "updatedAt": "2026-02-17T17:21:02.354Z"
+    },
+    "docs/installation-and-setup/img/5-installation.png": {
+      "version": "optimize-images-v2",
+      "hash": "88db5e4162234b41e2bbc8067003c7c97b0e9961",
+      "updatedAt": "2026-02-17T17:21:02.394Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "5e7602f7bcbdefdd7d197320a7d0704747fe62ef",
+      "updatedAt": "2026-02-17T17:21:02.552Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation.png": {
+      "version": "optimize-images-v2",
+      "hash": "43e426dbcf9ea208370ea814dface424433c4757",
+      "updatedAt": "2026-02-17T17:21:02.604Z"
+    },
+    "docs/installation-and-setup/img/7-final-notes-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "2671a96b11624e1bb5f9312c0312c7bf17f1dccc",
+      "updatedAt": "2026-02-17T17:21:02.753Z"
+    },
+    "docs/installation-and-setup/img/7-final-notes.png": {
+      "version": "optimize-images-v2",
+      "hash": "e6403dfe7f58d785cabbc0c5e899fe01a6c74147",
+      "updatedAt": "2026-02-17T17:21:02.793Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6-0-fix-high-dpi-scaling.png": {
+      "version": "optimize-images-v2",
+      "hash": "34be56ee8f1ab4c1ba591c33c6f94e215d389f41",
+      "updatedAt": "2026-02-17T17:21:02.870Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6-1-start-mo2-and-launch-the-list.png": {
+      "version": "optimize-images-v2",
+      "hash": "c62f396c5650424bfbda86942f539a6abf12d619",
+      "updatedAt": "2026-02-17T17:21:02.952Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6-2-start-the-new-game.png": {
+      "version": "optimize-images-v2",
+      "hash": "88b9ab4ba406591dadf5747fc6e653d98e99288a",
+      "updatedAt": "2026-02-17T17:21:03.008Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_0_1_skyrimse_properties.png": {
+      "version": "optimize-images-v2",
+      "hash": "d0b4025fa8717b4dc1f115f7dffb133098fdcac4",
+      "updatedAt": "2026-02-17T17:21:03.087Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_0_2_skyrimse_compatibility.png": {
+      "version": "optimize-images-v2",
+      "hash": "d4aeb362ce8167a9cfdef4674c11a56e95e03bd7",
+      "updatedAt": "2026-02-17T17:21:03.157Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_0_3_skyrimse_highdpi.png": {
+      "version": "optimize-images-v2",
+      "hash": "baf567e97fc417c10cc5dfda9a7719f235930eaf",
+      "updatedAt": "2026-02-17T17:21:03.322Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_0_4_skyrimse_application.png": {
+      "version": "optimize-images-v2",
+      "hash": "ac9d6ddd58b370304c76bcb481cbc74fa9a68d75",
+      "updatedAt": "2026-02-17T17:21:03.434Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_0_5_vsync.png": {
+      "version": "optimize-images-v2",
+      "hash": "4063e64180c8a2532d4e0e68976ad824ce992784",
+      "updatedAt": "2026-02-17T17:21:03.801Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_1_1_mo2_start.png": {
+      "version": "optimize-images-v2",
+      "hash": "1c386a94ed86d485c8d65172ece3728ee6f98a28",
+      "updatedAt": "2026-02-17T17:21:03.848Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_1_1_no_mod_organizer.png": {
+      "version": "optimize-images-v2",
+      "hash": "ace559aa51de0532f46592202b54c04648576a4b",
+      "updatedAt": "2026-02-17T17:21:03.905Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_1_3_mo2_change_resolution.png": {
+      "version": "optimize-images-v2",
+      "hash": "b7813295f1c1c83c40dfaf677ee5aa8a05950404",
+      "updatedAt": "2026-02-17T17:21:04.032Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_1_3_mo2_change_resolution_skyrimprefs.png": {
+      "version": "optimize-images-v2",
+      "hash": "7724ee00851681da0f8bbe45f665af5aa78b8186",
+      "updatedAt": "2026-02-17T17:21:04.130Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_1_3_mo2_run_the_game.png": {
+      "version": "optimize-images-v2",
+      "hash": "8560f52e60ff126807c7fc4ff50f83be4042869b",
+      "updatedAt": "2026-02-17T17:21:04.182Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_1_4_flappy_dragon.png": {
+      "version": "optimize-images-v2",
+      "hash": "20ddb86ee9ff0fb0ec33ed752aafb4389ecc4178",
+      "updatedAt": "2026-02-17T17:21:04.293Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_2_3_auto_config_finished.png": {
+      "version": "optimize-images-v2",
+      "hash": "8340f08ca830cff772a53410afa8d78643342e2d",
+      "updatedAt": "2026-02-17T17:21:04.402Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_2_3_final_gift.png": {
+      "version": "optimize-images-v2",
+      "hash": "f76a57597d2f4092fd84afe2b72b4179cd899a84",
+      "updatedAt": "2026-02-17T17:21:04.804Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_2_3_greetings_message.png": {
+      "version": "optimize-images-v2",
+      "hash": "0e1c88c42e5c2501cf48222f67b2b93bf23a3096",
+      "updatedAt": "2026-02-17T17:21:05.172Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_2_3_mods_config_messages.png": {
+      "version": "optimize-images-v2",
+      "hash": "02c53c59f16f385b8a064c9e17c365589546dc5b",
+      "updatedAt": "2026-02-17T17:21:05.482Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_2_3_our_config_messages.png": {
+      "version": "optimize-images-v2",
+      "hash": "2a617b51cb7b6b5e2c604bc5c60323aea98380ac",
+      "updatedAt": "2026-02-17T17:21:05.675Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_door.png": {
+      "version": "optimize-images-v2",
+      "hash": "55b9c817f39618a5e7aad22744bf2310b9cfcd28",
+      "updatedAt": "2026-02-17T17:21:06.928Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_door_void.png": {
+      "version": "optimize-images-v2",
+      "hash": "4f8f0b667b18df19bd53d5bc8cd371568be796e7",
+      "updatedAt": "2026-02-17T17:21:08.018Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_find_note.png": {
+      "version": "optimize-images-v2",
+      "hash": "ea681cdbf2c766b0d1cdab32af4e8661638552fb",
+      "updatedAt": "2026-02-17T17:21:11.138Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_read_note.png": {
+      "version": "optimize-images-v2",
+      "hash": "794527db5952157725b4b7a8406771e19cd53c75",
+      "updatedAt": "2026-02-17T17:21:13.698Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_recommended_choice_1.png": {
+      "version": "optimize-images-v2",
+      "hash": "df1f48a3573987eb77ddcb148f3d87603067643f",
+      "updatedAt": "2026-02-17T17:21:14.855Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_recommended_choice_2.png": {
+      "version": "optimize-images-v2",
+      "hash": "8fcf3a50d70081647510fe00ae0bc7e3215d4af6",
+      "updatedAt": "2026-02-17T17:21:15.942Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_recommended_choice_3.png": {
+      "version": "optimize-images-v2",
+      "hash": "e42c098db8fc3a8b1a9c2c36d745845df40d0509",
+      "updatedAt": "2026-02-17T17:21:16.179Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6_5_shrine_of_akatosh.png": {
+      "version": "optimize-images-v2",
+      "hash": "df9881c76f52164095b1f06c68b9698d2ab86312",
+      "updatedAt": "2026-02-17T17:21:17.400Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5-1-start-skyrim-and-download-cc.png": {
+      "version": "optimize-images-v2",
+      "hash": "7141bb40fec5ce6d3e43729e4da63181728d4ba5",
+      "updatedAt": "2026-02-17T17:21:17.489Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5-2-create-folders-and-set-av-exceptions.png": {
+      "version": "optimize-images-v2",
+      "hash": "e1563ca1a813949327ec35160933b33ddd513e6f",
+      "updatedAt": "2026-02-17T17:21:17.582Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5-3-install-and-configure-wabbajack.png": {
+      "version": "optimize-images-v2",
+      "hash": "ea911b4a541f1a75cd8ae9aff9818e2e7fd18069",
+      "updatedAt": "2026-02-17T17:21:17.672Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5-4-download-and-install-the-list.png": {
+      "version": "optimize-images-v2",
+      "hash": "0468ce6db9f554c5ec3629a08bd4cc6a80453265",
+      "updatedAt": "2026-02-17T17:21:17.747Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_1_2_launcher_popup.png": {
+      "version": "optimize-images-v2",
+      "hash": "d4467c76e871dbe2651fe4e37ccd95becd0559be",
+      "updatedAt": "2026-02-17T17:21:17.975Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_1_3_ae_content_ingame_popup.png": {
+      "version": "optimize-images-v2",
+      "hash": "ad51821462b2fd59b2d3b7db9e38b49aec429b36",
+      "updatedAt": "2026-02-17T17:21:18.248Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_3_3_wabbajack_main_ui_gear.png": {
+      "version": "optimize-images-v2",
+      "hash": "5c2567422b1e731d870630891d624394ff347e6a",
+      "updatedAt": "2026-02-17T17:21:18.886Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_3_3_wabbajack_nexus_AFTER_login.png": {
+      "version": "optimize-images-v2",
+      "hash": "ca28e860bc1c9b856fc3eefe7db2d038cbfae22c",
+      "updatedAt": "2026-02-17T17:21:19.048Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_3_3_wabbajack_nexus_BEFORE_login.png": {
+      "version": "optimize-images-v2",
+      "hash": "0bb3d6892a8b064bd520c70a7e040d4e76e69f29",
+      "updatedAt": "2026-02-17T17:21:19.297Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_1_wabbajack_main_ui_browse.png": {
+      "version": "optimize-images-v2",
+      "hash": "13c359431700d96c1497c715b3d71138c6460cb3",
+      "updatedAt": "2026-02-17T17:21:19.487Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_2_wabbajack_filters_and_download.png": {
+      "version": "optimize-images-v2",
+      "hash": "3ec6f3eb584ef2af2932313fdaffe7320f5791d4",
+      "updatedAt": "2026-02-17T17:21:21.300Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_3_wabbajack_click_dowload_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "7f975514ac50a9aaa93c60f24b0d9a3e5efdccc2",
+      "updatedAt": "2026-02-17T17:21:22.148Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_4_wabbajack_initial_blank_installation.png": {
+      "version": "optimize-images-v2",
+      "hash": "ae14ff97f5c2321283b9d38bd1c1303abfea5703",
+      "updatedAt": "2026-02-17T17:21:23.140Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_5_wabbajack_error_example.png": {
+      "version": "optimize-images-v2",
+      "hash": "8669110407b9b3d3e0c8f000ab812af0d627e31a",
+      "updatedAt": "2026-02-17T17:21:24.906Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_5_wabbajack_start_installation.png": {
+      "version": "optimize-images-v2",
+      "hash": "95ebc410cc25a3fefb16567bf2d2f5189c008c24",
+      "updatedAt": "2026-02-17T17:21:25.126Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_6_wabbajack_installation_complete.png": {
+      "version": "optimize-images-v2",
+      "hash": "6bfe5ad4aea596ac057dd6f1e0099aeedd399d17",
+      "updatedAt": "2026-02-17T17:21:25.150Z"
+    },
+    "docs/installation-and-setup/img/4-pre-installation/4-1-skyrim-and-ae-upgrade.png": {
+      "version": "optimize-images-v2",
+      "hash": "c211490e818d8fc2b26bc125f942f99e9ff9671c",
+      "updatedAt": "2026-02-17T17:21:25.222Z"
+    },
+    "docs/installation-and-setup/img/4-pre-installation/4-2-accounts.png": {
+      "version": "optimize-images-v2",
+      "hash": "4456db970627ecf8d311116824d388546f4513a6",
+      "updatedAt": "2026-02-17T17:21:25.256Z"
+    },
+    "docs/installation-and-setup/img/4-pre-installation/4-3-general-pc-adjustments.png": {
+      "version": "optimize-images-v2",
+      "hash": "26c6046d192b44779de481d25ff94fcd03801c01",
+      "updatedAt": "2026-02-17T17:21:25.333Z"
+    },
+    "docs/guides/img/bodyslide-guide-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "b8bdd21f8973a3459df17478925c3699dfa865f7",
+      "updatedAt": "2026-02-17T17:21:25.479Z"
+    },
+    "docs/guides/img/bodyslide-guide.png": {
+      "version": "optimize-images-v2",
+      "hash": "cdc97cfbe6fafe318afc37d428754b3d85575774",
+      "updatedAt": "2026-02-17T17:21:25.535Z"
+    },
+    "docs/guides/img/controller-guide-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "daff569fed55b48e804550f90c16db444fa8c148",
+      "updatedAt": "2026-02-17T17:21:25.699Z"
+    },
+    "docs/guides/img/controller-guide.png": {
+      "version": "optimize-images-v2",
+      "hash": "c31b52c4983084f6e58c7d38fc2293a36c6ed48c",
+      "updatedAt": "2026-02-17T17:21:25.748Z"
+    },
+    "docs/guides/img/index-guides-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "1ada266d2a69666c8e2dcc1bc4e52feec8455dd0",
+      "updatedAt": "2026-02-17T17:21:25.878Z"
+    },
+    "docs/guides/img/index-guides.png": {
+      "version": "optimize-images-v2",
+      "hash": "4edde1be76730534d6e7d5e5a70fa0c3bc265758",
+      "updatedAt": "2026-02-17T17:21:25.910Z"
+    },
+    "docs/guides/img/lod-generation-guide-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "bca92fdf1b6a0acdc2587cc9d997f4ebe264e6c1",
+      "updatedAt": "2026-02-17T17:21:26.084Z"
+    },
+    "docs/guides/img/lod-generation-guide.png": {
+      "version": "optimize-images-v2",
+      "hash": "f945a9d3fd5639d3716822b24cfee68f18226542",
+      "updatedAt": "2026-02-17T17:21:26.155Z"
+    },
+    "docs/guides/img/nemesis-guide-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "98108ad560424d3566e1889aced2e4ba13792534",
+      "updatedAt": "2026-02-17T17:21:26.315Z"
+    },
+    "docs/guides/img/nemesis-guide.png": {
+      "version": "optimize-images-v2",
+      "hash": "b522ce0cd0395a6d12cf46d18ec2989e9dfbb662",
+      "updatedAt": "2026-02-17T17:21:26.369Z"
+    },
+    "docs/guides/img/synthesis-guide-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "191a37b5f8606d14da8936f5fe09ad0d975df14d",
+      "updatedAt": "2026-02-17T17:21:26.533Z"
+    },
+    "docs/guides/img/synthesis-guide.png": {
+      "version": "optimize-images-v2",
+      "hash": "0b3af3513354e951bbbb601a7f8b2c2af598e25c",
+      "updatedAt": "2026-02-17T17:21:26.591Z"
+    },
+    "docs/guides/img/synthesis_guide/1_1_disabling_synthesis_output_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "019f4e02698e0598b899022175f80ba479c494ff",
+      "updatedAt": "2026-02-17T17:21:26.636Z"
+    },
+    "docs/guides/img/synthesis_guide/1_2_disabling_plugins_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "9376e2f5564b54c4e4359d2041ee5cd22afd1ce3",
+      "updatedAt": "2026-02-17T17:21:26.668Z"
+    },
+    "docs/guides/img/synthesis_guide/2_running_synthesis_in_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "edc6fac2b10b261e8b44b521a62a44db81889b39",
+      "updatedAt": "2026-02-17T17:21:26.739Z"
+    },
+    "docs/guides/img/synthesis_guide/3_1_synthesis0.png": {
+      "version": "optimize-images-v2",
+      "hash": "617b1764e86fd169b20f2c03329888fb5a4488a3",
+      "updatedAt": "2026-02-17T17:21:26.814Z"
+    },
+    "docs/guides/img/synthesis_guide/3_2_synthesis1.png": {
+      "version": "optimize-images-v2",
+      "hash": "8060d7a251269fd0aadea9587adb1eaa7b42e1e3",
+      "updatedAt": "2026-02-17T17:21:26.887Z"
+    },
+    "docs/guides/img/synthesis_guide/3_3_synthesis2.png": {
+      "version": "optimize-images-v2",
+      "hash": "3f7f3f026ed097becf1a18d8f42a98c1876307cf",
+      "updatedAt": "2026-02-17T17:21:26.972Z"
+    },
+    "docs/guides/img/synthesis_guide/5_1_creating_empty_mod_in_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "5d03e023d7ef9eec1c68426f6729a3940c55e9b4",
+      "updatedAt": "2026-02-17T17:21:27.043Z"
+    },
+    "docs/guides/img/synthesis_guide/5_2_overwrite.png": {
+      "version": "optimize-images-v2",
+      "hash": "c8a1a9bcb9f5bea32d1ba1f823c7a2881c0e2925",
+      "updatedAt": "2026-02-17T17:21:27.095Z"
+    },
+    "docs/guides/img/synthesis_guide/6_final.png": {
+      "version": "optimize-images-v2",
+      "hash": "b4003a17c943c69e9e4baaad398da6f25b844032",
+      "updatedAt": "2026-02-17T17:21:27.152Z"
+    },
+    "docs/guides/img/nemesis_guide/1_1_run_LAA.png": {
+      "version": "optimize-images-v2",
+      "hash": "d11a319f5ee2fdea24441ab375871dbdb5fb9813",
+      "updatedAt": "2026-02-17T17:21:27.179Z"
+    },
+    "docs/guides/img/nemesis_guide/1_2_LAA_add_file.png": {
+      "version": "optimize-images-v2",
+      "hash": "e349be4f3da8ab8bb48f2dad210de0b4bfa6c3ef",
+      "updatedAt": "2026-02-17T17:21:27.281Z"
+    },
+    "docs/guides/img/nemesis_guide/1_3_LAA_select_nemesis_exe.png": {
+      "version": "optimize-images-v2",
+      "hash": "4c1d0b3df875ea1f744ea0109812740c9a875200",
+      "updatedAt": "2026-02-17T17:21:27.471Z"
+    },
+    "docs/guides/img/nemesis_guide/1_4_LAA_add_flag_to_nemesis.png": {
+      "version": "optimize-images-v2",
+      "hash": "82697e4d0e8f3fa2add8ab0020770ca2b05198a7",
+      "updatedAt": "2026-02-17T17:21:27.598Z"
+    },
+    "docs/guides/img/nemesis_guide/1_5_LAA_flag_added.png": {
+      "version": "optimize-images-v2",
+      "hash": "cff22aabc5e8ef9eaf31934d918151efd824a11b",
+      "updatedAt": "2026-02-17T17:21:27.616Z"
+    },
+    "docs/guides/img/nemesis_guide/2_1_nemesis_output.png": {
+      "version": "optimize-images-v2",
+      "hash": "627369ba2e54d570615d03188f3a29b6206dd5d4",
+      "updatedAt": "2026-02-17T17:21:27.727Z"
+    },
+    "docs/guides/img/nemesis_guide/2_2_nemesis_output_delete_cache.png": {
+      "version": "optimize-images-v2",
+      "hash": "17c0243df0e8de0a9d966308e2f8dd82c85dd855",
+      "updatedAt": "2026-02-17T17:21:27.922Z"
+    },
+    "docs/guides/img/nemesis_guide/3_1_run_nemesis_from_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "7b9dce754b871ad6e767d848e80e9915552f4780",
+      "updatedAt": "2026-02-17T17:21:28.028Z"
+    },
+    "docs/guides/img/nemesis_guide/4_1_select_patches.png": {
+      "version": "optimize-images-v2",
+      "hash": "caa7f1da7e80918d078272185b821f69bcda7401",
+      "updatedAt": "2026-02-17T17:21:28.238Z"
+    },
+    "docs/guides/img/nemesis_guide/4_2_update_engine.png": {
+      "version": "optimize-images-v2",
+      "hash": "561c1d699a0bb2121f1d128470eee8ee237cb55a",
+      "updatedAt": "2026-02-17T17:21:28.347Z"
+    },
+    "docs/guides/img/nemesis_guide/4_2_update_engine_done.png": {
+      "version": "optimize-images-v2",
+      "hash": "5e515648d045a7691382e9737a35aae6b3283552",
+      "updatedAt": "2026-02-17T17:21:28.453Z"
+    },
+    "docs/guides/img/nemesis_guide/5_1_engine_done.png": {
+      "version": "optimize-images-v2",
+      "hash": "0170d136ff98b129e0430f988c3e6e1264c865ed",
+      "updatedAt": "2026-02-17T17:21:28.554Z"
+    },
+    "docs/guides/img/nemesis_guide/5_1_engine_running.png": {
+      "version": "optimize-images-v2",
+      "hash": "552c6a7efc647ea3b0a9d1e42d9f73caf9f8aaae",
+      "updatedAt": "2026-02-17T17:21:28.660Z"
+    },
+    "docs/guides/img/nemesis_guide/5_1_launch_engine.png": {
+      "version": "optimize-images-v2",
+      "hash": "141dd6b805d645f53c45df4dfd6ab2cd0451eb8d",
+      "updatedAt": "2026-02-17T17:21:28.772Z"
+    },
+    "docs/guides/img/nemesis_guide/6_1_fnis_delete.png": {
+      "version": "optimize-images-v2",
+      "hash": "25f091f01de69f5a33869aeb2f6678548aeb4c52",
+      "updatedAt": "2026-02-17T17:21:28.901Z"
+    },
+    "docs/guides/img/nemesis_guide/6_1_fnis_in_plugins.png": {
+      "version": "optimize-images-v2",
+      "hash": "3f5966c72e61e161cd9e0ffdaa56cd3960a494c8",
+      "updatedAt": "2026-02-17T17:21:28.927Z"
+    },
+    "docs/guides/img/nemesis_guide/6_1_fnis_open_origin.png": {
+      "version": "optimize-images-v2",
+      "hash": "2f8cd160c829621c48759be9b177ee3d51ba83f3",
+      "updatedAt": "2026-02-17T17:21:28.960Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_1_output_folders_created.png": {
+      "version": "optimize-images-v2",
+      "hash": "ee7b8b19f1824b9d2be974ed3ce7bca7ea103f3b",
+      "updatedAt": "2026-02-17T17:21:29.037Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_2_dyndolod_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "4fab0801faf5ee444043987a7ea366ad2250a6df",
+      "updatedAt": "2026-02-17T17:21:29.169Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_2_edit_executables.png": {
+      "version": "optimize-images-v2",
+      "hash": "87e41f57f6797823a00ed53b993df6ff741b6986",
+      "updatedAt": "2026-02-17T17:21:29.243Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_2_texgen_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "b40f528ea2d0d4ddd0d9c0dfa75484df0396bf28",
+      "updatedAt": "2026-02-17T17:21:29.369Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_2_xlodgen_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "8cf116790bf22d8c36f4f532427a312ee32b797c",
+      "updatedAt": "2026-02-17T17:21:29.494Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_10_xlodgen_generate.png": {
+      "version": "optimize-images-v2",
+      "hash": "29275a50d7fd1be3b0fc88c45614b242d898684b",
+      "updatedAt": "2026-02-17T17:21:29.827Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_11_xlodgen_done.png": {
+      "version": "optimize-images-v2",
+      "hash": "5d463eba2a5e02a7a5fbd8e4ef654257e03042e0",
+      "updatedAt": "2026-02-17T17:21:29.877Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_1_acmos_start_acmos.png": {
+      "version": "optimize-images-v2",
+      "hash": "172567c97ec0afa717ad91e9504a42b5b012b83d",
+      "updatedAt": "2026-02-17T17:21:29.926Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_2_acmos_paths_only.png": {
+      "version": "optimize-images-v2",
+      "hash": "6d8fec3c614a1edb9823b1be7b240e8fa37eb8cd",
+      "updatedAt": "2026-02-17T17:21:30.020Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_3_acmos_paths_to_lod_browse.png": {
+      "version": "optimize-images-v2",
+      "hash": "a041ccbba5e89ca24fbe32fa5051bc6333cd2fa6",
+      "updatedAt": "2026-02-17T17:21:30.115Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_3_final_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "66954963344301a495c74fe938283255a52427bb",
+      "updatedAt": "2026-02-17T17:21:30.200Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_3_start_xlodgen.png": {
+      "version": "optimize-images-v2",
+      "hash": "0c6ab6f2b6ca2a18549a2a43f19290d3ba29107e",
+      "updatedAt": "2026-02-17T17:21:30.249Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_4_acmos_paths_to_lod_folder.png": {
+      "version": "optimize-images-v2",
+      "hash": "93e86e9a43a58c7955a0555318d0bf6c5624863d",
+      "updatedAt": "2026-02-17T17:21:30.466Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_4_final_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "76e85997c9b1df071e6b89623a751aecb324d98f",
+      "updatedAt": "2026-02-17T17:21:30.512Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_4_xlodgen_select_all_worldspaces.png": {
+      "version": "optimize-images-v2",
+      "hash": "9578f3f41ab4b83cd29140059b3e4096561e0459",
+      "updatedAt": "2026-02-17T17:21:30.603Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_5_acmos_generate.png": {
+      "version": "optimize-images-v2",
+      "hash": "f7c1474059a328f343b8c8e338ca716703f3b9df",
+      "updatedAt": "2026-02-17T17:21:30.707Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_5_acmos_warning.png": {
+      "version": "optimize-images-v2",
+      "hash": "37d78bce9611fac8b83b1be576786ae5fb482288",
+      "updatedAt": "2026-02-17T17:21:30.766Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_5_final_bottom.png": {
+      "version": "optimize-images-v2",
+      "hash": "7c5546990d2a0f4ac2318fabbc7e5c9bb360fdfa",
+      "updatedAt": "2026-02-17T17:21:30.809Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_5_xlodgen_only_terrain_lods.png": {
+      "version": "optimize-images-v2",
+      "hash": "c2252761bb133a672791032d0e1f77006408f078",
+      "updatedAt": "2026-02-17T17:21:31.164Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_6_acmos_done.png": {
+      "version": "optimize-images-v2",
+      "hash": "195369389781b2ad77bfb48893318b2e66115541",
+      "updatedAt": "2026-02-17T17:21:31.200Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_6_acmos_zip.png": {
+      "version": "optimize-images-v2",
+      "hash": "c13d8788107feeaaf396acacad3947cc72f99d5b",
+      "updatedAt": "2026-02-17T17:21:31.254Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_6_final_added.png": {
+      "version": "optimize-images-v2",
+      "hash": "56eb4736c5df66861fbd460befa1f2866abcafda",
+      "updatedAt": "2026-02-17T17:21:31.311Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_6_xlodgen_lod4_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "4ea07f3c06471373338155c4b0040b42bffd88b6",
+      "updatedAt": "2026-02-17T17:21:31.371Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_7_xlodgen_lod8_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "daf89315b2c33ff5b2e9d093a26f02b0c32a452d",
+      "updatedAt": "2026-02-17T17:21:31.431Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_8_xlodgen_lod16_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "c038e12c786b79057b28f1a2179e14976345855a",
+      "updatedAt": "2026-02-17T17:21:31.491Z"
+    },
+    "docs/guides/img/lod_generation_guide/2_9_xlodgen_lod32_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "2963c4a58eecbab15169370526a549d21068e9bc",
+      "updatedAt": "2026-02-17T17:21:31.560Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_1_launch_precache_plugin.png": {
+      "version": "optimize-images-v2",
+      "hash": "9f79f87a2d0c6068206dc0ffac297dab078ea9af",
+      "updatedAt": "2026-02-17T17:21:31.731Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_1_launch_precache_plugin_warning.png": {
+      "version": "optimize-images-v2",
+      "hash": "bb9ee549c1796b88de0f1a3f720f5c8d1f41df34",
+      "updatedAt": "2026-02-17T17:21:31.796Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_2_cache_progress_console.png": {
+      "version": "optimize-images-v2",
+      "hash": "c90ab512e519f5a17d00279f1840cc1dd3679fec",
+      "updatedAt": "2026-02-17T17:21:32.582Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_2_start_cache_message.png": {
+      "version": "optimize-images-v2",
+      "hash": "f86c81f037660ab9716f6b444faa60d27c5ce021",
+      "updatedAt": "2026-02-17T17:21:33.794Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_3_cache_finished.png": {
+      "version": "optimize-images-v2",
+      "hash": "f3d2012c1661b907206d3890660dabdcbadc306b",
+      "updatedAt": "2026-02-17T17:21:34.424Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_3_cache_finished_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "f88c12901563d1ec38ac9691390dd876ac9e2b5b",
+      "updatedAt": "2026-02-17T17:21:34.473Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_grass_bounds_2_apply_filter.png": {
+      "version": "optimize-images-v2",
+      "hash": "f5dadeb98e9b63a350fda2cd2367b942d3e79f50",
+      "updatedAt": "2026-02-17T17:21:34.577Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_grass_bounds_3_apply_filter_params.png": {
+      "version": "optimize-images-v2",
+      "hash": "e55368593a07c321ac89d801c9ba9b6b192931bd",
+      "updatedAt": "2026-02-17T17:21:34.916Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_grass_bounds_4_copy_as_override.png": {
+      "version": "optimize-images-v2",
+      "hash": "ad22796b6e0e480b5701c7c89e9fe42a0c8b6644",
+      "updatedAt": "2026-02-17T17:21:35.053Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_grass_bounds_4_copy_as_override_target.png": {
+      "version": "optimize-images-v2",
+      "hash": "d5fbe09a9ac3baee5a9a07756181dd6da05a053f",
+      "updatedAt": "2026-02-17T17:21:35.278Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_grass_bounds_6_open_main_in_CK.png": {
+      "version": "optimize-images-v2",
+      "hash": "f47245ce56dfa0f95f661b392af50a0eaf911e93",
+      "updatedAt": "2026-02-17T17:21:35.444Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_grass_bounds_6_recalc_main_in_CK.png": {
+      "version": "optimize-images-v2",
+      "hash": "62606cfdb83f5ecaddea86dabca58b74e701b33e",
+      "updatedAt": "2026-02-17T17:21:35.725Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_output_1_open_overwrite.png": {
+      "version": "optimize-images-v2",
+      "hash": "daba20d10afda0acbbc1d4da61f94d262a9d01aa",
+      "updatedAt": "2026-02-17T17:21:35.821Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_output_3_grass_zip_in_downloads.png": {
+      "version": "optimize-images-v2",
+      "hash": "51f1e65767caeaa31d9469681242a173d2540060",
+      "updatedAt": "2026-02-17T17:21:35.910Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_output_4_install_grass.png": {
+      "version": "optimize-images-v2",
+      "hash": "127bdeb718acc90609cd507e6f687b4399816c5a",
+      "updatedAt": "2026-02-17T17:21:35.951Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_output_5_grass_at_the_bottom.png": {
+      "version": "optimize-images-v2",
+      "hash": "8db7c41d82f23fda9cfb6bb4484c3019967e11c3",
+      "updatedAt": "2026-02-17T17:21:36.011Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_output_6_finished_view.png": {
+      "version": "optimize-images-v2",
+      "hash": "9cf38c406bb18dae20b4bc8990651a9a7d29df02",
+      "updatedAt": "2026-02-17T17:21:36.074Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_preparation_2_hide_grass_booster_ini.png": {
+      "version": "optimize-images-v2",
+      "hash": "41a1e8b2e5df78ce3a0ed781e0271703e7715108",
+      "updatedAt": "2026-02-17T17:21:36.336Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_preparation_3_disable_grass_boosters_plugins.png": {
+      "version": "optimize-images-v2",
+      "hash": "f1c663fdde5daadea59a3d69fed5a58b844c50d2",
+      "updatedAt": "2026-02-17T17:21:36.456Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_1_xedit.png": {
+      "version": "optimize-images-v2",
+      "hash": "32cda1e36bcb02b7b513e37ed75e59e14e26d9ac",
+      "updatedAt": "2026-02-17T17:21:36.506Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_2_xedit_select_all.png": {
+      "version": "optimize-images-v2",
+      "hash": "a081f30743712b1a53d6d6b2179e10c9199ccb1c",
+      "updatedAt": "2026-02-17T17:21:36.693Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_4_xedit_apply_script.png": {
+      "version": "optimize-images-v2",
+      "hash": "1bf7edb063e248b3ff1a6d75b6f4ea610a94c29a",
+      "updatedAt": "2026-02-17T17:21:36.873Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_5_xedit_apply_script_run.png": {
+      "version": "optimize-images-v2",
+      "hash": "f100e9b8a50516ea3e237f65a3ed6d59b9c4f36a",
+      "updatedAt": "2026-02-17T17:21:37.071Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_6_xedit_apply_script_done.png": {
+      "version": "optimize-images-v2",
+      "hash": "f2f742a649b5926fdd5453f075b4323a664f848d",
+      "updatedAt": "2026-02-17T17:21:37.137Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_7_grass_control_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "a02792364f139600b2520e6f0bed8466dbcc66c5",
+      "updatedAt": "2026-02-17T17:21:37.166Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_8_grass_control_open_ini.png": {
+      "version": "optimize-images-v2",
+      "hash": "dc85ab4e3442616eae72aab88ea4275906fb4818",
+      "updatedAt": "2026-02-17T17:21:37.249Z"
+    },
+    "docs/guides/img/lod_generation_guide/3_worldspaces_9_grass_control_edit_1.png": {
+      "version": "optimize-images-v2",
+      "hash": "8438ea47f78dc4fa5910aa240bc74cd21235ad0f",
+      "updatedAt": "2026-02-17T17:21:37.377Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_3_dyndolod_final_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "bc3429f25629acd0095db6b6c70d6bee3375c4de",
+      "updatedAt": "2026-02-17T17:21:37.432Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_3_final_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "ab8ac5ee280572acafe673a98dd80f1ed5e4764f",
+      "updatedAt": "2026-02-17T17:21:37.492Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_4_dyndolod_final_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "05ce05a1870ac6be7d92325bc44514023fc5c03d",
+      "updatedAt": "2026-02-17T17:21:37.537Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_4_final_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "1ba4afa6db27948b6fb5d5477dc33530d574ed30",
+      "updatedAt": "2026-02-17T17:21:37.580Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_5_dyndolod_final_bottom.png": {
+      "version": "optimize-images-v2",
+      "hash": "505f03c623c43f4b2e57278b5b63fd6bc7741ba2",
+      "updatedAt": "2026-02-17T17:21:37.632Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_5_final_bottom.png": {
+      "version": "optimize-images-v2",
+      "hash": "6c38d51268d4b6e520bc417917c130a6df5059d7",
+      "updatedAt": "2026-02-17T17:21:37.684Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_6_dyndolod_final_added.png": {
+      "version": "optimize-images-v2",
+      "hash": "4ca7de4adde257a2259b46feb56a1d183c5d5af6",
+      "updatedAt": "2026-02-17T17:21:37.762Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_6_final_added.png": {
+      "version": "optimize-images-v2",
+      "hash": "d9124942cbcaa6a6704ede4889738db4449f68d9",
+      "updatedAt": "2026-02-17T17:21:37.831Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_7_dyndolod_plugins_order.png": {
+      "version": "optimize-images-v2",
+      "hash": "c24ff47496d07e1f7fcfd36e8af3c4195d25a7f5",
+      "updatedAt": "2026-02-17T17:21:37.928Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_1_start.png": {
+      "version": "optimize-images-v2",
+      "hash": "ce869051fb85ad9319fd1acd0f544cf88ecd15eb",
+      "updatedAt": "2026-02-17T17:21:37.987Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_2_select_all_worldspaces.png": {
+      "version": "optimize-images-v2",
+      "hash": "7edb5e5d86e88fd2ddd03e0bef8750a2937b2f59",
+      "updatedAt": "2026-02-17T17:21:38.307Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_3_candles_fx_high_preset.png": {
+      "version": "optimize-images-v2",
+      "hash": "d2a1eef4cf6064a61622b1cfdfb99e1dd9a532b6",
+      "updatedAt": "2026-02-17T17:21:38.637Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_4_options_line_1.png": {
+      "version": "optimize-images-v2",
+      "hash": "fe13a235463dd366e787da8e303e4d073b124bad",
+      "updatedAt": "2026-02-17T17:21:38.967Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_4_options_line_2.png": {
+      "version": "optimize-images-v2",
+      "hash": "f2f00eebb519be8f581f260a3281fb733675be8c",
+      "updatedAt": "2026-02-17T17:21:39.281Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_4_options_line_3.png": {
+      "version": "optimize-images-v2",
+      "hash": "f03f28863e50711516bd4a119ae6031279626cf4",
+      "updatedAt": "2026-02-17T17:21:39.604Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_4_options_line_4.png": {
+      "version": "optimize-images-v2",
+      "hash": "2355e0a4981898e25f7efd673fe8c24208fd12fa",
+      "updatedAt": "2026-02-17T17:21:39.936Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_4_options_line_5.png": {
+      "version": "optimize-images-v2",
+      "hash": "14ca9de72c4baa69135c29f9a7636af2f55ef75f",
+      "updatedAt": "2026-02-17T17:21:40.278Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_5_tree_changes.png": {
+      "version": "optimize-images-v2",
+      "hash": "96c50993d4cd01cd2502bc4eb7ce910ad38a22f3",
+      "updatedAt": "2026-02-17T17:21:40.741Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_6_root_changes.png": {
+      "version": "optimize-images-v2",
+      "hash": "6b293e40b8d95a0e1d316f93ee4db91b5a2f4a3c",
+      "updatedAt": "2026-02-17T17:21:41.205Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_7_check_and_start.png": {
+      "version": "optimize-images-v2",
+      "hash": "7d3acba60f32f87a5fe64441f397b6cc8208dec1",
+      "updatedAt": "2026-02-17T17:21:41.536Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_dyndolod_8_done_and_save.png": {
+      "version": "optimize-images-v2",
+      "hash": "440f2069f990b7ba1080836b0f390b92ebfcda20",
+      "updatedAt": "2026-02-17T17:21:41.615Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_texgen_1_start.png": {
+      "version": "optimize-images-v2",
+      "hash": "0c97ea4a26146ea7eff1c9349f79492050cce348",
+      "updatedAt": "2026-02-17T17:21:41.678Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_texgen_2_options.png": {
+      "version": "optimize-images-v2",
+      "hash": "cfde8cfce01e5ede07b6746017a3cd66f81b90cc",
+      "updatedAt": "2026-02-17T17:21:41.944Z"
+    },
+    "docs/guides/img/lod_generation_guide/4_texgen_3_done_exit.png": {
+      "version": "optimize-images-v2",
+      "hash": "e0209c44f2a29fe83e5e96f2775e84dee5ea7277",
+      "updatedAt": "2026-02-17T17:21:42.130Z"
+    },
+    "docs/guides/img/lod_generation_guide/5_2_enable_grass_boosters_plugins.png": {
+      "version": "optimize-images-v2",
+      "hash": "59e65daadc328bae9a36f449d1ab5b553c4817c3",
+      "updatedAt": "2026-02-17T17:21:42.252Z"
+    },
+    "docs/guides/img/lod_generation_guide/5_3_unhide_grass_booster_ini.png": {
+      "version": "optimize-images-v2",
+      "hash": "1fc348e5c1000aeac3ab6fdcd0501fa95a6db297",
+      "updatedAt": "2026-02-17T17:21:42.507Z"
+    },
+    "docs/guides/img/controller_guide/10_Controller_Mods.png": {
+      "version": "optimize-images-v2",
+      "hash": "8611299331533363a23ea27045d8aa9b1e3e7c5a",
+      "updatedAt": "2026-02-17T17:21:42.533Z"
+    },
+    "docs/guides/img/controller_guide/1_1_mod_configuration.png": {
+      "version": "optimize-images-v2",
+      "hash": "3d819fd0016e469c452f219f62c4aac1f7f3cf82",
+      "updatedAt": "2026-02-17T17:21:43.532Z"
+    },
+    "docs/guides/img/controller_guide/1_enable_controller_mods.png": {
+      "version": "optimize-images-v2",
+      "hash": "6dd74f4600ee3bd6a0d7df7a4b0a4bace922c3d4",
+      "updatedAt": "2026-02-17T17:21:43.627Z"
+    },
+    "docs/guides/img/controller_guide/2_enable_controller.png": {
+      "version": "optimize-images-v2",
+      "hash": "70a29012bf16f8e4b52fc7b060d470026ad3db37",
+      "updatedAt": "2026-02-17T17:21:44.259Z"
+    },
+    "docs/guides/img/controller_guide/3_set_controls.png": {
+      "version": "optimize-images-v2",
+      "hash": "205dcf484951af522095a553092e223cc578d8b8",
+      "updatedAt": "2026-02-17T17:21:44.618Z"
+    },
+    "docs/guides/img/controller_guide/4_setup_CGO.png": {
+      "version": "optimize-images-v2",
+      "hash": "64015df8deaf79d01bac576813415281d72db1c2",
+      "updatedAt": "2026-02-17T17:21:45.377Z"
+    },
+    "docs/guides/img/controller_guide/5_setup_The_Ultimate_Dodge_Mod.png": {
+      "version": "optimize-images-v2",
+      "hash": "d1de96fa849efd746170f60d0b9496cfb42e5239",
+      "updatedAt": "2026-02-17T17:21:46.196Z"
+    },
+    "docs/guides/img/controller_guide/6_setup_Serios_Cycle_Hotkeys.png": {
+      "version": "optimize-images-v2",
+      "hash": "b3e82d996f9b5e739bf466840e65558854c577ce",
+      "updatedAt": "2026-02-17T17:21:46.673Z"
+    },
+    "docs/guides/img/controller_guide/7_setup_True_Directional_Movement.png": {
+      "version": "optimize-images-v2",
+      "hash": "f0664b03a599ae89fdff22d9ac4cb44be6fa3b20",
+      "updatedAt": "2026-02-17T17:21:46.999Z"
+    },
+    "docs/guides/img/controller_guide/8_MCM_Setup1.png": {
+      "version": "optimize-images-v2",
+      "hash": "692f77b4cb90b065907afc51c640d3f6903b537b",
+      "updatedAt": "2026-02-17T17:21:47.288Z"
+    },
+    "docs/guides/img/controller_guide/9_MCM_Setup2.png": {
+      "version": "optimize-images-v2",
+      "hash": "5a979403195ed1b29de718a70daac7e17bfdad9d",
+      "updatedAt": "2026-02-17T17:21:47.530Z"
+    },
+    "docs/guides/img/bodyslide_guide/1_empty_mod.png": {
+      "version": "optimize-images-v2",
+      "hash": "1c07d6ff93fdbd9d5c0adc72dc8c216e8aface76",
+      "updatedAt": "2026-02-17T17:21:47.553Z"
+    },
+    "docs/guides/img/bodyslide_guide/2_create_mod.png": {
+      "version": "optimize-images-v2",
+      "hash": "c7fff582997eb8d6e604bf2ee8c4bc7d4ce7bed5",
+      "updatedAt": "2026-02-17T17:21:47.570Z"
+    },
+    "docs/guides/img/bodyslide_guide/3_run_bodyslide.png": {
+      "version": "optimize-images-v2",
+      "hash": "7ad2cabe3fd632449a12f809c9abc239c031da96",
+      "updatedAt": "2026-02-17T17:21:47.623Z"
+    },
+    "docs/guides/img/bodyslide_guide/4a_group_sample.png": {
+      "version": "optimize-images-v2",
+      "hash": "189b3539c3b3ec58cd74c1efc9086ca500db8b28",
+      "updatedAt": "2026-02-17T17:21:47.654Z"
+    },
+    "docs/guides/img/bodyslide_guide/4a_group_sample2.png": {
+      "version": "optimize-images-v2",
+      "hash": "8e668659193b073203c889fa769ef19438fa7544",
+      "updatedAt": "2026-02-17T17:21:47.687Z"
+    },
+    "docs/guides/img/bodyslide_guide/4b_preset_sample.png": {
+      "version": "optimize-images-v2",
+      "hash": "44a23670ca8b14484b401ce312ec64fc67726674",
+      "updatedAt": "2026-02-17T17:21:47.699Z"
+    },
+    "docs/guides/img/bodyslide_guide/4c_unassigned.png": {
+      "version": "optimize-images-v2",
+      "hash": "be73545d23d5fafaf9922aa8f7ff6a56fa42c7e9",
+      "updatedAt": "2026-02-17T17:21:47.758Z"
+    },
+    "docs/guides/img/bodyslide_guide/4_choose_groups.png": {
+      "version": "optimize-images-v2",
+      "hash": "f2312089b21b4b2806f57462eb5a7ac2760de51c",
+      "updatedAt": "2026-02-17T17:21:47.772Z"
+    },
+    "docs/guides/img/bodyslide_guide/5_batch_build.png": {
+      "version": "optimize-images-v2",
+      "hash": "8bbdd25b7242e953225bbe34c3eebef3a8cb5b05",
+      "updatedAt": "2026-02-17T17:21:47.778Z"
+    },
+    "docs/faqs/img/faq-gameplay-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "1cc64edea7213a2b3d781b4059567f61b79968a9",
+      "updatedAt": "2026-02-17T17:21:47.927Z"
+    },
+    "docs/faqs/img/faq-gameplay.png": {
+      "version": "optimize-images-v2",
+      "hash": "8f4f158643117bfde10ec0c25ef2fbdeaa4c5fe6",
+      "updatedAt": "2026-02-17T17:21:47.981Z"
+    },
+    "docs/faqs/img/faq-technical-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "95bc10b8e4d2a6442a8fabb1242ec2bf5b08085e",
+      "updatedAt": "2026-02-17T17:21:48.136Z"
+    },
+    "docs/faqs/img/faq-technical.png": {
+      "version": "optimize-images-v2",
+      "hash": "24786a51ad0193f520f2abffea6bba1089ba1b03",
+      "updatedAt": "2026-02-17T17:21:48.188Z"
+    },
+    "docs/faqs/img/index-faqs-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "824a79a602b3e1e97589382436370f1c2ce6479b",
+      "updatedAt": "2026-02-17T17:21:48.327Z"
+    },
+    "docs/faqs/img/index-faqs.png": {
+      "version": "optimize-images-v2",
+      "hash": "32abaf96bd8b0f67e507f546fed8ea8722152efc",
+      "updatedAt": "2026-02-17T17:21:48.362Z"
+    },
+    "static/img/logo.png": {
+      "version": "optimize-images-v2",
+      "hash": "f275329597eb4e105e0338b7a6ebb3113cb128f1",
+      "updatedAt": "2026-02-17T17:21:48.414Z"
+    },
+    "static/img/licentia-social-card.webp": {
+      "version": "optimize-images-v2",
+      "hash": "6fea8eb50f1dbee37ec8b13d23533c519477d09a",
+      "updatedAt": "2026-02-17T17:21:58.235Z"
+    },
+    "static/img/pages/licentia-social-card-bg.webp": {
+      "version": "optimize-images-v2",
+      "hash": "d4ce6d0e92afc4e631689856dafc49796352931c",
+      "updatedAt": "2026-02-17T17:21:58.595Z"
+    },
+    "static/img/pages/licentia-social-card-bg-light.webp": {
+      "version": "optimize-images-v2",
+      "hash": "a1412bf31a6700e965d52b5c5f1a43da92fb741c",
+      "updatedAt": "2026-02-17T17:21:58.916Z"
+    }
+  }
+}

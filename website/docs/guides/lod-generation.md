@@ -2,7 +2,7 @@
 sidebar_position: 5
 title: "LOD Generation Guide 🌄"
 hide_title: true
-slug: /lod-generation-guide
+slug: /guides/lod-generation
 description: "How to generate xLODGen, Grass Cache, TexGen and DynDOLOD for Licentia NEXT"
 image: ./img/lod-generation-guide-social.png
 ---
@@ -166,8 +166,7 @@ Don't just run `xLODGen` and skip `ACMOS`!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of <b>LOD4</b> settings</summary>
+      <details summary="Text version of LOD4 settings">
 
          <p>From left to right, top to bottom:</p>
 
@@ -205,8 +204,7 @@ Don't just run `xLODGen` and skip `ACMOS`!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of <b>LOD8</b> settings</summary>
+      <details summary="Text version of LOD8 settings">
 
          <p>From left to right, top to bottom:</p>
 
@@ -242,8 +240,7 @@ Don't just run `xLODGen` and skip `ACMOS`!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of <b>LOD16</b> settings</summary>
+      <details summary="Text version of LOD16 settings">
 
          <p>From left to right, top to bottom:</p>
 
@@ -279,8 +276,7 @@ Don't just run `xLODGen` and skip `ACMOS`!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of <b>LOD32</b> settings</summary>
+      <details summary="Text version of LOD32 settings">
 
          <p>From left to right, top to bottom:</p>
 
@@ -700,8 +696,7 @@ If you don't - just ommit anything related to it.
 4. **Verify** `GrassControl.ini` **settings**.
 
    They are already preconfigured in *Licentia*, but if you want to double-check - open the `GrassControl.ini` file inside the `Config INI - GrassControl.ini` mod and make sure these values are set:
-      <details>
-         <summary>**Licentia NEXT** settings that differ from the default `GrassControl.ini`</summary>
+      <details summary="Licentia NEXT settings that differ from the default GrassControl.ini">
 
          - `Use-grass-cache = true`
          - `Extend-grass-distance = true`
@@ -893,8 +888,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of `TexGen` settings</summary>
+      <details summary="Text version of TexGen settings">
 
          <p>From left to right, top to bottom:</p>
 
@@ -1031,8 +1025,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of `Options` block - **Line 1**</summary>
+      <details summary="Text version of Options block - Line 1">
 
          **1.** `Object LOD` - Checked
 
@@ -1058,8 +1051,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of `Options` block - **Line 2**</summary>
+      <details summary="Text version of Options block - Line 2">
 
          **8.** `Max tile size LOD` - 1024
 
@@ -1077,8 +1069,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of `Options` block - **Line 3**</summary>
+      <details summary="Text version of Options block - Line 3">
 
          **11.** `Max tile size full` - 256
 
@@ -1096,8 +1087,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of `Options` block - **Line 4**</summary>
+      <details summary="Text version of Options block - Line 4">
 
          **14.** `Occlusion data` - Checked
 
@@ -1117,8 +1107,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
          className="zoomable"
       />
 
-      <details>
-         <summary>Text version of `Options` block - **Line 5**</summary>
+      <details summary="Text version of Options block - Line 5">
 
          **18.** `Quality` - 3
 

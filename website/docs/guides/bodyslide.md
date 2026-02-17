@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Bodyslide Guide 👚"
 hide_title: true
-slug: /bodyslide-guide
+slug: /guides/bodyslide
 description: "How to build Outfits in Bodyslide for Licentia NEXT Skyrim modlist"
 image: ./img/bodyslide-guide-social.png
 ---
@@ -40,7 +40,7 @@ Since version `13.4.1` **OBody has returned** to Licentia NEXT, allowing random 
 
 This guide is primarily intended for **re-running** BodySlide as it is provided with the list *OR* **adding new outfit mods** to your NEXT installation.
 
-If you want to remove OBody from your installation, there is a [small tutorial](bodyslide-guide#%EF%B8%8F-removing-obody-from-your-installation) at the bottom of this guide following the same process with your selected preset instead of `Zeroed Sliders`.
+If you want to remove OBody from your installation, there is a [small tutorial](#%EF%B8%8F-removing-obody-from-your-installation) at the bottom of this guide following the same process with your selected preset instead of `Zeroed Sliders`.
 :::
 ---
 
@@ -140,8 +140,7 @@ As of version `13.4.1` **Dismemberment Framework** has been added, and you will 
 You do not need to select every group for building purposes, if you have the base groups selected for example 3BA or HIMBO, Bodyslide will automatically use all the groups containing the names of your selected groups.
 
 However, the group Unassigned is excluded from this search as previously detailed with building Dismemberment Framework and there is a small range of outfits for CBBE/3BBB and Himbo that must be manually selected in Unassigned. You can easily do this process by using the `Filter Outfits` search bar at the very top right next to Groups, and search for CBBE, then 3BBB and build those two sets with `Zeroed Sliders`, then search for Himbo and build those with `Himbo Zero for OBody`.
-<details>
-    <summary>Unassigned Group Example</summary>
+<details summary="Unassigned Group Example">
     <img 
         src={require('./img/bodyslide_guide/4c_unassigned.png').default}
         alt="Unassigned Example"
@@ -150,8 +149,7 @@ However, the group Unassigned is excluded from this search as previously detaile
     />
 </details>
 
-<details>
-    <summary>Note for building Himbo Groups</summary>
+<details summary="Note for building Himbo Groups">
 
     Building Himbo will open the conflict resolution window for IA Asdafa Tweaks, if you batch build with only Himbo selected ignoring conflicts then once that is finished build with only the Asdafa Overrides group selected you can build the overrides without needing to resolve conflicts.
 </details>

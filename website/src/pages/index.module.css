@@ -14,6 +14,33 @@
   background: center/cover no-repeat;
   filter: blur(4px);
   transform: scale(1.03);
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+
+.heroBg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(56, 56, 58, .78) 0%,
+    rgba(86, 86, 90, .74) 45%,
+    rgba(56, 56, 58, .78) 100%
+  );
+  background-size: 300% 100%;
+  animation: heroBgShimmer 8s linear infinite;
+  opacity: 1;
+  transition: opacity .45s ease;
+}
+
+.heroBgReady::after {
+  opacity: 0;
+  animation: none;
+}
+
+.heroBgReady {
+  opacity: 1;
 }
 
 /* Dark theme */
@@ -34,17 +61,27 @@
     linear-gradient(180deg, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 100%);
 }
 
+@keyframes heroBgShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* Light theme: lighter/whitish veil instead of dark */
 html[data-theme='light'] .heroOverlay {
   background:
-    radial-gradient(60% 60% at 50% 40%, rgba(255, 255, 255, .35) 0%, rgba(255, 255, 255, .15) 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, .05) 100%);
+    radial-gradient(62% 62% at 50% 40%, rgba(0, 0, 0, .28) 0%, rgba(0, 0, 0, .18) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, .15) 0%, rgba(255, 255, 255, .08) 100%);
 }
 
 .heroInner {
   position: relative;
   text-align: center;
-  padding: 3.25rem 1rem 2.5rem;
+  padding: 2rem 1rem 2rem;
   z-index: 1;
 }
 
@@ -59,8 +96,9 @@ html[data-theme='light'] .heroOverlay {
     drop-shadow(0 0 18px rgba(250, 203, 53, .55)) drop-shadow(0 0 36px rgba(250, 203, 53, .35)) drop-shadow(0 6px 24px rgba(0, 0, 0, .35));
 }
 
-/* Dark mode: bright + gold glow */
-.tagline {
+/* Shared hero/feature lead text styling (dark mode default) */
+.tagline,
+.description {
   color: #fff;
   font-size: 1.05rem;
   margin: .75rem 0 1rem;
@@ -70,8 +108,18 @@ html[data-theme='light'] .heroOverlay {
     0 2px 0 rgba(0, 0, 0, .35);
 }
 
-/* Light mode: white text, black outline, gold glow */
-html[data-theme='light'] .tagline {
+/* Hero description: keep readable width on large screens */
+.description {
+  max-width: min(72ch, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+/* Shared hero/feature lead text styling in light mode */
+html[data-theme='light'] .tagline,
+html[data-theme='light'] .description {
   color: #fff;
   /* WebKit/Chromium stroke */
   -webkit-text-stroke: 0.1px rgba(0, 0, 0, .9);
@@ -82,6 +130,18 @@ html[data-theme='light'] .tagline {
     /* faux black outline */
     0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000,
     1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+.featuresTagline {
+  margin: 0 auto 1.25rem;
+  max-width: 72ch;
+  text-align: center;
+}
+
+.showcaseTagline {
+  margin: 0 auto 1rem;
+  max-width: 72ch;
+  text-align: center;
 }
 
 /* badges under the tagline */
@@ -279,19 +339,61 @@ html[data-theme='light'] .tagline {
   will-change: scroll-position;
 }
 
-/* Images */
-.marqueeTrack img {
+/* Image frame + skeleton */
+.shotFrame {
+  position: relative;
+  height: 180px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.shotSkeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 0%,
+    color-mix(in oklab, var(--ifm-color-emphasis-100) 95%, transparent) 45%,
+    color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 2.8s linear infinite;
+}
+
+.shot {
+  position: relative;
+  z-index: 1;
   height: 180px;
   aspect-ratio: 16/9;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: inherit;
   cursor: zoom-in;
   user-select: none;
   -webkit-user-drag: none;
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+
+.shotLoaded {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 @media (max-width: 996px) {
-  .marqueeTrack img {
+  .shotFrame,
+  .shot {
     height: 140px;
   }
 }
@@ -358,5 +460,13 @@ html[data-theme='light'] .tagline {
   .navBtn:hover {
     transform: translateY(-50%) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .25) !important;
+  }
+
+  .shotSkeleton {
+    animation: none !important;
+  }
+
+  .heroBg::after {
+    animation: none !important;
   }
 }

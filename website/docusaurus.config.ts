@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Licentia NEXT',
-  tagline: 'Licentia NEXT: Unleash Power, Indulge Desire, Leave Heads Rolling. Skyrim Modlist with LotD, OStim, lots of fun and variety!',
+  tagline: 'Home 🏠',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
 
@@ -46,6 +46,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           breadcrumbs: false,
           routeBasePath: '/',
+          remarkPlugins: [require('./plugins/remark-image-dimensions.cjs')],
           // editUrl:
           //   'https://github.com/akzar-dev/licentia/edit/main/website/',
           // showLastUpdateTime: true,
