@@ -23,12 +23,9 @@
 
 ### 🤖 Main technical features:
 - Built with [Docusaurus](https://docusaurus.io/docs) using `Typescript`, `CSS` and `React`
-- Huge/background images are optimized via:
-    ```bash
-    magick mogrify -path /$target \
-        -format webp -quality 85 -resize 1920x \
-        /$source/*.png`
-    ```
+- Images are optimized via cross-platform npm scripts:
+    - `npm run optimize-images`
+    - `npm run optimize-images:showcase`
 - On Github side built and deployed with [actions pipeline](../.github/workflows/deploy.yml)
 - [Crawler](https://dashboard.algolia.com/) config for `DocuSearch`:
     <details>
@@ -186,6 +183,47 @@
     - stroke - color #facb35, size 4px;
     - pattern overlay - Blend mode (linear light) - opacity (100%) - pattern (26_brush_marks.png) - scale (50%).
 - Dark/light theme that respects user system settings for color mode.
+
+### 🖼️ Image optimization workflow
+
+- Showcase screenshots directory: `static/img/screenshots`
+  - Add new files with any names/extensions (`.png/.jpg/.jpeg/.webp`).
+  - Run:
+    ```bash
+    npm run optimize-images:showcase
+    ```
+  - The script will:
+    - convert new files to `webp` (`quality=85`, resized to `1920` width max),
+    - rename them to sequential names like `s4.webp`, `s5.webp`, etc. based on existing `sN.webp`,
+    - remove the original dropped files after conversion.
+  - Preview only (no file changes):
+    ```bash
+    npm run optimize-images:showcase:dry-run
+    ```
+
+- Full optimization pass:
+    ```bash
+    npm run optimize-images
+    ```
+  - Runs the same showcase step above, then:
+    - applies safe lossless PNG optimization to:
+    - `static/img/pages/**`
+    - `static/img/logo.png`
+    - `docs/**`
+    - checks key existing WEBP files and re-encodes only if output is smaller:
+      - `static/img/licentia-social-card.webp`
+      - `static/img/pages/licentia-social-card-bg.webp`
+      - `static/img/pages/licentia-social-card-bg-light.webp`
+  - Preview only (no file changes):
+    ```bash
+    npm run optimize-images:dry-run
+    ```
+
+- Notes:
+  - Existing WEBP files are only rewritten when re-encoding results in a smaller file.
+  - The script keeps a cache file at `.image-opt-cache.json` to avoid reprocessing unchanged files on later runs.
+  - Use `node ./tools/optimize-images.mjs --force` if you intentionally want to ignore cache and re-check everything.
+  - External image URLs are untouched.
 
 ### 🧑‍💻 How to run locally
 
