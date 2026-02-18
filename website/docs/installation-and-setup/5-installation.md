@@ -34,8 +34,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 2. **Start the game once**. You'd need to do it through the Skyrim Launcher (settings there don't matter, we just need to get the game registred properly). When the Launcher starts, you'd see a popup like this:
     <img 
         src={require('./img/5-installation/5_1_2_launcher_popup.png').default}
-        alt="Launcher popup"
-        style={{ width:'auto', maxHeight:120 }}
+        alt="Skyrim launcher popup prompting first-time setup"
+        style={{ maxHeight:120 }}
         className="zoomable"
     />
    Click `OK` and then `PLAY` in Skyrim Launcher.
@@ -43,8 +43,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 3. **Download AE content.** When you get to the main menu &mdash; the game would suggest you to download the AE content &mdash; click `DOWNLOAD`:
     <img 
         src={require('./img/5-installation/5_1_3_ae_content_ingame_popup.png').default}
-        alt="AE popup"
-        style={{ width:'auto', maxHeight:200 }}
+        alt="Skyrim Anniversary Edition content download popup in main menu"
+        style={{ maxHeight:200 }}
         className="zoomable"
     />
 
@@ -105,8 +105,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_3_3_wabbajack_main_ui_gear.png').default}
-        alt="WJ gear"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Wabbajack main screen with Settings gear icon highlighted"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -114,8 +114,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_3_3_wabbajack_nexus_BEFORE_login.png').default}
-        alt="WJ before login"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Wabbajack Nexus Mods login button before sign in"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -124,8 +124,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_3_3_wabbajack_nexus_AFTER_login.png').default}
-        alt="WJ after login"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Wabbajack Nexus Mods login status after successful sign in"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -137,8 +137,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_1_wabbajack_main_ui_browse.png').default}
-        alt="WJ browse"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Wabbajack left menu with Browse Lists selected"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -146,8 +146,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_2_wabbajack_filters_and_download.png').default}
-        alt="WJ filters and download list"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Wabbajack filters set for Skyrim SE and Licentia NEXT search result"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
  
@@ -155,8 +155,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_3_wabbajack_click_dowload_install.png').default}
-        alt="WJ press download install"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Licentia NEXT page in Wabbajack with Download and Install button"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
     
@@ -166,8 +166,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_4_wabbajack_initial_blank_installation.png').default}
-        alt="WJ blank install"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Initial Wabbajack installation window before setting paths"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -177,8 +177,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_5_wabbajack_start_installation.png').default}
-        alt="WJ start install"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Wabbajack install window with install and download paths configured"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -195,8 +195,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_5_wabbajack_error_example.png').default}
-        alt="WJ start install"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Example Wabbajack installation error with log viewer panel"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -226,8 +226,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     <img 
         src={require('./img/5-installation/5_4_6_wabbajack_installation_complete.png').default}
-        alt="WJ done install"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="Wabbajack installation complete message"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 

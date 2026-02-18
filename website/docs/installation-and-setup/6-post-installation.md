@@ -23,31 +23,31 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
     <img 
         src={require('./img/6-post-installation/6_0_1_skyrimse_properties.png').default}
         alt="SkyrimSE properties"
-        style={{ width:'auto', maxHeight:150 }}
+        style={{ maxHeight:150 }}
         className="zoomable"
     />
 
 2. In the newly opened _Properties_ window, navigate to `Compatibility` tab:
     <img 
         src={require('./img/6-post-installation/6_0_2_skyrimse_compatibility.png').default}
-        alt="SkyrimSE compatibility"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="SkyrimSE.exe Properties window on Compatibility tab"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
 3. Click on `Change High DPI settings`:
     <img 
         src={require('./img/6-post-installation/6_0_3_skyrimse_highdpi.png').default}
-        alt="SkyrimSE compatibility"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="SkyrimSE.exe Compatibility tab with Change high DPI settings button"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
 
 4. In the newly opened _High DPI Settings_ window tick `Override High DPI scaling behavior` **(1)**, in the dropdown list select `Application` **(2)**, and then click `OK` two times (for this window and the _Properties_ one that was in the background) to save your changes **(3)**:
     <img 
         src={require('./img/6-post-installation/6_0_4_skyrimse_application.png').default}
-        alt="SkyrimSE compatibility"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="High DPI settings window with Override and Application options enabled"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
 
@@ -57,8 +57,8 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
 To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to `Manage 3D settings` **(1)**, switch to `Program Settings` tab **(2)**, find `SkyrimSE.exe` in the drop-down list of programs **(3)**, set `Vertical sync` to `On` for it **(4)**, and click `Apply` to save the changes **(5)**:
     <img 
         src={require('./img/6-post-installation/6_0_5_vsync.png').default}
-        alt="VSync settings"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="NVIDIA Control Panel vertical sync settings for SkyrimSE.exe"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 :::
@@ -70,8 +70,8 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
 1. Navigate to your Licentia NEXT directory and **execute** `ModOrganizer.exe`:
     <img 
         src={require('./img/6-post-installation/6_1_1_mo2_start.png').default}
-        alt="MO2 start"
-        style={{ width:'auto', maxHeight:150 }}
+        alt="Mod Organizer 2 (MO2) executable in the Licentia NEXT folder"
+        style={{ maxHeight:150 }}
         className="zoomable"
     />
 
@@ -79,8 +79,8 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
     **IF YOU CAN'T FIND** the `ModOrganizer.exe` despite *Wabbajack* telling you the install finished successfully &mdash; for example your folder looks like this:
         <img 
             src={require('./img/6-post-installation/6_1_1_no_mod_organizer.png').default}
-            alt="No MO2"
-            style={{ width:'auto', maxHeight:300 }}
+            alt="Licentia NEXT folder example where Mod Organizer 2 (MO2) is missing"
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
     Go back to [Installation](installation#download-and-install-the-list) and keep re-installing _Licentia NEXT_ until you see that `ModOrganizer.exe` file appeared in your Licentia NEXT's folder.
@@ -93,8 +93,8 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
 3. In the top-right corner, make sure that `SKSE` is selected from the dropdown **(1)**, and click the Run button **(2)**:
     <img 
         src={require('./img/6-post-installation/6_1_3_mo2_run_the_game.png').default}
-        alt="MO2 run"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="Mod Organizer 2 (MO2) with SKSE selected and Run button highlighted"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
@@ -102,16 +102,16 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
     Wabbajack auto-detects and sets your **game resolution**, but if you wish to change it **manually/or if the game is launching with the wrong one** &mdash; select the `INI Editor` from the `Tools` menu along the icon bar of MO2:
         <img 
             src={require('./img/6-post-installation/6_1_3_mo2_change_resolution.png').default}
-            alt="MO2 ini editor"
-            style={{ width:'auto', maxHeight:150 }}
+            alt="Mod Organizer 2 (MO2) Tools menu with INI Editor option"
+            style={{ maxHeight:150 }}
             className="zoomable"
         />
 
     Select `SkyrimPrefs.ini` file. Scroll down until you see the `[Display]` header and look for the `iSize` values. Note that the TYPICAL ORDER IS REVERSED, the HEIGHT is listed BEFORE the WIDTH:
         <img 
             src={require('./img/6-post-installation/6_1_3_mo2_change_resolution_skyrimprefs.png').default}
-            alt="MO2 skyrimperfs"
-            style={{ width:'auto', maxHeight:300 }}
+            alt="SkyrimPrefs.ini display section with iSize values in Mod Organizer 2 INI Editor"
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -123,8 +123,8 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
     There's a game of `Flappy Dragon` that opens up while your Skyrim is loading:
     <img 
         src={require('./img/6-post-installation/6_1_4_flappy_dragon.png').default}
-        alt="Flappy Dragon"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="Flappy Dragon loading mini-game window while Skyrim initializes"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
     Don't worry, _you didn't just download half a terabyte of Flappy Dragon_!
@@ -159,7 +159,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_greetings_message.png').default}
             alt="Greetings message from automation script"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -174,7 +174,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_mods_config_messages.png').default}
             alt="Mod configuration in progress"
-            style={{ width:'auto', maxHeight:150 }}
+            style={{ maxHeight:150 }}
             className="zoomable"
         />
 
@@ -182,7 +182,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_our_config_messages.png').default}
             alt="Auto-configuration progress"
-            style={{ width:'auto', maxHeight:150 }}
+            style={{ maxHeight:150 }}
             className="zoomable"
         />
 
@@ -190,7 +190,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_auto_config_finished.png').default}
             alt="Finished message from automation script"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -198,7 +198,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_2_3_final_gift.png').default}
             alt="Divine blessing"
-            style={{ width:'auto', maxHeight:150 }}
+            style={{ maxHeight:150 }}
             className="zoomable"
         />
 
@@ -214,7 +214,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img
             src={require('./img/6-post-installation/6_5_find_note.png').default}
             alt="Start tips - Find the note"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -222,7 +222,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_5_read_note.png').default}
             alt="Start tips - Read the note"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -230,7 +230,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_5_shrine_of_akatosh.png').default}
             alt="Start tips - Shrine of Akatosh"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -238,14 +238,14 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_5_recommended_choice_1.png').default}
             alt="Start tips - Recommended choice step 1"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
         <img 
             src={require('./img/6-post-installation/6_5_recommended_choice_2.png').default}
             alt="Start tips - Recommended choice step 2"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -253,7 +253,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_5_door.png').default}
             alt="Start tips - Door"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -261,7 +261,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
         <img 
             src={require('./img/6-post-installation/6_5_door_void.png').default}
             alt="Start tips - Door Void"
-            style={{ width:'auto', maxHeight:300 }}
+            style={{ maxHeight:300 }}
             className="zoomable"
         />
 
@@ -269,7 +269,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
             <img 
                 src={require('./img/6-post-installation/6_5_recommended_choice_3.png').default}
                 alt="Start tips - Recommended choice step 3"
-                style={{ width:'auto', maxHeight:300 }}
+                style={{ maxHeight:300 }}
                 className="zoomable"
             />
 

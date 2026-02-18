@@ -43,7 +43,7 @@ You are on [your own](https://letmegoogleitforyou.com?q=how%20to%20turn%20on%20m
     <img 
         src={require('./img/controller_guide/1_1_mod_configuration.png').default}
         alt="Finding Mod Configuration in the menu"
-        style={{ width:'auto', maxHeight:200 }}
+        style={{ maxHeight:200 }}
         className="zoomable"
     />
 
@@ -51,7 +51,7 @@ You are on [your own](https://letmegoogleitforyou.com?q=how%20to%20turn%20on%20m
     <img 
         src={require('./img/controller_guide/8_MCM_Setup1.png').default}
         alt="MCM Recorder in the MCM"
-        style={{ width:'auto', maxHeight:200 }}
+        style={{ maxHeight:200 }}
         className="zoomable"
     />
 
@@ -59,7 +59,7 @@ You are on [your own](https://letmegoogleitforyou.com?q=how%20to%20turn%20on%20m
     <img 
         src={require('./img/controller_guide/9_MCM_Setup2.png').default}
         alt="Setup Controller in MCM"
-        style={{ width:'auto', maxHeight:200 }}
+        style={{ maxHeight:200 }}
         className="zoomable"
     />
 
@@ -93,7 +93,7 @@ All of the needed mods are located inside this separator in `Mod Organizer 2`:
     <img 
         src={require('./img/controller_guide/10_Controller_Mods.png').default}
         alt="List of mods for controller setup"
-        style={{ width:'auto', maxHeight:300 }}
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -114,15 +114,15 @@ This is just a reference section to verify that your `MCM` settings look like th
     <img 
         src={require('./img/controller_guide/3_set_controls.png').default}
         alt="Sneak is set to B"
-        style={{ width:'auto', maxHeight:300 }}
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
 2. Verify **CGO** settings:
     <img 
         src={require('./img/controller_guide/4_setup_CGO.png').default}
-        alt="CGO settings"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Combat Gameplay Overhaul (CGO) controller keybind settings"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -132,8 +132,8 @@ This is just a reference section to verify that your `MCM` settings look like th
 3. Verify **The Ultimate Dodge Mod** settings:
     <img 
         src={require('./img/controller_guide/5_setup_The_Ultimate_Dodge_Mod.png').default}
-        alt="TUDM settings"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="The Ultimate Dodge Mod (TUDM) controller settings"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
@@ -143,8 +143,8 @@ This is just a reference section to verify that your `MCM` settings look like th
 4. Verify **Serios Cycle Hotkeys** settings:
     <img 
         src={require('./img/controller_guide/6_setup_Serios_Cycle_Hotkeys.png').default}
-        alt="SCH settings"
-        style={{ width:'auto', maxHeight:200 }}
+        alt="Serio's Cycle Hotkeys (SCH) controller settings"
+        style={{ maxHeight:200 }}
         className="zoomable"
     />
 
@@ -153,8 +153,8 @@ This is just a reference section to verify that your `MCM` settings look like th
 5. Verify **True Directional Movement** settings:
     <img 
         src={require('./img/controller_guide/7_setup_True_Directional_Movement.png').default}
-        alt="TDM settings"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="True Directional Movement (TDM) controller settings"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 

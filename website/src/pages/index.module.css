@@ -86,14 +86,17 @@ html[data-theme='light'] .heroOverlay {
 }
 
 .heroLogo {
-  max-width: min(90%, 560px);
+  width: min(90%, 400px);
+  max-width: 100%;
   height: auto;
   margin-inline: auto;
   display: block;
 
-  /* GOLD GLOW */
+  /* Static logo glow */
   filter:
-    drop-shadow(0 0 18px rgba(250, 203, 53, .55)) drop-shadow(0 0 36px rgba(250, 203, 53, .35)) drop-shadow(0 6px 24px rgba(0, 0, 0, .35));
+    drop-shadow(0 0 18px rgba(250, 203, 53, .55))
+    drop-shadow(0 0 36px rgba(250, 203, 53, .35))
+    drop-shadow(0 6px 24px rgba(0, 0, 0, .35));
 }
 
 /* Shared hero/feature lead text styling (dark mode default) */
@@ -174,16 +177,19 @@ html[data-theme='light'] .description {
 .ctaSolid {
   min-width: 180px;
   max-width: 180px;
+  transform: translateY(0);
+  transition:
+    transform var(--licentia-interact-duration) var(--licentia-interact-ease),
+    box-shadow var(--licentia-interact-duration) var(--licentia-interact-ease);
 }
 
 /* subtle gold glow on hover */
 .cta:hover,
 .ctaSolid:hover {
   box-shadow:
-    0 0 12px rgba(250, 203, 53, .35),
-    0 0 24px rgba(250, 203, 53, .25);
+    0 0 10px var(--licentia-glow-hover-1),
+    0 0 20px var(--licentia-glow-hover-2);
   transform: translateY(-1px);
-  transition: box-shadow .2s ease, transform .2s ease;
 }
 
 /* -------- ICON FEATURES STRIP -------- */
@@ -470,5 +476,12 @@ html[data-theme='light'] .description {
 
   .heroBg::after {
     animation: none !important;
+  }
+
+  .heroLogo {
+    filter:
+      drop-shadow(0 0 18px rgba(250, 203, 53, .55))
+      drop-shadow(0 0 36px rgba(250, 203, 53, .35))
+      drop-shadow(0 6px 24px rgba(0, 0, 0, .35)) !important;
   }
 }

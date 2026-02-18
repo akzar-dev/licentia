@@ -50,16 +50,16 @@ It can be run without it, but it's **highly recommended** to patch it.
 3. Run `Large Address Aware.exe`:
     <img 
         src={require('./img/nemesis_guide/1_1_run_LAA.png').default}
-        alt="Running LAA"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="Launch the Large Address Aware (LAA) application"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
 4. When the program is opened, click `Add` -> `Files`:
     <img 
         src={require('./img/nemesis_guide/1_2_LAA_add_file.png').default}
-        alt="Adding file to LAA"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="Open Add > Files menu inside Large Address Aware"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
     
@@ -67,24 +67,24 @@ It can be run without it, but it's **highly recommended** to patch it.
 
     <img 
         src={require('./img/nemesis_guide/1_3_LAA_select_nemesis_exe.png').default}
-        alt="Selecting nemesis exe for LAA"
-        style={{ width:'auto', maxHeight:300 }}
+        alt="Select Nemesis Unlimited Behavior Engine executable in LAA"
+        style={{ maxHeight:300 }}
         className="zoomable"
     />
 
 5. Now in `LAA` window, click on the tickbox next to `Nemesis Unlimited Behavior Engine.exe` _(1)_, then open `With Selected` menu _(2)_ and click `Force Large Address Aware` _(3)_:
     <img 
         src={require('./img/nemesis_guide/1_4_LAA_add_flag_to_nemesis.png').default}
-        alt="Setting LAA flag"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="Enable Force Large Address Aware for Nemesis executable"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
 
 6. Now on the right side of the window make sure that field `LAA` is set to `True`:
     <img 
         src={require('./img/nemesis_guide/1_5_LAA_flag_added.png').default}
-        alt="Checking LAA flag"
-        style={{ width:'auto', maxHeight:150 }}
+        alt="Verify LAA status is set to True for Nemesis executable"
+        style={{ maxHeight:150 }}
         className="zoomable"
     />
 
@@ -97,16 +97,16 @@ It can be run without it, but it's **highly recommended** to patch it.
 1. Open your `MO2` and in the left pane find the mod called `Licentia NEXT - Nemesis Output`, right-click on it, press `Open in Explorer`:
     <img 
         src={require('./img/nemesis_guide/2_1_nemesis_output.png').default}
-        alt="Checking LAA flag"
-        style={{ width:'auto', maxHeight:150 }}
+        alt="Locate Licentia NEXT - Nemesis Output mod entry in MO2"
+        style={{ maxHeight:150 }}
         className="zoomable"
     />
 
 2. In the newly opened File Explorer window, navigate inside the `Nemesis_Engine\cache` folder and **DELETE** all files inside it:
     <img 
         src={require('./img/nemesis_guide/2_2_nemesis_output_delete_cache.png').default}
-        alt="Checking LAA flag"
-        style={{ width:'auto', maxHeight:150 }}
+        alt="Open Nemesis_Engine cache folder and delete all files inside"
+        style={{ maxHeight:150 }}
         className="zoomable"
     />
 
@@ -123,8 +123,8 @@ In `MO2`, in top right corner of the window, click on the dropdown menu and sele
 
 <img 
     src={require('./img/nemesis_guide/3_1_run_nemesis_from_mo2.png').default}
-    alt="Opening Nemesis in MO2"
-    style={{ width:'auto', maxHeight:150 }}
+    alt="Launch Nemesis Unlimited Behavior Engine from MO2 executable dropdown"
+    style={{ maxHeight:150 }}
     className="zoomable"
 />
 
@@ -154,8 +154,8 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 
     <img 
         src={require('./img/nemesis_guide/4_1_select_patches.png').default}
-        alt="Selecting Nemesis patches"
-        style={{ width:'auto', maxHeight:350 }}
+        alt="Nemesis patch checklist with required patches selected"
+        style={{ maxHeight:351 }}
         className="zoomable"
     />
 
@@ -166,8 +166,8 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 2. Click `Update Engine`:
     <img 
         src={require('./img/nemesis_guide/4_2_update_engine.png').default}
-        alt="Updating Nemesis Engine"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="Click Update Engine in Nemesis window"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
 
@@ -175,8 +175,8 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 
     <img 
         src={require('./img/nemesis_guide/4_2_update_engine_done.png').default}
-        alt="Updating Nemesis Engine done"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="Update Engine process complete with update time shown in log"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
 
@@ -192,16 +192,16 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 1. Click `Launch Nemesis Behavior Engine`. 
     <img 
         src={require('./img/nemesis_guide/5_1_launch_engine.png').default}
-        alt="Launching Nemesis Engine"
-        style={{ width:'auto', maxHeight:250 }}
+        alt="Click Launch Nemesis Behavior Engine"
+        style={{ maxHeight:250 }}
         className="zoomable"
     />
 
     The tool will now _slowly_ integrate your animation files into the behaviors:
     <img 
         src={require('./img/nemesis_guide/5_1_engine_running.png').default}
-        alt="Nemesis Engine running"
-        style={{ width:'auto', maxHeight:220 }}
+        alt="Nemesis behavior generation currently running"
+        style={{ maxHeight:220 }}
         className="zoomable"
     />
 
@@ -221,8 +221,8 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 2. When you see that the engine is fully done (bar at the bottom reaches 100% and disappears, and the log says `Behavior generation complete`) - close `Nemesis` and return to `MO2`.
     <img 
         src={require('./img/nemesis_guide/5_1_engine_done.png').default}
-        alt="Nemesis Engine done"
-        style={{ width:'auto', maxHeight:220 }}
+        alt="Nemesis behavior generation complete message"
+        style={{ maxHeight:220 }}
         className="zoomable"
     />
 
@@ -232,7 +232,8 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
     But don't worry! You can just relaunch it and start from [step 4](#step-four--setup-behavior-patches-and-click-update-engine), it won't break anything.
     :::
 
-<details summary=":information_source: Here's some additional troubleshooting steps just in case">
+<details>
+<summary>:information_source: Here's some additional troubleshooting steps just in case</summary>
 
 Sometimes this step will never complete regardless of how many times you try and additional troubleshooting is needed.
 There are still options to fix this however! 
@@ -249,8 +250,8 @@ There are still options to fix this however!
 1. As the tool is now closed, in right MO2 pane in `Plugins` section you'll see that a wild `FNIS.esp` appeared at the end!
     <img 
         src={require('./img/nemesis_guide/6_1_fnis_in_plugins.png').default}
-        alt="Wild FNIS.esp"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="FNIS.esp appears in MO2 plugin list after Nemesis generation"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
@@ -259,16 +260,16 @@ There are still options to fix this however!
    - Right-click it, select `Open Origin in Explorer`:
         <img 
             src={require('./img/nemesis_guide/6_1_fnis_open_origin.png').default}
-            alt="FNIS.esp open origin"
-            style={{ width:'auto', maxHeight:100 }}
+            alt="Use Open Origin in Explorer for FNIS.esp plugin"
+            style={{ maxHeight:100 }}
             className="zoomable"
         />
 
    - Delete the `FNIS.esp` in the opened explorer window:
         <img 
             src={require('./img/nemesis_guide/6_1_fnis_delete.png').default}
-            alt="Deleting FNIS.esp"
-            style={{ width:'auto', maxHeight:200 }}
+            alt="Delete FNIS.esp file in File Explorer"
+            style={{ maxHeight:200 }}
             className="zoomable"
         />
 

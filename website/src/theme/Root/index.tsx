@@ -3,10 +3,18 @@ import type { PropsWithChildren } from 'react';
 
 const resizeObservers = new WeakMap<HTMLImageElement, ResizeObserver>();
 
+function isHomePage(): boolean {
+  if (typeof window === 'undefined') return false;
+  const p = window.location.pathname.toLowerCase();
+  return p === '/' || p === '/index.html';
+}
+
 function shouldSkip(img: HTMLImageElement): boolean {
   return (
+    !isHomePage() ||
     img.classList.contains('shot') ||
     !!img.closest('.shotFrame') ||
+    !!img.closest('.theme-doc-markdown') ||
     !!img.closest('.navbar') ||
     !!img.closest('footer') ||
     !!img.closest('h1') ||
@@ -18,8 +26,8 @@ function reserveSize(img: HTMLImageElement): { width: string; height: string } {
   const parentWidth = img.parentElement?.clientWidth ?? 0;
   const attrW = Number(img.getAttribute('width') || 0);
   const attrH = Number(img.getAttribute('height') || 0);
-  const attrRatio = attrW > 0 && attrH > 0 ? attrW / attrH : 0;
   const rect = img.getBoundingClientRect();
+
   if (rect.width > 0 && rect.height > 0) {
     return { width: `${Math.round(rect.width)}px`, height: `${Math.round(rect.height)}px` };
   }
@@ -38,21 +46,9 @@ function reserveSize(img: HTMLImageElement): { width: string; height: string } {
     const width = parentWidth > 0 ? Math.min(parentWidth, 320) : 320;
     return { width: `${Math.round(width)}px`, height: '80px' };
   }
-  if (img.closest('.theme-doc-markdown')) {
-    // Most guide screenshots are close to 16:9. Keep placeholder near final shape
-    // to minimize layout jump before decode.
-    const ratio = attrRatio || 16 / 9;
-    const width = rect.width > 0
-      ? rect.width
-      : parentWidth > 0
-        ? Math.min(parentWidth, 860)
-        : 640;
-    const h = Math.max(90, Math.round(width / ratio));
-    return { width: `${Math.round(width)}px`, height: `${h}px` };
-  }
 
   if (rect.width > 0) {
-    const ratio = attrRatio || 16 / 9;
+    const ratio = attrW > 0 && attrH > 0 ? attrW / attrH : 16 / 9;
     const guessed = Math.max(60, Math.round(rect.width / ratio));
     return { width: `${Math.round(rect.width)}px`, height: `${guessed}px` };
   }
@@ -60,14 +56,23 @@ function reserveSize(img: HTMLImageElement): { width: string; height: string } {
   return { width: '220px', height: '124px' };
 }
 
+function isHomeHeroLogo(img: HTMLImageElement): boolean {
+  const src = (img.currentSrc || img.getAttribute('src') || '').toLowerCase();
+  return src.includes('/img/licentia-social-card.webp') || src.includes('/img/logo.png');
+}
+
 function positionSkeleton(img: HTMLImageElement, skeleton: HTMLSpanElement, parent: HTMLElement): void {
   const imgRect = img.getBoundingClientRect();
   const parentRect = parent.getBoundingClientRect();
   const cs = window.getComputedStyle(img);
   const fallback = reserveSize(img);
-
-  const top = Math.max(0, imgRect.top - parentRect.top);
-  const left = Math.max(0, imgRect.left - parentRect.left);
+  const hasRect = imgRect.width > 0 || imgRect.height > 0;
+  const top = hasRect
+    ? Math.max(0, imgRect.top - parentRect.top)
+    : Math.max(0, img.offsetTop);
+  const left = hasRect
+    ? Math.max(0, imgRect.left - parentRect.left)
+    : Math.max(0, img.offsetLeft);
   const width = imgRect.width > 0 ? imgRect.width : Number.parseFloat(fallback.width) || 220;
   const height = imgRect.height > 0 ? imgRect.height : Number.parseFloat(fallback.height) || 124;
 
@@ -75,7 +80,10 @@ function positionSkeleton(img: HTMLImageElement, skeleton: HTMLSpanElement, pare
   skeleton.style.left = `${Math.round(left)}px`;
   skeleton.style.width = `${Math.round(width)}px`;
   skeleton.style.height = `${Math.round(height)}px`;
-  skeleton.style.borderRadius = cs.borderRadius;
+  const computedRadius = cs.borderRadius;
+  skeleton.style.borderRadius = isHomeHeroLogo(img) && (!computedRadius || computedRadius === '0px')
+    ? '10px'
+    : computedRadius;
 }
 
 function watchSkeletonSize(img: HTMLImageElement, skeleton: HTMLSpanElement, parent: HTMLElement): void {
@@ -116,7 +124,11 @@ function clearSkeleton(img: HTMLImageElement): void {
 }
 
 function bindImageState(img: HTMLImageElement, forceRebind = false): void {
-  if (shouldSkip(img)) return;
+  if (shouldSkip(img)) {
+    clearSkeleton(img);
+    delete img.dataset.skeletonBound;
+    return;
+  }
   if (!forceRebind && img.dataset.skeletonBound === '1') return;
   img.dataset.skeletonBound = '1';
 

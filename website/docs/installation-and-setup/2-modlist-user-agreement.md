@@ -16,8 +16,8 @@ This is some sort of an agreement of the parties, them being **us** *(Licentia T
 
 Before you embark on your exciting _Wabbajack_ NSFW journey, **please read it** to understand _what_ you're getting into 👷
 
-<details summary="Click me">
-
+<details>
+<summary>Click me</summary>
 1. **This is a modlist, not a professionally made game**
 
    - Please keep in mind that _Licentia NEXT_ is constant works in progress, an absolute amateur effort to harmonize the work of dozens if not hundreds of amateur mod authors who have little interest in verifying that their creations work in every possible setup.

@@ -51,8 +51,8 @@ There will be a list of options available, select `Create Empty Mod`.
 
 <img 
     src={require('./img/bodyslide_guide/1_empty_mod.png').default}
-    alt="Create Empty Mods"
-    style={{ width:'auto', maxHeight:300 }}
+    alt="Create an Empty Mod for Bodyslide output"
+    style={{ maxHeight:300 }}
     className="zoomable"
 />
 
@@ -66,23 +66,23 @@ Upon updating the mod will be deactivated and moved to the bottom of the last se
 
 <img 
     src={require('./img/bodyslide_guide/2_create_mod.png').default}
-    alt="Name Custom Mod"
-    style={{ width:'auto', maxHeight:200 }}
+    alt="Name Custom Mod for Bodyslide output"
+    style={{ maxHeight:200 }}
     className="zoomable"
 />
 
-The new empty mod you made will be created under the `Bodyslide Outputs` Separator, as long as your custom mod is below _Licentia NEXT Bodyslide Output_ your changes will override default outfits.
+The new empty mod you made will be created under the `Bodyslide Outputs` Separator, as long as your custom mod is below _Licentia NEXT Bodyslide Output_ your changes will override default Bodyslide outputs.
 
 ---
 
 ## Step :two: &mdash; Run Bodyslide
 
-Once you have created your Output mod head over to the Top Right of MO2 to the launch section. Open the dropdown and select `BodySlide x64`, then run the program.
+Once you have created your **Output mod** head over to the Top Right of `Mod Organizer 2` to the launch section. Open the dropdown and select `BodySlide x64`, then run the program.
 
 <img 
     src={require('./img/bodyslide_guide/3_run_bodyslide.png').default}
-    alt="Run Bodyslide"
-    style={{ width:'auto', maxHeight:300 }}
+    alt="Launching BodySlide x64 from Mod Organizer 2"
+    style={{ maxHeight:300 }}
     className="zoomable"
 />
 
@@ -101,12 +101,12 @@ Paste your Installation Path in the Game Data path for Skyrim SE, then hit `OK` 
 
 ## Step :three: &mdash; Select your respective Outfits and Preset
 
-On the top right of the interface there will be two search bars for Filter Groups and Filter Outfits, select the search icon for Filter Groups and select Choose Groups.
+On the top right of the interface there will be two search bars for `Filter Groups` and `Filter Outfits`, select the search icon for `Filter Groups` and select `Choose Groups`:
 
 <img 
     src={require('./img/bodyslide_guide/4_choose_groups.png').default}
-    alt="Select Groups"
-    style={{ width:'auto', maxHeight:200 }}
+    alt="BodySlide Choose Groups dialog for outfit filtering"
+    style={{ maxHeight:200 }}
     className="zoomable"
 />
 
@@ -123,47 +123,56 @@ A list will open with various groups to choose outfits for. For **Female** selec
 <img 
     src={require('./img/bodyslide_guide/4a_group_sample.png').default}
     alt="Group Examples 1"
-    style={{ width:'auto', maxHeight:600 }}
+    style={{ maxHeight:600 }}
     className="zoomable"
 /> <img 
     src={require('./img/bodyslide_guide/4a_group_sample2.png').default}
     alt="Group Examples 2"
-    style={{ width:'auto', maxHeight:600 }}
+    style={{ maxHeight:600 }}
     className="zoomable"
 />
 
 :::warning
-As of version `13.4.1` **Dismemberment Framework** has been added, and you will need to manually build outfits `[DF] [CBBE 3BBB/Himbo] Naked Female/Male Dismembered Addons` to `Zeroed Sliders`/`HIMBO Zero for OBody`. These two outfits will be found at the bottom of the `Unassigned` Group.
+Since version `13.4.1` of _Licentia_ **Dismemberment Framework** has been added, and you will need to manually build outfits `[DF] [CBBE 3BBB/Himbo] Naked Female/Male Dismembered Addons` to `Zeroed Sliders`/`HIMBO Zero for OBody`. These two outfits will be found at the bottom of the `Unassigned` Group.
 :::
 
 :::note
-You do not need to select every group for building purposes, if you have the base groups selected for example 3BA or HIMBO, Bodyslide will automatically use all the groups containing the names of your selected groups.
+You do not need to select every group for building purposes, if you have the base groups selected for example `3BA` or `HIMBO`, _Bodyslide_ will automatically use all the groups containing the names of your selected groups.
 
-However, the group Unassigned is excluded from this search as previously detailed with building Dismemberment Framework and there is a small range of outfits for CBBE/3BBB and Himbo that must be manually selected in Unassigned. You can easily do this process by using the `Filter Outfits` search bar at the very top right next to Groups, and search for CBBE, then 3BBB and build those two sets with `Zeroed Sliders`, then search for Himbo and build those with `Himbo Zero for OBody`.
-<details summary="Unassigned Group Example">
+However, the group `Unassigned` is excluded from this search as previously detailed with building `Dismemberment Framework` and there is a small range of outfits for `CBBE/3BBB` and `Himbo` that must be manually selected in `Unassigned`. 
+
+You can easily do this process by using the `Filter Outfits` search bar at the very top right next to `Groups`, and search for `CBBE`, then `3BBB` and build those two sets with `Zeroed Sliders`, then search for `Himbo` and build those with `Himbo Zero for OBody`.
+<details>
+<summary>Unassigned Group Example</summary>
     <img 
         src={require('./img/bodyslide_guide/4c_unassigned.png').default}
         alt="Unassigned Example"
-        style={{ width:'auto', maxHeight:900 }}
+        style={{ maxHeight:899 }}
         className="zoomable"
     />
 </details>
 
-<details summary="Note for building Himbo Groups">
+<details>
+<summary>Note for building Himbo Groups</summary>
 
-    Building Himbo will open the conflict resolution window for IA Asdafa Tweaks, if you batch build with only Himbo selected ignoring conflicts then once that is finished build with only the Asdafa Overrides group selected you can build the overrides without needing to resolve conflicts.
+    Building `Himbo` will open the conflict resolution window for `IA Asdafa Tweaks`, if you batch build with only `Himbo` selected ignoring conflicts then once that is finished build with only the `Asdafa Overrides` group selected you can build the overrides without needing to resolve conflicts.
 </details>
 :::
 
-Once you have your Outfits selected for the body you wish to build, you will need to select a Preset from the dropdown at the top of the interface to build your outfits with. Due to the list containing OBody you will need to use the following presets respsectively for Female or Male. `- Zeroed Sliders -` for Female characters, or `Himbo Zero for OBody` for Male characters.
+Once you have your `Outfits` selected for the body you wish to build, you will need to select a `Preset` from the dropdown at the top of the interface to build your outfits with. 
+
+Due to the list containing ``OBody` you will need to use the following presets respsectively for Female or Male:
+- `- Zeroed Sliders -` for Female characters;
+- `Himbo Zero for OBody` for Male characters.
+
 You can use any preset in the list or one you have downloaded, make sure you build all respective outfits to the same preset.
 
-For example here are the default Female Presets available in Licentia NEXT, with the default preset selected:
+For example here are the default Female Presets available in _Licentia NEXT_, with the default preset selected:
 
 <img 
     src={require('./img/bodyslide_guide/4b_preset_sample.png').default}
     alt="Preset Examples"
-    style={{ width:'auto', maxHeight:300 }}
+    style={{ maxHeight:300 }}
     className="zoomable"
 />
 
@@ -171,15 +180,15 @@ For example here are the default Female Presets available in Licentia NEXT, with
 
 ## Step :four: &mdash; Batch Build Outfits to the Output Mod
 
-Once you have chosen your desired outfits to build for your selected body and preset, it is time to Batch Build the outfits to your output.
+Once you have chosen your desired outfits to build for your selected body and preset, it is time to `Batch Build` the outfits to your output.
 
-On the bottom left of the Interface there is the button to Batch Build, Build Morphs, and select alternatives.
+On the bottom left of the Interface there is the button to `Batch Build`, `Build Morphs`, and select alternatives.
 Tick the checkbox for the previewed outfit path, and tick `Build Morphs`.
 
 <img 
     src={require('./img/bodyslide_guide/5_batch_build.png').default}
-    alt="Batch Build"
-    style={{ width:'auto', maxHeight:100 }}
+    alt="BodySlide Batch Build button and Build Morphs option"
+    style={{ maxHeight:100 }}
     className="zoomable"
 />
 

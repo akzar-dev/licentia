@@ -11,6 +11,7 @@ const SITE_ROOT = path.resolve(__dirname, '..');
 const SHOWCASE_DIR = path.join(SITE_ROOT, 'static', 'img', 'screenshots');
 const STATIC_PAGES_DIR = path.join(SITE_ROOT, 'static', 'img', 'pages');
 const STATIC_IMG_DIR = path.join(SITE_ROOT, 'static', 'img');
+const TEAM_DIR = path.join(STATIC_PAGES_DIR, 'team');
 const DOCS_DIR = path.join(SITE_ROOT, 'docs');
 const CACHE_FILE = path.join(SITE_ROOT, '.image-opt-cache.json');
 const CACHE_VERSION = 'optimize-images-v2';
@@ -108,6 +109,11 @@ function isShowcaseCandidate(fileName) {
   return ['.png', '.jpg', '.jpeg', '.webp'].includes(ext);
 }
 
+function isTeamCandidate(fileName) {
+  const ext = path.extname(fileName).toLowerCase();
+  return ['.png', '.jpg', '.jpeg', '.gif', '.webp'].includes(ext);
+}
+
 function isPng(filePath) {
   return path.extname(filePath).toLowerCase() === '.png';
 }
@@ -154,6 +160,84 @@ async function optimizeShowcaseAndRename() {
   }
 
   return { converted, deleted };
+}
+
+async function optimizeTeamAvatars(cache) {
+  if (!(await exists(TEAM_DIR))) {
+    console.log('[optimize-images] Team dir not found, skipping.');
+    return { converted: 0, optimizedWebp: 0, deleted: 0, unchangedWebp: 0, cacheHits: 0, savedBytes: 0 };
+  }
+
+  const entries = await fs.readdir(TEAM_DIR, { withFileTypes: true });
+  const candidates = entries
+    .filter((e) => e.isFile())
+    .map((e) => e.name)
+    .filter((name) => isTeamCandidate(name))
+    .sort((a, b) => a.localeCompare(b));
+
+  let converted = 0;
+  let optimizedWebp = 0;
+  let unchangedWebp = 0;
+  let deleted = 0;
+  let cacheHits = 0;
+  let savedBytes = 0;
+
+  for (const name of candidates) {
+    const inPath = path.join(TEAM_DIR, name);
+    const ext = path.extname(name).toLowerCase();
+
+    if (ext === '.webp') {
+      const result = await optimizeWebpIfSmaller(inPath, cache);
+      if (result.cacheHit) {
+        cacheHits += 1;
+      } else if (result.changed) {
+        optimizedWebp += 1;
+        savedBytes += result.savedBytes;
+        console.log(
+          `[team:webp] optimized ${toPosix(path.relative(SITE_ROOT, inPath))} (-${result.savedBytes} bytes)${dryRun ? ' (dry-run)' : ''}`
+        );
+      } else {
+        unchangedWebp += 1;
+      }
+      continue;
+    }
+
+    const outName = `${path.basename(name, ext)}.webp`;
+    const outPath = path.join(TEAM_DIR, outName);
+    const input = await fs.readFile(inPath);
+    const inputHash = hashBuffer(input);
+    if (isCacheHit(cache, inPath, inputHash)) {
+      cacheHits += 1;
+      continue;
+    }
+
+    const animated = ext === '.gif';
+    const pipeline = sharp(input, animated ? { animated: true } : undefined);
+    const webpBuffer = await pipeline
+      .resize({ width: 320, height: 320, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 82, effort: 6 })
+      .toBuffer();
+
+    const outExists = await exists(outPath);
+    const prevOutSize = outExists ? (await fs.stat(outPath)).size : 0;
+
+    if (!dryRun) {
+      await fs.writeFile(outPath, webpBuffer);
+      await fs.unlink(inPath);
+    }
+
+    converted += 1;
+    deleted += 1;
+    savedBytes += Math.max(0, input.length - webpBuffer.length) + Math.max(0, prevOutSize - webpBuffer.length);
+    setCacheEntry(cache, inPath, inputHash);
+    setCacheEntry(cache, outPath, hashBuffer(webpBuffer));
+
+    console.log(
+      `[team] ${toPosix(path.relative(SITE_ROOT, inPath))} -> ${toPosix(path.relative(SITE_ROOT, outPath))}${animated ? ' (animated)' : ''}${dryRun ? ' (dry-run)' : ''}`
+    );
+  }
+
+  return { converted, optimizedWebp, deleted, unchangedWebp, cacheHits, savedBytes };
 }
 
 async function optimizePngLossless(filePath, cache) {
@@ -275,6 +359,7 @@ async function main() {
 
   const cache = await loadCache();
   const showcase = await optimizeShowcaseAndRename();
+  const team = await optimizeTeamAvatars(cache);
   let others = { optimized: 0, skipped: 0, cacheHits: 0, savedBytes: 0 };
   let webp = { optimized: 0, unchanged: 0, missing: 0, cacheHits: 0, savedBytes: 0 };
   if (!showcaseOnly) {
@@ -287,6 +372,12 @@ async function main() {
   console.log('[optimize-images] Done.');
   console.log(`[optimize-images] Showcase converted: ${showcase.converted}`);
   console.log(`[optimize-images] Showcase source files removed: ${showcase.deleted}`);
+  console.log(`[optimize-images] Team converted to WEBP: ${team.converted}`);
+  console.log(`[optimize-images] Team WEBP optimized: ${team.optimizedWebp}`);
+  console.log(`[optimize-images] Team WEBP unchanged: ${team.unchangedWebp}`);
+  console.log(`[optimize-images] Team source files removed: ${team.deleted}`);
+  console.log(`[optimize-images] Team cache hits: ${team.cacheHits}`);
+  console.log(`[optimize-images] Team total bytes saved: ${team.savedBytes}`);
   if (!showcaseOnly) {
     console.log(`[optimize-images] Other PNG optimized: ${others.optimized}`);
     console.log(`[optimize-images] Other PNG unchanged/skipped: ${others.skipped}`);

@@ -9,6 +9,53 @@ const config: Config = {
   tagline: 'Home 🏠',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:site_name',
+        content: 'Licentia NEXT - Official Website',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'application-name',
+        content: 'Licentia NEXT - Official Website',
+      },
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Licentia NEXT - Official Website',
+        alternateName: 'Licentia NEXT',
+        url: 'https://licentia.quest/',
+      }),
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Licentia NEXT',
+        url: 'https://licentia.quest/',
+        logo: 'https://licentia.quest/img/logo.png',
+        sameAs: [
+          'https://github.com/akzar-dev/licentia',
+          'https://discord.gg/vermishub',
+          'https://www.nexusmods.com/skyrimspecialedition/mods/132744',
+        ],
+      }),
+    },
+  ],
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -50,6 +97,11 @@ const config: Config = {
           // editUrl:
           //   'https://github.com/akzar-dev/licentia/edit/main/website/',
           // showLastUpdateTime: true,
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/search', '/search/'],
         },
         blog: false,
         theme: {
@@ -145,7 +197,7 @@ const config: Config = {
           href: 'https://loadorderlibrary.com/lists/licentia-next',
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/akzar-dev">akzar</a> and Licentia team`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/akzar-dev">akzar</a> and <a href="/team">Licentia team</a>`,
     },
     prism: {
       theme: prismThemes.github,

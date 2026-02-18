@@ -28,11 +28,10 @@ const HERO_BG_LIGHT = '/img/pages/licentia-social-card-bg-light.webp';
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
   const { colorMode } = useColorMode();
-  const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
+  const [heroBgLoaded, setHeroBgLoaded] = React.useState(true);
 
   React.useEffect(() => {
     const bg = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
-    setHeroBgLoaded(false);
     const img = new Image();
     img.onload = () => setHeroBgLoaded(true);
     img.onerror = () => setHeroBgLoaded(true);
@@ -455,7 +454,7 @@ function Showcase() {
                   {!isLoaded && <span className={styles.shotSkeleton} aria-hidden="true" />}
                   <img
                     src={src}
-                    alt={`screenshot ${i + 1}`}
+                    alt={`Licentia NEXT showcase screenshot ${i + 1}`}
                     className={clsx('zoomable', styles.shot, isLoaded && styles.shotLoaded)}
                     loading="eager"
                     decoding="sync"

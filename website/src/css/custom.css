@@ -34,6 +34,13 @@
 
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
+
+  /* Shared micro-interaction tokens */
+  --licentia-interact-duration: 180ms;
+  --licentia-interact-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --licentia-glow-hover-1: rgba(250, 203, 53, .36);
+  --licentia-glow-hover-2: rgba(250, 203, 53, .24);
+  --licentia-separator-core: color-mix(in oklab, var(--ifm-color-primary-dark) 68%, var(--ifm-color-emphasis-700) 32%);
 }
 
 /* ---------- Dark theme ---------- */
@@ -56,6 +63,7 @@
   --ifm-footer-background-color: #242526;
 
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.06);
+  --licentia-separator-core: color-mix(in oklab, var(--ifm-color-primary) 60%, var(--ifm-color-emphasis-300) 40%);
 }
 
 /* =========================
@@ -412,6 +420,30 @@ h2 {
   NAVBAR MEDIUM-WIDTH FIT
   (prevents overlap before mobile hamburger breakpoint)
   ========================= */
+/* Top-left logo hover micro-interaction */
+.navbar__brand {
+  transition: none;
+}
+
+.navbar__logo {
+  overflow: visible;
+}
+
+.navbar__logo img {
+  transition:
+    transform var(--licentia-interact-duration) var(--licentia-interact-ease),
+    filter var(--licentia-interact-duration) var(--licentia-interact-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navbar__brand:hover .navbar__logo img {
+    transform: scale(1.025);
+    filter:
+      drop-shadow(0 0 9px var(--licentia-glow-hover-1))
+      drop-shadow(0 0 18px var(--licentia-glow-hover-2));
+  }
+}
+
 @media (max-width: 1240px) and (min-width: 997px) {
   .navbar__inner {
     gap: 0.25rem;
@@ -452,7 +484,7 @@ h2 {
 }
 
 /* =========================
-   GLOBAL IMAGE SKELETONS
+   HOMEPAGE IMAGE SKELETONS
    ========================= */
 .img-inline-skeleton {
   position: absolute;
@@ -471,12 +503,12 @@ h2 {
   transition: opacity .12s linear;
 }
 
-img.img-loading:not(.shot) {
+img.img-loading {
   opacity: 0 !important;
   transition: opacity .12s linear;
 }
 
-img.img-loaded:not(.shot) {
+img.img-loaded {
   opacity: 1;
   transition: opacity .12s linear;
 }
@@ -507,6 +539,18 @@ img.img-loaded:not(.shot) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .navbar__brand,
+  .navbar__logo img {
+    transition: none !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .navbar__brand:hover .navbar__logo img {
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
   .img-inline-skeleton {
     animation: none !important;
   }
@@ -549,4 +593,42 @@ img.img-loaded:not(.shot) {
   margin: 0;
   font-size: 0.94rem;
   color: var(--ifm-color-emphasis-700);
+}
+
+/* =========================
+   MARKDOWN HORIZONTAL RULE
+   ========================= */
+:where(.theme-doc-markdown, .markdown, [class*='markdown'], main article) hr {
+  margin: 1.4rem 0 0.9rem !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  background: transparent !important;
+  height: 0 !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+}
+
+:where(.theme-doc-markdown, .markdown, [class*='markdown'], main article) hr::after {
+  content: "";
+  display: block;
+  width: min(980px, 98%);
+  height: 2.5px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 4%,
+    var(--licentia-separator-core) 50%,
+    transparent 96%,
+    transparent 100%
+  );
+}
+
+/* =========================
+   DOC SCREENSHOT STABILITY
+   ========================= */
+.theme-doc-markdown img.zoomable {
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }

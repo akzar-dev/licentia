@@ -40,16 +40,16 @@ These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
 1. Open your `MO2`, in left pane find mod called `Licentia NEXT - Synthesis Output` and disable it:
     <img 
         src={require('./img/synthesis_guide/1_1_disabling_synthesis_output_mo2.png').default}
-        alt="Disabling LN synthesis output in MO2"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="Disabling Licentia NEXT Synthesis output in Mod Organizer 2 (MO2)"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
 2. In right section with plugins, scroll to the bottom and disable these plugins (we will enable them again later):
     <img 
         src={require('./img/synthesis_guide/1_2_disabling_plugins_mo2.png').default}
-        alt="Disabling plugins in MO2"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="Disabling Synthesis plugins in Mod Organizer 2 (MO2)"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
@@ -71,8 +71,8 @@ You would need `.NET 8` SDK installed on your system for Synthesis to run. You c
 In `MO2`, in top right corner of the window, click on the dropdown menu and select `Synthesis`, then click `Run`:
     <img 
         src={require('./img/synthesis_guide/2_running_synthesis_in_mo2.png').default}
-        alt="Opening Synthesis in MO2"
-        style={{ width:'auto', maxHeight:100 }}
+        alt="Opening Synthesis from Mod Organizer 2 (MO2)"
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
@@ -86,7 +86,7 @@ When `Synthesis` is launched, check out the left pane with patches. They should 
         <img 
             src={require('./img/synthesis_guide/3_1_synthesis0.png').default}
             alt="Synthesis 0 patch list"
-            style={{ width:'auto', maxHeight:150 }}
+            style={{ maxHeight:150 }}
             className="zoomable"
         />
 
@@ -94,7 +94,7 @@ When `Synthesis` is launched, check out the left pane with patches. They should 
         <img 
             src={require('./img/synthesis_guide/3_2_synthesis1.png').default}
             alt="Synthesis 1 patch list"
-            style={{ width:'auto', maxHeight:150 }}
+            style={{ maxHeight:150 }}
             className="zoomable"
         />
 
@@ -102,7 +102,7 @@ When `Synthesis` is launched, check out the left pane with patches. They should 
         <img 
             src={require('./img/synthesis_guide/3_3_synthesis2.png').default}
             alt="Synthesis 2 patch list"
-            style={{ width:'auto', maxHeight:170 }}
+            style={{ maxHeight:170 }}
             className="zoomable"
         />
 
@@ -136,7 +136,7 @@ Failing to do that will break consistency of the patches!
     <img 
         src={require('./img/synthesis_guide/5_1_creating_empty_mod_in_mo2.png').default}
         alt="Create Empty Mod"
-        style={{ width:'auto', maxHeight:100 }}
+        style={{ maxHeight:100 }}
         className="zoomable"
     />
 
@@ -154,7 +154,7 @@ Failing to do that will break consistency of the patches!
     <img 
         src={require('./img/synthesis_guide/5_2_overwrite.png').default}
         alt="Overwrite folder"
-        style={{ width:'auto', maxHeight:120 }}
+        style={{ maxHeight:120 }}
         className="zoomable"
     />
 
@@ -173,7 +173,7 @@ In right part of `MO2` just enable the plugins you disabled in Step :one:'s [sec
 The final picture should look like this *(only the names of plugins matter here, not numbers)*:
     <img 
         src={require('./img/synthesis_guide/6_final.png').default}
-        alt="Final MO2 setup"
-        style={{ width:'auto', maxHeight:150 }}
+        alt="Final Mod Organizer 2 (MO2) setup after Synthesis output installation"
+        style={{ maxHeight:150 }}
         className="zoomable"
     />
