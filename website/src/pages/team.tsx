@@ -72,10 +72,10 @@ export default function TeamPage(): React.JSX.Element {
         <meta property="og:description" content={TEAM_PAGE_DESCRIPTION} />
         <meta property="og:url" content={TEAM_PAGE_URL} />
         <meta property="og:image" content={TEAM_SOCIAL_IMAGE} />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content="Licentia Team" />
-        <meta property="twitter:description" content={TEAM_PAGE_DESCRIPTION} />
-        <meta property="twitter:image" content={TEAM_SOCIAL_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Licentia Team" />
+        <meta name="twitter:description" content={TEAM_PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={TEAM_SOCIAL_IMAGE} />
       </Head>
       <main className={styles.main}>
         <div className="container">
