@@ -10,10 +10,10 @@ type TeamMember = {
 };
 
 const CORE_TEAM: TeamMember[] = [
-  { name: 'Akzar', subtitle: 'List maintainer', avatar: '/img/pages/team/akzar.webp' },
-  { name: 'Catastrophic Apathy', subtitle: 'Support & Testing extraordinaire', avatar: '/img/pages/team/CatastrophicApathy.webp' },
-  { name: 'ninjawaffle', subtitle: 'Scripting wizard', avatar: '/img/pages/team/ninjawaffle.webp' },
-  { name: 'shadowlock', subtitle: 'Bodyslide expert', avatar: '/img/pages/team/shadowlock.webp' },
+  { name: 'Akzar', avatar: '/img/pages/team/akzar.webp' },
+  { name: 'Catastrophic Apathy', avatar: '/img/pages/team/CatastrophicApathy.webp' },
+  { name: 'ninjawaffle', avatar: '/img/pages/team/ninjawaffle.webp' },
+  { name: 'shadowlock', avatar: '/img/pages/team/shadowlock.webp' },
 ];
 
 const INACTIVE_TEAM: TeamMember[] = [
@@ -86,7 +86,7 @@ export default function TeamPage(): React.JSX.Element {
 
           <section className={styles.gridCore} aria-label="Core team members">
             {CORE_TEAM.map((member) => (
-              <TeamCard key={member.name} member={member} large showSubtitle />
+              <TeamCard key={member.name} member={member} large showSubtitle={false} />
             ))}
           </section>
 
