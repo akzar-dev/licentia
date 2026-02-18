@@ -43,6 +43,7 @@ const SPECIAL_THANKS: TeamMember[] = [
 const TEAM_PAGE_DESCRIPTION = 'Meet the people behind Licentia NEXT!';
 const TEAM_SOCIAL_IMAGE = 'https://licentia.quest/img/pages/licentia-team-social.png';
 const TEAM_PAGE_URL = 'https://licentia.quest/team';
+const TEAM_SOCIAL_TITLE = 'Licentia Team 🤖 | Licentia NEXT';
 
 function TeamCard({
   member,
@@ -68,12 +69,12 @@ export default function TeamPage(): React.JSX.Element {
       <Head>
         <link rel="canonical" href={TEAM_PAGE_URL} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Licentia Team" />
+        <meta property="og:title" content={TEAM_SOCIAL_TITLE} />
         <meta property="og:description" content={TEAM_PAGE_DESCRIPTION} />
         <meta property="og:url" content={TEAM_PAGE_URL} />
         <meta property="og:image" content={TEAM_SOCIAL_IMAGE} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Licentia Team" />
+        <meta name="twitter:title" content={TEAM_SOCIAL_TITLE} />
         <meta name="twitter:description" content={TEAM_PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={TEAM_SOCIAL_IMAGE} />
       </Head>
