@@ -544,15 +544,15 @@ img.img-loaded {
     transition: none !important;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .navbar__brand:hover .navbar__logo img {
-      transform: none !important;
-      filter: none !important;
-    }
-  }
-
   .img-inline-skeleton {
     animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .navbar__brand:hover .navbar__logo img {
+    transform: none !important;
+    filter: none !important;
   }
 }
 

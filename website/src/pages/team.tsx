@@ -10,7 +10,7 @@ type TeamMember = {
 };
 
 const CORE_TEAM: TeamMember[] = [
-  { name: 'Akzar', avatar: '/img/pages/team/akzar.webp' },
+  { name: 'akzar', avatar: '/img/pages/team/akzar.webp' },
   { name: 'Catastrophic Apathy', avatar: '/img/pages/team/CatastrophicApathy.webp' },
   { name: 'ninjawaffle', avatar: '/img/pages/team/ninjawaffle.webp' },
   { name: 'shadowlock', avatar: '/img/pages/team/shadowlock.webp' },
