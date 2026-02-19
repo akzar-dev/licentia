@@ -8,7 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const SITE_ROOT = path.resolve(__dirname, '..');
 
-const SHOWCASE_DIR = path.join(SITE_ROOT, 'static', 'img', 'screenshots');
+const SHOWCASE_DIR = path.join(SITE_ROOT, 'static', 'img', 'pages', 'main', 'screenshots');
+const SHOWCASE_PREVIEW_DIR = path.join(SITE_ROOT, 'static', 'img', 'pages', 'main', 'screenshots-preview');
 const STATIC_PAGES_DIR = path.join(SITE_ROOT, 'static', 'img', 'pages');
 const STATIC_IMG_DIR = path.join(SITE_ROOT, 'static', 'img');
 const TEAM_DIR = path.join(STATIC_PAGES_DIR, 'team');
@@ -162,6 +163,47 @@ async function optimizeShowcaseAndRename() {
   return { converted, deleted };
 }
 
+async function optimizeShowcasePreviews(cache) {
+  if (!(await exists(SHOWCASE_DIR))) {
+    return { generated: 0, cacheHits: 0 };
+  }
+  if (!dryRun) {
+    await fs.mkdir(SHOWCASE_PREVIEW_DIR, { recursive: true });
+  }
+
+  const showcaseFiles = (await fs.readdir(SHOWCASE_DIR, { withFileTypes: true }))
+    .filter((e) => e.isFile() && /^s\d+\.webp$/i.test(e.name))
+    .map((e) => e.name)
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+  let generated = 0;
+  let cacheHits = 0;
+
+  for (const name of showcaseFiles) {
+    const inPath = path.join(SHOWCASE_DIR, name);
+    const outPath = path.join(SHOWCASE_PREVIEW_DIR, name);
+    const input = await fs.readFile(inPath);
+    const inputHash = hashBuffer(input);
+    if (isCacheHit(cache, outPath, inputHash)) {
+      cacheHits += 1;
+      continue;
+    }
+
+    const previewBuffer = await sharp(input)
+      .resize({ width: 640, height: 360, fit: 'cover', withoutEnlargement: true })
+      .webp({ quality: 70, effort: 5 })
+      .toBuffer();
+
+    if (!dryRun) {
+      await fs.writeFile(outPath, previewBuffer);
+    }
+    setCacheEntry(cache, outPath, inputHash);
+    generated += 1;
+  }
+
+  return { generated, cacheHits };
+}
+
 async function optimizeTeamAvatars(cache) {
   if (!(await exists(TEAM_DIR))) {
     console.log('[optimize-images] Team dir not found, skipping.');
@@ -290,6 +332,10 @@ async function optimizeOtherPngs(cache) {
   if (await exists(logoPng) && !pngTargets.includes(logoPng)) {
     pngTargets.push(logoPng);
   }
+  const logoNavbarPng = path.join(STATIC_IMG_DIR, 'logo-navbar.png');
+  if (await exists(logoNavbarPng) && !pngTargets.includes(logoNavbarPng)) {
+    pngTargets.push(logoNavbarPng);
+  }
 
   let optimized = 0;
   let skipped = 0;
@@ -319,8 +365,8 @@ async function optimizeOtherPngs(cache) {
 async function optimizeKeyWebpAssets(cache) {
   const webpTargets = [
     path.join(STATIC_IMG_DIR, 'licentia-social-card.webp'),
-    path.join(STATIC_PAGES_DIR, 'licentia-social-card-bg.webp'),
-    path.join(STATIC_PAGES_DIR, 'licentia-social-card-bg-light.webp'),
+    path.join(STATIC_PAGES_DIR, 'main', 'licentia-social-card-bg.webp'),
+    path.join(STATIC_PAGES_DIR, 'main', 'licentia-social-card-bg-light.webp'),
   ];
 
   let optimized = 0;
@@ -359,6 +405,7 @@ async function main() {
 
   const cache = await loadCache();
   const showcase = await optimizeShowcaseAndRename();
+  const showcasePreviews = await optimizeShowcasePreviews(cache);
   const team = await optimizeTeamAvatars(cache);
   let others = { optimized: 0, skipped: 0, cacheHits: 0, savedBytes: 0 };
   let webp = { optimized: 0, unchanged: 0, missing: 0, cacheHits: 0, savedBytes: 0 };
@@ -372,6 +419,8 @@ async function main() {
   console.log('[optimize-images] Done.');
   console.log(`[optimize-images] Showcase converted: ${showcase.converted}`);
   console.log(`[optimize-images] Showcase source files removed: ${showcase.deleted}`);
+  console.log(`[optimize-images] Showcase previews generated: ${showcasePreviews.generated}`);
+  console.log(`[optimize-images] Showcase previews cache hits: ${showcasePreviews.cacheHits}`);
   console.log(`[optimize-images] Team converted to WEBP: ${team.converted}`);
   console.log(`[optimize-images] Team WEBP optimized: ${team.optimizedWebp}`);
   console.log(`[optimize-images] Team WEBP unchanged: ${team.unchangedWebp}`);

@@ -8,7 +8,7 @@ description: "An introduction to Licentia NEXT Skyrim modlist"
 image: ./img/1-welcome-social.png
 ---
 
-# ![Welcome](./img/1-welcome.png)
+# ![Welcome](./img/1-welcome-heading.png)
 
 ---
 
@@ -22,6 +22,10 @@ It features optional non-fetish content with a series of _OStim-based_ mods/ques
 
 :::tip
 If you want to examine the complete list of mods in _Licentia NEXT_, [go here to Load Order Library.](https://loadorderlibrary.com/lists/licentia-next)
+:::
+
+:::info Already installed?
+If you want to update an existing installation, use the [How to Update](/how-to-update) guide.
 :::
 
 You can click the button below on the right to continue to the next page, or use the sidebar on the left to navigate through the documentation.

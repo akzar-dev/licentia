@@ -8,18 +8,19 @@
   border-radius: 0;
 }
 
-.heroBg {
+.heroBgImg {
   position: absolute;
   inset: 0;
-  background: center/cover no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   filter: blur(4px);
   transform: scale(1.03);
   opacity: 0;
   transition: opacity .45s ease;
 }
 
-.heroBg::after {
-  content: "";
+.heroBgShimmer {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -34,23 +35,13 @@
   transition: opacity .45s ease;
 }
 
-.heroBgReady::after {
+.heroBgShimmerHidden {
   opacity: 0;
   animation: none;
 }
 
 .heroBgReady {
   opacity: 1;
-}
-
-/* Dark theme */
-.heroBg {
-  background-image: url('/img/pages/licentia-social-card-bg.webp');
-}
-
-/* Light theme */
-[data-theme='light'] .heroBg {
-  background-image: url('/img/pages/licentia-social-card-bg-light.webp');
 }
 
 .heroOverlay {
@@ -175,8 +166,13 @@ html[data-theme='light'] .description {
 
 .cta,
 .ctaSolid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   min-width: 180px;
   max-width: 180px;
+  line-height: 1.2;
   transform: translateY(0);
   transition:
     transform var(--licentia-interact-duration) var(--licentia-interact-ease),
@@ -200,6 +196,17 @@ html[data-theme='light'] .description {
 .sectionTitle {
   text-align: center;
   margin: 0 0 1rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .iconRow {
@@ -305,7 +312,13 @@ html[data-theme='light'] .description {
 
 /* -------- SHOWCASE (Marquee) -------- */
 .showcase {
-  padding: 2.25rem 0 3rem;
+  padding: 2.25rem 0 1.6rem;
+}
+
+.showcaseCtaRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 /* Non-scrolling outer */
@@ -353,6 +366,8 @@ html[data-theme='light'] .description {
   border-radius: 10px;
   overflow: hidden;
   flex: 0 0 auto;
+  content-visibility: auto;
+  contain-intrinsic-size: 180px 320px;
 }
 
 .shotSkeleton {
@@ -474,7 +489,7 @@ html[data-theme='light'] .description {
     animation: none !important;
   }
 
-  .heroBg::after {
+  .heroBgShimmer {
     animation: none !important;
   }
 

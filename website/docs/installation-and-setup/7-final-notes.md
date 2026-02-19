@@ -7,7 +7,7 @@ description: "A list of small advices before starting a playthrough of Licentia 
 image: ./img/7-final-notes-social.png
 ---
 
-# ![Final notes](./img/7-final-notes.png)
+# ![Final notes](./img/7-final-notes-heading.png)
 
 ---
 

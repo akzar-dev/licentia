@@ -186,7 +186,7 @@
 
 ### 🖼️ Image optimization workflow
 
-- Showcase screenshots directory: `static/img/screenshots`
+- Showcase screenshots directory: `static/img/pages/main/screenshots`
   - Add new files with any names/extensions (`.png/.jpg/.jpeg/.webp`).
   - Run:
     ```bash
@@ -212,8 +212,8 @@
     - `docs/**`
     - checks key existing WEBP files and re-encodes only if output is smaller:
       - `static/img/licentia-social-card.webp`
-      - `static/img/pages/licentia-social-card-bg.webp`
-      - `static/img/pages/licentia-social-card-bg-light.webp`
+      - `static/img/pages/main/licentia-social-card-bg.webp`
+      - `static/img/pages/main/licentia-social-card-bg-light.webp`
   - Preview only (no file changes):
     ```bash
     npm run optimize-images:dry-run

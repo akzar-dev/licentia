@@ -41,7 +41,7 @@ const SPECIAL_THANKS: TeamMember[] = [
 ];
 
 const TEAM_PAGE_DESCRIPTION = 'Meet the people behind Licentia NEXT!';
-const TEAM_SOCIAL_IMAGE = 'https://licentia.quest/img/pages/licentia-team-social.png';
+const TEAM_SOCIAL_IMAGE = 'https://licentia.quest/img/social-cards/licentia-team-social.png';
 const TEAM_PAGE_URL = 'https://licentia.quest/team';
 const TEAM_SOCIAL_TITLE = 'Licentia Team 🤖 | Licentia NEXT';
 
@@ -82,7 +82,8 @@ export default function TeamPage(): React.JSX.Element {
         <div className="container">
           <header className={styles.header}>
             <h1 className={styles.visuallyHidden}>Licentia Team</h1>
-            <img src="/img/pages/licentia-team.png" alt="Licentia Team" className={styles.headingImg} />
+            <img src="/img/pages/team/licentia-team-heading.png" alt="" aria-hidden className={styles.headingImg} />
+            <div className={styles.headerSeparator} aria-hidden />
           </header>
 
           <section className={styles.gridCore} aria-label="Core team members">

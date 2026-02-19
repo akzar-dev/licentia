@@ -7,7 +7,7 @@ description: "Guides for setup, tools, and advanced workflows in Licentia NEXT"
 image: ./img/index-guides-social.png
 ---
 
-# ![Guides](./img/index-guides.png)
+# ![Guides](./img/index-guides-heading.png)
 
 ---
 

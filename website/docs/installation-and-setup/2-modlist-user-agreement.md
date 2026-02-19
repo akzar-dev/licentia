@@ -8,7 +8,7 @@ description: "An agreement between Licentia NEXT Skyrim modlist users and author
 image: ./img/2-modlist-user-agreement-social.png
 ---
 
-# ![Modlist user agreement](./img/2-modlist-user-agreement.png)
+# ![Modlist user agreement](./img/2-modlist-user-agreement-heading.png)
 
 ---
 

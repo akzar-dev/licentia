@@ -129,19 +129,18 @@ const config: Config = {
       title: '',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/logo.png',
+        src: 'img/logo-navbar.png',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'installationAndSetupSidebar',
+          to: '/welcome',
           position: 'left',
-          label: 'Installation & Setup',
+          label: 'Install',
         },
         {
           to: '/how-to-update',
           position: 'left',
-          label: 'How to Update',
+          label: 'Update',
         },
         {
           to: '/changelog',
@@ -161,11 +160,9 @@ const config: Config = {
           label: 'Guides',
         },
         {
-          href: 'https://ko-fi.com/akzar',
-          position: 'right',
-          label: 'Buy me a coffee',
-          className: 'header-kofi-btn',
-          'aria-label': 'Support me on Ko-fi',
+          to: '/media',
+          position: 'left',
+          label: 'Media',
         },
         {
           href: 'https://github.com/akzar-dev/licentia',
@@ -195,6 +192,10 @@ const config: Config = {
         {
           label: 'Load Order Library',
           href: 'https://loadorderlibrary.com/lists/licentia-next',
+        },
+        {
+          label: 'Buy me a coffee',
+          href: 'https://ko-fi.com/akzar',
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/akzar-dev">akzar</a> and <a href="/team">Licentia team</a>`,

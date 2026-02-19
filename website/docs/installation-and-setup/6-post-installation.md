@@ -7,7 +7,7 @@ description: "Post-installation instructions for Licentia NEXT Skyrim modlist"
 image: ./img/6-post-installation-social.png
 ---
 
-# ![Post-Installation](./img/6-post-installation.png)
+# ![Post-Installation](./img/6-post-installation-heading.png)
 
 ---
 

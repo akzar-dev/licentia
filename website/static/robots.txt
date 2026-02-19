@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /img/logo.png
+Disallow: /img/logo-navbar.png
+Disallow: /img/pages/main/screenshots-preview/
+Disallow: /img/pages/*-heading.png
+Disallow: /img/pages/*/*-heading.png
+Disallow: /img/pages/*/*/*-heading.png
+Disallow: /assets/images/*-heading*
 
 Sitemap: https://licentia.quest/sitemap.xml

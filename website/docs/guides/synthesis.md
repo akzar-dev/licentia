@@ -7,7 +7,7 @@ description: "How to re-run Synthesis for Licentia NEXT Skyrim modlist"
 image: ./img/synthesis-guide-social.png
 ---
 
-# ![Synthesis Guide](./img/synthesis-guide.png)
+# ![Synthesis Guide](./img/synthesis-guide-heading.png)
 
 ---
 

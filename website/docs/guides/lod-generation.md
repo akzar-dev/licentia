@@ -7,7 +7,7 @@ description: "How to generate xLODGen, Grass Cache, TexGen and DynDOLOD for Lice
 image: ./img/lod-generation-guide-social.png
 ---
 
-# ![LOD Generation Guide](./img/lod-generation-guide.png)
+# ![LOD Generation Guide](./img/lod-generation-guide-heading.png)
 
 ---
 

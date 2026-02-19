@@ -7,7 +7,7 @@ description: "How to set up a controller for Licentia NEXT Skyrim modlist"
 image: ./img/controller-guide-social.png
 ---
 
-# ![Controller Guide](./img/controller-guide.png)
+# ![Controller Guide](./img/controller-guide-heading.png)
 
 ---
 

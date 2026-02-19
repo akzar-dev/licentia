@@ -7,7 +7,7 @@ description: "How to build Outfits in Bodyslide for Licentia NEXT Skyrim modlist
 image: ./img/bodyslide-guide-social.png
 ---
 
-# ![Bodyslide Guide](./img/bodyslide-guide.png)
+# ![Bodyslide Guide](./img/bodyslide-guide-heading.png)
 
 ---
 

@@ -7,7 +7,7 @@ description: "Gameplay FAQ for Licentia NEXT Skyrim modlist"
 image: ./img/faq-gameplay-social.png
 ---
 
-# ![Gameplay FAQ](./img/faq-gameplay.png)
+# ![Gameplay FAQ](./img/faq-gameplay-heading.png)
 
 ---
 

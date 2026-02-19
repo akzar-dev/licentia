@@ -2,10 +2,10 @@
 title: "Changelog 📑"
 hide_title: true
 description: "History of Licentia NEXT Skyrim modlist releases"
-image: /img/pages/changelog-social.png
+image: /img/social-cards/changelog-social.png
 ---
 
-# ![Changelog](/img/pages/changelog.png)
+# ![Changelog](/img/pages/changelog/changelog-heading.png)
 
 ---
 :::info
@@ -917,7 +917,7 @@ The versioning system works the following way:
 - Re-ran Nemesis
 
 ---
-# ![Old Changelog](/img/pages/old-changelog.png)
+# ![Old Changelog](/img/pages/changelog/old-changelog-heading.png)
 ---
 
 :::info

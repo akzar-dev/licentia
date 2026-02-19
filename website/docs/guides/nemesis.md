@@ -7,7 +7,7 @@ description: "How to re-run Nemesis for Licentia NEXT Skyrim modlist"
 image: ./img/nemesis-guide-social.png
 ---
 
-# ![Nemesis Guide](./img/nemesis-guide.png)
+# ![Nemesis Guide](./img/nemesis-guide-heading.png)
 
 ---
 

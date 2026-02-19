@@ -7,7 +7,7 @@ description: "Pre-installation instructions for Licentia NEXT Skyrim modlist"
 image: ./img/4-pre-installation-social.png
 ---
 
-# ![Pre-Installation](./img/4-pre-installation.png)
+# ![Pre-Installation](./img/4-pre-installation-heading.png)
 
 ---
 

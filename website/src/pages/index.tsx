@@ -8,39 +8,64 @@ import Head from '@docusaurus/Head';
 import { useColorMode } from '@docusaurus/theme-common';
 
 /** ------- CONFIG -------- */
-/** Load every image in /static/img/screenshots */
-const req = (require as any).context(
-  '@site/static/img/screenshots',
+/** Load every image in /static/img/pages/main/screenshots */
+const shotsReq = (require as any).context(
+  '@site/static/img/pages/main/screenshots',
   false,
   /\.(png|jpe?g|webp)$/i
 );
-const ALL_SHOTS: string[] = req.keys().map((k: string) => req(k).default as string);
+const previewsReq = (require as any).context(
+  '@site/static/img/pages/main/screenshots-preview',
+  false,
+  /\.webp$/i
+);
+const PREVIEW_KEYS = new Set<string>(previewsReq.keys() as string[]);
+type ShowcaseShot = { id: string; previewSrc: string; fullSrc: string };
+const ALL_SHOTS: ShowcaseShot[] = shotsReq.keys().map((k: string) => {
+  const fullSrc = shotsReq(k).default as string;
+  const previewKey = k.replace(/\.(png|jpe?g|webp)$/i, '.webp');
+  const previewSrc = PREVIEW_KEYS.has(previewKey)
+    ? (previewsReq(previewKey).default as string)
+    : fullSrc;
+  return { id: k, previewSrc, fullSrc };
+});
 const HERO_DESCRIPTION =
   '1-click install NSFW Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
 const FEATURES_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
 const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may feature them here!';
+const SHOWCASE_CTA_LABEL = 'View full gallery';
 const HOME_META_DESCRIPTION =
   'Experience Licentia NEXT - a 1-click install NSFW Skyrim AE modlist with LotD, non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
-const HERO_BG_DARK = '/img/pages/licentia-social-card-bg.webp';
-const HERO_BG_LIGHT = '/img/pages/licentia-social-card-bg-light.webp';
+const HERO_BG_DARK = '/img/pages/main/licentia-social-card-bg.webp';
+const HERO_BG_LIGHT = '/img/pages/main/licentia-social-card-bg-light.webp';
 
 /** Main Hero function */
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
   const { colorMode } = useColorMode();
-  const [heroBgLoaded, setHeroBgLoaded] = React.useState(true);
+  const heroBgSrc = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
+  const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
 
   React.useEffect(() => {
-    const bg = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
-    const img = new Image();
-    img.onload = () => setHeroBgLoaded(true);
-    img.onerror = () => setHeroBgLoaded(true);
-    img.src = bg;
-  }, [colorMode]);
+    setHeroBgLoaded(false);
+  }, [heroBgSrc]);
 
   return (
     <section className={styles.hero}>
-      <div className={clsx(styles.heroBg, heroBgLoaded && styles.heroBgReady)} />
+      <img
+        className={clsx(styles.heroBgImg, heroBgLoaded && styles.heroBgReady)}
+        src={heroBgSrc}
+        alt=""
+        aria-hidden
+        width={960}
+        height={540}
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
+        onLoad={() => setHeroBgLoaded(true)}
+        onError={() => setHeroBgLoaded(true)}
+      />
+      <div className={clsx(styles.heroBgShimmer, heroBgLoaded && styles.heroBgShimmerHidden)} aria-hidden />
       <div className={styles.heroOverlay} />
 
       <div className={clsx('container', styles.heroInner)}>
@@ -48,8 +73,11 @@ function Hero() {
           className={styles.heroLogo}
           src="/img/licentia-social-card.webp"
           alt={`${siteConfig.title} logo`}
-          width={400}
-          height={260}
+          width={960}
+          height={904}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
 
         <p className={styles.description}>{HERO_DESCRIPTION}</p>
@@ -81,10 +109,12 @@ function FeatureIcons() {
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <img
-            src="/img/pages/index-features.png"
-            alt="Features"
+            src="/img/pages/main/index-features-heading.png"
+            alt=""
+            aria-hidden
             className={styles.headingImg}
           />
+          <span className={styles.visuallyHidden}>Features</span>
         </h2>
         <p className={clsx(styles.tagline, styles.featuresTagline)}>
           <i>{FEATURES_TAGLINE}</i>
@@ -149,7 +179,8 @@ function FeatureIcons() {
 
 function Showcase() {
   const LOOP_COPIES = 2;
-  const FORCE_REVEAL_MS = 3500;
+  const MAX_UNIQUE_SHOWCASE_SHOTS = 24;
+  const FORCE_REVEAL_MS = 5000;
   const [loadedShots, setLoadedShots] = React.useState<Record<string, true>>({});
   // Shuffle ONCE for this page load
   const SHOTS = React.useMemo(() => {
@@ -158,7 +189,7 @@ function Showcase() {
       const j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
     }
-    return a;
+    return a.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, a.length));
   }, []);
 
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
@@ -176,8 +207,7 @@ function Showcase() {
     [SHOTS]
   );
 
-  // Safety net for production hydration/cache timing edge-cases:
-  // never allow showcase placeholders to stay forever.
+  // Safety net: never leave skeletons forever.
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
     const id = window.setTimeout(() => {
@@ -185,8 +215,7 @@ function Showcase() {
         if (Object.keys(prev).length >= loop.length) return prev;
         const next = { ...prev } as Record<string, true>;
         for (let i = 0; i < loop.length; i++) {
-          const src = loop[i];
-          next[`${src}-${i}`] = true;
+          next[`${loop[i].id}-${i}`] = true;
         }
         return next;
       });
@@ -407,7 +436,8 @@ function Showcase() {
     <section className={styles.showcase} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
-          <img src="/img/pages/index-showcase.png" alt="Showcase" className={styles.headingImg} />
+          <img src="/img/pages/main/index-showcase-heading.png" alt="" aria-hidden className={styles.headingImg} />
+          <span className={styles.visuallyHidden}>Showcase</span>
         </h2>
         <p className={clsx(styles.tagline, styles.showcaseTagline)}>
           <i>{SHOWCASE_TAGLINE}</i>
@@ -446,23 +476,23 @@ function Showcase() {
           onScroll={onScroll}
         >
           <div ref={trackRef} className={styles.marqueeTrack}>
-            {loop.map((src, i) => {
-              const key = `${src}-${i}`;
+            {loop.map((shot, i) => {
+              const key = `${shot.id}-${i}`;
               const isLoaded = !!loadedShots[key];
               return (
                 <div key={key} className={styles.shotFrame}>
                   {!isLoaded && <span className={styles.shotSkeleton} aria-hidden="true" />}
                   <img
-                    src={src}
+                    src={shot.previewSrc}
+                    data-zoom-src={shot.fullSrc}
                     alt={`Licentia NEXT showcase screenshot ${i + 1}`}
                     className={clsx('zoomable', styles.shot, isLoaded && styles.shotLoaded)}
                     loading="eager"
                     decoding="sync"
+                    fetchPriority="low"
                     ref={(img) => {
-                      // Ensure initial hydration always reveals showcase shots.
-                      // In production, relying only on onLoad/complete checks can
-                      // miss some timing paths on first entry.
-                      if (img) markLoaded(key);
+                      // Cached images can complete before React attaches load handlers.
+                      if (img && img.complete && img.naturalWidth > 0) markLoaded(key);
                     }}
                     onLoad={() => markLoaded(key)}
                     onError={() => markLoaded(key)}
@@ -472,6 +502,11 @@ function Showcase() {
             })}
           </div>
         </div>
+      </div>
+      <div className={clsx('container', styles.showcaseCtaRow)}>
+        <a className={clsx('button button--primary button--lg', styles.ctaSolid)} href="/media#screenshots">
+          {SHOWCASE_CTA_LABEL}
+        </a>
       </div>
     </section>
   );

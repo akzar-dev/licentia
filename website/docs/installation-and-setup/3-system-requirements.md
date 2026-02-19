@@ -8,7 +8,7 @@ description: "A list of system requirements for Licentia NEXT Skyrim modlist"
 image: ./img/3-system-requirements-social.png
 ---
 
-# ![System Requirements](./img/3-system-requirements.png)
+# ![System Requirements](./img/3-system-requirements-heading.png)
 
 ---
 

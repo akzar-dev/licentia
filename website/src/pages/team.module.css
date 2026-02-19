@@ -15,6 +15,20 @@
   height: auto;
 }
 
+.headerSeparator {
+  margin: 0.7rem auto 0;
+  width: min(520px, 86%);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 6%,
+    var(--licentia-separator-core) 50%,
+    transparent 94%,
+    transparent 100%
+  );
+}
+
 .visuallyHidden {
   position: absolute;
   width: 1px;

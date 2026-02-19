@@ -7,7 +7,7 @@ description: "Frequently asked questions for gameplay and technical troubleshoot
 image: ./img/index-faqs-social.png
 ---
 
-# ![FAQs](./img/index-faqs.png)
+# ![FAQs](./img/index-faqs-heading.png)
 
 ---
 
