@@ -14,21 +14,11 @@ const shotsReq = (require as any).context(
   false,
   /\.(png|jpe?g|webp)$/i
 );
-const previewsReq = (require as any).context(
-  '@site/static/img/pages/main/screenshots-preview',
-  false,
-  /\.webp$/i
-);
-const PREVIEW_KEYS = new Set<string>(previewsReq.keys() as string[]);
-type ShowcaseShot = { id: string; previewSrc: string; fullSrc: string };
-const ALL_SHOTS: ShowcaseShot[] = shotsReq.keys().map((k: string) => {
-  const fullSrc = shotsReq(k).default as string;
-  const previewKey = k.replace(/\.(png|jpe?g|webp)$/i, '.webp');
-  const previewSrc = PREVIEW_KEYS.has(previewKey)
-    ? (previewsReq(previewKey).default as string)
-    : fullSrc;
-  return { id: k, previewSrc, fullSrc };
-});
+type ShowcaseShot = { id: string; src: string };
+const ALL_SHOTS: ShowcaseShot[] = shotsReq.keys().map((k: string) => ({
+  id: k,
+  src: shotsReq(k).default as string,
+}));
 const HERO_DESCRIPTION =
   '1-click install NSFW Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
 const FEATURES_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
@@ -489,8 +479,7 @@ function Showcase() {
                 <div key={key} className={styles.shotFrame}>
                   {!isLoaded && <span className={styles.shotSkeleton} aria-hidden="true" />}
                   <img
-                    src={shot.previewSrc}
-                    data-zoom-src={shot.fullSrc}
+                    src={shot.src}
                     alt={`Licentia NEXT showcase screenshot ${i + 1}`}
                     className={clsx('zoomable', styles.shot, isLoaded && styles.shotLoaded)}
                     loading="eager"

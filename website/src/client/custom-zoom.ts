@@ -40,7 +40,7 @@ function getTargets(): HTMLImageElement[] {
 
 function getItemFromImage(img: HTMLImageElement): Item {
   return {
-    src: img.dataset.zoomSrc || img.currentSrc || img.src,
+    src: img.currentSrc || img.src,
     alt: img.alt || '',
   };
 }

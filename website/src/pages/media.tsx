@@ -9,22 +9,11 @@ const shotsReq = (require as any).context(
   false,
   /\.(png|jpe?g|webp)$/i
 );
-const previewsReq = (require as any).context(
-  '@site/static/img/pages/main/screenshots-preview',
-  false,
-  /\.webp$/i
-);
-
-type MediaShot = { id: string; previewSrc: string; fullSrc: string };
-const PREVIEW_KEYS = new Set<string>(previewsReq.keys() as string[]);
-const ALL_SHOTS: MediaShot[] = shotsReq.keys().map((k: string) => {
-  const fullSrc = shotsReq(k).default as string;
-  const previewKey = k.replace(/\.(png|jpe?g|webp)$/i, '.webp');
-  const previewSrc = PREVIEW_KEYS.has(previewKey)
-    ? (previewsReq(previewKey).default as string)
-    : fullSrc;
-  return { id: k, previewSrc, fullSrc };
-});
+type MediaShot = { id: string; src: string };
+const ALL_SHOTS: MediaShot[] = shotsReq.keys().map((k: string) => ({
+  id: k,
+  src: shotsReq(k).default as string,
+}));
 
 const MEDIA_PAGE_URL = 'https://licentia.quest/media';
 const MEDIA_PAGE_TITLE = 'Media 📸';
@@ -82,8 +71,7 @@ export default function MediaPage(): React.JSX.Element {
               {ALL_SHOTS.map((shot, i) => (
                 <figure key={shot.id} className={styles.card}>
                   <img
-                    src={shot.previewSrc}
-                    data-zoom-src={shot.fullSrc}
+                    src={shot.src}
                     alt={`Licentia NEXT media screenshot ${i + 1}`}
                     className={clsx('zoomable', styles.shot)}
                     loading="lazy"
