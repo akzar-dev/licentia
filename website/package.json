@@ -24,7 +24,6 @@
     "@docusaurus/preset-classic": "3.9.2",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
-    "docusaurus-plugin-image-zoom": "latest",
     "image-size": "^2.0.2",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.3",

@@ -42,7 +42,6 @@ These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
         src={require('./img/synthesis_guide/1_1_disabling_synthesis_output_mo2.png').default}
         alt="Disabling Licentia NEXT Synthesis output in Mod Organizer 2 (MO2)"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
 2. In right section with plugins, scroll to the bottom and disable these plugins (we will enable them again later):
@@ -50,7 +49,6 @@ These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
         src={require('./img/synthesis_guide/1_2_disabling_plugins_mo2.png').default}
         alt="Disabling Synthesis plugins in Mod Organizer 2 (MO2)"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
 ---
@@ -73,7 +71,6 @@ In `MO2`, in top right corner of the window, click on the dropdown menu and sele
         src={require('./img/synthesis_guide/2_running_synthesis_in_mo2.png').default}
         alt="Opening Synthesis from Mod Organizer 2 (MO2)"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
 ---
@@ -87,7 +84,6 @@ When `Synthesis` is launched, check out the left pane with patches. They should 
             src={require('./img/synthesis_guide/3_1_synthesis0.png').default}
             alt="Synthesis 0 patch list"
             style={{ maxHeight:150 }}
-            className="zoomable"
         />
 
     - `Synthesis1` block:
@@ -95,7 +91,6 @@ When `Synthesis` is launched, check out the left pane with patches. They should 
             src={require('./img/synthesis_guide/3_2_synthesis1.png').default}
             alt="Synthesis 1 patch list"
             style={{ maxHeight:150 }}
-            className="zoomable"
         />
 
     - `Synthesis2` block:
@@ -103,7 +98,6 @@ When `Synthesis` is launched, check out the left pane with patches. They should 
             src={require('./img/synthesis_guide/3_3_synthesis2.png').default}
             alt="Synthesis 2 patch list"
             style={{ maxHeight:170 }}
-            className="zoomable"
         />
 
         :::note
@@ -137,7 +131,6 @@ Failing to do that will break consistency of the patches!
         src={require('./img/synthesis_guide/5_1_creating_empty_mod_in_mo2.png').default}
         alt="Create Empty Mod"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
     You will now be prompted to name your custom mod, this can be named however you want.
@@ -155,7 +148,6 @@ Failing to do that will break consistency of the patches!
         src={require('./img/synthesis_guide/5_2_overwrite.png').default}
         alt="Overwrite folder"
         style={{ maxHeight:120 }}
-        className="zoomable"
     />
 
 3. Move all 3 `Synthesis` .esp's from Overwrite to your newly created mod in file explorer.
@@ -175,5 +167,4 @@ The final picture should look like this *(only the names of plugins matter here,
         src={require('./img/synthesis_guide/6_final.png').default}
         alt="Final Mod Organizer 2 (MO2) setup after Synthesis output installation"
         style={{ maxHeight:150 }}
-        className="zoomable"
     />

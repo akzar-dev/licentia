@@ -44,7 +44,6 @@ You are on [your own](https://letmegoogleitforyou.com?q=how%20to%20turn%20on%20m
         src={require('./img/controller_guide/1_1_mod_configuration.png').default}
         alt="Finding Mod Configuration in the menu"
         style={{ maxHeight:200 }}
-        className="zoomable"
     />
 
 2. **Scroll** down until you find `MCM Recorder` and **click** it *(the list is in alphabetical order, so it should be around the middle)*:
@@ -52,7 +51,6 @@ You are on [your own](https://letmegoogleitforyou.com?q=how%20to%20turn%20on%20m
         src={require('./img/controller_guide/8_MCM_Setup1.png').default}
         alt="MCM Recorder in the MCM"
         style={{ maxHeight:200 }}
-        className="zoomable"
     />
 
 3. Find `Setup Controller` on the right and **click** it:
@@ -60,7 +58,6 @@ You are on [your own](https://letmegoogleitforyou.com?q=how%20to%20turn%20on%20m
         src={require('./img/controller_guide/9_MCM_Setup2.png').default}
         alt="Setup Controller in MCM"
         style={{ maxHeight:200 }}
-        className="zoomable"
     />
 
 4. Follow the on screen instructions. When it completes - your are **done**!
@@ -94,7 +91,6 @@ All of the needed mods are located inside this separator in `Mod Organizer 2`:
         src={require('./img/controller_guide/10_Controller_Mods.png').default}
         alt="List of mods for controller setup"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
 - **Licentia NEXT - Control Map** changes **keyboard** setup of `TUCS` to be compatible with the default Licentia NEXT's keyboard controls and adds individual menu selection.
@@ -115,7 +111,6 @@ This is just a reference section to verify that your `MCM` settings look like th
         src={require('./img/controller_guide/3_set_controls.png').default}
         alt="Sneak is set to B"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
 2. Verify **CGO** settings:
@@ -123,7 +118,6 @@ This is just a reference section to verify that your `MCM` settings look like th
         src={require('./img/controller_guide/4_setup_CGO.png').default}
         alt="Combat Gameplay Overhaul (CGO) controller keybind settings"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     - **Switch Grip** - `DPad UP`
@@ -134,7 +128,6 @@ This is just a reference section to verify that your `MCM` settings look like th
         src={require('./img/controller_guide/5_setup_The_Ultimate_Dodge_Mod.png').default}
         alt="The Ultimate Dodge Mod (TUDM) controller settings"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     - Your **Dodge Key** will now be `B`
@@ -145,7 +138,6 @@ This is just a reference section to verify that your `MCM` settings look like th
         src={require('./img/controller_guide/6_setup_Serios_Cycle_Hotkeys.png').default}
         alt="Serio's Cycle Hotkeys (SCH) controller settings"
         style={{ maxHeight:200 }}
-        className="zoomable"
     />
 
     - Press `Home` when you are in game and have weapons equipped - **the mod's dialog will pop up, where you can set your keys**. Refer to the [mod page](https://www.nexusmods.com/skyrimspecialedition/mods/27184) for detailed instructions!
@@ -155,7 +147,6 @@ This is just a reference section to verify that your `MCM` settings look like th
         src={require('./img/controller_guide/7_setup_True_Directional_Movement.png').default}
         alt="True Directional Movement (TDM) controller settings"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     - **Target Lock with POV button (Gamepad)** is enabled

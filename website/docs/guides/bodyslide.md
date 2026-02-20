@@ -53,7 +53,6 @@ There will be a list of options available, select `Create Empty Mod`.
     src={require('./img/bodyslide_guide/1_empty_mod.png').default}
     alt="Create an Empty Mod for Bodyslide output"
     style={{ maxHeight:300 }}
-    className="zoomable"
 />
 
 You will now be prompted to name your custom mod, this can be named however you want.
@@ -68,7 +67,6 @@ Upon updating the mod will be deactivated and moved to the bottom of the last se
     src={require('./img/bodyslide_guide/2_create_mod.png').default}
     alt="Name Custom Mod for Bodyslide output"
     style={{ maxHeight:200 }}
-    className="zoomable"
 />
 
 The new empty mod you made will be created under the `Bodyslide Outputs` Separator, as long as your custom mod is below _Licentia NEXT Bodyslide Output_ your changes will override default Bodyslide outputs.
@@ -83,7 +81,6 @@ Once you have created your **Output mod** head over to the Top Right of `Mod Org
     src={require('./img/bodyslide_guide/3_run_bodyslide.png').default}
     alt="Launching BodySlide x64 from Mod Organizer 2"
     style={{ maxHeight:300 }}
-    className="zoomable"
 />
 
 Upon opening the program for the first time you will be prompted to select the respective game and Game Data Path.
@@ -107,7 +104,6 @@ On the top right of the interface there will be two search bars for `Filter Grou
     src={require('./img/bodyslide_guide/4_choose_groups.png').default}
     alt="BodySlide Choose Groups dialog for outfit filtering"
     style={{ maxHeight:200 }}
-    className="zoomable"
 />
 
 :::note
@@ -124,12 +120,10 @@ A list will open with various groups to choose outfits for. For **Female** selec
     src={require('./img/bodyslide_guide/4a_group_sample.png').default}
     alt="Group Examples 1"
     style={{ maxHeight:600 }}
-    className="zoomable"
 /> <img 
     src={require('./img/bodyslide_guide/4a_group_sample2.png').default}
     alt="Group Examples 2"
     style={{ maxHeight:600 }}
-    className="zoomable"
 />
 
 :::warning
@@ -148,7 +142,6 @@ You can easily do this process by using the `Filter Outfits` search bar at the v
         src={require('./img/bodyslide_guide/4c_unassigned.png').default}
         alt="Unassigned Example"
         style={{ maxHeight:899 }}
-        className="zoomable"
     />
 </details>
 
@@ -173,7 +166,6 @@ For example here are the default Female Presets available in _Licentia NEXT_, wi
     src={require('./img/bodyslide_guide/4b_preset_sample.png').default}
     alt="Preset Examples"
     style={{ maxHeight:300 }}
-    className="zoomable"
 />
 
 ---
@@ -189,7 +181,6 @@ Tick the checkbox for the previewed outfit path, and tick `Build Morphs`.
     src={require('./img/bodyslide_guide/5_batch_build.png').default}
     alt="BodySlide Batch Build button and Build Morphs option"
     style={{ maxHeight:100 }}
-    className="zoomable"
 />
 
 - After you have ticked the checkbox next to the preview, hold `Left CTRL` and select **Batch Build**.

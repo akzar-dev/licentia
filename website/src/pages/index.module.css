@@ -441,8 +441,8 @@ html[data-theme='light'] .description {
 }
 
 .navBtn:hover {
-  transform: translateY(-50%) scale(1.06);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .35);
+  transform: translateY(-50%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
 }
 
 .navBtnLeft {
@@ -457,6 +457,13 @@ html[data-theme='light'] .description {
   width: 18px;
   height: 18px;
   color: var(--ifm-font-color-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navBtn:hover {
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .35);
+  }
 }
 
 /* reduced-motion handled implicitly (no CSS animation) */

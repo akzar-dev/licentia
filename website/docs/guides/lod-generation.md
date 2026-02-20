@@ -54,7 +54,6 @@ This block applies to everything below, so **read carefully**!
         src={require('./img/lod_generation_guide/1_1_output_folders_created.png').default}
         alt="Create C:\\_DYNDOLOD output folders for generated files"
         style={{ maxHeight:150 }}
-        className="zoomable"
     />
    :::tip
    Make sure **they are empty!** *(in case it's not the first time you're doing this process)*
@@ -65,7 +64,6 @@ This block applies to everything below, so **read carefully**!
         src={require('./img/lod_generation_guide/1_2_edit_executables.png').default}
         alt="Open Mod Organizer 2 Edit Executables dialog"
         style={{ maxHeight:150 }}
-        className="zoomable"
     />
 
     Here you would need to go through the list of tools we'd use in this guide, and **make sure** their outputs *(which is the `-O:"some_path"` parameter)* are set to the folders you've created in the first step in the `Arguments` field, like this:
@@ -75,7 +73,6 @@ This block applies to everything below, so **read carefully**!
          src={require('./img/lod_generation_guide/1_2_xlodgen_settings.png').default}
          alt="Configure xLODGen executable paths in MO2"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
     - For `TexGenx64` it should be `-O:"C:\_DYNDOLOD\TexGen_Output"`:
 
@@ -83,7 +80,6 @@ This block applies to everything below, so **read carefully**!
          src={require('./img/lod_generation_guide/1_2_texgen_settings.png').default}
          alt="Configure TexGen executable paths in MO2"
          style={{ maxHeight:180 }}
-         className="zoomable"
       />
     - For `DynDOLODx64` it should be `-O:"C:\_DYNDOLOD\DynDOLOD_Output"`:
 
@@ -91,7 +87,6 @@ This block applies to everything below, so **read carefully**!
          src={require('./img/lod_generation_guide/1_2_dyndolod_settings.png').default}
          alt="Configure DynDOLOD executable paths in MO2"
          style={{ maxHeight:175 }}
-         className="zoomable"
       />
 
 3. As the last step before we begin - make sure to exclude those `*.exe` files both as a "process" and as a "file" for your Anti Virus software:
@@ -137,7 +132,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_3_start_xlodgen.png').default}
          alt="Start xLODGen from MO2 executable dropdown"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
 4. `xLodGen` window would open. It can take a while to load, don't worry! 
@@ -147,7 +141,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
       src={require('./img/lod_generation_guide/2_4_xlodgen_select_all_worldspaces.png').default}
       alt="Select all worldspaces in xLODGen worldspace list"
       style={{ maxHeight:180 }}
-      className="zoomable"
    />
 
 5. In the main window make sure **only** `Terrain LOD` is checked:
@@ -155,7 +148,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_5_xlodgen_only_terrain_lods.png').default}
          alt="Launch Large Address Aware for xLODGen patching"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 6. Select `LOD4` under `Terrain LOD` and set the following options:
@@ -163,7 +155,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_6_xlodgen_lod4_settings.png').default}
          alt="Set xLODGen LOD4 options and quality settings"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -202,7 +193,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_7_xlodgen_lod8_settings.png').default}
          alt="Set xLODGen LOD8 options and quality settings"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -239,7 +229,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_8_xlodgen_lod16_settings.png').default}
          alt="Set xLODGen LOD16 options and quality settings"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -276,7 +265,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_9_xlodgen_lod32_settings.png').default}
          alt="Set xLODGen LOD32 options and quality settings"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -313,7 +301,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_10_xlodgen_generate.png').default}
          alt="Run xLODGen generation for selected worldspaces"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 11. Now you just have to **wait** for approximately 25-30 minutes (depending on your PC, this may take up to an hour, depends on the CPU). You can track the time passed on the top bar of the `xLODGen` window!
@@ -324,7 +311,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_11_xlodgen_done.png').default}
          alt="xLODGen generation completed successfully"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       **Close** the `xLODGen` window and **proceed** to the next step (ACMOS).
@@ -339,7 +325,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_1_acmos_start_acmos.png').default}
          alt="Start ACMOS Road Generator from MO2"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
 2. In the newly opened `ACMOS` window select `Paths Only` in the `Select Roads` dropdown menu:
@@ -347,7 +332,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_2_acmos_paths_only.png').default}
          alt="Select Paths Only mode in ACMOS Select Roads dropdown"
          style={{ maxHeight:170 }}
-         className="zoomable"
       />
 
 3. Now click `Browse` near the `Path for LOD` string: 
@@ -355,7 +339,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_3_acmos_paths_to_lod_browse.png').default}
          alt="Click Browse for ACMOS Path for LOD field"
          style={{ maxHeight:170 }}
-         className="zoomable"
       />
 
 4. Navigate to the `C:\_DYNDOLOD` folder we've created in the [Preparation](#step-one--general-preparation) step **(1)**, click **ONCE** on your `SSELODGen_Output` folder **(2)**, make sure its name appeared at the bottom and click `Select Folder` **(3)**:
@@ -363,7 +346,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_4_acmos_paths_to_lod_folder.png').default}
          alt="Select SSELODGen_Output folder for ACMOS Path to LOD"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 5. Note that the `C:\_DYNDOLOD\SSELODGen_Output` is visible in both `Path to LOD` and `Output Path` **(1)**, and click `Generate` **(2)**!
@@ -371,7 +353,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_5_acmos_generate.png').default}
          alt="Confirm ACMOS paths then click Generate"
          style={{ maxHeight:170 }}
-         className="zoomable"
       />
 
       You would be greeted by an `Overwrite LOD Textures?` Warning - click `Yes`.
@@ -379,7 +360,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_5_acmos_warning.png').default}
          alt="ACMOS Overwrite LOD Textures warning dialog"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       And wait till the generation completes (it would take just a few minutes).
@@ -389,7 +369,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_6_acmos_zip.png').default}
          alt="ACMOS Zip prompt shown after road generation"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       After that you'd see the `All Done!` message - click `Ok`:
@@ -397,7 +376,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_6_acmos_done.png').default}
          alt="ACMOS All Done confirmation dialog"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
 7. You can now close the `ACMOS Road Generator` and proceed to the next step.
@@ -418,7 +396,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_3_final_mo2.png').default}
          alt="Locate xLODGen output archive in MO2 install workflow"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 4. Double-click the `SSELODGen_Output.zip`, and when prompted for `Quick Install` - just press `Ok`:
@@ -426,7 +403,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_4_final_install.png').default}
          alt="Install xLODGen output archive as a mod in MO2"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       It would take a minute, so just wait.
@@ -436,7 +412,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_5_final_bottom.png').default}
          alt="Move installed xLODGen output to correct position in MO2 left pane"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 6. Drag it to the `Licentia NEXT - LOD Output` separator, put it under the disabled `Licentia NEXT - xLODGen Output` mod, and enable it. The result would look like this:
@@ -444,7 +419,6 @@ Don't just run `xLODGen` and skip `ACMOS`!
          src={require('./img/lod_generation_guide/2_6_final_added.png').default}
          alt="xLODGen output enabled and installed correctly in MO2"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 7. The last step - find and disable the mod - `xLODGen Resource - SSE Terrain Tamriel`.
@@ -481,7 +455,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_1_xedit.png').default}
          alt="Open xEdit from MO2 for worldspace listing"
          style={{ maxHeight:120 }}
-         className="zoomable"
       />
 
 2. You would be greeted with the `Module Selection` window - make sure all the plugins are selected *(they usually are)*, if not - right-click anywhere in the list and click `Select All`. Then click `OK`:
@@ -489,7 +462,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_2_xedit_select_all.png').default}
          alt="Select all plugins when launching xEdit"
          style={{ maxHeight:200 }}
-         className="zoomable"
       />
 
 3. Next you'd be asked about `Mod Groups` - just close that window, we won't need them.
@@ -499,7 +471,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_4_xedit_apply_script.png').default}
          alt="Open xEdit Apply Script menu"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 5. In the opened `Apply Script` window select the `List worldspaces with grass` script from the dropdown list **(1)**, and click `Ok` **(2)**:
@@ -507,7 +478,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_5_xedit_apply_script_run.png').default}
          alt="Run worldspace listing script in xEdit"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       If you get the debug files window - just click `Ok`.
@@ -521,7 +491,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_6_xedit_apply_script_done.png').default}
          alt="Worldspace listing script finished in xEdit"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
       **Copy the contents** of this message box! Either just in your buffer or some note. 
@@ -533,7 +502,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_7_grass_control_mo2.png').default}
          alt="Open No Grass In Objects GrassControl folder"
          style={{ maxHeight:50 }}
-         className="zoomable"
       />
 
 8. In the opened Explorer window, go inside `SKSE/Plugins` folder, find the `GrassControl.ini` file, and open it with any text editor:
@@ -541,7 +509,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_8_grass_control_open_ini.png').default}
          alt="Open GrassControl.config.txt for editing"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 9. In the opened document, find the `Only-pregenerate-world-spaces` property, it would look something like this:
@@ -549,7 +516,6 @@ General idea is this - before the grass cache generation, it's needed to determi
          src={require('./img/lod_generation_guide/3_worldspaces_9_grass_control_edit_1.png').default}
          alt="Paste listed worldspaces into GrassControl config"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       Note that there's a lot of text between the `" "`!
@@ -586,7 +552,6 @@ If you don't - just ommit anything related to it.
          src={require('./img/lod_generation_guide/3_grass_bounds_2_apply_filter.png').default}
          alt="Apply xEdit filter for references by signature"
          style={{ maxHeight:200 }}
-         className="zoomable"
       />
 
 3. In the opened `Filter..` window select `by Record Signature` **(1)**, find and select `GRAS - Grass` in the list below **(2)**, and click `Filter` on the bottom-right **(3)**:
@@ -594,7 +559,6 @@ If you don't - just ommit anything related to it.
          src={require('./img/lod_generation_guide/3_grass_bounds_3_apply_filter_params.png').default}
          alt="Apply xEdit filter to isolate GRAS records"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 4. You would see all the plugins having any records of `GRASS` in them. Now we have to create **two NEW** override plugins for grass.
@@ -612,7 +576,6 @@ If you don't - just ommit anything related to it.
             src={require('./img/lod_generation_guide/3_grass_bounds_4_copy_as_override.png').default}
             alt="Copy selected grass records as override into patch plugin"
             style={{ maxHeight:250 }}
-            className="zoomable"
          />
 
       - In the new window scroll to the bottom of the plugin list, select 5th from the bottom called `<new file.esp>` with a `ESL` flag on the right, and click `Ok`:
@@ -620,7 +583,6 @@ If you don't - just ommit anything related to it.
             src={require('./img/lod_generation_guide/3_grass_bounds_4_copy_as_override_target.png').default}
             alt="Choose target plugin for grass bounds override"
             style={{ maxHeight:250 }}
-            className="zoomable"
          />
 
       - You'd be asked for a name, choose anything you want (we'd use `LN_M_Grass_Main` in this example), and click `Ok`.
@@ -640,14 +602,12 @@ If you don't - just ommit anything related to it.
             src={require('./img/lod_generation_guide/3_grass_bounds_6_open_main_in_CK.png').default}
             alt="Open override plugin in Creation Kit"
             style={{ maxHeight:250 }}
-            className="zoomable"
          />
    - In the `Object Window` find `Grass` and select it **(1)**, then on the right select **ALL** grass records with `Shift + Left Click` on the first and last records **(2)**, right click anywhere and click `Recalc Bounds`:
          <img 
             src={require('./img/lod_generation_guide/3_grass_bounds_6_recalc_main_in_CK.png').default}
             alt="Recalculate object bounds in Creation Kit"
             style={{ maxHeight:250 }}
-            className="zoomable"
          />
 
    - Click `FILE` -> `Save`, and then close `Creation Kit`.
@@ -682,7 +642,6 @@ If you don't - just ommit anything related to it.
             src={require('./img/lod_generation_guide/3_preparation_2_hide_grass_booster_ini.png').default}
             alt="Hide grass booster INI before generating grass cache"
             style={{ maxHeight:250 }}
-            className="zoomable"
          />
 
 3. And on the right pane in `Plugins` tab **DiSABLE** the following plugins:
@@ -694,7 +653,6 @@ If you don't - just ommit anything related to it.
          src={require('./img/lod_generation_guide/3_preparation_3_disable_grass_boosters_plugins.png').default}
          alt="Disable grass booster plugins in MO2 before caching"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 4. **Verify** `GrassControl.ini` **settings**.
@@ -728,7 +686,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_1_launch_precache_plugin.png').default}
          alt="Launch No Grass In Objects plugin from MO2"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
    You would get a popup warning you about the process details - **READ IT** and click `Ok`:
@@ -736,7 +693,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_1_launch_precache_plugin_warning.png').default}
          alt="No Grass In Objects plugin warning dialog in MO2"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 2. The game would **start now**!
@@ -747,7 +703,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_2_start_cache_message.png').default}
          alt="Grass cache start confirmation message"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
    - **Open** up the **console** instead with `~`. You'd be able to see the progress of cache generation there:
@@ -755,7 +710,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_2_cache_progress_console.png').default}
          alt="Grass cache generation progress in console output"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
    - Now you just have to **wait**. The game would just stay at the loading screen and do the grass generation.
@@ -771,7 +725,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_3_cache_finished.png').default}
          alt="Grass cache generation finished notification"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
       Game would close, and in `Mod Organizer 2` you'd see this message - click `Ok` here as well:
@@ -779,7 +732,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_3_cache_finished_mo2.png').default}
          alt="MO2 shows grass cache generation completed"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
       Grass cache generation is **done**! Proceed to the next step.
@@ -793,7 +745,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_output_1_open_overwrite.png').default}
          alt="Open Overwrite folder to collect generated grass cache files"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 2. Find the `grass` folder and add it to achive. It has to be `.zip`!
@@ -807,7 +758,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_output_3_grass_zip_in_downloads.png').default}
          alt="grass.zip archive created in downloads folder"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 4. Double-click the `grass.zip`, and when prompted for `Quick Install` - just press `Ok`:
@@ -815,7 +765,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_output_4_install_grass.png').default}
          alt="Install grass.zip as a mod in MO2"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       It would take 10-20 seconds.
@@ -825,7 +774,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_output_5_grass_at_the_bottom.png').default}
          alt="Place grass output near bottom of MO2 left pane"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 6. Drag it to the `Licentia NEXT - Grass Cache` separator, put it under the disabled `Licentia NEXT - Grass Cache` mod, and enable it. The result would look like this:
@@ -833,7 +781,6 @@ Some recommend setting your game resolution to `800x600` and disabling `ENB` to 
          src={require('./img/lod_generation_guide/3_output_6_finished_view.png').default}
          alt="Final MO2 view after grass cache installation"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
       **Done!** Proceed to the next step.
@@ -880,7 +827,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_texgen_1_start.png').default}
          alt="Start TexGen from MO2 executable dropdown"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       Give it a couple of minutes to load.
@@ -890,7 +836,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_texgen_2_options.png').default}
          alt="Configure TexGen output and option settings"
          style={{ maxHeight:399 }}
-         className="zoomable"
       />
 
       <details>
@@ -937,7 +882,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_texgen_3_done_exit.png').default}
          alt="TexGen finished dialog before closing"
          style={{ maxHeight:200 }}
-         className="zoomable"
       />
 
 4. **Done!** Proceed to installing its output below.
@@ -956,7 +900,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_3_final_mo2.png').default}
          alt="Locate TexGen output archive in MO2 install workflow"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 4. Double-click the `TexGen_Output.zip`, and when prompted for `Quick Install` - just press `Ok`:
@@ -964,7 +907,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_4_final_install.png').default}
          alt="Install TexGen output archive as a mod in MO2"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       It would take a minute, so just wait.
@@ -974,7 +916,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_5_final_bottom.png').default}
          alt="Move installed TexGen output to correct position in MO2 left pane"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 6. Drag it to the `Licentia NEXT - LOD Output` separator, put it under the disabled `Licentia NEXT - TexGen Output` mod, and enable it. The result would look like this:
@@ -982,7 +923,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_6_final_added.png').default}
          alt="TexGen output enabled and installed correctly in MO2"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 **Done!** Proceed to the next step.
@@ -1000,7 +940,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_1_start.png').default}
          alt="Start DynDOLOD from MO2 executable dropdown"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       Give it a couple of minutes to load.
@@ -1010,7 +949,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_2_select_all_worldspaces.png').default}
          alt="Select all worldspaces in DynDOLOD"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 3. In the top right section check `Candles` **(1)** and `FXGlow` **(2)**, then click `High` **(3)**. Don't forget to make sure that you've set the output path to the folder we've prepared in [General Preparation](#step-one--general-preparation) step above **(4)** - you can click `...` to select the folder:
@@ -1018,7 +956,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_3_candles_fx_high_preset.png').default}
          alt="Enable Candles and FXGlow then select High preset in DynDOLOD"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 4. Now we'd work on the `Options` category at the bottom of the screen. **We'd go line by line, left to right, top to bottom** *(the list will be numbered continuously)*:
@@ -1028,7 +965,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_4_options_line_1.png').default}
          alt="DynDOLOD options block settings part 1"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -1055,7 +991,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_4_options_line_2.png').default}
          alt="DynDOLOD options block settings part 2"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -1074,7 +1009,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_4_options_line_3.png').default}
          alt="DynDOLOD options block settings part 3"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -1093,7 +1027,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_4_options_line_4.png').default}
          alt="DynDOLOD options block settings part 4"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -1114,7 +1047,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_4_options_line_5.png').default}
          alt="DynDOLOD options block settings part 5"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       <details>
@@ -1137,7 +1069,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_5_tree_changes.png').default}
          alt="Set DynDOLOD tree billboard mode"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 6. In the same main window right under `tree` record there is a `\` recod: double-click it **(1)**, then in the newly opened window change `LOD Level 32` to `Level0` **(2)**, and click `Ok` at the bottom right **(3)**:
@@ -1145,7 +1076,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_6_root_changes.png').default}
          alt="Set DynDOLOD root billboard mode"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 7. Now, just double check that `tree` and `\` records are updated for all LOD levels *(basically it's `Level0 -> Billboard4 -> Billboard1 -> Billboard6` for `tree` and `Level0 -> Level1 -> Level2 -> Level0` for `\`)* **(1)**, and click `Ok` to **start the `DynDOLOD` generation!**:
@@ -1153,7 +1083,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_7_check_and_start.png').default}
          alt="Review DynDOLOD settings and start generation"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
       :::warning
@@ -1167,7 +1096,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_dyndolod_8_done_and_save.png').default}
          alt="DynDOLOD generation complete and save output prompt"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
       :::tip
@@ -1204,7 +1132,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_3_dyndolod_final_mo2.png').default}
          alt="Locate DynDOLOD_Output archive in MO2 install workflow"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 4. Double-click the `DynDOLOD_Output.zip`, and when prompted for `Quick Install` - just press `Ok`:
@@ -1212,7 +1139,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_4_dyndolod_final_install.png').default}
          alt="Install DynDOLOD_Output archive as a mod in MO2"
          style={{ maxHeight:100 }}
-         className="zoomable"
       />
 
       It would take a couple of minutes to install, so just wait.
@@ -1222,7 +1148,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_5_dyndolod_final_bottom.png').default}
          alt="Move DynDOLOD_Output to correct position in MO2 left pane"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 6. Drag it to the `Licentia NEXT - LOD Output` separator, put it under the disabled `Licentia NEXT - DynDOLOD Output` mod, and enable it. The result would look like this:
@@ -1230,7 +1155,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_6_dyndolod_final_added.png').default}
          alt="DynDOLOD_Output enabled and installed correctly in MO2"
          style={{ maxHeight:150 }}
-         className="zoomable"
       />
 
 7. In the `Plugins` section on the right, make sure both `DynDOLOD.esp` and `Occlusion.esp` plugins are sorted like this *(they should be loaded last!)*:
@@ -1238,7 +1162,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/4_7_dyndolod_plugins_order.png').default}
          alt="Correct plugin order for DynDOLOD output plugins"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 ---
@@ -1261,7 +1184,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
             src={require('./img/lod_generation_guide/5_3_unhide_grass_booster_ini.png').default}
             alt="Unhide grass booster INI during final cleanup"
             style={{ maxHeight:250 }}
-            className="zoomable"
          />
 
 4. And on the right pane in `Plugins` tab **ENABLE** the following plugins we've disabled earlier:
@@ -1273,7 +1195,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
          src={require('./img/lod_generation_guide/5_2_enable_grass_boosters_plugins.png').default}
          alt="Re-enable grass booster plugins in final cleanup step"
          style={{ maxHeight:250 }}
-         className="zoomable"
       />
 
 ---

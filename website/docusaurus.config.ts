@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import path from 'path';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -82,7 +83,7 @@ const config: Config = {
   },
 
   plugins: [
-    'docusaurus-plugin-image-zoom',
+    path.resolve(__dirname, './plugins/custom-zoom.cjs'),
   ],
 
   presets: [
@@ -203,16 +204,6 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-    },
-    zoom: {
-      selector: 'img.zoomable',
-      background: {
-        light: 'rgba(255, 255, 255, 0.8)',
-        dark: 'rgba(50, 50, 50, 0.7)'
-      },
-      config: {
-        margin: 12,
-      }
     },
     algolia: {
       appId: 'GMPG9FTIQO',

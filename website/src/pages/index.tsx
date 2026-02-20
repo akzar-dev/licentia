@@ -330,7 +330,7 @@ function Showcase() {
       const scroller = scrollerRef.current;
       const zoomOpen =
         typeof document !== 'undefined' &&
-        !!document.querySelector('.medium-zoom-image--opened');
+        !!document.querySelector('.lx-zoom-overlay--open');
       if (scroller && !isPausedRef.current && unitWidthRef.current && !zoomOpen) {
         posRef.current += speedRef.current * dtSec;
         scroller.scrollLeft = posRef.current;
@@ -413,11 +413,11 @@ function Showcase() {
     resumeSoon(900);
   }, [pause, resumeSoon]);
 
-  // Observe medium-zoom overlay to keep auto-scroll paused while zoomed
+  // Observe zoom overlay to keep auto-scroll paused while zoomed
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
     const handle = () => {
-      const zoomOpen = !!document.querySelector('.medium-zoom-image--opened');
+      const zoomOpen = !!document.querySelector('.lx-zoom-overlay--open');
       if (zoomOpen) {
         pause();
       } else {
@@ -426,7 +426,12 @@ function Showcase() {
       }
     };
     const observer = new MutationObserver(handle);
-    observer.observe(document.body, { childList: true, subtree: true, attributes: false });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'style'],
+    });
     // initial check
     handle();
     return () => observer.disconnect();

@@ -11,7 +11,7 @@ image: ./img/4-pre-installation-social.png
 
 ---
 
-## ![Skyrim and AE Upgrade](./img/4-pre-installation/4-1-skyrim-and-ae-upgrade.png)
+## ![Skyrim and AE Upgrade](img/4-pre-installation/4-1-skyrim-and-ae-upgrade-heading.png)
 
 | Requirement | Mandatory? | Comment |
 | :--- | :---: | :--- |
@@ -20,7 +20,7 @@ image: ./img/4-pre-installation-social.png
 
 ---
 
-## ![Accounts](./img/4-pre-installation/4-2-accounts.png)
+## ![Accounts](img/4-pre-installation/4-2-accounts-heading.png)
 
 | Requirement | Mandatory? | Comment |
 | :--- | :---: | :--- |
@@ -29,7 +29,7 @@ image: ./img/4-pre-installation-social.png
 
 ---
 
-## ![General PC adjustments](./img/4-pre-installation/4-3-general-pc-adjustments.png)
+## ![General PC adjustments](img/4-pre-installation/4-3-general-pc-adjustments-heading.png)
 
 | Requirement | Mandatory? | Comment |
 | :--- | :---: | :--- |

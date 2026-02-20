@@ -52,7 +52,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/1_1_run_LAA.png').default}
         alt="Launch the Large Address Aware (LAA) application"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
 4. When the program is opened, click `Add` -> `Files`:
@@ -60,7 +59,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/1_2_LAA_add_file.png').default}
         alt="Open Add > Files menu inside Large Address Aware"
         style={{ maxHeight:250 }}
-        className="zoomable"
     />
     
     Navigate to `Nemesis Unlimited Behavior Engine.exe` in your MO2 mods folder (it would be something like `%your_LN_install_path%\mods\Project New Reign - Nemesis Unlimited Behavior Engine - BLACK Profile\Nemesis_Engine\Nemesis Unlimited Behavior Engine.exe`), and click `Open`:
@@ -69,7 +67,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/1_3_LAA_select_nemesis_exe.png').default}
         alt="Select Nemesis Unlimited Behavior Engine executable in LAA"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
 5. Now in `LAA` window, click on the tickbox next to `Nemesis Unlimited Behavior Engine.exe` _(1)_, then open `With Selected` menu _(2)_ and click `Force Large Address Aware` _(3)_:
@@ -77,7 +74,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/1_4_LAA_add_flag_to_nemesis.png').default}
         alt="Enable Force Large Address Aware for Nemesis executable"
         style={{ maxHeight:250 }}
-        className="zoomable"
     />
 
 6. Now on the right side of the window make sure that field `LAA` is set to `True`:
@@ -85,7 +81,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/1_5_LAA_flag_added.png').default}
         alt="Verify LAA status is set to True for Nemesis executable"
         style={{ maxHeight:150 }}
-        className="zoomable"
     />
 
 7. Close the program, you're done! Proceed to next step.
@@ -99,7 +94,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/2_1_nemesis_output.png').default}
         alt="Locate Licentia NEXT - Nemesis Output mod entry in MO2"
         style={{ maxHeight:150 }}
-        className="zoomable"
     />
 
 2. In the newly opened File Explorer window, navigate inside the `Nemesis_Engine\cache` folder and **DELETE** all files inside it:
@@ -107,7 +101,6 @@ It can be run without it, but it's **highly recommended** to patch it.
         src={require('./img/nemesis_guide/2_2_nemesis_output_delete_cache.png').default}
         alt="Open Nemesis_Engine cache folder and delete all files inside"
         style={{ maxHeight:150 }}
-        className="zoomable"
     />
 
 3. You can close the File Explorer window and proceed to the next step.
@@ -125,7 +118,6 @@ In `MO2`, in top right corner of the window, click on the dropdown menu and sele
     src={require('./img/nemesis_guide/3_1_run_nemesis_from_mo2.png').default}
     alt="Launch Nemesis Unlimited Behavior Engine from MO2 executable dropdown"
     style={{ maxHeight:150 }}
-    className="zoomable"
 />
 
 :::warning
@@ -156,7 +148,6 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
         src={require('./img/nemesis_guide/4_1_select_patches.png').default}
         alt="Nemesis patch checklist with required patches selected"
         style={{ maxHeight:351 }}
-        className="zoomable"
     />
 
     :::tip
@@ -168,7 +159,6 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
         src={require('./img/nemesis_guide/4_2_update_engine.png').default}
         alt="Click Update Engine in Nemesis window"
         style={{ maxHeight:250 }}
-        className="zoomable"
     />
 
     Wait for the process to finish _(wait for the bar on the bottom to reach 100%)_. **It will take a few minutes**, so be patient:
@@ -177,7 +167,6 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
         src={require('./img/nemesis_guide/4_2_update_engine_done.png').default}
         alt="Update Engine process complete with update time shown in log"
         style={{ maxHeight:250 }}
-        className="zoomable"
     />
 
     :::warning
@@ -194,7 +183,6 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
         src={require('./img/nemesis_guide/5_1_launch_engine.png').default}
         alt="Click Launch Nemesis Behavior Engine"
         style={{ maxHeight:250 }}
-        className="zoomable"
     />
 
     The tool will now _slowly_ integrate your animation files into the behaviors:
@@ -202,7 +190,6 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
         src={require('./img/nemesis_guide/5_1_engine_running.png').default}
         alt="Nemesis behavior generation currently running"
         style={{ maxHeight:220 }}
-        className="zoomable"
     />
 
     :::tip
@@ -223,7 +210,6 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
         src={require('./img/nemesis_guide/5_1_engine_done.png').default}
         alt="Nemesis behavior generation complete message"
         style={{ maxHeight:220 }}
-        className="zoomable"
     />
 
     :::warning
@@ -252,7 +238,6 @@ There are still options to fix this however!
         src={require('./img/nemesis_guide/6_1_fnis_in_plugins.png').default}
         alt="FNIS.esp appears in MO2 plugin list after Nemesis generation"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
 2. We don't need it, so:
@@ -262,7 +247,6 @@ There are still options to fix this however!
             src={require('./img/nemesis_guide/6_1_fnis_open_origin.png').default}
             alt="Use Open Origin in Explorer for FNIS.esp plugin"
             style={{ maxHeight:100 }}
-            className="zoomable"
         />
 
    - Delete the `FNIS.esp` in the opened explorer window:
@@ -270,7 +254,6 @@ There are still options to fix this however!
             src={require('./img/nemesis_guide/6_1_fnis_delete.png').default}
             alt="Delete FNIS.esp file in File Explorer"
             style={{ maxHeight:200 }}
-            className="zoomable"
         />
 
 3. Close the folder that was opened and return to `MO2`, hit `F5` to refresh the modlist, and **that's it, you're done!** :crown:

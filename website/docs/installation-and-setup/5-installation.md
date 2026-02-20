@@ -17,7 +17,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
 ---
 
-## ![Start Skyrim and download CC](./img/5-installation/5-1-start-skyrim-and-download-cc.png)
+## ![Start Skyrim and download CC](img/5-installation/5-1-start-skyrim-and-download-cc-heading.png)
 
 1. **Make sure your Skyrim installation is clean**. If you're not sure that it is clean &mdash; that's how to make it one (or just watch [this video](https://www.youtube.com/watch?v=zQ5uNCKOKmI)).
 
@@ -36,7 +36,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_1_2_launcher_popup.png').default}
         alt="Skyrim launcher popup prompting first-time setup"
         style={{ maxHeight:120 }}
-        className="zoomable"
     />
    Click `OK` and then `PLAY` in Skyrim Launcher.
 
@@ -45,7 +44,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_1_3_ae_content_ingame_popup.png').default}
         alt="Skyrim Anniversary Edition content download popup in main menu"
         style={{ maxHeight:200 }}
-        className="zoomable"
     />
 
     :::danger
@@ -64,7 +62,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
 ---
 
-## ![Create folders and set AV exceptions](./img/5-installation/5-2-create-folders-and-set-av-exceptions.png)
+## ![Create folders and set AV exceptions](img/5-installation/5-2-create-folders-and-set-av-exceptions-heading.png)
 
 1. **Create a directory for Wabbajack.** Create a directory at the root of one of your Solid State drives (such as `D:\Wabbajack`) where you'd like to install _Wabbajack_ later on.
 
@@ -95,7 +93,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     :::
 
 ---
-## ![Install and configure Wabbajack](./img/5-installation/5-3-install-and-configure-wabbajack.png)
+## ![Install and configure Wabbajack](img/5-installation/5-3-install-and-configure-wabbajack-heading.png)
 
 1. **Get the Wabbajack app.** Download latest `Wabbajack.exe` [here](https://github.com/wabbajack-tools/wabbajack/releases/latest/download/Wabbajack.exe) and save it to Wabbajack folder we created earlier (i.e. `D:\Wabbajack`).
 
@@ -107,7 +105,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_3_3_wabbajack_main_ui_gear.png').default}
         alt="Wabbajack main screen with Settings gear icon highlighted"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     Here in the top left corner, click `Log in` near *Nexus Mods* logo:
@@ -116,7 +113,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_3_3_wabbajack_nexus_BEFORE_login.png').default}
         alt="Wabbajack Nexus Mods login button before sign in"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     A new window will open inside *Wabbajack*. You'd be directed to Nexus website, login there as usual and click `Authorize` when prompted. Login window will close by itself after authorization.
@@ -126,12 +122,11 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_3_3_wabbajack_nexus_AFTER_login.png').default}
         alt="Wabbajack Nexus Mods login status after successful sign in"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
 ---
 
-## ![Download and install the list](./img/5-installation/5-4-download-and-install-the-list.png)
+## ![Download and install the list](img/5-installation/5-4-download-and-install-the-list-heading.png)
 
 1. Now after you've successfully logged in, click `Browse lists` in the left menu of _Wabbajack_ UI:
 
@@ -139,7 +134,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_1_wabbajack_main_ui_browse.png').default}
         alt="Wabbajack left menu with Browse Lists selected"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
 2. Select filters on the left &mdash; `Skyrim Special Edition` as a game **(1)**, tick `Show NSFW` and `Show Unofficial Lists` **(2)**, and type `next` in search bar **(3)**. When you see `Licentia NEXT` &mdash; click on its card on the right **(4)**:
@@ -148,7 +142,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_2_wabbajack_filters_and_download.png').default}
         alt="Wabbajack filters set for Skyrim SE and Licentia NEXT search result"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
  
 3. In the newly opened window for _Licentia NEXT_, press `Download & Install` button in the bottom left:
@@ -157,7 +150,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_3_wabbajack_click_dowload_install.png').default}
         alt="Licentia NEXT page in Wabbajack with Download and Install button"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
     
     This will download _Licentia's_ **Wabbajack file** in the background, which is basically an installation package.
@@ -168,7 +160,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_4_wabbajack_initial_blank_installation.png').default}
         alt="Initial Wabbajack installation window before setting paths"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     Don't worry about the error at the bottom, it is normal and will be fixed in the next step.
@@ -179,7 +170,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_5_wabbajack_start_installation.png').default}
         alt="Wabbajack install window with install and download paths configured"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     **This would begin the actual download and installation of the list.**
@@ -197,7 +187,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_5_wabbajack_error_example.png').default}
         alt="Example Wabbajack installation error with log viewer panel"
         style={{ maxHeight:300 }}
-        className="zoomable"
     />
 
     On the **left side** of this window there's an error box that allows you to open full *Wabbajack* log file, which is useful for troubleshooting.
@@ -228,7 +217,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         src={require('./img/5-installation/5_4_6_wabbajack_installation_complete.png').default}
         alt="Wabbajack installation complete message"
         style={{ maxHeight:100 }}
-        className="zoomable"
     />
 
     You can close *Wabbajack* now and proceed to the next step.
