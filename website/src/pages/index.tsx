@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
-import { useColorMode } from '@docusaurus/theme-common';
 
 /** ------- CONFIG -------- */
 /** Load every image in /static/img/pages/main/screenshots */
@@ -42,11 +41,34 @@ const HERO_BG_LIGHT = '/img/pages/main/licentia-social-card-bg-light.webp';
 /** Main Hero function */
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
-  const { colorMode } = useColorMode();
-  // Prefer DOM's data-theme attribute on client for first paint, fallback to hook
-  const domTheme =
-    typeof document !== 'undefined' ? (document.documentElement.getAttribute('data-theme') as 'light' | 'dark' | null) : null;
-  const resolvedTheme = domTheme ?? colorMode;
+  const getPreferredTheme = React.useCallback((): 'light' | 'dark' => {
+    if (typeof document !== 'undefined') {
+      const attrTheme = document.documentElement.getAttribute('data-theme');
+      if (attrTheme === 'light' || attrTheme === 'dark') return attrTheme;
+    }
+
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    return 'light';
+  }, []);
+
+  const [resolvedTheme, setResolvedTheme] = React.useState<'light' | 'dark'>(getPreferredTheme);
+
+  React.useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    const html = document.documentElement;
+    const syncTheme = () => setResolvedTheme(getPreferredTheme());
+
+    syncTheme();
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
+
+    return () => observer.disconnect();
+  }, [getPreferredTheme]);
+
   const heroBgSrc = resolvedTheme === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
 
   return (
