@@ -6,6 +6,10 @@
 
 /* Licentia theme colors */
 /* ---------- Light theme (site default) ---------- */
+html {
+  scrollbar-gutter: stable;
+}
+
 :root {
   /* Primary scale tuned for contrast on white */
   --ifm-color-primary: #ce9e05;

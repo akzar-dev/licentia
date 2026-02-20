@@ -88,21 +88,20 @@ function clampPan(): void {
   panY = Math.max(-maxY, Math.min(maxY, panY));
 }
 
-function getScrollbarWidth(): number {
-  return window.innerWidth - document.documentElement.clientWidth;
-}
+
 
 function applyTransform(animate = false): void {
   if (!imageEl) return;
   if (animate) {
-    imageEl.style.transition = 'transform 320ms cubic-bezier(0.2, 0, 0.2, 1), opacity 240ms ease';
+    // Force a reflow to ensure the transition is picked up
+    void imageEl.offsetHeight;
+    imageEl.style.transition = 'transform 360ms cubic-bezier(0.2, 0, 0.2, 1), opacity 240ms ease';
   } else {
     imageEl.style.transition = 'none';
   }
   imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
 
   if (!animate) {
-    // Release transition lock after a frame
     requestAnimationFrame(() => {
       if (imageEl) imageEl.style.transition = '';
     });
@@ -206,13 +205,7 @@ function openOverlay(index: number): void {
   if (!overlay) return;
   setImage(index);
   overlay.style.display = '';
-
-  const sw = getScrollbarWidth();
-  if (sw > 0) {
-    document.body.style.paddingRight = `${sw}px`;
-  }
   document.body.style.overflow = 'hidden';
-
   animateOpen();
 }
 
@@ -223,7 +216,6 @@ async function closeOverlay(): Promise<void> {
   overlay.classList.remove('lx-zoom-overlay--open');
   overlay.style.display = 'none';
   document.body.style.removeProperty('overflow');
-  document.body.style.removeProperty('padding-right');
   resetOpenedState();
 }
 
