@@ -59,24 +59,38 @@ function getDistance(a: { x: number; y: number }, b: { x: number; y: number }): 
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-function clampPan(): void {
-  if (!imageEl || !stageEl) return;
+function getPanBounds(): { maxX: number; maxY: number } {
+  if (!imageEl || !stageEl) return { maxX: 0, maxY: 0 };
   const baseW = imageEl.offsetWidth || 0;
   const baseH = imageEl.offsetHeight || 0;
-  const stageW = stageEl.clientWidth || window.innerWidth;
-  const stageH = stageEl.clientHeight || window.innerHeight;
+
+  const style = window.getComputedStyle(stageEl);
+  const pl = parseFloat(style.paddingLeft) || 0;
+  const pr = parseFloat(style.paddingRight) || 0;
+  const pt = parseFloat(style.paddingTop) || 0;
+  const pb = parseFloat(style.paddingBottom) || 0;
+
+  const stageW = Math.max(0, stageEl.clientWidth - pl - pr);
+  const stageH = Math.max(0, stageEl.clientHeight - pt - pb);
+
   const scaledW = baseW * scale;
   const scaledH = baseH * scale;
+
   const maxX = Math.max(0, (scaledW - stageW) / 2);
   const maxY = Math.max(0, (scaledH - stageH) / 2);
+
+  return { maxX, maxY };
+}
+
+function clampPan(): void {
+  const { maxX, maxY } = getPanBounds();
   panX = Math.max(-maxX, Math.min(maxX, panX));
   panY = Math.max(-maxY, Math.min(maxY, panY));
 }
 
 function applyTransform(animate = false): void {
   if (!imageEl) return;
-  clampPan();
-  imageEl.style.transition = animate ? 'transform 220ms cubic-bezier(0.2, 0, 0.2, 1)' : 'none';
+  imageEl.style.transition = animate ? 'transform 320ms cubic-bezier(0.2, 0, 0.2, 1)' : 'none';
   imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
   if (!animate) {
     requestAnimationFrame(() => {
@@ -92,6 +106,7 @@ function setScale(nextScale: number, animate = true): void {
     panY = 0;
   }
   overlay?.classList.toggle('lx-zoom-overlay--zoomed', scale > 1);
+  clampPan();
   applyTransform(animate);
 }
 
@@ -114,6 +129,7 @@ function setScaleAtPoint(nextScale: number, clientX: number, clientY: number, an
     panY -= (clientY - cy) * (ratio - 1);
   }
   overlay?.classList.toggle('lx-zoom-overlay--zoomed', scale > 1);
+  clampPan();
   applyTransform(animate);
 }
 
@@ -326,8 +342,24 @@ function ensureOverlay(): void {
     }
 
     if (!isDragging || scale <= 1) return;
-    panX = dragPanStartX + (e.clientX - dragStartX);
-    panY = dragPanStartY + (e.clientY - dragStartY);
+    let tx = dragPanStartX + (e.clientX - dragStartX);
+    let ty = dragPanStartY + (e.clientY - dragStartY);
+
+    const { maxX, maxY } = getPanBounds();
+    const overX = Math.max(0, Math.abs(tx) - maxX);
+    const overY = Math.max(0, Math.abs(ty) - maxY);
+
+    if (overX > 0) {
+      const sign = tx > 0 ? 1 : -1;
+      tx = sign * (maxX + overX * 0.38);
+    }
+    if (overY > 0) {
+      const sign = ty > 0 ? 1 : -1;
+      ty = sign * (maxY + overY * 0.38);
+    }
+
+    panX = tx;
+    panY = ty;
     applyTransform(false);
   });
 
@@ -341,6 +373,12 @@ function ensureOverlay(): void {
     isDragging = false;
     if (stageEl?.hasPointerCapture(e.pointerId)) stageEl.releasePointerCapture(e.pointerId);
     overlay?.classList.remove('lx-zoom-overlay--dragging');
+
+    const { maxX, maxY } = getPanBounds();
+    if (Math.abs(panX) > maxX || Math.abs(panY) > maxY) {
+      clampPan();
+      applyTransform(true);
+    }
 
     const dx = e.clientX - dragStartX;
     const dy = e.clientY - dragStartY;
