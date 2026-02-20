@@ -140,6 +140,20 @@ function setScaleAtPoint(nextScale: number, clientX: number, clientY: number, an
   applyTransform(animate);
 }
 
+function setImage(index: number): void {
+  if (!imageEl || !items.length) return;
+  currentIndex = (index + items.length) % items.length;
+  const item = items[currentIndex];
+
+  imageEl.src = item.src;
+  imageEl.alt = item.alt;
+  imageEl.style.opacity = '1';
+  imageEl.draggable = false;
+
+  resetOpenedState();
+  applyTransform(false);
+}
+
 function resetOpenedState(): void {
   scale = 1;
   panX = 0;
@@ -149,17 +163,6 @@ function resetOpenedState(): void {
   isDragging = false;
   dragStartedOnImage = false;
   overlay?.classList.remove('lx-zoom-overlay--zoomed');
-}
-
-function setImage(index: number): void {
-  if (!imageEl || !items.length) return;
-  currentIndex = (index + items.length) % items.length;
-  const item = items[currentIndex];
-  imageEl.src = item.src;
-  imageEl.alt = item.alt;
-  imageEl.draggable = false;
-  resetOpenedState();
-  applyTransform(false);
 }
 
 function animateOpen(): void {
@@ -172,10 +175,10 @@ function animateOpen(): void {
   });
   stageEl.animate(
     [
-      { transform: 'scale(0.985)', opacity: 0.82 },
+      { transform: 'scale(0.97)', opacity: 0 },
       { transform: 'scale(1)', opacity: 1 },
     ],
-    { duration: 230, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'none' }
+    { duration: 230, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'forwards' }
   );
 }
 
@@ -221,6 +224,13 @@ async function closeOverlay(): Promise<void> {
   overlay.style.display = 'none';
   document.body.style.removeProperty('overflow');
   document.body.style.removeProperty('padding-right');
+
+  // Completely blank the image to prevent stale pixels on next open
+  if (imageEl) {
+    imageEl.removeAttribute('src');
+    imageEl.style.opacity = '0';
+  }
+
   resetOpenedState();
 }
 
