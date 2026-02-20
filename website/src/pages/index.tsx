@@ -43,7 +43,10 @@ const HERO_BG_LIGHT = '/img/pages/main/licentia-social-card-bg-light.webp';
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
   const { colorMode } = useColorMode();
-  const heroBgSrc = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
+  const domTheme =
+    typeof document !== 'undefined' ? (document.documentElement.getAttribute('data-theme') as 'light' | 'dark' | null) : null;
+  const resolvedTheme = domTheme ?? colorMode;
+  const heroBgSrc = resolvedTheme === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
   const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
   const heroBgRef = React.useRef<HTMLImageElement | null>(null);
 
