@@ -644,6 +644,8 @@ img.img-loaded {
   cursor: default;
   opacity: 0;
   transition: opacity .32s cubic-bezier(0.2, 0, 0.2, 1);
+  /* Isolate image layer to prevent WebKit dropping large scaled layers */
+  transform: translate3d(0, 0, 0);
 }
 
 .lx-zoom-overlay--open .lx-zoom-stage {
@@ -667,7 +669,6 @@ img.img-loaded {
   user-select: none;
   -webkit-user-drag: none;
   /* Hardware acceleration for mobile performance */
-  backface-visibility: hidden;
   will-change: transform, opacity;
 }
 

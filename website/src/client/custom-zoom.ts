@@ -255,31 +255,36 @@ async function navigate(direction: 1 | -1): Promise<void> {
 
     // Change source while invisible
     const nextIdx = (currentIndex + direction + items.length) % items.length;
-    const nextSrc = items[nextIdx].src;
+    currentIndex = nextIdx;
+    const item = items[nextIdx];
 
-    // Preload & wait for actual load to avoid the "old image flash"
-    // We use .decode() for modern browsers to ensure it's ready to paint
-    const imgObj = new Image();
-    imgObj.src = nextSrc;
+    // Set source while invisible and decode directly on the target element
+    imageEl.src = item.src;
+    imageEl.alt = item.alt;
+    imageEl.style.opacity = '0';
+    resetOpenedState(); // Reset pan/scale for the new image
+
     await new Promise((resolve) => {
       const finish = () => {
-        if ('decode' in imgObj) {
-          imgObj.decode().then(resolve).catch(resolve);
+        if ('decode' in imageEl!) {
+          imageEl!.decode().then(resolve).catch(resolve);
         } else {
           resolve(null);
         }
       };
 
-      if (imgObj.complete && imgObj.naturalWidth > 0) finish();
+      if (imageEl!.complete && imageEl!.naturalWidth > 0) finish();
       else {
-        imgObj.onload = finish;
-        imgObj.onerror = () => resolve(null);
+        imageEl!.onload = finish;
+        imageEl!.onerror = () => resolve(null);
         setTimeout(resolve, 2000); // Safety timeout
       }
     });
 
-    setImage(nextIdx, '0');
     out.cancel();
+
+    // Force a sync transform before starting the "in" animation
+    applyTransform(false);
 
     const inn = imageEl.animate(
       [
