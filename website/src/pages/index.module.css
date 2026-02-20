@@ -16,27 +16,30 @@
   object-fit: cover;
   filter: blur(4px);
   transform: scale(1.03);
-  opacity: 1;
-}
-
-.heroBgShimmer {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(56, 56, 58, .78) 0%,
-    rgba(86, 86, 90, .74) 45%,
-    rgba(56, 56, 58, .78) 100%
-  );
-  background-size: 300% 100%;
-  animation: heroBgShimmer 8s linear infinite;
-  opacity: 1;
-  transition: opacity .45s ease;
-}
-
-.heroBgShimmerHidden {
   opacity: 0;
-  animation: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.heroBgDark {
+  display: block;
+}
+
+.heroBgLight {
+  display: none;
+}
+
+[data-theme='dark'] .heroBgDark {
+  opacity: 1;
+}
+
+[data-theme='light'] .heroBgDark {
+  display: none;
+  opacity: 0;
+}
+
+[data-theme='light'] .heroBgLight {
+  display: block;
+  opacity: 1;
 }
 
 .heroOverlay {
@@ -45,16 +48,6 @@
   background:
     radial-gradient(60% 60% at 50% 40%, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 100%);
-}
-
-@keyframes heroBgShimmer {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
-  }
 }
 
 /* Light theme: lighter/whitish veil instead of dark */
