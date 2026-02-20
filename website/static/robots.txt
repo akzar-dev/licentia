@@ -1,8 +1,9 @@
 User-agent: *
-Allow: /
 Disallow: /img/logo.png
 Disallow: /img/logo-navbar.png
 Disallow: /img/pages/main/screenshots-preview/
+Disallow: /img/pages/main/licentia-social-card-bg-light.webp
+Disallow: /img/pages/main/licentia-social-card-bg.webp
 Disallow: /img/pages/*-heading.png
 Disallow: /img/pages/*/*-heading.png
 Disallow: /img/pages/*/*/*-heading.png
