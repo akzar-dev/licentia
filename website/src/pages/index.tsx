@@ -43,43 +43,16 @@ const HERO_BG_LIGHT = '/img/pages/main/licentia-social-card-bg-light.webp';
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
   const { colorMode } = useColorMode();
+  // Prefer DOM's data-theme attribute on client for first paint, fallback to hook
   const domTheme =
     typeof document !== 'undefined' ? (document.documentElement.getAttribute('data-theme') as 'light' | 'dark' | null) : null;
   const resolvedTheme = domTheme ?? colorMode;
   const heroBgSrc = resolvedTheme === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
-  const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
-  const heroBgRef = React.useRef<HTMLImageElement | null>(null);
-
-  React.useEffect(() => {
-    setHeroBgLoaded(false);
-    const el = heroBgRef.current;
-    if (!el) return;
-
-    const markLoadedIfCurrent = () => {
-      const current = el.currentSrc || el.src || '';
-      if (current.includes(heroBgSrc)) {
-        setHeroBgLoaded(true);
-      }
-    };
-
-    if (el.complete && el.naturalWidth > 0) {
-      markLoadedIfCurrent();
-      return;
-    }
-
-    el.addEventListener('load', markLoadedIfCurrent);
-    el.addEventListener('error', markLoadedIfCurrent);
-    return () => {
-      el.removeEventListener('load', markLoadedIfCurrent);
-      el.removeEventListener('error', markLoadedIfCurrent);
-    };
-  }, [heroBgSrc]);
 
   return (
     <section className={styles.hero}>
       <img
-        ref={heroBgRef}
-        className={clsx(styles.heroBgImg, heroBgLoaded && styles.heroBgReady)}
+        className={styles.heroBgImg}
         src={heroBgSrc}
         alt=""
         aria-hidden
@@ -88,13 +61,7 @@ function Hero() {
         loading="eager"
         decoding="async"
         fetchPriority="high"
-        onLoad={(e) => {
-          const current = e.currentTarget.currentSrc || e.currentTarget.src || '';
-          if (current.includes(heroBgSrc)) setHeroBgLoaded(true);
-        }}
-        onError={() => setHeroBgLoaded(true)}
       />
-      <div className={clsx(styles.heroBgShimmer, heroBgLoaded && styles.heroBgShimmerHidden)} aria-hidden />
       <div className={styles.heroOverlay} />
 
       <div className={clsx('container', styles.heroInner)}>
