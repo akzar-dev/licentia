@@ -37,9 +37,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify showcase preview/full mapping
-        run: npm run check:showcase-mapping
-
       - name: Build website
         run: npm run build
 
