@@ -92,18 +92,33 @@ function clampPan(): void {
 
 function applyTransform(animate = false): void {
   if (!imageEl) return;
+
+  const targetTransform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+
   if (animate) {
-    // Force a reflow to ensure the transition is picked up
-    void imageEl.offsetHeight;
-    imageEl.style.transition = 'transform 360ms cubic-bezier(0.2, 0, 0.2, 1), opacity 240ms ease';
+    imageEl.animate(
+      [
+        { transform: window.getComputedStyle(imageEl).transform },
+        { transform: targetTransform }
+      ],
+      {
+        duration: 360,
+        easing: 'cubic-bezier(0.2, 0, 0.2, 1)',
+        fill: 'forwards'
+      }
+    ).finished.then(anim => {
+      anim.commitStyles();
+      anim.cancel();
+    });
   } else {
-    // When not animating, we keep transition empty so CSS doesn't interpolate
-    imageEl.style.transition = '';
+    imageEl.style.transform = targetTransform;
   }
-  imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
 }
 
 function getScrollbarWidth(): number {
+  if (typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    return 0;
+  }
   return window.innerWidth - document.documentElement.clientWidth;
 }
 function setScale(nextScale: number, animate = true): void {
@@ -264,6 +279,10 @@ async function navigate(direction: 1 | -1): Promise<void> {
     imageEl.style.opacity = '0';
     resetOpenedState(); // Reset pan/scale for the new image
 
+    // CRITICAL: Synchronize the underlying style BEFORE the new animation starts
+    // This prevents the "shift" where it briefly uses the old image's transform
+    applyTransform(false);
+
     await new Promise((resolve) => {
       const finish = () => {
         if ('decode' in imageEl!) {
@@ -283,9 +302,6 @@ async function navigate(direction: 1 | -1): Promise<void> {
 
     out.cancel();
 
-    // Force a sync transform before starting the "in" animation
-    applyTransform(false);
-
     const inn = imageEl.animate(
       [
         { transform: `translate3d(${direction * 40}px, 0, 0) scale(0.98)`, opacity: 0 },
@@ -294,7 +310,7 @@ async function navigate(direction: 1 | -1): Promise<void> {
       { duration: 240, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'forwards' }
     );
     await inn.finished;
-    imageEl.style.opacity = '1';
+    inn.commitStyles();
     inn.cancel();
 
     applyTransform(false);

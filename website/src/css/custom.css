@@ -669,7 +669,7 @@ img.img-loaded {
   user-select: none;
   -webkit-user-drag: none;
   /* Hardware acceleration for mobile performance */
-  will-change: transform, opacity;
+  will-change: opacity;
 }
 
 .lx-zoom-overlay--zoomed .lx-zoom-image {
