@@ -45,14 +45,24 @@ function Hero() {
   const { colorMode } = useColorMode();
   const heroBgSrc = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
   const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
+  const heroBgRef = React.useRef<HTMLImageElement | null>(null);
 
   React.useEffect(() => {
     setHeroBgLoaded(false);
   }, [heroBgSrc]);
 
+  React.useEffect(() => {
+    const el = heroBgRef.current;
+    // Cached images may already be complete before React onLoad fires.
+    if (el?.complete && el.naturalWidth > 0) {
+      setHeroBgLoaded(true);
+    }
+  }, [heroBgSrc]);
+
   return (
     <section className={styles.hero}>
       <img
+        ref={heroBgRef}
         className={clsx(styles.heroBgImg, heroBgLoaded && styles.heroBgReady)}
         src={heroBgSrc}
         alt=""
