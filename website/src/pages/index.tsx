@@ -44,26 +44,38 @@ function Hero() {
   const { siteConfig } = useDocusaurusContext();
   const { colorMode } = useColorMode();
   const heroBgSrc = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
-  const [loadedBySrc, setLoadedBySrc] = React.useState<Record<string, boolean>>({});
-  const heroBgLoaded = !!loadedBySrc[heroBgSrc];
+  const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
+  const heroBgRef = React.useRef<HTMLImageElement | null>(null);
 
   React.useEffect(() => {
-    if (loadedBySrc[heroBgSrc]) return;
-    const probe = new Image();
-    const done = () => {
-      setLoadedBySrc((prev) => (prev[heroBgSrc] ? prev : { ...prev, [heroBgSrc]: true }));
+    setHeroBgLoaded(false);
+    const el = heroBgRef.current;
+    if (!el) return;
+
+    const markLoadedIfCurrent = () => {
+      const current = el.currentSrc || el.src || '';
+      if (current.includes(heroBgSrc)) {
+        setHeroBgLoaded(true);
+      }
     };
-    probe.onload = done;
-    probe.onerror = done;
-    probe.src = heroBgSrc;
-    if (probe.complete && probe.naturalWidth > 0) {
-      done();
+
+    if (el.complete && el.naturalWidth > 0) {
+      markLoadedIfCurrent();
+      return;
     }
-  }, [heroBgSrc, loadedBySrc]);
+
+    el.addEventListener('load', markLoadedIfCurrent);
+    el.addEventListener('error', markLoadedIfCurrent);
+    return () => {
+      el.removeEventListener('load', markLoadedIfCurrent);
+      el.removeEventListener('error', markLoadedIfCurrent);
+    };
+  }, [heroBgSrc]);
 
   return (
     <section className={styles.hero}>
       <img
+        ref={heroBgRef}
         className={clsx(styles.heroBgImg, heroBgLoaded && styles.heroBgReady)}
         src={heroBgSrc}
         alt=""
@@ -73,8 +85,11 @@ function Hero() {
         loading="eager"
         decoding="async"
         fetchPriority="high"
-        onLoad={() => setLoadedBySrc((prev) => (prev[heroBgSrc] ? prev : { ...prev, [heroBgSrc]: true }))}
-        onError={() => setLoadedBySrc((prev) => (prev[heroBgSrc] ? prev : { ...prev, [heroBgSrc]: true }))}
+        onLoad={(e) => {
+          const current = e.currentTarget.currentSrc || e.currentTarget.src || '';
+          if (current.includes(heroBgSrc)) setHeroBgLoaded(true);
+        }}
+        onError={() => setHeroBgLoaded(true)}
       />
       <div className={clsx(styles.heroBgShimmer, heroBgLoaded && styles.heroBgShimmerHidden)} aria-hidden />
       <div className={styles.heroOverlay} />
