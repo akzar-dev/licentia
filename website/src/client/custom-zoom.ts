@@ -140,14 +140,14 @@ function setScaleAtPoint(nextScale: number, clientX: number, clientY: number, an
   applyTransform(animate);
 }
 
-function setImage(index: number): void {
+function setImage(index: number, opacity = '1'): void {
   if (!imageEl || !items.length) return;
   currentIndex = (index + items.length) % items.length;
   const item = items[currentIndex];
 
   imageEl.src = item.src;
   imageEl.alt = item.alt;
-  imageEl.style.opacity = '1';
+  imageEl.style.opacity = opacity;
   imageEl.draggable = false;
 
   resetOpenedState();
@@ -258,19 +258,27 @@ async function navigate(direction: 1 | -1): Promise<void> {
     const nextSrc = items[nextIdx].src;
 
     // Preload & wait for actual load to avoid the "old image flash"
+    // We use .decode() for modern browsers to ensure it's ready to paint
     const imgObj = new Image();
     imgObj.src = nextSrc;
     await new Promise((resolve) => {
-      if (imgObj.complete && imgObj.naturalWidth > 0) resolve(null);
+      const finish = () => {
+        if ('decode' in imgObj) {
+          imgObj.decode().then(resolve).catch(resolve);
+        } else {
+          resolve(null);
+        }
+      };
+
+      if (imgObj.complete && imgObj.naturalWidth > 0) finish();
       else {
-        imgObj.onload = () => resolve(null);
+        imgObj.onload = finish;
         imgObj.onerror = () => resolve(null);
-        setTimeout(resolve, 1500); // Safety timeout
+        setTimeout(resolve, 2000); // Safety timeout
       }
     });
 
-    setImage(nextIdx);
-    imageEl.style.opacity = '0';
+    setImage(nextIdx, '0');
     out.cancel();
 
     const inn = imageEl.animate(

@@ -666,6 +666,9 @@ img.img-loaded {
   pointer-events: auto;
   user-select: none;
   -webkit-user-drag: none;
+  /* Hardware acceleration for mobile performance */
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .lx-zoom-overlay--zoomed .lx-zoom-image {
