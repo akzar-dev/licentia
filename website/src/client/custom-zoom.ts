@@ -88,11 +88,21 @@ function clampPan(): void {
   panY = Math.max(-maxY, Math.min(maxY, panY));
 }
 
+function getScrollbarWidth(): number {
+  return window.innerWidth - document.documentElement.clientWidth;
+}
+
 function applyTransform(animate = false): void {
   if (!imageEl) return;
-  imageEl.style.transition = animate ? 'transform 320ms cubic-bezier(0.2, 0, 0.2, 1)' : 'none';
+  if (animate) {
+    imageEl.style.transition = 'transform 320ms cubic-bezier(0.2, 0, 0.2, 1), opacity 240ms ease';
+  } else {
+    imageEl.style.transition = 'none';
+  }
   imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+
   if (!animate) {
+    // Release transition lock after a frame
     requestAnimationFrame(() => {
       if (imageEl) imageEl.style.transition = '';
     });
@@ -196,7 +206,13 @@ function openOverlay(index: number): void {
   if (!overlay) return;
   setImage(index);
   overlay.style.display = '';
+
+  const sw = getScrollbarWidth();
+  if (sw > 0) {
+    document.body.style.paddingRight = `${sw}px`;
+  }
   document.body.style.overflow = 'hidden';
+
   animateOpen();
 }
 
@@ -207,6 +223,7 @@ async function closeOverlay(): Promise<void> {
   overlay.classList.remove('lx-zoom-overlay--open');
   overlay.style.display = 'none';
   document.body.style.removeProperty('overflow');
+  document.body.style.removeProperty('padding-right');
   resetOpenedState();
 }
 
@@ -230,12 +247,24 @@ async function navigate(direction: 1 | -1): Promise<void> {
     await out.finished;
 
     // Change source while invisible
-    setImage(currentIndex + direction);
-    imageEl.style.opacity = '0';
-    out.cancel(); // Stop the 'out' animation now that we've manually set opacity
+    const nextIdx = (currentIndex + direction + items.length) % items.length;
+    const nextSrc = items[nextIdx].src;
 
-    // Small delay to let browser start loading/parsing the new src
-    await new Promise((r) => setTimeout(r, 40));
+    // Preload & wait for actual load to avoid the "old image flash"
+    const imgObj = new Image();
+    imgObj.src = nextSrc;
+    await new Promise((resolve) => {
+      if (imgObj.complete && imgObj.naturalWidth > 0) resolve(null);
+      else {
+        imgObj.onload = () => resolve(null);
+        imgObj.onerror = () => resolve(null);
+        setTimeout(resolve, 1500); // Safety timeout
+      }
+    });
+
+    setImage(nextIdx);
+    imageEl.style.opacity = '0';
+    out.cancel();
 
     const inn = imageEl.animate(
       [
