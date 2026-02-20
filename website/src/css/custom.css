@@ -306,7 +306,7 @@ h2 {
   transform: translateY(-1px) scale(1.01);
 }
 
-.footer .footer__links .footer__link-item[href*="ko-fi.com"] + .footer__link-separator {
+.footer .footer__links .footer__link-item[href*="ko-fi.com"]+.footer__link-separator {
   display: none;
 }
 
@@ -336,14 +336,12 @@ h2 {
   width: min(520px, 86%);
   height: 2px;
   margin: 0.3rem auto 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 6%,
-    var(--licentia-separator-core) 50%,
-    transparent 94%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 6%,
+      var(--licentia-separator-core) 50%,
+      transparent 94%,
+      transparent 100%);
 }
 
 /* Prevent duplicate separator on nested footer links wrapper */
@@ -516,7 +514,7 @@ h2 {
 }
 
 @media (min-width: 997px) {
-  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link {
+  .navbar .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link {
     position: relative;
     display: inline-block;
     white-space: nowrap;
@@ -526,33 +524,31 @@ h2 {
       color var(--licentia-interact-duration) var(--licentia-interact-ease);
   }
 
-  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link + .navbar__item.navbar__link {
+  .navbar .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link+.navbar__item.navbar__link {
     padding-left: 0.72rem;
     margin-left: 0.32rem;
   }
 
-  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link + .navbar__item.navbar__link::before {
+  .navbar .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link+.navbar__item.navbar__link::before {
     content: "";
     position: absolute;
     left: -0.2rem;
     top: 20%;
     width: 1px;
     height: 60%;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      color-mix(in oklab, var(--licentia-separator-core) 45%, transparent) 20%,
-      color-mix(in oklab, var(--licentia-separator-core) 90%, transparent) 50%,
-      color-mix(in oklab, var(--licentia-separator-core) 45%, transparent) 80%,
-      transparent 100%
-    );
+    background: linear-gradient(180deg,
+        transparent 0%,
+        color-mix(in oklab, var(--licentia-separator-core) 45%, transparent) 20%,
+        color-mix(in oklab, var(--licentia-separator-core) 90%, transparent) 50%,
+        color-mix(in oklab, var(--licentia-separator-core) 45%, transparent) 80%,
+        transparent 100%);
     box-shadow: 0 0 6px color-mix(in oklab, var(--ifm-color-primary) 22%, transparent);
     pointer-events: none;
   }
 
-  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link:hover,
-  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link.navbar__link--active,
-  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link[aria-current='page'] {
+  .navbar .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link:hover,
+  .navbar .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link.navbar__link--active,
+  .navbar .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link[aria-current='page'] {
     color: var(--ifm-color-primary) !important;
     transform: scale(1.03);
     text-shadow:
@@ -565,8 +561,7 @@ h2 {
   .navbar__brand:hover .navbar__logo img {
     transform: scale(1.025);
     filter:
-      drop-shadow(0 0 9px var(--licentia-glow-hover-1))
-      drop-shadow(0 0 18px var(--licentia-glow-hover-2));
+      drop-shadow(0 0 9px var(--licentia-glow-hover-1)) drop-shadow(0 0 18px var(--licentia-glow-hover-2));
   }
 }
 
@@ -578,12 +573,10 @@ h2 {
   z-index: 2;
   pointer-events: none;
   border-radius: 10px;
-  background: linear-gradient(
-    90deg,
-    var(--ifm-color-emphasis-200) 0%,
-    var(--ifm-color-emphasis-100) 45%,
-    var(--ifm-color-emphasis-200) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--ifm-color-emphasis-200) 0%,
+      var(--ifm-color-emphasis-100) 45%,
+      var(--ifm-color-emphasis-200) 100%);
   background-size: 300% 100%;
   animation: global-image-shimmer 4.2s linear infinite;
   opacity: 1;
@@ -645,7 +638,7 @@ img.img-loaded {
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 4.25rem 1.15rem 4rem;
+  padding: 4.25rem 1.75rem 6.25rem;
   touch-action: none;
   cursor: default;
   opacity: 0;
@@ -657,8 +650,8 @@ img.img-loaded {
 }
 
 .lx-zoom-image {
-  max-width: min(calc(100vw - 2.3rem), 1920px);
-  max-height: min(88vh, 1080px);
+  max-width: min(calc(100vw - 3.5rem), 1920px);
+  max-height: min(82vh, 1080px);
   display: block;
   width: auto;
   height: auto;
@@ -709,7 +702,7 @@ img.img-loaded {
 
 .lx-zoom-plus {
   left: calc(50% + 32px);
-  bottom: 17px;
+  bottom: 24px;
   width: 32px;
   height: 32px;
   transform: translateX(-50%);
@@ -717,7 +710,7 @@ img.img-loaded {
 
 .lx-zoom-minus {
   left: calc(50% - 32px);
-  bottom: 17px;
+  bottom: 24px;
   width: 32px;
   height: 32px;
   transform: translateX(-50%);
@@ -824,12 +817,13 @@ img.img-loaded {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .navbar__brand,
   .navbar__logo img {
     transition: none !important;
   }
 
-  .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link {
+  .theme-layout-navbar-left.navbar__items>.navbar__item.navbar__link {
     transition: none !important;
   }
 
@@ -903,12 +897,10 @@ img.img-loaded {
   width: min(980px, 98%);
   height: 2.5px;
   margin: 0 auto;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 4%,
-    var(--licentia-separator-core) 50%,
-    transparent 96%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 4%,
+      var(--licentia-separator-core) 50%,
+      transparent 96%,
+      transparent 100%);
 }
