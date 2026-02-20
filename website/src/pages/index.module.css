@@ -16,8 +16,7 @@
   object-fit: cover;
   filter: blur(4px);
   transform: scale(1.03);
-  opacity: 0;
-  transition: opacity .45s ease;
+  opacity: 1;
 }
 
 .heroBgShimmer {
@@ -38,10 +37,6 @@
 .heroBgShimmerHidden {
   opacity: 0;
   animation: none;
-}
-
-.heroBgReady {
-  opacity: 1;
 }
 
 .heroOverlay {
