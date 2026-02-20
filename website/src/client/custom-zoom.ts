@@ -92,33 +92,18 @@ function clampPan(): void {
 
 function applyTransform(animate = false): void {
   if (!imageEl) return;
-
-  const targetTransform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
-
   if (animate) {
-    imageEl.animate(
-      [
-        { transform: window.getComputedStyle(imageEl).transform },
-        { transform: targetTransform }
-      ],
-      {
-        duration: 360,
-        easing: 'cubic-bezier(0.2, 0, 0.2, 1)',
-        fill: 'forwards'
-      }
-    ).finished.then(anim => {
-      anim.commitStyles();
-      anim.cancel();
-    });
+    // Force a reflow to ensure the transition is picked up
+    void imageEl.offsetHeight;
+    imageEl.style.transition = 'transform 360ms cubic-bezier(0.2, 0, 0.2, 1), opacity 240ms ease';
   } else {
-    imageEl.style.transform = targetTransform;
+    // When not animating, we keep transition empty so CSS doesn't interpolate
+    imageEl.style.transition = '';
   }
+  imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
 }
 
 function getScrollbarWidth(): number {
-  if (typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    return 0;
-  }
   return window.innerWidth - document.documentElement.clientWidth;
 }
 function setScale(nextScale: number, animate = true): void {
@@ -270,36 +255,30 @@ async function navigate(direction: 1 | -1): Promise<void> {
 
     // Change source while invisible
     const nextIdx = (currentIndex + direction + items.length) % items.length;
-    currentIndex = nextIdx;
-    const item = items[nextIdx];
+    const nextSrc = items[nextIdx].src;
 
-    // Set source while invisible and decode directly on the target element
-    imageEl.src = item.src;
-    imageEl.alt = item.alt;
-    imageEl.style.opacity = '0';
-    resetOpenedState(); // Reset pan/scale for the new image
-
-    // CRITICAL: Synchronize the underlying style BEFORE the new animation starts
-    // This prevents the "shift" where it briefly uses the old image's transform
-    applyTransform(false);
-
+    // Preload & wait for actual load to avoid the "old image flash"
+    // We use .decode() for modern browsers to ensure it's ready to paint
+    const imgObj = new Image();
+    imgObj.src = nextSrc;
     await new Promise((resolve) => {
       const finish = () => {
-        if ('decode' in imageEl!) {
-          imageEl!.decode().then(resolve).catch(resolve);
+        if ('decode' in imgObj) {
+          imgObj.decode().then(resolve).catch(resolve);
         } else {
           resolve(null);
         }
       };
 
-      if (imageEl!.complete && imageEl!.naturalWidth > 0) finish();
+      if (imgObj.complete && imgObj.naturalWidth > 0) finish();
       else {
-        imageEl!.onload = finish;
-        imageEl!.onerror = () => resolve(null);
+        imgObj.onload = finish;
+        imgObj.onerror = () => resolve(null);
         setTimeout(resolve, 2000); // Safety timeout
       }
     });
 
+    setImage(nextIdx, '0');
     out.cancel();
 
     const inn = imageEl.animate(
@@ -310,7 +289,7 @@ async function navigate(direction: 1 | -1): Promise<void> {
       { duration: 240, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'forwards' }
     );
     await inn.finished;
-    inn.commitStyles();
+    imageEl.style.opacity = '1';
     inn.cancel();
 
     applyTransform(false);
