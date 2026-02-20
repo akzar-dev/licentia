@@ -223,26 +223,31 @@ async function navigate(direction: 1 | -1): Promise<void> {
     const out = imageEl.animate(
       [
         { transform: `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`, opacity: 1 },
-        { transform: `translate3d(${panX + direction * -28}px, ${panY}px, 0) scale(${scale})`, opacity: 0.08 },
+        { transform: `translate3d(${panX + direction * -40}px, ${panY}px, 0) scale(${scale})`, opacity: 0 },
       ],
-      { duration: 170, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'none' }
+      { duration: 180, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', fill: 'forwards' }
     );
-    await new Promise<void>((resolve) => {
-      out.onfinish = () => resolve();
-      out.oncancel = () => resolve();
-    });
+    await out.finished;
+
+    // Change source while invisible
     setImage(currentIndex + direction);
+    imageEl.style.opacity = '0';
+    out.cancel(); // Stop the 'out' animation now that we've manually set opacity
+
+    // Small delay to let browser start loading/parsing the new src
+    await new Promise((r) => setTimeout(r, 40));
+
     const inn = imageEl.animate(
       [
-        { transform: `translate3d(${direction * 28}px, 0, 0) scale(1)`, opacity: 0.08 },
+        { transform: `translate3d(${direction * 40}px, 0, 0) scale(0.98)`, opacity: 0 },
         { transform: 'translate3d(0, 0, 0) scale(1)', opacity: 1 },
       ],
-      { duration: 210, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'none' }
+      { duration: 240, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'forwards' }
     );
-    await new Promise<void>((resolve) => {
-      inn.onfinish = () => resolve();
-      inn.oncancel = () => resolve();
-    });
+    await inn.finished;
+    imageEl.style.opacity = '1';
+    inn.cancel();
+
     applyTransform(false);
   } finally {
     isNavigating = false;
