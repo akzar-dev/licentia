@@ -44,25 +44,26 @@ function Hero() {
   const { siteConfig } = useDocusaurusContext();
   const { colorMode } = useColorMode();
   const heroBgSrc = colorMode === 'light' ? HERO_BG_LIGHT : HERO_BG_DARK;
-  const [heroBgLoaded, setHeroBgLoaded] = React.useState(false);
-  const heroBgRef = React.useRef<HTMLImageElement | null>(null);
+  const [loadedBySrc, setLoadedBySrc] = React.useState<Record<string, boolean>>({});
+  const heroBgLoaded = !!loadedBySrc[heroBgSrc];
 
   React.useEffect(() => {
-    setHeroBgLoaded(false);
-  }, [heroBgSrc]);
-
-  React.useEffect(() => {
-    const el = heroBgRef.current;
-    // Cached images may already be complete before React onLoad fires.
-    if (el?.complete && el.naturalWidth > 0) {
-      setHeroBgLoaded(true);
+    if (loadedBySrc[heroBgSrc]) return;
+    const probe = new Image();
+    const done = () => {
+      setLoadedBySrc((prev) => (prev[heroBgSrc] ? prev : { ...prev, [heroBgSrc]: true }));
+    };
+    probe.onload = done;
+    probe.onerror = done;
+    probe.src = heroBgSrc;
+    if (probe.complete && probe.naturalWidth > 0) {
+      done();
     }
-  }, [heroBgSrc]);
+  }, [heroBgSrc, loadedBySrc]);
 
   return (
     <section className={styles.hero}>
       <img
-        ref={heroBgRef}
         className={clsx(styles.heroBgImg, heroBgLoaded && styles.heroBgReady)}
         src={heroBgSrc}
         alt=""
@@ -72,8 +73,8 @@ function Hero() {
         loading="eager"
         decoding="async"
         fetchPriority="high"
-        onLoad={() => setHeroBgLoaded(true)}
-        onError={() => setHeroBgLoaded(true)}
+        onLoad={() => setLoadedBySrc((prev) => (prev[heroBgSrc] ? prev : { ...prev, [heroBgSrc]: true }))}
+        onError={() => setLoadedBySrc((prev) => (prev[heroBgSrc] ? prev : { ...prev, [heroBgSrc]: true }))}
       />
       <div className={clsx(styles.heroBgShimmer, heroBgLoaded && styles.heroBgShimmerHidden)} aria-hidden />
       <div className={styles.heroOverlay} />
