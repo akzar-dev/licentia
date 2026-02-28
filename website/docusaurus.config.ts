@@ -6,7 +6,7 @@ import path from 'path';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Licentia NEXT - Official Website',
+  title: 'Licentia NEXT',
   tagline: 'Ultimate 1-Click NSFW Skyrim AE Modlist 🐉',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
@@ -15,14 +15,14 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         property: 'og:site_name',
-        content: 'Licentia NEXT - Official Website',
+        content: 'Licentia NEXT',
       },
     },
     {
       tagName: 'meta',
       attributes: {
         name: 'application-name',
-        content: 'Licentia NEXT - Official Website',
+        content: 'Licentia NEXT',
       },
     },
     {
@@ -33,8 +33,7 @@ const config: Config = {
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'Licentia NEXT - Official Website',
-        alternateName: 'Licentia NEXT',
+        name: 'Licentia NEXT',
         url: 'https://licentia.quest/',
       }),
     },
