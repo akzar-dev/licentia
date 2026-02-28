@@ -756,17 +756,17 @@
       "hash": "b80de7f98f98e49fcc05b029396b193d88918e99",
       "updatedAt": "2026-02-17T17:21:02.168Z"
     },
-    "docs/installation-and-setup/img/4-pre-installation/4-1-skyrim-and-ae-upgrade.png": {
+    "docs/installation-and-setup/img/4-pre-installation/4-1-skyrim-and-ae-upgrade-heading.png": {
       "version": "optimize-images-v2",
       "hash": "c211490e818d8fc2b26bc125f942f99e9ff9671c",
       "updatedAt": "2026-02-17T17:21:25.222Z"
     },
-    "docs/installation-and-setup/img/4-pre-installation/4-2-accounts.png": {
+    "docs/installation-and-setup/img/4-pre-installation/4-2-accounts-heading.png": {
       "version": "optimize-images-v2",
       "hash": "4456db970627ecf8d311116824d388546f4513a6",
       "updatedAt": "2026-02-17T17:21:25.256Z"
     },
-    "docs/installation-and-setup/img/4-pre-installation/4-3-general-pc-adjustments.png": {
+    "docs/installation-and-setup/img/4-pre-installation/4-3-general-pc-adjustments-heading.png": {
       "version": "optimize-images-v2",
       "hash": "26c6046d192b44779de481d25ff94fcd03801c01",
       "updatedAt": "2026-02-17T17:21:25.333Z"
@@ -781,17 +781,17 @@
       "hash": "7f26aaa072d13019578f03d5f23ae38309741a1a",
       "updatedAt": "2026-02-17T17:21:02.354Z"
     },
-    "docs/installation-and-setup/img/5-installation/5-1-start-skyrim-and-download-cc.png": {
+    "docs/installation-and-setup/img/5-installation/5-1-start-skyrim-and-download-cc-heading.png": {
       "version": "optimize-images-v2",
       "hash": "7141bb40fec5ce6d3e43729e4da63181728d4ba5",
       "updatedAt": "2026-02-17T17:21:17.489Z"
     },
-    "docs/installation-and-setup/img/5-installation/5-2-create-folders-and-set-av-exceptions.png": {
+    "docs/installation-and-setup/img/5-installation/5-2-create-folders-and-set-av-exceptions-heading.png": {
       "version": "optimize-images-v2",
       "hash": "e1563ca1a813949327ec35160933b33ddd513e6f",
       "updatedAt": "2026-02-17T17:21:17.582Z"
     },
-    "docs/installation-and-setup/img/5-installation/5-3-install-and-configure-wabbajack.png": {
+    "docs/installation-and-setup/img/5-installation/5-3-install-and-configure-wabbajack-heading.png": {
       "version": "optimize-images-v2",
       "hash": "ea911b4a541f1a75cd8ae9aff9818e2e7fd18069",
       "updatedAt": "2026-02-17T17:21:17.672Z"
@@ -871,7 +871,7 @@
       "hash": "5e7602f7bcbdefdd7d197320a7d0704747fe62ef",
       "updatedAt": "2026-02-17T17:21:02.552Z"
     },
-    "docs/installation-and-setup/img/6-post-installation/6-0-fix-high-dpi-scaling.png": {
+    "docs/installation-and-setup/img/6-post-installation/6-0-fix-high-dpi-scaling-heading.png": {
       "version": "optimize-images-v2",
       "hash": "34be56ee8f1ab4c1ba591c33c6f94e215d389f41",
       "updatedAt": "2026-02-17T17:21:02.870Z"
@@ -1016,12 +1016,12 @@
       "hash": "2671a96b11624e1bb5f9312c0312c7bf17f1dccc",
       "updatedAt": "2026-02-17T17:21:02.753Z"
     },
-    "static/img/licentia-social-card.webp": {
+    "static/img/licentia-next-social-card.webp": {
       "version": "optimize-images-v2",
       "hash": "a813bda8e59fbb7ad8cb999640f80aa27e403ede",
       "updatedAt": "2026-02-19T13:32:33.948Z"
     },
-    "static/img/logo.png": {
+    "static/img/licentia-next-logo.png": {
       "version": "optimize-images-v2",
       "hash": "f275329597eb4e105e0338b7a6ebb3113cb128f1",
       "updatedAt": "2026-02-17T17:21:48.414Z"
@@ -1051,12 +1051,12 @@
       "hash": "99e3cddc5db78e938ca14247007384a3ecf3f839",
       "updatedAt": "2026-02-17T17:21:01.297Z"
     },
-    "static/img/pages/main/licentia-social-card-bg-light.webp": {
+    "static/img/pages/main/licentia-next-social-card-bg-light.webp": {
       "version": "optimize-images-v2",
       "hash": "7c8332366d9393f75d9c73d72814495159160ae8",
       "updatedAt": "2026-02-19T13:32:34.083Z"
     },
-    "static/img/pages/main/licentia-social-card-bg.webp": {
+    "static/img/pages/main/licentia-next-social-card-bg-dark.webp": {
       "version": "optimize-images-v2",
       "hash": "3f1307fba61e002d292226979f70246fa3458e08",
       "updatedAt": "2026-02-19T13:32:34.021Z"
@@ -1141,10 +1141,30 @@
       "hash": "c01c374bfc4724a71d71a73c4b8070596200046b",
       "updatedAt": "2026-02-19T13:32:27.222Z"
     },
-    "static/img/logo-navbar.png": {
+    "static/img/licentia-next-logo-navbar.png": {
       "version": "optimize-images-v2",
       "hash": "92441440c9442c0ac94b8d744f2ac324bea69c61",
       "updatedAt": "2026-02-19T15:24:45.166Z"
+    },
+    "static/img/pages/main/index-about-heading.png": {
+      "version": "optimize-images-v2",
+      "hash": "ef9442fb6763cabd28055154e1cb7796b2cc5026",
+      "updatedAt": "2026-02-28T16:34:51.371Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6-1-start-mo2-and-launch-the-list-heading.png": {
+      "version": "optimize-images-v2",
+      "hash": "c62f396c5650424bfbda86942f539a6abf12d619",
+      "updatedAt": "2026-02-28T16:34:51.448Z"
+    },
+    "docs/installation-and-setup/img/6-post-installation/6-2-start-the-new-game-heading.png": {
+      "version": "optimize-images-v2",
+      "hash": "88b9ab4ba406591dadf5747fc6e653d98e99288a",
+      "updatedAt": "2026-02-28T16:34:51.493Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5-4-download-and-install-the-list-heading.png": {
+      "version": "optimize-images-v2",
+      "hash": "0468ce6db9f554c5ec3629a08bd4cc6a80453265",
+      "updatedAt": "2026-02-28T16:34:51.576Z"
     }
   }
 }

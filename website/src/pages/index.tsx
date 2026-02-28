@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
-import { useColorMode } from '@docusaurus/theme-common';
 
 /** ------- CONFIG -------- */
 /** Load every image in /static/img/pages/main/screenshots */
@@ -21,13 +20,14 @@ const ALL_SHOTS: ShowcaseShot[] = shotsReq.keys().map((k: string) => ({
 }));
 const HERO_DESCRIPTION =
   '1-click install NSFW Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
-const FEATURES_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
+const ABOUT_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
+const FEATURES_TAGLINE = 'Everything you need, pre-configured and ready to play';
 const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may feature them here!';
 const SHOWCASE_CTA_LABEL = 'View full gallery';
 const HOME_META_DESCRIPTION =
-  'Experience Licentia NEXT - a 1-click install NSFW Skyrim AE modlist with LotD, non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
-const HERO_BG_DARK = '/img/pages/main/licentia-social-card-bg.webp';
-const HERO_BG_LIGHT = '/img/pages/main/licentia-social-card-bg-light.webp';
+  'Licentia NEXT: The ultimate 1-click install NSFW Skyrim AE modlist built around LotD. Better combat, graphics, quests & more!';
+const HERO_BG_DARK = '/img/pages/main/licentia-next-social-card-bg-dark.webp';
+const HERO_BG_LIGHT = '/img/pages/main/licentia-next-social-card-bg-light.webp';
 
 /** Main Hero function */
 function Hero() {
@@ -35,10 +35,11 @@ function Hero() {
 
   return (
     <section className={styles.hero}>
+      <h1 className={styles.visuallyHidden}>Licentia NEXT: The Ultimate NSFW Skyrim AE Modlist</h1>
       <img
         className={clsx(styles.heroBgImg, styles.heroBgDark)}
         src={HERO_BG_DARK}
-        alt=""
+        alt="Licentia NEXT Hero Background Dark"
         aria-hidden
         width={960}
         height={540}
@@ -49,7 +50,7 @@ function Hero() {
       <img
         className={clsx(styles.heroBgImg, styles.heroBgLight)}
         src={HERO_BG_LIGHT}
-        alt=""
+        alt="Licentia NEXT Hero Background Light"
         aria-hidden
         width={960}
         height={540}
@@ -62,7 +63,7 @@ function Hero() {
       <div className={clsx('container', styles.heroInner)}>
         <img
           className={styles.heroLogo}
-          src="/img/licentia-social-card.webp"
+          src="/img/licentia-next-social-card.webp"
           alt={`${siteConfig.title} logo`}
           width={960}
           height={904}
@@ -94,6 +95,37 @@ function Hero() {
   );
 }
 
+function AboutSection() {
+  return (
+    <section className={styles.aboutSection}>
+      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <h2 className={styles.sectionTitle}>
+          <img
+            src="/img/pages/main/index-about-heading.png"
+            alt="About Licentia NEXT"
+            className={styles.headingImg}
+          />
+          <span className={styles.visuallyHidden}>About Licentia NEXT</span>
+        </h2>
+        <p className={clsx(styles.tagline, styles.sectionTagline)}>
+          <i>{ABOUT_TAGLINE}</i>
+        </p>
+        <div style={{ fontSize: '1.15rem', lineHeight: '1.7', marginTop: '1rem' }}>
+          <p style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span className={styles.highlightText}>Licentia NEXT</span> is the direct descendant of the legendary <span className={styles.highlightText}>Licentia BLACK</span>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition modlist meticulously crafted around the massive <span className={styles.highlightText}>Legacy of the Dragonborn</span> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, our list transforms Skyrim into a truly next-generation experience. We have carefully curated over <span className={styles.highlightText}>1,500 mods</span> to ensure stability and seamless integration without the hassle of manual conflict resolution.
+          </p>
+          <p style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            At its core, <span className={styles.highlightText}>Licentia NEXT</span> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <span className={styles.highlightText}>Precision</span>, <span className={styles.highlightText}>Combat Gameplay Overhaul</span>, and a <span className={styles.highlightText}>Dismemberment Framework</span> that makes every encounter feel impactful. Visuals are stunningly upgraded with <span className={styles.highlightText}>Rudy ENB</span>, <span className={styles.highlightText}>NAT 3</span> weathers, and thousands of reworked high-resolution textures, maintaining a performance-friendly framerate on modern systems.
+          </p>
+          <p style={{ textAlign: 'left' }}>
+            Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new lands, complete huge questlines, and recruit unique, fully-voiced followers with improved interactions. The adult systems are built on an optimized, non-intrusive <span className={styles.highlightText}>OStim</span> foundation, integrating physics, <span className={styles.highlightText}>OBody</span>, and <span className={styles.highlightText}>Amorous Adventures</span>. Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <span className={styles.highlightText}>Licentia NEXT</span> offers the ultimate customized Skyrim journey.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FeatureIcons() {
   return (
     <section className={styles.iconsSection} data-nosnippet>
@@ -101,13 +133,13 @@ function FeatureIcons() {
         <h2 className={styles.sectionTitle}>
           <img
             src="/img/pages/main/index-features-heading.png"
-            alt=""
+            alt="Features of Licentia NEXT"
             aria-hidden
             className={styles.headingImg}
           />
           <span className={styles.visuallyHidden}>Features</span>
         </h2>
-        <p className={clsx(styles.tagline, styles.featuresTagline)}>
+        <p className={clsx(styles.tagline, styles.sectionTagline)}>
           <i>{FEATURES_TAGLINE}</i>
         </p>
         <div className={styles.iconRow}>
@@ -429,13 +461,13 @@ function Showcase() {
   }, [pause, resumeSoon]);
 
   return (
-    <section className={styles.showcase} data-nosnippet>
+    <section className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
-          <img src="/img/pages/main/index-showcase-heading.png" alt="" aria-hidden className={styles.headingImg} />
+          <img src="/img/pages/main/index-showcase-heading.png" alt="Licentia NEXT Screenshot Showcase" aria-hidden className={styles.headingImg} />
           <span className={styles.visuallyHidden}>Showcase</span>
         </h2>
-        <p className={clsx(styles.tagline, styles.showcaseTagline)}>
+        <p className={clsx(styles.tagline, styles.sectionTagline)}>
           <i>{SHOWCASE_TAGLINE}</i>
         </p>
       </div>
@@ -499,7 +531,7 @@ function Showcase() {
         </div>
       </div>
       <div className={clsx('container', styles.showcaseCtaRow)}>
-        <a className={clsx('button button--primary button--lg', styles.ctaSolid)} href="/media#screenshots">
+        <a className={clsx('button button--primary button--lg', styles.ctaSolid)} href="/media">
           {SHOWCASE_CTA_LABEL}
         </a>
       </div>
@@ -517,11 +549,16 @@ export default function Home(): ReactNode {
         <meta name="description" content={HOME_META_DESCRIPTION} />
         <meta property="og:description" content={HOME_META_DESCRIPTION} />
         <meta name="twitter:description" content={HOME_META_DESCRIPTION} />
+        <link rel="apple-touch-icon" href="/img/licentia-next-logo-apple.png" />
       </Head>
       <Hero />
       <main>
+        <hr className={styles.sectionDivider} />
         <FeatureIcons />
+        <hr className={styles.sectionDivider} />
         <Showcase />
+        <hr className={styles.sectionDivider} />
+        <AboutSection />
       </main>
     </Layout>
   );

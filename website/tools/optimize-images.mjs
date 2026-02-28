@@ -287,11 +287,11 @@ async function optimizeOtherPngs(cache) {
   ];
 
   // Explicitly include root logo file.
-  const logoPng = path.join(STATIC_IMG_DIR, 'logo.png');
+  const logoPng = path.join(STATIC_IMG_DIR, 'licentia-next-logo.png');
   if (await exists(logoPng) && !pngTargets.includes(logoPng)) {
     pngTargets.push(logoPng);
   }
-  const logoNavbarPng = path.join(STATIC_IMG_DIR, 'logo-navbar.png');
+  const logoNavbarPng = path.join(STATIC_IMG_DIR, 'licentia-next-logo-navbar.png');
   if (await exists(logoNavbarPng) && !pngTargets.includes(logoNavbarPng)) {
     pngTargets.push(logoNavbarPng);
   }
@@ -323,9 +323,9 @@ async function optimizeOtherPngs(cache) {
 
 async function optimizeKeyWebpAssets(cache) {
   const webpTargets = [
-    path.join(STATIC_IMG_DIR, 'licentia-social-card.webp'),
-    path.join(STATIC_PAGES_DIR, 'main', 'licentia-social-card-bg.webp'),
-    path.join(STATIC_PAGES_DIR, 'main', 'licentia-social-card-bg-light.webp'),
+    path.join(STATIC_IMG_DIR, 'licentia-next-social-card.webp'),
+    path.join(STATIC_PAGES_DIR, 'main', 'licentia-next-social-card-bg-dark.webp'),
+    path.join(STATIC_PAGES_DIR, 'main', 'licentia-next-social-card-bg-light.webp'),
   ];
 
   let optimized = 0;

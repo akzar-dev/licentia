@@ -58,7 +58,7 @@ function reserveSize(img: HTMLImageElement): { width: string; height: string } {
 
 function isHomeHeroLogo(img: HTMLImageElement): boolean {
   const src = (img.currentSrc || img.getAttribute('src') || '').toLowerCase();
-  return src.includes('/img/licentia-social-card.webp') || src.includes('/img/logo.png');
+  return src.includes('/img/licentia-next-social-card.webp') || src.includes('/img/licentia-next-logo.png');
 }
 
 function positionSkeleton(img: HTMLImageElement, skeleton: HTMLSpanElement, parent: HTMLElement): void {

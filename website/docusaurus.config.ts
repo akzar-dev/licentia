@@ -6,8 +6,8 @@ import path from 'path';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Licentia NEXT',
-  tagline: 'Home 🏠',
+  title: 'Licentia NEXT - Official Website',
+  tagline: 'Ultimate 1-Click NSFW Skyrim AE Modlist 🐉',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
   headTags: [
@@ -48,7 +48,7 @@ const config: Config = {
         '@type': 'Organization',
         name: 'Licentia NEXT',
         url: 'https://licentia.quest/',
-        logo: 'https://licentia.quest/img/logo.png',
+        logo: 'https://licentia.quest/img/licentia-next-logo.png',
         sameAs: [
           'https://github.com/akzar-dev/licentia',
           'https://discord.gg/vermishub',
@@ -113,7 +113,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/licentia-social-card.webp',
+    image: 'img/licentia-next-social-card.webp',
     colorMode: {
       // when commented out, follows the user's system color scheme
       // defaultMode: 'dark',
@@ -130,7 +130,7 @@ const config: Config = {
       title: '',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/logo-navbar.png',
+        src: 'img/licentia-next-logo-navbar.png',
       },
       items: [
         {
@@ -178,7 +178,7 @@ const config: Config = {
       // style: 'dark',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/logo.png',
+        src: 'img/licentia-next-logo.png',
         height: 48,
       },
       links: [

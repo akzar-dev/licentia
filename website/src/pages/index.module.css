@@ -73,9 +73,7 @@ html[data-theme='light'] .heroOverlay {
 
   /* Static logo glow */
   filter:
-    drop-shadow(0 0 18px rgba(250, 203, 53, .55))
-    drop-shadow(0 0 36px rgba(250, 203, 53, .35))
-    drop-shadow(0 6px 24px rgba(0, 0, 0, .35));
+    drop-shadow(0 0 18px rgba(250, 203, 53, .55)) drop-shadow(0 0 36px rgba(250, 203, 53, .35)) drop-shadow(0 6px 24px rgba(0, 0, 0, .35));
 }
 
 /* Shared hero/feature lead text styling (dark mode default) */
@@ -114,7 +112,7 @@ html[data-theme='light'] .description {
     1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
 
-.featuresTagline {
+.sectionTagline {
   margin: 0 auto 1.25rem;
   max-width: 72ch;
   text-align: center;
@@ -176,11 +174,36 @@ html[data-theme='light'] .description {
   transform: translateY(-1px);
 }
 
-/* -------- ICON FEATURES STRIP -------- */
-.iconsSection {
-  padding: 2.25rem 0 1.5rem;
+/* -------- SECTION STYLING -------- */
+.aboutSection,
+.iconsSection,
+.showcase {
+  padding: 1.5rem 0;
 }
 
+.altSection {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.sectionDivider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--ifm-color-emphasis-300) 50%,
+      transparent 100%);
+  margin: 0;
+  opacity: 0.5;
+}
+
+.highlightText {
+  color: #facb35;
+  /* Gold accent color used in bullet points/text shadow */
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(250, 203, 53, 0.25);
+}
+
+/* -------- ICON FEATURES STRIP -------- */
 .sectionTitle {
   text-align: center;
   margin: 0 0 1rem;
@@ -299,10 +322,6 @@ html[data-theme='light'] .description {
 }
 
 /* -------- SHOWCASE (Marquee) -------- */
-.showcase {
-  padding: 2.25rem 0 1.6rem;
-}
-
 .showcaseCtaRow {
   display: flex;
   justify-content: center;
@@ -364,12 +383,10 @@ html[data-theme='light'] .description {
   z-index: 2;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 0%,
-    color-mix(in oklab, var(--ifm-color-emphasis-100) 95%, transparent) 45%,
-    color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 100%
-  );
+  background: linear-gradient(90deg,
+      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 0%,
+      color-mix(in oklab, var(--ifm-color-emphasis-100) 95%, transparent) 45%,
+      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 100%);
   background-size: 300% 100%;
   animation: shimmer 2.8s linear infinite;
 }
@@ -403,6 +420,7 @@ html[data-theme='light'] .description {
 }
 
 @media (max-width: 996px) {
+
   .shotFrame,
   .shot {
     height: 140px;
@@ -490,8 +508,6 @@ html[data-theme='light'] .description {
 
   .heroLogo {
     filter:
-      drop-shadow(0 0 18px rgba(250, 203, 53, .55))
-      drop-shadow(0 0 36px rgba(250, 203, 53, .35))
-      drop-shadow(0 6px 24px rgba(0, 0, 0, .35)) !important;
+      drop-shadow(0 0 18px rgba(250, 203, 53, .55)) drop-shadow(0 0 36px rgba(250, 203, 53, .35)) drop-shadow(0 6px 24px rgba(0, 0, 0, .35)) !important;
   }
 }

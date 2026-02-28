@@ -208,12 +208,12 @@
   - Runs the same showcase step above, then:
     - applies safe lossless PNG optimization to:
     - `static/img/pages/**`
-    - `static/img/logo.png`
+    - `static/img/licentia-next-logo.png`
     - `docs/**`
     - checks key existing WEBP files and re-encodes only if output is smaller:
-      - `static/img/licentia-social-card.webp`
-      - `static/img/pages/main/licentia-social-card-bg.webp`
-      - `static/img/pages/main/licentia-social-card-bg-light.webp`
+      - `static/img/licentia-next-social-card.webp`
+      - `static/img/pages/main/licentia-next-social-card-bg-dark.webp`
+      - `static/img/pages/main/licentia-next-social-card-bg-light.webp`
   - Preview only (no file changes):
     ```bash
     npm run optimize-images:dry-run
