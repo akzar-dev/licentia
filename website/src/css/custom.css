@@ -691,6 +691,11 @@ img.img-loaded {
   border: 1px solid color-mix(in oklab, var(--ifm-color-primary) 60%, transparent);
   background: color-mix(in oklab, var(--ifm-background-surface-color) 98%, transparent);
   color: var(--ifm-font-color-base);
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
   cursor: pointer;
   touch-action: manipulation;
