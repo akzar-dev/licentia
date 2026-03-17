@@ -165,6 +165,12 @@ const config: Config = {
           label: 'Media',
         },
         {
+          label: 'Buy me a coffee',
+          href: 'https://ko-fi.com/akzar',
+          position: 'right',
+          className: 'header-kofi-btn',
+        },
+        {
           href: 'https://github.com/akzar-dev/licentia',
           position: 'right',
           className: 'header-github-link',
@@ -192,10 +198,6 @@ const config: Config = {
         {
           label: 'Load Order Library',
           href: 'https://loadorderlibrary.com/lists/licentia-next',
-        },
-        {
-          label: 'Buy me a coffee',
-          href: 'https://ko-fi.com/akzar',
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/akzar-dev">akzar</a> and <a href="/team">Licentia team</a>`,

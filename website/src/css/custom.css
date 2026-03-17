@@ -276,53 +276,6 @@ h2 {
   line-height: 1;
 }
 
-.footer .footer__links .footer__link-item[href*="ko-fi.com"] {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  margin: 0.45rem auto 0;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--ifm-color-primary);
-  border: 1px solid var(--ifm-color-primary);
-  color: #000 !important;
-  font-weight: 600;
-  text-decoration: none !important;
-  transform: translateY(0);
-  transition:
-    transform var(--licentia-interact-duration) var(--licentia-interact-ease),
-    box-shadow var(--licentia-interact-duration) var(--licentia-interact-ease),
-    background var(--licentia-interact-duration) var(--licentia-interact-ease),
-    border-color var(--licentia-interact-duration) var(--licentia-interact-ease);
-}
-
-.footer .footer__links .footer__link-item[href*="ko-fi.com"]:hover {
-  background: var(--ifm-color-primary-dark);
-  border-color: var(--ifm-color-primary-dark);
-  color: #000 !important;
-  box-shadow:
-    0 0 10px var(--licentia-glow-hover-1),
-    0 0 20px var(--licentia-glow-hover-2);
-  transform: translateY(-1px) scale(1.01);
-}
-
-.footer .footer__links .footer__link-item[href*="ko-fi.com"]+.footer__link-separator {
-  display: none;
-}
-
-.footer .footer__links .footer__link-separator:has(+ .footer__link-item[href*="ko-fi.com"]) {
-  display: none;
-}
-
-.footer .footer__links .footer__link-item[href*="ko-fi.com"] [class^="iconExternalLink_"],
-.footer .footer__links .footer__link-item[href*="ko-fi.com"] [class*=" iconExternalLink_"] {
-  display: none !important;
-}
-
-.footer .footer__links .footer__link-item[href*="ko-fi.com"]::after {
-  content: " ❤️";
-}
 
 /* Tighten footer spacing and add one decorative separator before logo */
 .footer .footer__links.text--center {
