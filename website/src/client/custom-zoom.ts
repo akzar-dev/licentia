@@ -290,9 +290,15 @@ async function navigate(direction: 1 | -1): Promise<void> {
     );
     await inn.finished;
     imageEl.style.opacity = '1';
-    inn.cancel();
-
     applyTransform(false);
+
+    setTimeout(() => {
+      try {
+        inn.cancel();
+      } catch (e) {
+        // ignore
+      }
+    }, 30);
   } finally {
     isNavigating = false;
   }
