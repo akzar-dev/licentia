@@ -100,11 +100,12 @@ function AboutSection() {
     <section className={styles.aboutSection}>
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
         <h2 className={styles.sectionTitle}>
-          <img
-            src="/img/pages/main/index-about-heading.png"
-            alt="About Licentia NEXT"
-            className={styles.headingImg}
-          />
+          <span
+            className="licentia-heading licentia-heading--display"
+           
+          >
+            About
+          </span>
           <span className={styles.visuallyHidden}>About Licentia NEXT</span>
         </h2>
         <p className={clsx(styles.tagline, styles.sectionTagline)}>
@@ -131,12 +132,13 @@ function FeatureIcons() {
     <section className={styles.iconsSection} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
-          <img
-            src="/img/pages/main/index-features-heading.png"
-            alt="Features of Licentia NEXT"
+          <span
+            className="licentia-heading licentia-heading--display"
+           
             aria-hidden
-            className={styles.headingImg}
-          />
+          >
+            Features
+          </span>
           <span className={styles.visuallyHidden}>Features</span>
         </h2>
         <p className={clsx(styles.tagline, styles.sectionTagline)}>
@@ -464,7 +466,13 @@ function Showcase() {
     <section className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
-          <img src="/img/pages/main/index-showcase-heading.png" alt="Licentia NEXT Screenshot Showcase" aria-hidden className={styles.headingImg} />
+          <span
+            className="licentia-heading licentia-heading--display"
+           
+            aria-hidden
+          >
+            Showcase
+          </span>
           <span className={styles.visuallyHidden}>Showcase</span>
         </h2>
         <p className={clsx(styles.tagline, styles.sectionTagline)}>

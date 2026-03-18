@@ -7,24 +7,6 @@
   margin: 0 auto 1.5rem;
 }
 
-.headingImg {
-  display: block;
-  width: min(90vw, 420px);
-  height: auto;
-  margin: 0 auto;
-}
-
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
 .separator {
   margin: 0.7rem auto 0;
   width: min(520px, 86%);

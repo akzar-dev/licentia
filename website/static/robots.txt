@@ -4,9 +4,4 @@ Disallow: /img/licentia-next-logo-navbar.png
 Disallow: /img/licentia-next-logo-apple.png
 Disallow: /img/pages/main/licentia-next-social-card-bg-light.webp
 Disallow: /img/pages/main/licentia-next-social-card-bg-dark.webp
-Disallow: /img/pages/*-heading.png
-Disallow: /img/pages/*/*-heading.png
-Disallow: /img/pages/*/*/*-heading.png
-Disallow: /assets/images/*-heading*
-
 Sitemap: https://licentia.quest/sitemap.xml

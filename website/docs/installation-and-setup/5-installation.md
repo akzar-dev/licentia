@@ -7,8 +7,7 @@ description: "Installation instructions for Licentia NEXT Skyrim modlist"
 image: ./img/5-installation-social.png
 ---
 
-# ![Installation](./img/5-installation-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Installation</span>
 ---
 
 :::note
@@ -17,8 +16,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
 ---
 
-## ![Start Skyrim and download CC](img/5-installation/5-1-start-skyrim-and-download-cc-heading.png)
-
+## <span className="licentia-heading licentia-heading--h2">Start Skyrim and download CC</span>
 1. **Make sure your Skyrim installation is clean**. If you're not sure that it is clean &mdash; that's how to make it one (or just watch [this video](https://www.youtube.com/watch?v=zQ5uNCKOKmI)).
 
     :::tip
@@ -32,18 +30,22 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     :::
 
 2. **Start the game once**. You'd need to do it through the Skyrim Launcher (settings there don't matter, we just need to get the game registred properly). When the Launcher starts, you'd see a popup like this:
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_1_2_launcher_popup.png').default}
         alt="Skyrim launcher popup prompting first-time setup"
         style={{ maxHeight:120 }}
+        width={1743}
+        height={639}
     />
    Click `OK` and then `PLAY` in Skyrim Launcher.
 
 3. **Download AE content.** When you get to the main menu &mdash; the game would suggest you to download the AE content &mdash; click `DOWNLOAD`:
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_1_3_ae_content_ingame_popup.png').default}
         alt="Skyrim Anniversary Edition content download popup in main menu"
         style={{ maxHeight:200 }}
+        width={1359}
+        height={621}
     />
 
     :::danger
@@ -62,8 +64,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
 ---
 
-## ![Create folders and set AV exceptions](img/5-installation/5-2-create-folders-and-set-av-exceptions-heading.png)
-
+## <span className="licentia-heading licentia-heading--h2">Create folders and set AV exceptions</span>
 1. **Create a directory for Wabbajack.** Create a directory at the root of one of your Solid State drives (such as `D:\Wabbajack`) where you'd like to install _Wabbajack_ later on.
 
 2. **Create directories for Licentia NEXT and Licentia Downloads.** Now, do the same for Licentia &mdash; e.g. `D:\Licentia NEXT` and `D:\Licentia Downloads`.
@@ -93,83 +94,97 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     :::
 
 ---
-## ![Install and configure Wabbajack](img/5-installation/5-3-install-and-configure-wabbajack-heading.png)
-
+## <span className="licentia-heading licentia-heading--h2">Install and configure Wabbajack</span>
 1. **Get the Wabbajack app.** Download latest `Wabbajack.exe` [here](https://github.com/wabbajack-tools/wabbajack/releases/latest/download/Wabbajack.exe) and save it to Wabbajack folder we created earlier (i.e. `D:\Wabbajack`).
 
 2. **Start the _Wabbajack_ app.** Start the `Wabbajack.exe` we downloaded earlier, Wabbajack would download its assets and _eventually_ open, just wait for a minute.
 
 3.  **Login to _Nexus_ within the _Wabbajack_ app.** On the main screen click the **GEAR** icon in the bottom left:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_3_3_wabbajack_main_ui_gear.png').default}
         alt="Wabbajack main screen with Settings gear icon highlighted"
         style={{ maxHeight:300 }}
+        width={3837}
+        height={2016}
     />
 
     Here in the top left corner, click `Log in` near *Nexus Mods* logo:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_3_3_wabbajack_nexus_BEFORE_login.png').default}
         alt="Wabbajack Nexus Mods login button before sign in"
         style={{ maxHeight:300 }}
+        width={2244}
+        height={1250}
     />
 
     A new window will open inside *Wabbajack*. You'd be directed to Nexus website, login there as usual and click `Authorize` when prompted. Login window will close by itself after authorization.
     In *Wabbajack* UI button for `Log in` will become light-pink with checkmark, indicating successful login.
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_3_3_wabbajack_nexus_AFTER_login.png').default}
         alt="Wabbajack Nexus Mods login status after successful sign in"
         style={{ maxHeight:300 }}
+        width={1695}
+        height={1080}
     />
 
 ---
 
-## ![Download and install the list](img/5-installation/5-4-download-and-install-the-list-heading.png)
-
+## <span className="licentia-heading licentia-heading--h2">Download and install the list</span>
 1. Now after you've successfully logged in, click `Browse lists` in the left menu of _Wabbajack_ UI:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_1_wabbajack_main_ui_browse.png').default}
         alt="Wabbajack left menu with Browse Lists selected"
         style={{ maxHeight:300 }}
+        width={1657}
+        height={1410}
     />
 
 2. Select filters on the left &mdash; `Skyrim Special Edition` as a game **(1)**, tick `Show NSFW` and `Show Unofficial Lists` **(2)**, and type `next` in search bar **(3)**. When you see `Licentia NEXT` &mdash; click on its card on the right **(4)**:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_2_wabbajack_filters_and_download.png').default}
         alt="Wabbajack filters set for Skyrim SE and Licentia NEXT search result"
         style={{ maxHeight:300 }}
+        width={3840}
+        height={2010}
     />
  
 3. In the newly opened window for _Licentia NEXT_, press `Download & Install` button in the bottom left:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_3_wabbajack_click_dowload_install.png').default}
         alt="Licentia NEXT page in Wabbajack with Download and Install button"
         style={{ maxHeight:300 }}
+        width={3840}
+        height={2028}
     />
     
     This will download _Licentia's_ **Wabbajack file** in the background, which is basically an installation package.
 
 4. After the Wabbajack file download is complete, you'll see this screen *(it's going to appear automatically)*.
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_4_wabbajack_initial_blank_installation.png').default}
         alt="Initial Wabbajack installation window before setting paths"
         style={{ maxHeight:300 }}
+        width={3840}
+        height={2022}
     />
 
     Don't worry about the error at the bottom, it is normal and will be fixed in the next step.
 
 5. In this window, select the install directory we created for Licentia **(1)**, select the downloads directory we created **(2)** _(you can change where downloads would be stored if you want, i.e. on another, slower drive)_, and hit `Install` button **(3)**:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_5_wabbajack_start_installation.png').default}
         alt="Wabbajack install window with install and download paths configured"
         style={{ maxHeight:300 }}
+        width={1291}
+        height={685}
     />
 
     **This would begin the actual download and installation of the list.**
@@ -183,10 +198,12 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     :::warning
     There are many different scenarios where _Wabbajack_ would produce an **error**, that's going to look something like this *(this example is for another list for another game, but you get the idea)*:
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_5_wabbajack_error_example.png').default}
         alt="Example Wabbajack installation error with log viewer panel"
         style={{ maxHeight:300 }}
+        width={3840}
+        height={2016}
     />
 
     On the **left side** of this window there's an error box that allows you to open full *Wabbajack* log file, which is useful for troubleshooting.
@@ -213,10 +230,12 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
 6. When you'd see this at the top of *Wabbajack* &mdash; it means your **installation is complete!**
 
-    <img 
+    <DocImage 
         src={require('./img/5-installation/5_4_6_wabbajack_installation_complete.png').default}
         alt="Wabbajack installation complete message"
         style={{ maxHeight:100 }}
+        width={1117}
+        height={186}
     />
 
     You can close *Wabbajack* now and proceed to the next step.

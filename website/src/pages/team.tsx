@@ -81,8 +81,12 @@ export default function TeamPage(): React.JSX.Element {
       <main className={styles.main}>
         <div className="container">
           <header className={styles.header}>
-            <h1 className={styles.visuallyHidden}>Licentia Team</h1>
-            <img src="/img/pages/team/licentia-team-heading.png" alt="" aria-hidden className={styles.headingImg} />
+            <h1
+              className="licentia-heading licentia-heading--h1"
+             
+            >
+              Licentia Team
+            </h1>
             <div className={styles.headerSeparator} aria-hidden />
           </header>
 

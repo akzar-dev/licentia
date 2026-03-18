@@ -7,8 +7,7 @@ description: "How to build Outfits in Bodyslide for Licentia NEXT Skyrim modlist
 image: ./img/bodyslide-guide-social.png
 ---
 
-# ![Bodyslide Guide](./img/bodyslide-guide-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Bodyslide Guide</span>
 ---
 
 # 👚 How to build Outfits in Bodyslide for Licentia NEXT
@@ -49,10 +48,12 @@ If you want to remove OBody from your installation, there is a [small tutorial](
 At the top of the _Mod Organizer 2_ Window on the icon row next to Profile there is a button with a Wrench and Screwdriver icon, click it.
 There will be a list of options available, select `Create Empty Mod`.
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/1_empty_mod.png').default}
     alt="Create an Empty Mod for Bodyslide output"
     style={{ maxHeight:300 }}
+    width={380}
+    height={335}
 />
 
 You will now be prompted to name your custom mod, this can be named however you want.
@@ -63,10 +64,12 @@ Adding `[NoDelete]` before the name will make the mod not be removed upon updati
 Upon updating the mod will be deactivated and moved to the bottom of the last separator, and you can simply move it into place and enable it.
 :::
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/2_create_mod.png').default}
     alt="Name Custom Mod for Bodyslide output"
     style={{ maxHeight:200 }}
+    width={205}
+    height={146}
 />
 
 The new empty mod you made will be created under the `Bodyslide Outputs` Separator, as long as your custom mod is below _Licentia NEXT Bodyslide Output_ your changes will override default Bodyslide outputs.
@@ -77,10 +80,12 @@ The new empty mod you made will be created under the `Bodyslide Outputs` Separat
 
 Once you have created your **Output mod** head over to the Top Right of `Mod Organizer 2` to the launch section. Open the dropdown and select `BodySlide x64`, then run the program.
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/3_run_bodyslide.png').default}
     alt="Launching BodySlide x64 from Mod Organizer 2"
     style={{ maxHeight:300 }}
+    width={813}
+    height={446}
 />
 
 Upon opening the program for the first time you will be prompted to select the respective game and Game Data Path.
@@ -100,10 +105,12 @@ Paste your Installation Path in the Game Data path for Skyrim SE, then hit `OK` 
 
 On the top right of the interface there will be two search bars for `Filter Groups` and `Filter Outfits`, select the search icon for `Filter Groups` and select `Choose Groups`:
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/4_choose_groups.png').default}
     alt="BodySlide Choose Groups dialog for outfit filtering"
     style={{ maxHeight:200 }}
+    width={404}
+    height={122}
 />
 
 :::note
@@ -116,14 +123,18 @@ A list will open with various groups to choose outfits for. For **Female** selec
 
 **Here are example group selections for Female and Male outfits:**
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/4a_group_sample.png').default}
     alt="Group Examples 1"
     style={{ maxHeight:600 }}
-/> <img 
+    width={316}
+    height={866}
+/> <DocImage 
     src={require('./img/bodyslide_guide/4a_group_sample2.png').default}
     alt="Group Examples 2"
     style={{ maxHeight:600 }}
+    width={317}
+    height={869}
 />
 
 :::warning
@@ -138,10 +149,12 @@ However, the group `Unassigned` is excluded from this search as previously detai
 You can easily do this process by using the `Filter Outfits` search bar at the very top right next to `Groups`, and search for `CBBE`, then `3BBB` and build those two sets with `Zeroed Sliders`, then search for `Himbo` and build those with `Himbo Zero for OBody`.
 <details>
 <summary>Unassigned Group Example</summary>
-    <img 
+    <DocImage 
         src={require('./img/bodyslide_guide/4c_unassigned.png').default}
         alt="Unassigned Example"
         style={{ maxHeight:899 }}
+        width={635}
+        height={1255}
     />
 </details>
 
@@ -162,10 +175,12 @@ You can use any preset in the list or one you have downloaded, make sure you bui
 
 For example here are the default Female Presets available in _Licentia NEXT_, with the default preset selected:
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/4b_preset_sample.png').default}
     alt="Preset Examples"
     style={{ maxHeight:300 }}
+    width={334}
+    height={318}
 />
 
 ---
@@ -177,10 +192,12 @@ Once you have chosen your desired outfits to build for your selected body and pr
 On the bottom left of the Interface there is the button to `Batch Build`, `Build Morphs`, and select alternatives.
 Tick the checkbox for the previewed outfit path, and tick `Build Morphs`.
 
-<img 
+<DocImage 
     src={require('./img/bodyslide_guide/5_batch_build.png').default}
     alt="BodySlide Batch Build button and Build Morphs option"
     style={{ maxHeight:100 }}
+    width={591}
+    height={87}
 />
 
 - After you have ticked the checkbox next to the preview, hold `Left CTRL` and select **Batch Build**.

@@ -176,12 +176,13 @@
 
     </details>
 
-### 🎨 Styling features:
+### 🎨 Styling features
 - Primary golden color is #facb35;
-- Text-images are created with these parameters via `Krita`:
-    - text - size 144, font *Cloister Black*;
-    - stroke - color #facb35, size 4px;
-    - pattern overlay - Blend mode (linear light) - opacity (100%) - pattern (26_brush_marks.png) - scale (50%).
+- Decorative headings use the bundled `Cloister Black` font from `static/fonts/`.
+- Decorative headings are now real text styled in CSS:
+    - dark fill
+    - gold outline
+    - subtle underglow
 - Dark/light theme that respects user system settings for color mode.
 
 ### 🖼️ Image optimization workflow
@@ -224,6 +225,123 @@
   - The script keeps a cache file at `.image-opt-cache.json` to avoid reprocessing unchanged files on later runs.
   - Use `node ./tools/optimize-images.mjs --force` if you intentionally want to ignore cache and re-check everything.
   - External image URLs are untouched.
+
+### Image and heading pipeline
+
+There are now two different rendering paths to keep in mind:
+- decorative headings
+- regular images
+
+#### 1. Decorative headings in `.md` / `.mdx` pages
+
+Preferred authoring for new decorative headings:
+
+```md
+# FAQs
+<!-- licentia-heading -->
+
+## Accounts
+<!-- licentia-heading -->
+```
+
+What happens at build time:
+- [`tools/sync-doc-image-dimensions.mjs`](./tools/sync-doc-image-dimensions.mjs) converts the marker into an inline `<span className="licentia-heading ...">...</span>`
+- [`src/css/custom.css`](./src/css/custom.css) applies the `Cloister Black` font, gold outline, and responsive sizing
+
+Important notes:
+- decorative `h1` and `h2` headings stay real headings, so anchors and the right-hand table of contents still work
+- because they are text now, they no longer have image sizing / stretching / CLS problems
+- if a heading should stay normal and not use the decorative style, just write a normal heading without the marker comment
+- run `npm run sync-doc-images` after adding or changing a decorative markdown heading so the source is normalized before build
+
+#### 2. Regular images in `.md` / `.mdx` pages
+
+Use `DocImage` for authored screenshots and other local images:
+
+```mdx
+<DocImage
+  src={require('./img/lod_generation_guide/1_2_xlodgen_settings.png').default}
+  alt="Configure xLODGen executable paths in MO2"
+  style={{ maxHeight: 150 }}
+/>
+```
+
+Rules:
+- prefer `DocImage` over raw `<img>` in markdown content
+- `maxHeight` is the preferred way to keep screenshots compact
+- after adding or changing a local `DocImage`, run:
+
+```bash
+npm run sync-doc-images
+```
+
+What happens:
+- [`tools/sync-doc-image-dimensions.mjs`](./tools/sync-doc-image-dimensions.mjs) reads the real file dimensions and writes `width={...}` / `height={...}` into the source
+- [`src/theme/MDXComponents.tsx`](./src/theme/MDXComponents.tsx) uses those values to reserve layout space before the image loads
+- if a `DocImage` uses `maxHeight`, the runtime wrapper also computes the matching rendered width so the image keeps its correct proportions
+
+For plain markdown image syntax that is not converted to `DocImage`, [`plugins/remark-image-dimensions.cjs`](./plugins/remark-image-dimensions.cjs) still injects intrinsic `width` / `height` during build.
+
+#### 3. Decorative headings in `.tsx` pages
+
+Use normal text, not heading images.
+
+Example:
+
+```tsx
+<h1 className="licentia-heading licentia-heading--h1">Media</h1>
+```
+
+Rules:
+- use `licentia-heading--h1` for page-level headings
+- use `licentia-heading--h2` for normal section headings
+- use `licentia-heading--display` for large homepage-style `h2` sections like `About`, `Features`, and `Showcase`
+
+#### Recommended workflow
+
+When adding a new decorative heading to a markdown page:
+
+1. Write a normal heading.
+2. Add `<!-- licentia-heading -->` directly under it.
+3. Run:
+   ```bash
+   npm run sync-doc-images
+   ```
+4. Run:
+   ```bash
+   npm run build
+   ```
+5. Verify the heading looks correct.
+
+When adding a new regular screenshot to a markdown page:
+
+1. Add the image file.
+2. Author it as `<DocImage ... />`.
+3. Optionally add `style={{ maxHeight: ... }}` if you want it smaller on-page.
+4. Run:
+   ```bash
+   npm run sync-doc-images
+   ```
+5. Run:
+   ```bash
+   npm run build
+   ```
+
+When adding a new decorative heading in a `.tsx` page:
+
+1. Use real text with `licentia-heading` classes.
+2. Pick `licentia-heading--h1`, `licentia-heading--h2`, or `licentia-heading--display`.
+3. Keep the heading as real semantic text.
+4. Run:
+   ```bash
+   npm run build
+   ```
+
+When you do **not** need to run the sync script:
+- pure text edits
+- CSS-only changes
+- decorative heading changes
+- `.tsx` images where you edited `width` / `height` manually in code
 
 ### 🧑‍💻 How to run locally
 

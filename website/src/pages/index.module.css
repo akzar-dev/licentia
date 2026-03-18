@@ -118,12 +118,6 @@ html[data-theme='light'] .description {
   text-align: center;
 }
 
-.showcaseTagline {
-  margin: 0 auto 1rem;
-  max-width: 72ch;
-  text-align: center;
-}
-
 /* badges under the tagline */
 .badges {
   display: flex;
@@ -150,7 +144,6 @@ html[data-theme='light'] .description {
   flex-wrap: wrap;
 }
 
-.cta,
 .ctaSolid {
   display: inline-flex;
   align-items: center;
@@ -166,7 +159,6 @@ html[data-theme='light'] .description {
 }
 
 /* subtle gold glow on hover */
-.cta:hover,
 .ctaSolid:hover {
   box-shadow:
     0 0 10px var(--licentia-glow-hover-1),
@@ -197,10 +189,10 @@ html[data-theme='light'] .description {
 }
 
 .highlightText {
-  color: #facb35;
+  color: var(--ifm-color-primary);
   /* Gold accent color used in bullet points/text shadow */
   font-weight: 600;
-  text-shadow: 0 0 8px rgba(250, 203, 53, 0.25);
+  text-shadow: 0 0 8px color-mix(in oklab, var(--ifm-color-primary) 25%, transparent);
 }
 
 /* -------- ICON FEATURES STRIP -------- */
@@ -290,7 +282,7 @@ html[data-theme='light'] .description {
   position: absolute;
   left: 0;
   top: 0.1rem;
-  color: #facb35;
+  color: var(--ifm-color-primary);
   /* our gold */
   font-size: 0.9rem;
 }
@@ -477,12 +469,10 @@ html[data-theme='light'] .description {
 @media (prefers-reduced-motion: reduce) {
 
   /* Disable hover motion for main CTA buttons */
-  .cta,
   .ctaSolid {
     transition: none !important;
   }
 
-  .cta:hover,
   .ctaSolid:hover {
     transform: none !important;
     box-shadow: none !important;
@@ -499,10 +489,6 @@ html[data-theme='light'] .description {
   }
 
   .shotSkeleton {
-    animation: none !important;
-  }
-
-  .heroBgShimmer {
     animation: none !important;
   }
 

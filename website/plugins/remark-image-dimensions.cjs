@@ -19,8 +19,12 @@ function stripQueryAndHash(value) {
 }
 
 function resolveLocalImagePath(rawPath, fromFilePath) {
-  if (!isLocalPath(rawPath)) return null;
-  if (!fromFilePath) return null;
+  if (!isLocalPath(rawPath) || !fromFilePath) return null;
+
+  if (rawPath.startsWith('/')) {
+    return path.resolve(process.cwd(), 'static', `.${stripQueryAndHash(rawPath)}`);
+  }
+
   return path.resolve(path.dirname(fromFilePath), stripQueryAndHash(rawPath));
 }
 
@@ -36,80 +40,41 @@ function readDimensions(absPath) {
   }
 }
 
-function getMdxSrcAttribute(node) {
-  if (!node.attributes || !Array.isArray(node.attributes)) return null;
-  return node.attributes.find(
-    (attr) => attr && attr.type === 'mdxJsxAttribute' && attr.name === 'src'
-  );
+function appendStyleDeclaration(styleValue, declaration) {
+  const trimmed = typeof styleValue === 'string' ? styleValue.trim() : '';
+  if (!trimmed) return declaration;
+  const suffix = trimmed.endsWith(';') ? '' : ';';
+  return `${trimmed}${suffix} ${declaration}`;
 }
 
-function getMdxLocalPathFromSrcAttr(srcAttr) {
-  if (!srcAttr) return null;
-  if (typeof srcAttr.value === 'string') {
-    return srcAttr.value;
-  }
-  if (srcAttr.value && typeof srcAttr.value === 'object' && srcAttr.value.type === 'mdxJsxAttributeValueExpression') {
-    const expr = srcAttr.value.value || '';
-    const m = expr.match(/require\((['"])(.+?)\1\)\.default/);
-    if (m) return m[2];
-  }
-  return null;
-}
+function visitChildren(parent, file) {
+  if (!Array.isArray(parent.children)) return;
 
-function hasMdxAttribute(node, name) {
-  return (
-    Array.isArray(node.attributes) &&
-    node.attributes.some((attr) => attr && attr.type === 'mdxJsxAttribute' && attr.name === name)
-  );
-}
+  for (let index = 0; index < parent.children.length; index += 1) {
+    const node = parent.children[index];
+    if (!node || typeof node !== 'object') continue;
 
-function setMdxWidthHeight(node, width, height) {
-  if (!Array.isArray(node.attributes)) node.attributes = [];
-  if (!hasMdxAttribute(node, 'width')) {
-    node.attributes.push({ type: 'mdxJsxAttribute', name: 'width', value: String(width) });
-  }
-  if (!hasMdxAttribute(node, 'height')) {
-    node.attributes.push({ type: 'mdxJsxAttribute', name: 'height', value: String(height) });
-  }
-}
+    if (node.type === 'image' && typeof node.url === 'string') {
+      const absPath = resolveLocalImagePath(node.url, file.path);
+      const dims = readDimensions(absPath);
+      if (dims) {
+        node.data = node.data || {};
+        node.data.hProperties = node.data.hProperties || {};
+        node.data.hProperties.width = dims.width;
+        node.data.hProperties.height = dims.height;
+        node.data.hProperties.style = appendStyleDeclaration(
+          node.data.hProperties.style,
+          `aspect-ratio: ${dims.width} / ${dims.height};`
+        );
+      }
+    }
 
-function walk(node, visit) {
-  if (!node || typeof node !== 'object') return;
-  visit(node);
-  const children = node.children;
-  if (Array.isArray(children)) {
-    for (const child of children) walk(child, visit);
+    visitChildren(node, file);
   }
 }
 
 module.exports = function remarkImageDimensions() {
   return (tree, file) => {
-    walk(tree, (node) => {
-      // Markdown image syntax: ![alt](./img/foo.png)
-      if (node.type === 'image' && typeof node.url === 'string') {
-        const absPath = resolveLocalImagePath(node.url, file.path);
-        const dims = readDimensions(absPath);
-        if (!dims) return;
-        node.data = node.data || {};
-        node.data.hProperties = node.data.hProperties || {};
-        if (node.data.hProperties.width == null) node.data.hProperties.width = dims.width;
-        if (node.data.hProperties.height == null) node.data.hProperties.height = dims.height;
-        return;
-      }
-
-      // MDX JSX image syntax: <img src={require('./img/foo.png').default} ... />
-      const isMdxImg =
-        (node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') &&
-        node.name === 'img';
-      if (!isMdxImg) return;
-
-      const srcAttr = getMdxSrcAttribute(node);
-      const srcPath = getMdxLocalPathFromSrcAttr(srcAttr);
-      const absPath = resolveLocalImagePath(srcPath, file.path);
-      const dims = readDimensions(absPath);
-      if (!dims) return;
-
-      setMdxWidthHeight(node, dims.width, dims.height);
-    });
+    visitChildren(tree, file);
   };
 };

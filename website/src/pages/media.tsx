@@ -60,8 +60,12 @@ export default function MediaPage(): React.JSX.Element {
       <main className={styles.main}>
         <div className="container">
           <header className={styles.header}>
-            <h1 className={styles.visuallyHidden}>Media</h1>
-            <img src="/img/pages/media/media-heading.png" alt="" aria-hidden className={styles.headingImg} />
+            <h1
+              className="licentia-heading licentia-heading--h1"
+             
+            >
+              Media
+            </h1>
             <div className={styles.separator} aria-hidden />
           </header>
 

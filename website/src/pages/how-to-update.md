@@ -6,8 +6,7 @@ description: "Instructions on how to update Licentia NEXT Skyrim modlist"
 image: /img/social-cards/how-to-update-social.png
 ---
 
-# ![How to update](/img/pages/how-to-update/how-to-update-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">How to update</span>
 ---
 
 :::note

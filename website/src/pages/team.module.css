@@ -8,13 +8,6 @@
   margin: 0 auto 1.5rem;
 }
 
-.headingImg {
-  display: block;
-  margin: 0 auto;
-  width: min(90vw, 520px);
-  height: auto;
-}
-
 .headerSeparator {
   margin: 0.7rem auto 0;
   width: min(520px, 86%);
@@ -27,17 +20,6 @@
     transparent 94%,
     transparent 100%
   );
-}
-
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
 }
 
 .gridCore,
@@ -82,15 +64,7 @@
   color: var(--ifm-color-emphasis-700);
 }
 
-.card {
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
+.card,
 .thanksCard {
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-300);
@@ -109,15 +83,12 @@
   box-shadow:
     0 0 0 3px color-mix(in oklab, var(--ifm-color-primary) 25%, transparent),
     0 8px 20px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
 }
 
 .cardLarge .avatar {
   width: 148px;
   height: 148px;
-}
-
-.avatar {
-  object-fit: cover;
 }
 
 .name {

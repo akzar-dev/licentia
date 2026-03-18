@@ -8,8 +8,7 @@ description: "An agreement between Licentia NEXT Skyrim modlist users and author
 image: ./img/2-modlist-user-agreement-social.png
 ---
 
-# ![Modlist user agreement](./img/2-modlist-user-agreement-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Modlist user agreement</span>
 ---
 
 This is some sort of an agreement of the parties, them being **us** *(Licentia Team)* and **you** *(the user)*. 

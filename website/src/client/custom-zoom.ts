@@ -1,4 +1,4 @@
-const SELECTOR = 'img.zoomable, .markdown img:not([src*="-heading"])';
+const SELECTOR = 'img.zoomable, .markdown img';
 const MIN_ZOOM = 0.25;
 const MAX_ZOOM = 3;
 const DOUBLE_TAP_MS = 340;

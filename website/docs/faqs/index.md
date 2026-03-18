@@ -7,8 +7,7 @@ description: "Frequently asked questions for gameplay and technical troubleshoot
 image: ./img/index-faqs-social.png
 ---
 
-# ![FAQs](./img/index-faqs-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">FAQs</span>
 ---
 
 Pick a category:

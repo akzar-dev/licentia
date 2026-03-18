@@ -7,8 +7,7 @@ description: "Technical FAQ for Licentia NEXT Skyrim modlist"
 image: ./img/faq-technical-social.png
 ---
 
-# ![Technical FAQ](./img/faq-technical-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Technical FAQ</span>
 ---
 
 :::tip

@@ -173,27 +173,106 @@
 }
 
 /* =========================
-   H1/H2 HEADING IMAGES STYLE
-   (Markdown headings)
+   DISPLAY HEADINGS
    ========================= */
 
-/* Common rules for image headings */
-h1>img,
-h2>img {
-  display: block;
+@font-face {
+  font-family: 'Cloister Black';
+  src:
+    url('/fonts/CloisterBlack.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cloister Black Fallback';
+  src:
+    local('Georgia');
+  font-style: normal;
+  font-weight: 400;
+  size-adjust: 100%;
+}
+
+.licentia-heading {
+  width: fit-content;
+  max-width: min(100%, 18ch);
   margin-inline: auto;
-  max-width: 100%;
+  font-family: 'Cloister Black', 'Cloister Black Fallback', serif;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #161616;
+  -webkit-text-fill-color: #161616;
+  -webkit-text-stroke: 1.25px var(--ifm-color-primary);
+  text-shadow:
+    0 0 8px color-mix(in oklab, var(--ifm-color-primary) 18%, transparent),
+    0 6px 14px color-mix(in oklab, var(--ifm-color-primary) 8%, transparent),
+    0 1px 0 rgba(0, 0, 0, 0.42);
+  text-wrap: balance;
+}
+
+.licentia-heading--h1 {
+  font-size: clamp(3.15rem, 7vw, 5.3rem);
+}
+
+.licentia-heading--h2 {
+  font-size: clamp(2.1rem, 4.6vw, 3.45rem);
+  -webkit-text-stroke: 0.85px var(--ifm-color-primary);
+}
+
+.licentia-heading--display {
+  font-size: clamp(3.15rem, 7vw, 5.3rem);
+}
+
+.table-of-contents .licentia-heading,
+.table-of-contents__link .licentia-heading,
+.tocCollapsibleContent_vkbj .licentia-heading {
   width: auto;
-  height: auto;
+  max-width: none;
+  margin-inline: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
-/* Different caps */
-h1>img {
-  max-height: 120px;
+@media (max-width: 996px) {
+  .licentia-heading {
+    -webkit-text-stroke: 1px var(--ifm-color-primary);
+  }
+
+  .licentia-heading--h1 {
+    font-size: clamp(3.35rem, 9.2vw, 5.35rem);
+  }
+
+  .licentia-heading--h2 {
+    font-size: clamp(2.3rem, 6.4vw, 3.5rem);
+  }
+
+  .licentia-heading--display {
+    font-size: clamp(3.35rem, 9.2vw, 5.35rem);
+  }
 }
 
-h2>img {
-  max-height: 80px;
+@media (max-width: 640px) {
+  .licentia-heading--h1 {
+    font-size: clamp(3rem, 12.5vw, 4.55rem);
+  }
+
+  .licentia-heading--h2 {
+    font-size: clamp(2.15rem, 9vw, 3.2rem);
+    -webkit-text-stroke: 0.7px var(--ifm-color-primary);
+  }
+
+  .licentia-heading--display {
+    font-size: clamp(3rem, 12.5vw, 4.55rem);
+  }
 }
 
 /* =========================
@@ -770,12 +849,12 @@ img.img-loaded {
 /* Markdown/content images that are zoomable should advertise zoom affordance */
 .theme-doc-markdown img,
 .markdown img {
-  width: auto;
+  display: block;
   height: auto !important;
   max-width: 100%;
 }
 
-.markdown img:not([src*="-heading"]) {
+.markdown img {
   cursor: zoom-in;
 }
 

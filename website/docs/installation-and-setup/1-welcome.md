@@ -8,8 +8,7 @@ description: "An introduction to Licentia NEXT Skyrim modlist"
 image: ./img/1-welcome-social.png
 ---
 
-# ![Welcome](./img/1-welcome-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Welcome</span>
 ---
 
 :::danger
