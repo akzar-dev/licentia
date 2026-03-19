@@ -43,16 +43,27 @@ You can also use [this mod](https://www.nexusmods.com/skyrimspecialedition/mods/
         height={1098}
     />
 
-3. Click `Download & Install` button on the bottom left (it will download the updated `.wabbajack` file):
+3. Click `Download & Install` button on the bottom left *(it will download the updated `.wabbajack` file)*:
     <DocImage 
         src={require('/img/pages/how-to-update/3_click_download_and_install.png').default}
         alt="Clicking Download&Install on Licentia NEXT"
-        style={{ maxHeight:200 }}
+        style={{ maxHeight:250 }}
         width={2076}
         height={1929}
     />
 
-4. Select the same directories you've used to install the list if asked on the left **(1)** (usually *Wabbajack* correctly auto-detects your previous install folders), and click `Install` at the bottom right **(2)**:
+    :::tip
+    **if you're re-installing the list** - the text on the button would just say `Install` instead of `Download & Install`, click it:
+        <DocImage 
+            src={require('/img/pages/how-to-update/3_tip_if_reinstalling_click_install.png').default}
+            alt="Clicking Install in case of re-installation"
+            style={{ maxHeight:100 }}
+            width={1236}
+            height={420}
+        />
+    :::
+
+4. On the left select the same directories you've used for your _Licentia_ install and downloads **(1)** (though usually *Wabbajack* correctly auto-detects them), and click `Install` at the bottom right **(2)**:
     <DocImage 
         src={require('/img/pages/how-to-update/4_select_folders_and_install.png').default}
         alt="Selecting installation directories and clicking install"

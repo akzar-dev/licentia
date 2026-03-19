@@ -1190,6 +1190,11 @@
       "version": "optimize-images-v2",
       "hash": "c458f681a62ea21f1f7d8820b0d64be75b4d4964",
       "updatedAt": "2026-03-19T16:09:26.107Z"
+    },
+    "static/img/pages/how-to-update/3_tip_if_reinstalling_click_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "0308d313718bb0ccf79fda0b209deefbfebd3ba6",
+      "updatedAt": "2026-03-19T16:38:53.956Z"
     }
   }
 }
