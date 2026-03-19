@@ -854,7 +854,8 @@ img.img-loaded {
   max-width: 100%;
 }
 
-.markdown img {
+.markdown img,
+img.zoomable {
   cursor: zoom-in;
 }
 

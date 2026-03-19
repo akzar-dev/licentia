@@ -1081,11 +1081,6 @@
       "hash": "329657cc9d0bc76b5a3e399861251c854d00e8de",
       "updatedAt": "2026-02-18T20:36:06.619Z"
     },
-    "static/img/pages/team/LeoMaximus.webp": {
-      "version": "optimize-images-v2",
-      "hash": "ad97e9c84242359a66e97983a01cff6870081929",
-      "updatedAt": "2026-02-18T20:36:19.779Z"
-    },
     "static/img/pages/team/Ryan156.webp": {
       "version": "optimize-images-v2",
       "hash": "20d7496e9cb70cac9b3c03cbf7f0bccd222e1f53",
@@ -1165,6 +1160,36 @@
       "version": "optimize-images-v2",
       "hash": "0468ce6db9f554c5ec3629a08bd4cc6a80453265",
       "updatedAt": "2026-02-28T16:34:51.576Z"
+    },
+    "static/img/pages/team/LeoMaximus.gif": {
+      "version": "optimize-images-v2",
+      "hash": "0ef10dceba16f4728e5a096d1ee1142ce0694943",
+      "updatedAt": "2026-03-19T14:41:32.786Z"
+    },
+    "static/img/pages/team/LeoMaximus.webp": {
+      "version": "optimize-images-v2",
+      "hash": "03b74bcd8c9fea1c19410a0f8d3ca3326313151a",
+      "updatedAt": "2026-03-19T14:41:32.787Z"
+    },
+    "static/img/pages/how-to-update/1_open_WJ_and_browse_lists.png": {
+      "version": "optimize-images-v2",
+      "hash": "35f173516b85a62db295782ce8062e4b2f637139",
+      "updatedAt": "2026-03-19T16:09:23.510Z"
+    },
+    "static/img/pages/how-to-update/2_find_LN_and_click_on_it.png": {
+      "version": "optimize-images-v2",
+      "hash": "620b5a454e8c9f2571fe37372b2c5d037724b633",
+      "updatedAt": "2026-03-19T16:09:24.193Z"
+    },
+    "static/img/pages/how-to-update/3_click_download_and_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "587598914078bf32f24e75f6d708d840c2c56845",
+      "updatedAt": "2026-03-19T16:09:25.120Z"
+    },
+    "static/img/pages/how-to-update/4_select_folders_and_install.png": {
+      "version": "optimize-images-v2",
+      "hash": "c458f681a62ea21f1f7d8820b0d64be75b4d4964",
+      "updatedAt": "2026-03-19T16:09:26.107Z"
     }
   }
 }

@@ -9,34 +9,72 @@ image: /img/social-cards/how-to-update-social.png
 # <span className="licentia-heading licentia-heading--h1">How to update</span>
 ---
 
-:::note
-**TL;DR**
+:::tip
+Updating the list and re-installing the list are the same thing in _Wabbajack_.
 
-Download the modlist's `.wabbajack` file again and specify the same directories (basically the same as in the [installation step](/installation#download-and-install-the-list))
+If you're trying to **re-install** an existing setup, use this page.
 :::
 
 :::warning
-**Your custom added mods may be deleted during the update!**
+**Your custom added mods may be deleted during the update/re-installation!**
 
-If you want to keep your manually added mods, don't forget to prefix them with `[NoDelete]` in MO2, so _Wabbajack_ won't delete them during the update.
+If you want to keep your manually added mods, don't forget to prefix them with `[NoDelete]` in MO2, so _Wabbajack_ won't delete them during the update/re-installation process.
+
+You can also use [this mod](https://www.nexusmods.com/skyrimspecialedition/mods/137095) to automate prefixing.
 :::
 
-# 🔄 Detailed update instructions 🔄
+---
 
-1. Go to Wabbajack UI, Browse Modlists, find _Licentia NEXT_ and click on it.
+1. Open _Wabbajack_ and click `Browse Modlists` on the left bar:
+    <DocImage 
+        src={require('/img/pages/how-to-update/1_open_WJ_and_browse_lists.png').default}
+        alt="Opening Wabbajack and click Browse Lists"
+        style={{ maxHeight:200 }}
+        width={2199}
+        height={1536}
+    />
 
-2. Click `Download & Install` button (it will download the updated `.wabbajack` file), and select the same directories as before if asked (usually *Wabbajack* correctly auto-detects your previous install).
+2. Find _Licentia NEXT_ using `Search` bar on the left *(with `NSFW` and `Non-featured` boxes ticked)* **(1)** and click on _Licentia_ card that would appear on the right **(2)**:
+    <DocImage 
+        src={require('/img/pages/how-to-update/2_find_LN_and_click_on_it.png').default}
+        alt="Finding Licentia NEXT and clicking on it"
+        style={{ maxHeight:200 }}
+        width={3444}
+        height={1098}
+    />
 
-3. Click `Install` and wait for the installation to finish.
+3. Click `Download & Install` button on the bottom left (it will download the updated `.wabbajack` file):
+    <DocImage 
+        src={require('/img/pages/how-to-update/3_click_download_and_install.png').default}
+        alt="Clicking Download&Install on Licentia NEXT"
+        style={{ maxHeight:200 }}
+        width={2076}
+        height={1929}
+    />
 
-4. Once you've opened the *Mod Organizer 2* (MO2) after the update, make sure your mods and plugins count matches the ones stated in the announcement.
+4. Select the same directories you've used to install the list if asked on the left **(1)** (usually *Wabbajack* correctly auto-detects your previous install folders), and click `Install` at the bottom right **(2)**:
+    <DocImage 
+        src={require('/img/pages/how-to-update/4_select_folders_and_install.png').default}
+        alt="Selecting installation directories and clicking install"
+        style={{ maxHeight:200 }}
+        width={3831}
+        height={2013}
+    />
 
-:::note
-_Wabbajack_ will only update what has changed, it will not repeat the entire installation &mdash; so this will be *much* faster than the initial installation.
-:::
+5. Now just wait for the process to finish.
 
-:::danger
-It is rarely recommended to continue a save when you update a modlist (unless an update is labeled `Save Safe` in the changelog/announcement)!
+    :::note
+    _Wabbajack_ will only download what has changed, it will not repeat the entire installation &mdash; so updating/re-installing would be *much* faster than the initial installation.
+    :::
 
-Check the [Changelog](/changelog) for more information on the update you are installing, and if it is save safe or not.
-:::
+    After it's done - **close** _Wabbajack_.
+
+6. Go to your installation folder, open the *Mod Organizer 2* (MO2), and make sure your **mods and plugins count** matches the ones stated in the announcement channel or in the [Changelog](/changelog) for your version of the list.
+
+7. **DONE!** 🥳
+
+    :::danger
+    It is rarely recommended to **continue a save** after you update a modlist *(unless an update is labeled `Save Safe` in the changelog/announcement)*!
+
+    Check the [Changelog](/changelog) for more information on the update you are installing, and if it is save safe or not.
+    :::

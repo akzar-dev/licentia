@@ -87,7 +87,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
             width={1056}
             height={531}
         />
-    Go back to [Installation](installation#download-and-install-the-list) and keep re-installing _Licentia NEXT_ until you see that `ModOrganizer.exe` file appeared in your Licentia NEXT's folder.
+    Go back to [Installation](installation#download-and-install-the-list) and keep re-installing _Licentia NEXT_ until you see that `ModOrganizer.exe` file appeared in your Licentia NEXT's folder. If this is an existing setup, use [How to update](/how-to-update) instead, since updating and re-installing are the same _Wabbajack_ process.
 
     **THIS IS NOT A LICENTIA NEXT ISSUE, IT'S A WABBAJACK ISSUE** since version `4.0`+. We can't do anything about it, sorry.
     :::

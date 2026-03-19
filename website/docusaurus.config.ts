@@ -26,16 +26,6 @@ const config: Config = {
       },
     },
     {
-      tagName: 'link',
-      attributes: {
-        rel: 'preload',
-        href: '/fonts/CloisterBlack.woff2',
-        as: 'font',
-        type: 'font/woff2',
-        crossorigin: 'anonymous',
-      },
-    },
-    {
       tagName: 'script',
       attributes: {
         type: 'application/ld+json',

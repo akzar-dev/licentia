@@ -91,7 +91,7 @@ The first thing you can try is navigating to the _OStim_ MCM and selecting the `
 
 If this doesn't work, perhaps one of the _OStim_ plugins did not install properly via _Wabbajack._ Try right-clicking on the _OStim Standalone_ mod in _Mod Organizer 2_ and selecting `Reinstall`. There shouldn't be any options to choose, so just click through. Launch the game and attempt your adult interaction again.
 
-If this *STILL* doesn't work, refer to the [Installation guide](/installation#download-and-install-the-list) and keep reinstalling the list until the error messages go away.
+If this *STILL* doesn't work, keep reinstalling the list until the error messages go away. You can either re-read the [Installation guide](/installation#download-and-install-the-list) or use [How to update](/how-to-update) instructions, since updating and re-installing are the same for _Wabbajack_.
 </details>
 
 ### I can no longer end an OStim scene!

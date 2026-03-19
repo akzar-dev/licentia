@@ -77,7 +77,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     :::tip
     We're separating the installation folder and downloads folder for two reasons:
-    - If you ever need to re-install the modlist, you can just point _Wabbajack_ to the existing downloads folder and it would save you a lot of time and bandwidth.
+    - If you ever need to re-install or update the modlist, you can just point _Wabbajack_ to the existing downloads folder and it would save you a lot of time and bandwidth. For existing installs, use [How to update](/how-to-update), since updating and re-installing are the same process here.
     - If you ever need to free up some space *(around 150-160 GB)*, you can just delete the downloads folder **AFTER THE INSTALLATION IS FULLY COMPLETE**. But keep in mind that if you ever need to re-install the modlist, _Wabbajack_ will have to re-download everything again.
     :::
 
@@ -217,7 +217,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     :::tip
     **General advice** &mdash; **re-run _Wabbajack_ completely** before seeking assistance.
-    _Wabbajack_ will only download and reinstall the minimum necessary to get the modlist working.
+    _Wabbajack_ will only download and reinstall the minimum necessary to get the modlist working. If you're re-running it on an existing install, follow [How to update](/how-to-update), since that is also the re-install process.
 
     You can find most common *Wabbajack* issues below *(check Logs tab)*:
 

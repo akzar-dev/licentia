@@ -20,7 +20,7 @@ function parsePixelLike(value: React.CSSProperties['maxHeight']): number | null 
 }
 
 function Img(props: ImgProps): React.JSX.Element {
-  const { width, height, style, src, loading, decoding, fetchPriority, ...rest } = props;
+  const { width, height, style, src, loading, decoding, fetchPriority, className, ...rest } = props;
   const numericWidth = typeof width === 'number' ? width : Number(width);
   const numericHeight = typeof height === 'number' ? height : Number(height);
   const styleObject = style && typeof style === 'object' && !Array.isArray(style) ? style : undefined;
@@ -38,6 +38,7 @@ function Img(props: ImgProps): React.JSX.Element {
   return (
     <img
       {...rest}
+      className={className ? `${className} zoomable` : 'zoomable'}
       src={src}
       width={width}
       height={height}
