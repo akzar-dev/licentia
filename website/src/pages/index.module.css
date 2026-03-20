@@ -8,43 +8,27 @@
   border-radius: 0;
 }
 
-.heroBgImg {
+.hero::before {
+  content: '';
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  z-index: 0;
+  background-image: url('/img/pages/main/licentia-next-social-card-bg-dark.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   filter: blur(4px);
   transform: scale(1.03);
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
 }
 
-.heroBgDark {
-  display: block;
-}
-
-.heroBgLight {
-  display: none;
-}
-
-[data-theme='dark'] .heroBgDark {
-  opacity: 1;
-}
-
-[data-theme='light'] .heroBgDark {
-  display: none;
-  opacity: 0;
-}
-
-[data-theme='light'] .heroBgLight {
-  display: block;
-  opacity: 1;
+html[data-theme='light'] .hero::before {
+  background-image: url('/img/pages/main/licentia-next-social-card-bg-light.webp');
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background:
     radial-gradient(60% 60% at 50% 40%, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 100%);
@@ -171,6 +155,11 @@ html[data-theme='light'] .description {
 .iconsSection,
 .showcase {
   padding: 1.5rem 0;
+}
+
+.deferSection {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .altSection {
@@ -357,7 +346,7 @@ html[data-theme='light'] .description {
   will-change: scroll-position;
 }
 
-/* Image frame + skeleton */
+/* Image frame */
 .shotFrame {
   position: relative;
   height: 180px;
@@ -367,20 +356,6 @@ html[data-theme='light'] .description {
   flex: 0 0 auto;
   content-visibility: auto;
   contain-intrinsic-size: 180px 320px;
-}
-
-.shotSkeleton {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  border-radius: inherit;
-  background: linear-gradient(90deg,
-      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 0%,
-      color-mix(in oklab, var(--ifm-color-emphasis-100) 95%, transparent) 45%,
-      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 100%);
-  background-size: 300% 100%;
-  animation: shimmer 2.8s linear infinite;
 }
 
 .shot {
@@ -393,22 +368,6 @@ html[data-theme='light'] .description {
   cursor: zoom-in;
   user-select: none;
   -webkit-user-drag: none;
-  opacity: 1;
-  transition: opacity .12s linear;
-}
-
-.shotLoaded {
-  opacity: 1;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
-  }
 }
 
 @media (max-width: 996px) {
@@ -488,7 +447,7 @@ html[data-theme='light'] .description {
     box-shadow: 0 2px 10px rgba(0, 0, 0, .25) !important;
   }
 
-  .shotSkeleton {
+  .site-image__skeleton {
     animation: none !important;
   }
 

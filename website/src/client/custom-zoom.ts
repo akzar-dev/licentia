@@ -168,6 +168,7 @@ function resetOpenedState(): void {
 function animateOpen(): void {
   if (!overlay || !imageEl || !stageEl) return;
   overlay.classList.add('lx-zoom-overlay--open');
+  window.dispatchEvent(new CustomEvent('licentia-zoom-change', { detail: { open: true } }));
   overlay.animate([{ opacity: 0 }, { opacity: 1 }], {
     duration: 230,
     easing: 'cubic-bezier(0.2, 0, 0.2, 1)',
@@ -222,6 +223,7 @@ async function closeOverlay(): Promise<void> {
   await animateClose();
   overlay.classList.remove('lx-zoom-overlay--open');
   overlay.style.display = 'none';
+  window.dispatchEvent(new CustomEvent('licentia-zoom-change', { detail: { open: false } }));
   document.body.style.removeProperty('overflow');
   document.body.style.removeProperty('padding-right');
 

@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
+import SiteImage from '@site/src/components/SiteImage';
 
 /** ------- CONFIG -------- */
 /** Load every image in /static/img/pages/main/screenshots */
@@ -26,9 +27,6 @@ const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may f
 const SHOWCASE_CTA_LABEL = 'View full gallery';
 const HOME_META_DESCRIPTION =
   'Licentia NEXT: The ultimate 1-click install NSFW Skyrim AE modlist built around LotD. Better combat, graphics, quests & more!';
-const HERO_BG_DARK = '/img/pages/main/licentia-next-social-card-bg-dark.webp';
-const HERO_BG_LIGHT = '/img/pages/main/licentia-next-social-card-bg-light.webp';
-
 /** Main Hero function */
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
@@ -36,38 +34,15 @@ function Hero() {
   return (
     <section className={styles.hero}>
       <h1 className={styles.visuallyHidden}>Licentia NEXT: The Ultimate NSFW Skyrim AE Modlist</h1>
-      <img
-        className={clsx(styles.heroBgImg, styles.heroBgDark)}
-        src={HERO_BG_DARK}
-        alt="Licentia NEXT Hero Background Dark"
-        aria-hidden
-        width={960}
-        height={540}
-        loading="eager"
-        decoding="async"
-        fetchPriority="high"
-      />
-      <img
-        className={clsx(styles.heroBgImg, styles.heroBgLight)}
-        src={HERO_BG_LIGHT}
-        alt="Licentia NEXT Hero Background Light"
-        aria-hidden
-        width={960}
-        height={540}
-        loading="eager"
-        decoding="async"
-        fetchPriority="high"
-      />
       <div className={styles.heroOverlay} />
 
       <div className={clsx('container', styles.heroInner)}>
         <img
           className={styles.heroLogo}
-          src="/img/licentia-next-social-card.webp"
+          src="/img/licentia-next-hero-logo.webp"
           alt={`${siteConfig.title} logo`}
-          width={960}
-          height={904}
-          loading="eager"
+          width={700}
+          height={659}
           decoding="async"
           fetchPriority="high"
         />
@@ -97,7 +72,7 @@ function Hero() {
 
 function AboutSection() {
   return (
-    <section className={styles.aboutSection}>
+    <section className={clsx(styles.aboutSection, styles.deferSection)}>
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
         <h2 className={styles.sectionTitle}>
           <span
@@ -129,7 +104,7 @@ function AboutSection() {
 
 function FeatureIcons() {
   return (
-    <section className={styles.iconsSection} data-nosnippet>
+    <section className={clsx(styles.iconsSection, styles.deferSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <span
@@ -204,9 +179,7 @@ function FeatureIcons() {
 
 function Showcase() {
   const LOOP_COPIES = 2;
-  const MAX_UNIQUE_SHOWCASE_SHOTS = 24;
-  const FORCE_REVEAL_MS = 5000;
-  const [loadedShots, setLoadedShots] = React.useState<Record<string, true>>({});
+  const MAX_UNIQUE_SHOWCASE_SHOTS = 16;
   // Shuffle ONCE for this page load
   const SHOTS = React.useMemo(() => {
     const a = [...ALL_SHOTS];
@@ -219,34 +192,20 @@ function Showcase() {
 
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
   const trackRef = React.useRef<HTMLDivElement | null>(null);
+  const sectionRef = React.useRef<HTMLElement | null>(null);
   const unitWidthRef = React.useRef<number>(0); // width of one sequence
   const isPausedRef = React.useRef<boolean>(false);
   const autoResumeTimerRef = React.useRef<number | null>(null);
   const speedRef = React.useRef<number>(36); // px per second
   const posRef = React.useRef<number>(0); // fractional scroll position accumulator (Safari-safe)
   const lastTsRef = React.useRef<number | null>(null); // rAF timestamp for time-based scrolling
+  const [isShowcaseVisible, setIsShowcaseVisible] = React.useState(false);
 
   // Build repeated list based on LOOP_COPIES.
   const loop = React.useMemo(
     () => Array.from({ length: LOOP_COPIES }, () => SHOTS).flat(),
     [SHOTS]
   );
-
-  // Safety net: never leave skeletons forever.
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const id = window.setTimeout(() => {
-      setLoadedShots((prev) => {
-        if (Object.keys(prev).length >= loop.length) return prev;
-        const next = { ...prev } as Record<string, true>;
-        for (let i = 0; i < loop.length; i++) {
-          next[`${loop[i].id}-${i}`] = true;
-        }
-        return next;
-      });
-    }, FORCE_REVEAL_MS);
-    return () => window.clearTimeout(id);
-  }, [loop]);
 
   // Initialize unit width (one sequence) and center on middle copy
   React.useLayoutEffect(() => {
@@ -353,10 +312,7 @@ function Showcase() {
       const dtSec = (ts - lastTsRef.current) / 1000;
       lastTsRef.current = ts;
       const scroller = scrollerRef.current;
-      const zoomOpen =
-        typeof document !== 'undefined' &&
-        !!document.querySelector('.lx-zoom-overlay--open');
-      if (scroller && !isPausedRef.current && unitWidthRef.current && !zoomOpen) {
+      if (scroller && isShowcaseVisible && !isPausedRef.current && unitWidthRef.current) {
         posRef.current += speedRef.current * dtSec;
         scroller.scrollLeft = posRef.current;
         wrapIfNeeded();
@@ -368,7 +324,7 @@ function Showcase() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [wrapIfNeeded]);
+  }, [isShowcaseVisible, wrapIfNeeded]);
 
   // Respect reduced motion: disable auto-scroll when user prefers reduced motion
   React.useEffect(() => {
@@ -388,6 +344,22 @@ function Showcase() {
       return () => mql.removeListener(apply);
     }
     return;
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsShowcaseVisible(entry.isIntersecting);
+      },
+      { rootMargin: '240px 0px' }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   // Pause/resume helpers
@@ -421,13 +393,6 @@ function Showcase() {
     wrapIfNeeded();
   };
 
-  const markLoaded = React.useCallback((key: string) => {
-    setLoadedShots((prev) => {
-      if (prev[key]) return prev;
-      return { ...prev, [key]: true };
-    });
-  }, []);
-
   // Nav buttons
   const scrollByAmount = React.useCallback((dir: 1 | -1) => {
     const scroller = scrollerRef.current;
@@ -438,32 +403,23 @@ function Showcase() {
     resumeSoon(900);
   }, [pause, resumeSoon]);
 
-  // Observe zoom overlay to keep auto-scroll paused while zoomed
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
-    const handle = () => {
-      const zoomOpen = !!document.querySelector('.lx-zoom-overlay--open');
-      if (zoomOpen) {
+    const handle = (event: Event) => {
+      const detail = (event as CustomEvent<{ open?: boolean }>).detail;
+      if (detail?.open) {
         pause();
       } else {
-        // resume shortly after overlay closes
         resumeSoon(300);
       }
     };
-    const observer = new MutationObserver(handle);
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['class', 'style'],
-    });
-    // initial check
-    handle();
-    return () => observer.disconnect();
+
+    window.addEventListener('licentia-zoom-change', handle as EventListener);
+    return () => window.removeEventListener('licentia-zoom-change', handle as EventListener);
   }, [pause, resumeSoon]);
 
   return (
-    <section className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
+    <section ref={sectionRef} className={clsx(styles.showcase, styles.altSection, styles.deferSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <span
@@ -514,25 +470,19 @@ function Showcase() {
           <div ref={trackRef} className={styles.marqueeTrack}>
             {loop.map((shot, i) => {
               const key = `${shot.id}-${i}`;
-              const isLoaded = !!loadedShots[key];
               return (
-                <div key={key} className={styles.shotFrame}>
-                  {!isLoaded && <span className={styles.shotSkeleton} aria-hidden="true" />}
-                  <img
-                    src={shot.src}
-                    alt={`Licentia NEXT showcase screenshot ${i + 1}`}
-                    className={clsx('zoomable', styles.shot, isLoaded && styles.shotLoaded)}
-                    loading="eager"
-                    decoding="sync"
-                    fetchPriority="low"
-                    ref={(img) => {
-                      // Cached images can complete before React attaches load handlers.
-                      if (img && img.complete && img.naturalWidth > 0) markLoaded(key);
-                    }}
-                    onLoad={() => markLoaded(key)}
-                    onError={() => markLoaded(key)}
-                  />
-                </div>
+                <SiteImage
+                  key={key}
+                  src={shot.src}
+                  alt={`Licentia NEXT showcase screenshot ${i + 1}`}
+                  className={clsx('zoomable', styles.shot)}
+                  wrapperClassName={styles.shotFrame}
+                  width={320}
+                  height={180}
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                />
               );
             })}
           </div>

@@ -1,6 +1,6 @@
 User-agent: *
-Disallow: /img/licentia-next-logo.png
-Disallow: /img/licentia-next-logo-navbar.png
+Disallow: /img/licentia-next-logo-footer.webp
+Disallow: /img/licentia-next-logo-navbar.webp
 Disallow: /img/licentia-next-logo-apple.png
 Disallow: /img/pages/main/licentia-next-social-card-bg-light.webp
 Disallow: /img/pages/main/licentia-next-social-card-bg-dark.webp

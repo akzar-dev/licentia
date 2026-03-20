@@ -47,7 +47,7 @@ const config: Config = {
         '@type': 'Organization',
         name: 'Licentia NEXT',
         url: 'https://licentia.quest/',
-        logo: 'https://licentia.quest/img/licentia-next-logo.png',
+        logo: 'https://licentia.quest/img/licentia-next-hero-logo.webp',
         sameAs: [
           'https://github.com/akzar-dev/licentia',
           'https://discord.gg/vermishub',
@@ -129,7 +129,7 @@ const config: Config = {
       title: '',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/licentia-next-logo-navbar.png',
+        src: 'img/licentia-next-logo-navbar.webp',
       },
       items: [
         {
@@ -184,7 +184,7 @@ const config: Config = {
       // style: 'dark',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/licentia-next-logo.png',
+        src: 'img/licentia-next-logo-footer.webp',
         height: 48,
       },
       links: [

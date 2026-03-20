@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import clsx from 'clsx';
 import styles from './media.module.css';
+import SiteImage from '@site/src/components/SiteImage';
 
 const shotsReq = (require as any).context(
   '@site/static/img/pages/main/screenshots',
@@ -74,13 +75,15 @@ export default function MediaPage(): React.JSX.Element {
             <div className={styles.grid}>
               {ALL_SHOTS.map((shot, i) => (
                 <figure key={shot.id} className={styles.card}>
-                  <img
+                  <SiteImage
                     src={shot.src}
                     alt={`Licentia NEXT media screenshot ${i + 1}`}
                     className={clsx('zoomable', styles.shot)}
                     loading="lazy"
                     decoding="async"
                     fetchPriority="low"
+                    width={1600}
+                    height={900}
                   />
                 </figure>
               ))}

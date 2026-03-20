@@ -209,9 +209,11 @@
   - Runs the same showcase step above, then:
     - applies safe lossless PNG optimization to:
     - `static/img/pages/**`
-    - `static/img/licentia-next-logo.png`
     - `docs/**`
     - checks key existing WEBP files and re-encodes only if output is smaller:
+      - `static/img/licentia-next-hero-logo.webp`
+      - `static/img/licentia-next-logo-footer.webp`
+      - `static/img/licentia-next-logo-navbar.webp`
       - `static/img/licentia-next-social-card.webp`
       - `static/img/pages/main/licentia-next-social-card-bg-dark.webp`
       - `static/img/pages/main/licentia-next-social-card-bg-light.webp`

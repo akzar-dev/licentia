@@ -1021,11 +1021,6 @@
       "hash": "a813bda8e59fbb7ad8cb999640f80aa27e403ede",
       "updatedAt": "2026-02-19T13:32:33.948Z"
     },
-    "static/img/licentia-next-logo.png": {
-      "version": "optimize-images-v2",
-      "hash": "f275329597eb4e105e0338b7a6ebb3113cb128f1",
-      "updatedAt": "2026-02-17T17:21:48.414Z"
-    },
     "static/img/pages/changelog/changelog-heading.png": {
       "version": "optimize-images-v2",
       "hash": "91b2f38158619a3d7830d3623384bc43f1db9f89",
@@ -1136,11 +1131,6 @@
       "hash": "c01c374bfc4724a71d71a73c4b8070596200046b",
       "updatedAt": "2026-02-19T13:32:27.222Z"
     },
-    "static/img/licentia-next-logo-navbar.png": {
-      "version": "optimize-images-v2",
-      "hash": "92441440c9442c0ac94b8d744f2ac324bea69c61",
-      "updatedAt": "2026-02-19T15:24:45.166Z"
-    },
     "static/img/pages/main/index-about-heading.png": {
       "version": "optimize-images-v2",
       "hash": "ef9442fb6763cabd28055154e1cb7796b2cc5026",
@@ -1195,6 +1185,21 @@
       "version": "optimize-images-v2",
       "hash": "0308d313718bb0ccf79fda0b209deefbfebd3ba6",
       "updatedAt": "2026-03-19T16:38:53.956Z"
+    },
+    "static/img/licentia-next-hero-logo.webp": {
+      "version": "optimize-images-v2",
+      "hash": "c77aecc8a3c4592919ad090abe0873c244392928",
+      "updatedAt": "2026-03-20T23:38:09.166Z"
+    },
+    "static/img/licentia-next-logo-footer.webp": {
+      "version": "optimize-images-v2",
+      "hash": "a69f501488876180b3172e7f46e0e5440b7021d3",
+      "updatedAt": "2026-03-20T23:38:12.437Z"
+    },
+    "static/img/licentia-next-logo-navbar.webp": {
+      "version": "optimize-images-v2",
+      "hash": "bea1b23bd8bc448d20cded6f4922ebff7193ad54",
+      "updatedAt": "2026-03-20T23:38:13.545Z"
     }
   }
 }

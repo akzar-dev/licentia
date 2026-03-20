@@ -635,38 +635,45 @@ h2 {
 }
 
 /* =========================
-   HOMEPAGE IMAGE SKELETONS
+   IMAGE SKELETONS
    ========================= */
-.img-inline-skeleton {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  border-radius: 10px;
-  background: linear-gradient(90deg,
-      var(--ifm-color-emphasis-200) 0%,
-      var(--ifm-color-emphasis-100) 45%,
-      var(--ifm-color-emphasis-200) 100%);
-  background-size: 300% 100%;
-  animation: global-image-shimmer 4.2s linear infinite;
-  opacity: 1;
-  transition: opacity .12s linear;
+.site-image {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 0;
+  vertical-align: top;
 }
 
-img.img-loading {
-  opacity: 0 !important;
-  transition: opacity .12s linear;
+.site-image__img {
+  display: block;
+  max-width: 100%;
+  transition: opacity .14s linear;
 }
 
-img.img-loaded {
-  opacity: 1;
-  transition: opacity .12s linear;
-}
-
-.img-inline-skeleton-fadeout {
+.site-image--loading .site-image__img {
   opacity: 0;
 }
 
-@keyframes global-image-shimmer {
+.site-image--loaded .site-image__img {
+  opacity: 1;
+}
+
+.site-image__skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(90deg,
+      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 0%,
+      color-mix(in oklab, var(--ifm-color-emphasis-100) 95%, transparent) 45%,
+      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 100%);
+  background-size: 300% 100%;
+  animation: site-image-shimmer 2.8s linear infinite;
+}
+
+@keyframes site-image-shimmer {
   0% {
     background-position: 200% 0;
   }
@@ -906,7 +913,7 @@ img.zoomable {
     transition: none !important;
   }
 
-  .img-inline-skeleton {
+  .site-image__skeleton {
     animation: none !important;
   }
 }
