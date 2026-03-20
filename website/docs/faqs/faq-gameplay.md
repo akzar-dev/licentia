@@ -91,11 +91,9 @@ This is due to a _Static Skill Leveling_ conflict.
 
 - A lot of quest stages in later quests are directly reliant on **ALL** the quest triggers &mdash; including event, interaction, and location-based triggers &mdash; being activated **during the intro sequence in which Alduin destroys Helgen**.
 
-- If you are finding that Uthgerd will not brawl with you, Ysolda will not ask you for the mammoth tusk, you can't talk to the Creation Club pets, or _Saints and Seducers_ NPCs are not responding, go back and do Helgen.
+- If you are finding that Uthgerd will not brawl with you, Ysolda will not ask you for the mammoth tusk, you can't talk to the Creation Club pets, or _Saints and Seducers_ NPCs are not responding - then **most likely you've used an alternative start AND didn't trigger Helgen**. Go back and do Helgen *(as explained in the starting note)*!
 
-- I am also extremely skeptical of all starts which skip this part of the game, including the "Dragonborn" start from the dragon statue in the opening room as well as the "Skip Intro" start in the Helgen Inn's basement.
-
-- **THE MOST RELIABLE WAY TO START THE GAME** is to **press the button under the table** in the starting room on your left, and then go through the last bit of the usual intro sequence *(the one where you leave the cave with Ralof/Hadvar)*.
+- **THE MOST RELIABLE WAY TO START THE GAME** is to **choose the Dragonborn -> Helgen Keep (end)** in the starting room when interacting with the _Shrine of Akatosh_, and then go through the last bit of the usual intro sequence *(the one where you leave the cave with Ralof/Hadvar)*.
 </details>
 
 ### I'm not receiving the extra Thane weapons from Balgruuf (or others, when I complete their quests).
