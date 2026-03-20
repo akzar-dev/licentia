@@ -171,10 +171,10 @@ const config: Config = {
           className: 'header-kofi-btn',
         },
         {
-          href: 'https://github.com/akzar-dev/licentia',
+          href: 'https://discord.gg/vermishub',
           position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
+          className: 'header-discord-link',
+          'aria-label': 'Discord server',
         },
       ],
     },
@@ -188,8 +188,8 @@ const config: Config = {
       },
       links: [
         {
-          label: 'Discord',
-          href: 'https://discord.gg/vermishub',
+          label: 'GitHub',
+          href: 'https://github.com/akzar-dev/licentia',
         },
         {
           label: 'Nexus Mods',

@@ -285,22 +285,58 @@ h2 {
 }
 
 /* =========================
-   GITHUB LINK ICON
+   DISCORD LINK ICON
    (for header)
    ========================= */
 
-.header-github-link::before {
+.header-discord-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0 !important;
+  margin: 0 0.2rem;
+  flex: 0 0 36px;
+  border-radius: 999px;
+}
+
+.header-discord-link::before,
+.header-discord-link::after {
   content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background-color: var(--ifm-navbar-link-color);
-  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: background-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
-.header-github-link:hover::before {
+.header-discord-link::before {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--ifm-navbar-link-color);
+}
+
+.header-discord-link::after {
+  width: 16px;
+  height: 12px;
+  background-color: var(--ifm-background-color);
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 717 532' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M592.04 44.2A578.4 578.4 0 0 0 448.13 0a2.18 2.18 0 0 0-2.31 1.08 415.43 415.43 0 0 0-17.95 36.44 541.4 541.4 0 0 0-161.65 0A370.6 370.6 0 0 0 248.03 1.08 2.26 2.26 0 0 0 245.72 0 576.74 576.74 0 0 0 101.76 44.2a2.05 2.05 0 0 0-.95.82C9.23 180.56-15.81 314.24-3.51 446.27a2.43 2.43 0 0 0 .92 1.65 581.65 581.65 0 0 0 176.35 89.32 2.28 2.28 0 0 0 2.48-.82 418.78 418.78 0 0 0 36.07-58.8 2.24 2.24 0 0 0-1.23-3.12 385.9 385.9 0 0 1-55.1-26.25 2.26 2.26 0 0 1-.21-3.76c3.7-2.74 7.41-5.67 10.95-8.6a2.18 2.18 0 0 1 2.28-.31c115.61 52.89 240.88 52.89 355.11 0a2.18 2.18 0 0 1 2.31.28c3.53 2.92 7.25 5.85 11.04 8.63a2.26 2.26 0 0 1-.2 3.76 362.16 362.16 0 0 1-55.19 26.25 2.25 2.25 0 0 0-1.2 3.14 470.3 470.3 0 0 0 36.03 58.77 2.24 2.24 0 0 0 2.48.84 579.72 579.72 0 0 0 176.55-89.32 2.26 2.26 0 0 0 .92-1.62c14.74-152.59-24.68-285.08-104.5-402.53a1.8 1.8 0 0 0-.87-.87ZM229.79 365.38c-34.81 0-63.46-31.95-63.46-71.17s28.13-71.17 63.46-71.17c35.65 0 64.09 32.23 63.46 71.17 0 39.22-28.13 71.17-63.46 71.17Zm257.42 0c-34.81 0-63.46-31.95-63.46-71.17s28.13-71.17 63.46-71.17c35.65 0 64.09 32.23 63.46 71.17 0 39.22-27.85 71.17-63.46 71.17Z'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.header-discord-link:hover::before,
+.header-discord-link:focus-visible::before {
   background-color: var(--ifm-navbar-link-hover-color);
+}
+
+.navbar__items--right > .navbar__item:has(.header-discord-link) {
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
 }
 
 /* =========================
