@@ -133,7 +133,8 @@ const config: Config = {
       },
       items: [
         {
-          to: '/welcome',
+          type: 'docSidebar',
+          sidebarId: 'installationAndSetupSidebar',
           position: 'left',
           label: 'Install',
         },
