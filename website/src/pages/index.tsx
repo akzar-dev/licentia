@@ -195,6 +195,8 @@ function Showcase() {
   const unitWidthRef = React.useRef<number>(0); // width of one sequence
   const isPausedRef = React.useRef<boolean>(false);
   const isZoomOpenRef = React.useRef<boolean>(false);
+  const canHoverPauseRef = React.useRef<boolean>(false);
+  const ignoreScrollPauseUntilRef = React.useRef<number>(0);
   const autoResumeTimerRef = React.useRef<number | null>(null);
   const speedRef = React.useRef<number>(36); // px per second
   const posRef = React.useRef<number>(0); // fractional scroll position accumulator (Safari-safe)
@@ -289,6 +291,7 @@ function Showcase() {
     // If we get too close to the left edge of the first copy, jump forward
     if (left <= near) {
       const next = left + uw;
+      ignoreScrollPauseUntilRef.current = performance.now() + 80;
       scroller.scrollLeft = next;
       posRef.current = next;
       return;
@@ -296,6 +299,7 @@ function Showcase() {
     // If we get too close to the right edge of the last copy, jump back
     if (left >= maxScrollable - near) {
       const next = left - uw;
+      ignoreScrollPauseUntilRef.current = performance.now() + 80;
       scroller.scrollLeft = next;
       posRef.current = next;
     }
@@ -313,6 +317,7 @@ function Showcase() {
       const scroller = scrollerRef.current;
       if (scroller && !isPausedRef.current && unitWidthRef.current) {
         posRef.current += speedRef.current * dtSec;
+        ignoreScrollPauseUntilRef.current = performance.now() + 80;
         scroller.scrollLeft = posRef.current;
         wrapIfNeeded();
       } else {
@@ -334,6 +339,24 @@ function Showcase() {
     };
     apply();
     // Safari compatibility: addEventListener not supported on older versions
+    const mql: any = media as any;
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', apply);
+      return () => mql.removeEventListener('change', apply);
+    } else if (typeof mql.addListener === 'function') {
+      mql.addListener(apply);
+      return () => mql.removeListener(apply);
+    }
+    return;
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const media = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const apply = () => {
+      canHoverPauseRef.current = media.matches;
+    };
+    apply();
     const mql: any = media as any;
     if (typeof mql.addEventListener === 'function') {
       mql.addEventListener('change', apply);
@@ -367,18 +390,37 @@ function Showcase() {
   }, []);
 
   // Handlers
-  const onMouseEnter = () => pause();
-  const onMouseLeave = () => resumeSoon(200);
-  const onTouchStart = () => pause();
-  const onTouchEnd = () => resumeSoon(1200);
+  const onMouseEnter = () => {
+    if (!canHoverPauseRef.current) return;
+    pause();
+  };
+  const onMouseLeave = () => {
+    if (!canHoverPauseRef.current) return;
+    resumeSoon(200);
+  };
+  const onTouchStart = () => {
+    pause();
+  };
+  const onTouchEnd = () => {
+    if (isZoomOpenRef.current) return;
+    resumeSoon(1200);
+  };
+  const onTouchCancel = () => {
+    if (isZoomOpenRef.current) return;
+    resumeSoon(1200);
+  };
   const onWheel = () => {
     pause();
     resumeSoon(1500);
   };
   const onScroll = () => {
+    const now = typeof performance !== 'undefined' ? performance.now() : Date.now();
     const scroller = scrollerRef.current;
     if (scroller) posRef.current = scroller.scrollLeft;
     wrapIfNeeded();
+    if (now < ignoreScrollPauseUntilRef.current) return;
+    pause();
+    resumeSoon(1200);
   };
 
   // Nav buttons
@@ -400,7 +442,13 @@ function Showcase() {
         pause();
       } else {
         isZoomOpenRef.current = false;
-        resumeSoon(300);
+        if (autoResumeTimerRef.current) {
+          window.clearTimeout(autoResumeTimerRef.current);
+        }
+        autoResumeTimerRef.current = window.setTimeout(() => {
+          isPausedRef.current = false;
+          autoResumeTimerRef.current = null;
+        }, 300);
       }
     };
 
@@ -454,6 +502,7 @@ function Showcase() {
           onMouseLeave={onMouseLeave}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
+          onTouchCancel={onTouchCancel}
           onWheel={onWheel}
           onScroll={onScroll}
         >
