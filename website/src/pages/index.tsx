@@ -179,7 +179,7 @@ function FeatureIcons() {
 
 function Showcase() {
   const LOOP_COPIES = 2;
-  const MAX_UNIQUE_SHOWCASE_SHOTS = 16;
+  const MAX_UNIQUE_SHOWCASE_SHOTS = 24;
   // Shuffle ONCE for this page load
   const SHOTS = React.useMemo(() => {
     const a = [...ALL_SHOTS];
@@ -192,14 +192,13 @@ function Showcase() {
 
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
   const trackRef = React.useRef<HTMLDivElement | null>(null);
-  const sectionRef = React.useRef<HTMLElement | null>(null);
   const unitWidthRef = React.useRef<number>(0); // width of one sequence
   const isPausedRef = React.useRef<boolean>(false);
+  const isZoomOpenRef = React.useRef<boolean>(false);
   const autoResumeTimerRef = React.useRef<number | null>(null);
   const speedRef = React.useRef<number>(36); // px per second
   const posRef = React.useRef<number>(0); // fractional scroll position accumulator (Safari-safe)
   const lastTsRef = React.useRef<number | null>(null); // rAF timestamp for time-based scrolling
-  const [isShowcaseVisible, setIsShowcaseVisible] = React.useState(false);
 
   // Build repeated list based on LOOP_COPIES.
   const loop = React.useMemo(
@@ -312,7 +311,7 @@ function Showcase() {
       const dtSec = (ts - lastTsRef.current) / 1000;
       lastTsRef.current = ts;
       const scroller = scrollerRef.current;
-      if (scroller && isShowcaseVisible && !isPausedRef.current && unitWidthRef.current) {
+      if (scroller && !isPausedRef.current && unitWidthRef.current) {
         posRef.current += speedRef.current * dtSec;
         scroller.scrollLeft = posRef.current;
         wrapIfNeeded();
@@ -324,7 +323,7 @@ function Showcase() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [isShowcaseVisible, wrapIfNeeded]);
+  }, [wrapIfNeeded]);
 
   // Respect reduced motion: disable auto-scroll when user prefers reduced motion
   React.useEffect(() => {
@@ -346,22 +345,6 @@ function Showcase() {
     return;
   }, []);
 
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsShowcaseVisible(entry.isIntersecting);
-      },
-      { rootMargin: '240px 0px' }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
   // Pause/resume helpers
   const pause = React.useCallback(() => {
     isPausedRef.current = true;
@@ -371,8 +354,13 @@ function Showcase() {
     }
   }, []);
   const resumeSoon = React.useCallback((ms = 1200) => {
+    if (isZoomOpenRef.current) return;
     if (autoResumeTimerRef.current) window.clearTimeout(autoResumeTimerRef.current);
     autoResumeTimerRef.current = window.setTimeout(() => {
+      if (isZoomOpenRef.current) {
+        autoResumeTimerRef.current = null;
+        return;
+      }
       isPausedRef.current = false;
       autoResumeTimerRef.current = null;
     }, ms);
@@ -408,8 +396,10 @@ function Showcase() {
     const handle = (event: Event) => {
       const detail = (event as CustomEvent<{ open?: boolean }>).detail;
       if (detail?.open) {
+        isZoomOpenRef.current = true;
         pause();
       } else {
+        isZoomOpenRef.current = false;
         resumeSoon(300);
       }
     };
@@ -419,7 +409,7 @@ function Showcase() {
   }, [pause, resumeSoon]);
 
   return (
-    <section ref={sectionRef} className={clsx(styles.showcase, styles.altSection, styles.deferSection)} data-nosnippet>
+    <section className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <span
@@ -477,6 +467,7 @@ function Showcase() {
                   alt={`Licentia NEXT showcase screenshot ${i + 1}`}
                   className={clsx('zoomable', styles.shot)}
                   wrapperClassName={styles.shotFrame}
+                  wrapperStyle={{ width: 'auto' }}
                   width={320}
                   height={180}
                   loading="lazy"
