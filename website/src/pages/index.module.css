@@ -6,7 +6,6 @@
   place-items: center;
   overflow: hidden;
   border-radius: 0;
-  background: color-mix(in oklab, var(--ifm-background-surface-color) 88%, black 12%);
 }
 
 .hero::before {
@@ -14,28 +13,16 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-image: url('/img/pages/main/licentia-next-social-card-bg-dark.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(4px);
   transform: scale(1.03);
-  opacity: 0;
 }
 
-.heroBgDark::before {
-  background-image: url('/img/pages/main/licentia-next-social-card-bg-dark.webp');
-}
-
-.heroBgLight::before {
+html[data-theme='light'] .hero::before {
   background-image: url('/img/pages/main/licentia-next-social-card-bg-light.webp');
-}
-
-.heroBgLoaded {
-  background: transparent;
-}
-
-.heroBgLoaded::before {
-  opacity: 1;
 }
 
 .heroOverlay {
