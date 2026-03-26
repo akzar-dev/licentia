@@ -60,8 +60,11 @@ function Hero() {
 
   return (
     <section
-      className={clsx(styles.hero, isHeroBgLoaded && styles.heroBgLoaded)}
-      style={{ '--hero-bg-image': `url('${heroBgSrc}')` } as React.CSSProperties}
+      className={clsx(
+        styles.hero,
+        colorMode === 'dark' ? styles.heroBgDark : styles.heroBgLight,
+        isHeroBgLoaded && styles.heroBgLoaded
+      )}
     >
       <h1 className={styles.visuallyHidden}>Licentia NEXT: The Ultimate NSFW Skyrim AE Modlist</h1>
       <div className={styles.heroOverlay} />

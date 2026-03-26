@@ -14,13 +14,20 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: var(--hero-bg-image);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(4px);
   transform: scale(1.03);
   opacity: 0;
+}
+
+.heroBgDark::before {
+  background-image: url('/img/pages/main/licentia-next-social-card-bg-dark.webp');
+}
+
+.heroBgLight::before {
+  background-image: url('/img/pages/main/licentia-next-social-card-bg-light.webp');
 }
 
 .heroBgLoaded {
