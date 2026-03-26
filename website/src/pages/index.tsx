@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useColorMode } from '@docusaurus/theme-common';
 import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
@@ -30,9 +31,38 @@ const HOME_META_DESCRIPTION =
 /** Main Hero function */
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
+  const [isHeroBgLoaded, setIsHeroBgLoaded] = React.useState(false);
+  const heroBgSrc =
+    colorMode === 'dark'
+      ? '/img/pages/main/licentia-next-social-card-bg-dark.webp'
+      : '/img/pages/main/licentia-next-social-card-bg-light.webp';
+
+  React.useEffect(() => {
+    setIsHeroBgLoaded(false);
+
+    const img = new window.Image();
+    img.src = heroBgSrc;
+
+    const markLoaded = () => setIsHeroBgLoaded(true);
+    img.addEventListener('load', markLoaded, { once: true });
+    img.addEventListener('error', markLoaded, { once: true });
+
+    if (img.complete && img.naturalWidth > 0) {
+      setIsHeroBgLoaded(true);
+    }
+
+    return () => {
+      img.removeEventListener('load', markLoaded);
+      img.removeEventListener('error', markLoaded);
+    };
+  }, [heroBgSrc]);
 
   return (
-    <section className={styles.hero}>
+    <section
+      className={clsx(styles.hero, isHeroBgLoaded && styles.heroBgLoaded)}
+      style={{ '--hero-bg-image': `url('${heroBgSrc}')` } as React.CSSProperties}
+    >
       <h1 className={styles.visuallyHidden}>Licentia NEXT: The Ultimate NSFW Skyrim AE Modlist</h1>
       <div className={styles.heroOverlay} />
 

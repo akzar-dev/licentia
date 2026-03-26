@@ -130,6 +130,8 @@ const config: Config = {
       logo: {
         alt: 'Licentia NEXT Logo',
         src: 'img/licentia-next-logo-navbar.webp',
+        width: 256,
+        height: 144,
       },
       items: [
         {
@@ -185,6 +187,7 @@ const config: Config = {
       logo: {
         alt: 'Licentia NEXT Logo',
         src: 'img/licentia-next-logo-footer.webp',
+        width: 303,
         height: 48,
       },
       links: [
