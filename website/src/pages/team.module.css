@@ -115,13 +115,17 @@
 }
 
 html[data-theme='light'] .name {
-  color: #fff;
-  -webkit-text-stroke: 0.1px rgba(0, 0, 0, .9);
-  text-shadow:
-    0 0 10px rgba(250, 203, 53, .55),
-    0 0 24px rgba(250, 203, 53, .35),
-    0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000,
-    1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+  color: var(--licentia-light-ink);
+  -webkit-text-stroke: 0;
+  text-shadow: var(--licentia-light-text-shadow);
+}
+
+html[data-theme='light'] .subheading {
+  color: var(--licentia-light-ink);
+}
+
+html[data-theme='light'] .role {
+  color: var(--licentia-light-ink);
 }
 
 @media (max-width: 996px) {

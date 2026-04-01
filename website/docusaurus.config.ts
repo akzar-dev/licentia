@@ -34,6 +34,7 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Licentia NEXT',
+        alternateName: ['Licentia', 'licentia.quest', 'LN'],
         url: 'https://licentia.quest/',
       }),
     },
@@ -46,6 +47,7 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Licentia NEXT',
+        alternateName: ['Licentia', 'licentia.quest', 'LN'],
         url: 'https://licentia.quest/',
         logo: 'https://licentia.quest/img/licentia-next-hero-logo.webp',
         sameAs: [

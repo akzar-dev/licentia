@@ -34,6 +34,10 @@
   color: var(--ifm-color-emphasis-700);
 }
 
+html[data-theme='light'] .sectionTitle {
+  color: var(--licentia-light-ink);
+}
+
 .videoWrap {
   width: min(100%, 980px);
   margin: 0 auto;

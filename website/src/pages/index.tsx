@@ -19,8 +19,6 @@ const ALL_SHOTS: ShowcaseShot[] = shotsReq.keys().map((k: string) => ({
   id: k,
   src: shotsReq(k).default as string,
 }));
-const HERO_DESCRIPTION =
-  '1-click install NSFW Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim, combat/graphics upgrades, new quests & followers!';
 const ABOUT_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
 const FEATURES_TAGLINE = 'Everything you need, pre-configured and ready to play';
 const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may feature them here!';
@@ -47,21 +45,23 @@ function Hero() {
           fetchPriority="high"
         />
 
-        <p className={styles.description}>{HERO_DESCRIPTION}</p>
+        <p className={styles.description}>
+          <span className={styles.highlightText}>Licentia NEXT</span> is a 1-click install NSFW
+          Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim,
+          combat/graphics upgrades, new quests, and followers!
+        </p>
 
-        <div className={styles.badges}>
-          <span className={clsx('badge', styles.badge)}>Skyrim AE</span>
-          <span className={clsx('badge', styles.badge)}>Wabbajack</span>
-          <span className={clsx('badge', styles.badge)}>~1500 mods</span>
-          <span className={clsx('badge', styles.badge)}>LotD</span>
-          <span className={clsx('badge', styles.badge)}>OStim</span>
+        <div className={styles.heroJumpLinks} aria-label="Homepage sections">
+          <a className={styles.heroJumpButton} href="#features">Features</a>
+          <a className={styles.heroJumpButton} href="#showcase">Showcase</a>
+          <a className={styles.heroJumpButton} href="#about">About</a>
         </div>
 
         <div className={styles.ctaRow}>
-          <a className={clsx('button button--primary button--lg', styles.ctaSolid)} href="/welcome">
+          <a className={clsx('button button--primary button--lg', styles.ctaSolid, styles.heroMainCta)} href="/welcome">
             Install
           </a>
-          <a className={clsx('button button--primary button--lg', styles.ctaSolid)} href="/how-to-update">
+          <a className={clsx('button button--primary button--lg', styles.ctaSolid, styles.heroMainCta)} href="/how-to-update">
             Update
           </a>
         </div>
@@ -72,7 +72,7 @@ function Hero() {
 
 function AboutSection() {
   return (
-    <section className={clsx(styles.aboutSection, styles.deferSection)}>
+    <section id="about" className={clsx(styles.aboutSection, styles.deferSection)}>
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
         <h2 className={styles.sectionTitle}>
           <span
@@ -87,14 +87,26 @@ function AboutSection() {
           <i>{ABOUT_TAGLINE}</i>
         </p>
         <div style={{ fontSize: '1.15rem', lineHeight: '1.7', marginTop: '1rem' }}>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-            <span className={styles.highlightText}>Licentia NEXT</span> is the direct descendant of the legendary <span className={styles.highlightText}>Licentia BLACK</span>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition modlist meticulously crafted around the massive <span className={styles.highlightText}>Legacy of the Dragonborn</span> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, our list transforms Skyrim into a truly next-generation experience. We have carefully curated over <span className={styles.highlightText}>1,500 mods</span> to ensure stability and seamless integration without the hassle of manual conflict resolution.
+          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
+            <span className={styles.highlightText}>Licentia NEXT</span> is the direct descendant of the legendary <span className={styles.highlightText}>Licentia BLACK</span>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition <span className={styles.highlightText}>Wabbajack</span> modlist built around the massive <span className={styles.highlightText}>Legacy of the Dragonborn</span> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, it transforms Skyrim into a truly next-generation experience. We have carefully curated over <span className={styles.highlightText}>1,600 mods</span> to deliver stability and seamless integration without the hassle of manual conflict resolution.
           </p>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-            At its core, <span className={styles.highlightText}>Licentia NEXT</span> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <span className={styles.highlightText}>Precision</span>, <span className={styles.highlightText}>Combat Gameplay Overhaul</span>, and a <span className={styles.highlightText}>Dismemberment Framework</span> that makes every encounter feel impactful. Visuals are stunningly upgraded with <span className={styles.highlightText}>Rudy ENB</span>, <span className={styles.highlightText}>NAT 3</span> weathers, and thousands of reworked high-resolution textures, maintaining a performance-friendly framerate on modern systems.
+          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
+            At its core, <span className={styles.highlightText}>Licentia NEXT</span> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <span className={styles.highlightText}>Precision</span>, <span className={styles.highlightText}>Combat Gameplay Overhaul</span>, <span className={styles.highlightText}>Archery Gameplay Overhaul</span> and <span className={styles.highlightText}>Dismemberment Framework</span> that make every encounter feel impactful. Mages are equally spoiled, with a huge spell toolbox built from overhauls like <span className={styles.highlightText}>Apocalypse</span>, <span className={styles.highlightText}>Odin</span>, and <span className={styles.highlightText}>Mysticism</span>.
           </p>
-          <p style={{ textAlign: 'left' }}>
-            Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new lands, complete huge questlines, and recruit unique, fully-voiced followers with improved interactions. The adult systems are built on an optimized, non-intrusive <span className={styles.highlightText}>OStim</span> foundation, integrating physics, <span className={styles.highlightText}>OBody</span>, and <span className={styles.highlightText}>Amorous Adventures</span>. Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <span className={styles.highlightText}>Licentia NEXT</span> offers the ultimate customized Skyrim journey.
+          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
+            Progression is equally ambitious. A customized <span className={styles.highlightText}>Static Skill Leveling</span> setup and the massive <span className={styles.highlightText}>Vokriinator Black</span> perk package open up a huge range of character builds, letting you lean fully into the kind of overpowered <span className={styles.highlightText}>power fantasy</span> Skyrim is at its best at, whether that means a godlike battlemage, an unstoppable warrior, or a deadly stealth specialist.
+          </p>
+          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
+            Visuals are stunningly upgraded with <span className={styles.highlightText}>Rudy ENB</span> with <span className={styles.highlightText}>NAT 3</span> weathers, <span className={styles.highlightText}>grass cache</span> for lush grass stretching beautifully to the horizon, and thousands of reworked high-resolution textures and meshes. A curated lineup of NPC overhauls, including <span className={styles.highlightText}>Pandorable's</span>, <span className={styles.highlightText}>Bijin</span>, and <span className={styles.highlightText}>Kalilies</span>, helps the world feel just as beautiful up close, while still maintaining a performance-friendly framerate on modern systems.
+          </p>
+          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
+            Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new <span className={styles.highlightText}>lands</span>, complete massive <span className={styles.highlightText}>quests</span>, and recruit unique, fully voiced <span className={styles.highlightText}>followers</span> with improved interactions.
+          </p>
+          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
+            The <span className={styles.highlightText}>adult systems</span> are built on an optimized, non-intrusive <span className={styles.highlightText}>OStim</span> foundation, integrating <span className={styles.highlightText}>CBPC</span> and <span className={styles.highlightText}>FSMP</span> physics, <span className={styles.highlightText}>OBody</span>, and <span className={styles.highlightText}>Amorous Adventures</span>.
+          </p>
+          <p style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
+            Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <span className={styles.highlightText}>Licentia NEXT</span> offers the ultimate customized Skyrim journey.
           </p>
         </div>
       </div>
@@ -104,7 +116,7 @@ function AboutSection() {
 
 function FeatureIcons() {
   return (
-    <section className={clsx(styles.iconsSection, styles.deferSection)} data-nosnippet>
+    <section id="features" className={clsx(styles.iconsSection, styles.deferSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <span
@@ -129,7 +141,7 @@ function FeatureIcons() {
               <li>Precision</li>
               <li>CGO + AGO</li>
               <li>Dismemberment Framework</li>
-              <li>Sanguine Symphony</li>
+              <li>Apocalypse, Odin, Mysticism</li>
             </ul>
           </div>
 
@@ -139,8 +151,8 @@ function FeatureIcons() {
             <div className={styles.iconTitle}>Graphics</div>
             <p className={styles.iconIntro}>Improved and performance friendly:</p>
             <ul className={styles.iconList}>
-              <li>Rudy ENB</li>
-              <li>NAT 3 weathers</li>
+              <li>Rudy ENB + NAT 3 weathers</li>
+              <li>Beautiful NPC replacers</li>
               <li>Reworked meshes and textures</li>
               <li>Landscape fixes, Grass cache</li>
             </ul>
@@ -155,7 +167,7 @@ function FeatureIcons() {
               <li>Legacy of the Dragonborn</li>
               <li>Huge quest mods</li>
               <li>New (and improved vanilla) followers</li>
-              <li>New perk trees and leveling system</li>
+              <li>Huge perk trees and new leveling system</li>
             </ul>
           </div>
 
@@ -457,7 +469,7 @@ function Showcase() {
   }, [pause, resumeSoon]);
 
   return (
-    <section className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
+    <section id="showcase" className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
       <div className="container">
         <h2 className={styles.sectionTitle}>
           <span
@@ -538,16 +550,36 @@ function Showcase() {
 }
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.tagline}
-      description={HOME_META_DESCRIPTION}>
+    <Layout description={HOME_META_DESCRIPTION}>
       <Head>
+        <meta name="application-name" content="Licentia NEXT" />
         <meta name="description" content={HOME_META_DESCRIPTION} />
         <meta property="og:description" content={HOME_META_DESCRIPTION} />
         <meta name="twitter:description" content={HOME_META_DESCRIPTION} />
+        <meta property="og:title" content="Licentia NEXT" />
+        <meta name="twitter:title" content="Licentia NEXT" />
         <link rel="apple-touch-icon" href="/img/licentia-next-logo-apple.png" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'Licentia NEXT',
+            description: HOME_META_DESCRIPTION,
+            url: 'https://licentia.quest/',
+            isPartOf: {
+              '@type': 'WebSite',
+              name: 'Licentia NEXT',
+              alternateName: ['Licentia', 'licentia.quest', 'LN'],
+              url: 'https://licentia.quest/',
+            },
+            about: {
+              '@type': 'Organization',
+              name: 'Licentia NEXT',
+              url: 'https://licentia.quest/',
+            },
+          })}
+        </script>
       </Head>
       <Hero />
       <main>
