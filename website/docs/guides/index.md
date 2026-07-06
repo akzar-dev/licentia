@@ -7,8 +7,7 @@ description: "Guides for setup, tools, and advanced workflows in Licentia NEXT"
 image: ./img/index-guides-social.png
 ---
 
-# ![Guides](./img/index-guides-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Guides</span>
 ---
 
 Need help with a specific workflow? Start here:

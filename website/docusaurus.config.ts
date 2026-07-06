@@ -34,6 +34,7 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Licentia NEXT',
+        alternateName: ['Licentia', 'licentia.quest', 'LN'],
         url: 'https://licentia.quest/',
       }),
     },
@@ -46,8 +47,9 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Licentia NEXT',
+        alternateName: ['Licentia', 'licentia.quest', 'LN'],
         url: 'https://licentia.quest/',
-        logo: 'https://licentia.quest/img/licentia-next-logo.png',
+        logo: 'https://licentia.quest/img/licentia-next-hero-logo.webp',
         sameAs: [
           'https://github.com/akzar-dev/licentia',
           'https://discord.gg/vermishub',
@@ -129,11 +131,14 @@ const config: Config = {
       title: '',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/licentia-next-logo-navbar.png',
+        src: 'img/licentia-next-logo-navbar.webp',
+        width: 256,
+        height: 144,
       },
       items: [
         {
-          to: '/welcome',
+          type: 'docSidebar',
+          sidebarId: 'installationAndSetupSidebar',
           position: 'left',
           label: 'Install',
         },
@@ -165,10 +170,16 @@ const config: Config = {
           label: 'Media',
         },
         {
-          href: 'https://github.com/akzar-dev/licentia',
+          label: 'Buy me a coffee',
+          href: 'https://ko-fi.com/akzar',
           position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
+          className: 'header-kofi-btn',
+        },
+        {
+          href: 'https://discord.gg/vermishub',
+          position: 'right',
+          className: 'header-discord-link',
+          'aria-label': 'Discord server',
         },
       ],
     },
@@ -177,13 +188,14 @@ const config: Config = {
       // style: 'dark',
       logo: {
         alt: 'Licentia NEXT Logo',
-        src: 'img/licentia-next-logo.png',
+        src: 'img/licentia-next-logo-footer.webp',
+        width: 303,
         height: 48,
       },
       links: [
         {
-          label: 'Discord',
-          href: 'https://discord.gg/vermishub',
+          label: 'GitHub',
+          href: 'https://github.com/akzar-dev/licentia',
         },
         {
           label: 'Nexus Mods',
@@ -192,10 +204,6 @@ const config: Config = {
         {
           label: 'Load Order Library',
           href: 'https://loadorderlibrary.com/lists/licentia-next',
-        },
-        {
-          label: 'Buy me a coffee',
-          href: 'https://ko-fi.com/akzar',
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/akzar-dev">akzar</a> and <a href="/team">Licentia team</a>`,

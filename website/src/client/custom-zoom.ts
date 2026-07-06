@@ -1,4 +1,4 @@
-const SELECTOR = 'img.zoomable, .markdown img:not([src*="-heading"])';
+const SELECTOR = 'img.zoomable, .markdown img';
 const MIN_ZOOM = 0.25;
 const MAX_ZOOM = 3;
 const DOUBLE_TAP_MS = 340;
@@ -168,6 +168,7 @@ function resetOpenedState(): void {
 function animateOpen(): void {
   if (!overlay || !imageEl || !stageEl) return;
   overlay.classList.add('lx-zoom-overlay--open');
+  window.dispatchEvent(new CustomEvent('licentia-zoom-change', { detail: { open: true } }));
   overlay.animate([{ opacity: 0 }, { opacity: 1 }], {
     duration: 230,
     easing: 'cubic-bezier(0.2, 0, 0.2, 1)',
@@ -222,6 +223,7 @@ async function closeOverlay(): Promise<void> {
   await animateClose();
   overlay.classList.remove('lx-zoom-overlay--open');
   overlay.style.display = 'none';
+  window.dispatchEvent(new CustomEvent('licentia-zoom-change', { detail: { open: false } }));
   document.body.style.removeProperty('overflow');
   document.body.style.removeProperty('padding-right');
 
@@ -290,9 +292,15 @@ async function navigate(direction: 1 | -1): Promise<void> {
     );
     await inn.finished;
     imageEl.style.opacity = '1';
-    inn.cancel();
-
     applyTransform(false);
+
+    setTimeout(() => {
+      try {
+        inn.cancel();
+      } catch (e) {
+        // ignore
+      }
+    }, 30);
   } finally {
     isNavigating = false;
   }

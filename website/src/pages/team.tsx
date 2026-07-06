@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import styles from './team.module.css';
+import SiteImage from '@site/src/components/SiteImage';
 
 type TeamMember = {
   name: string;
@@ -54,9 +55,18 @@ function TeamCard({
   large?: boolean;
   showSubtitle?: boolean;
 }) {
+  const avatarSize = large ? 148 : 120;
   return (
     <article className={`${styles.card} ${large ? styles.cardLarge : ''}`.trim()}>
-      <img className={styles.avatar} src={member.avatar} alt={`${member.name} avatar`} width={160} height={160} />
+      <SiteImage
+        className={styles.avatar}
+        wrapperClassName={styles.avatarWrap}
+        src={member.avatar}
+        alt={`${member.name} avatar`}
+        width={avatarSize}
+        height={avatarSize}
+        loading="lazy"
+      />
       <h3 className={styles.name}>{member.name}</h3>
       {showSubtitle && member.subtitle ? <p className={styles.role}>{member.subtitle}</p> : null}
     </article>
@@ -81,8 +91,12 @@ export default function TeamPage(): React.JSX.Element {
       <main className={styles.main}>
         <div className="container">
           <header className={styles.header}>
-            <h1 className={styles.visuallyHidden}>Licentia Team</h1>
-            <img src="/img/pages/team/licentia-team-heading.png" alt="" aria-hidden className={styles.headingImg} />
+            <h1
+              className="licentia-heading licentia-heading--h1"
+             
+            >
+              Licentia Team
+            </h1>
             <div className={styles.headerSeparator} aria-hidden />
           </header>
 
@@ -107,7 +121,15 @@ export default function TeamPage(): React.JSX.Element {
           <section className={styles.thanksGrid} aria-label="Special thanks">
             {SPECIAL_THANKS.map((person) => (
               <article key={person.name} className={styles.thanksCard}>
-                <img className={styles.avatar} src={person.avatar} alt={`${person.name} avatar`} width={120} height={120} />
+                <SiteImage
+                  className={styles.avatar}
+                  wrapperClassName={styles.avatarWrap}
+                  src={person.avatar}
+                  alt={`${person.name} avatar`}
+                  width={120}
+                  height={120}
+                  loading="lazy"
+                />
                 <h3 className={styles.name}>{person.name}</h3>
                 <p className={styles.role}>{person.subtitle}</p>
               </article>

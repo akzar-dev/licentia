@@ -7,8 +7,7 @@ description: "How to re-run Nemesis for Licentia NEXT Skyrim modlist"
 image: ./img/nemesis-guide-social.png
 ---
 
-# ![Nemesis Guide](./img/nemesis-guide-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Nemesis Guide</span>
 ---
 
 # 👯‍♀️ How to re-run Nemesis for Licentia NEXT
@@ -48,39 +47,49 @@ It can be run without it, but it's **highly recommended** to patch it.
 1. Download [Large Address Aware](https://www.techpowerup.com/forums/attachments/laa_2_0_4-zip.34392/)
 2. Extract the archive anywhere you want.
 3. Run `Large Address Aware.exe`:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/1_1_run_LAA.png').default}
         alt="Launch the Large Address Aware (LAA) application"
         style={{ maxHeight:100 }}
+        width={750}
+        height={279}
     />
 
 4. When the program is opened, click `Add` -> `Files`:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/1_2_LAA_add_file.png').default}
         alt="Open Add > Files menu inside Large Address Aware"
         style={{ maxHeight:250 }}
+        width={1752}
+        height={870}
     />
     
     Navigate to `Nemesis Unlimited Behavior Engine.exe` in your MO2 mods folder (it would be something like `%your_LN_install_path%\mods\Project New Reign - Nemesis Unlimited Behavior Engine - BLACK Profile\Nemesis_Engine\Nemesis Unlimited Behavior Engine.exe`), and click `Open`:
 
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/1_3_LAA_select_nemesis_exe.png').default}
         alt="Select Nemesis Unlimited Behavior Engine executable in LAA"
         style={{ maxHeight:300 }}
+        width={1869}
+        height={1399}
     />
 
 5. Now in `LAA` window, click on the tickbox next to `Nemesis Unlimited Behavior Engine.exe` _(1)_, then open `With Selected` menu _(2)_ and click `Force Large Address Aware` _(3)_:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/1_4_LAA_add_flag_to_nemesis.png').default}
         alt="Enable Force Large Address Aware for Nemesis executable"
         style={{ maxHeight:250 }}
+        width={1851}
+        height={867}
     />
 
 6. Now on the right side of the window make sure that field `LAA` is set to `True`:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/1_5_LAA_flag_added.png').default}
         alt="Verify LAA status is set to True for Nemesis executable"
         style={{ maxHeight:150 }}
+        width={642}
+        height={417}
     />
 
 7. Close the program, you're done! Proceed to next step.
@@ -90,17 +99,21 @@ It can be run without it, but it's **highly recommended** to patch it.
 ## Step :two: &mdash; Clear Nemesis cache inside `Licentia NEXT - Nemesis Output`
 
 1. Open your `MO2` and in the left pane find the mod called `Licentia NEXT - Nemesis Output`, right-click on it, press `Open in Explorer`:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/2_1_nemesis_output.png').default}
         alt="Locate Licentia NEXT - Nemesis Output mod entry in MO2"
         style={{ maxHeight:150 }}
+        width={1253}
+        height={1068}
     />
 
 2. In the newly opened File Explorer window, navigate inside the `Nemesis_Engine\cache` folder and **DELETE** all files inside it:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/2_2_nemesis_output_delete_cache.png').default}
         alt="Open Nemesis_Engine cache folder and delete all files inside"
         style={{ maxHeight:150 }}
+        width={1971}
+        height={1314}
     />
 
 3. You can close the File Explorer window and proceed to the next step.
@@ -114,10 +127,12 @@ Ensure that **all antivirus and antimalware applications are temporarily disable
 
 In `MO2`, in top right corner of the window, click on the dropdown menu and select `Nemesis Unlimited Behavior Engine`, then click `Run`:
 
-<img 
+<DocImage 
     src={require('./img/nemesis_guide/3_1_run_nemesis_from_mo2.png').default}
     alt="Launch Nemesis Unlimited Behavior Engine from MO2 executable dropdown"
     style={{ maxHeight:150 }}
+    width={1509}
+    height={495}
 />
 
 :::warning
@@ -144,10 +159,12 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 
     That's where you should tick them:
 
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/4_1_select_patches.png').default}
         alt="Nemesis patch checklist with required patches selected"
         style={{ maxHeight:351 }}
+        width={1580}
+        height={1775}
     />
 
     :::tip
@@ -155,18 +172,22 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
     :::
 
 2. Click `Update Engine`:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/4_2_update_engine.png').default}
         alt="Click Update Engine in Nemesis window"
         style={{ maxHeight:250 }}
+        width={1677}
+        height={980}
     />
 
     Wait for the process to finish _(wait for the bar on the bottom to reach 100%)_. **It will take a few minutes**, so be patient:
 
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/4_2_update_engine_done.png').default}
         alt="Update Engine process complete with update time shown in log"
         style={{ maxHeight:250 }}
+        width={1674}
+        height={971}
     />
 
     :::warning
@@ -179,17 +200,21 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
 ## Step :five: &mdash; Click `Launch Nemesis Engine`
 
 1. Click `Launch Nemesis Behavior Engine`. 
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/5_1_launch_engine.png').default}
         alt="Click Launch Nemesis Behavior Engine"
         style={{ maxHeight:250 }}
+        width={1747}
+        height={963}
     />
 
     The tool will now _slowly_ integrate your animation files into the behaviors:
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/5_1_engine_running.png').default}
         alt="Nemesis behavior generation currently running"
         style={{ maxHeight:220 }}
+        width={1748}
+        height={853}
     />
 
     :::tip
@@ -206,10 +231,12 @@ You would get a couple of **Warnings** after the tool has opened - **IGNORE THEM
     :::
 
 2. When you see that the engine is fully done (bar at the bottom reaches 100% and disappears, and the log says `Behavior generation complete`) - close `Nemesis` and return to `MO2`.
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/5_1_engine_done.png').default}
         alt="Nemesis behavior generation complete message"
         style={{ maxHeight:220 }}
+        width={1744}
+        height={856}
     />
 
     :::warning
@@ -234,26 +261,32 @@ There are still options to fix this however!
 
 ## Step :six: &mdash; Close the tool, remove `FNIS.esp`, done!
 1. As the tool is now closed, in right MO2 pane in `Plugins` section you'll see that a wild `FNIS.esp` appeared at the end!
-    <img 
+    <DocImage 
         src={require('./img/nemesis_guide/6_1_fnis_in_plugins.png').default}
         alt="FNIS.esp appears in MO2 plugin list after Nemesis generation"
         style={{ maxHeight:100 }}
+        width={672}
+        height={306}
     />
 
 2. We don't need it, so:
    
    - Right-click it, select `Open Origin in Explorer`:
-        <img 
+        <DocImage 
             src={require('./img/nemesis_guide/6_1_fnis_open_origin.png').default}
             alt="Use Open Origin in Explorer for FNIS.esp plugin"
             style={{ maxHeight:100 }}
+            width={831}
+            height={291}
         />
 
    - Delete the `FNIS.esp` in the opened explorer window:
-        <img 
+        <DocImage 
             src={require('./img/nemesis_guide/6_1_fnis_delete.png').default}
             alt="Delete FNIS.esp file in File Explorer"
             style={{ maxHeight:200 }}
+            width={1311}
+            height={1230}
         />
 
 3. Close the folder that was opened and return to `MO2`, hit `F5` to refresh the modlist, and **that's it, you're done!** :crown:

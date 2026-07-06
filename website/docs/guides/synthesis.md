@@ -7,8 +7,7 @@ description: "How to re-run Synthesis for Licentia NEXT Skyrim modlist"
 image: ./img/synthesis-guide-social.png
 ---
 
-# ![Synthesis Guide](./img/synthesis-guide-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Synthesis Guide</span>
 ---
 
 # ♻️ How to re-run Synthesis for Licentia NEXT
@@ -38,17 +37,21 @@ These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
 ## Step :one: &mdash; Disable old `Synthesis` outputs
 
 1. Open your `MO2`, in left pane find mod called `Licentia NEXT - Synthesis Output` and disable it:
-    <img 
+    <DocImage 
         src={require('./img/synthesis_guide/1_1_disabling_synthesis_output_mo2.png').default}
         alt="Disabling Licentia NEXT Synthesis output in Mod Organizer 2 (MO2)"
         style={{ maxHeight:100 }}
+        width={1394}
+        height={410}
     />
 
 2. In right section with plugins, scroll to the bottom and disable these plugins (we will enable them again later):
-    <img 
+    <DocImage 
         src={require('./img/synthesis_guide/1_2_disabling_plugins_mo2.png').default}
         alt="Disabling Synthesis plugins in Mod Organizer 2 (MO2)"
         style={{ maxHeight:100 }}
+        width={1363}
+        height={337}
     />
 
 ---
@@ -67,10 +70,12 @@ You would need `.NET 8` SDK installed on your system for Synthesis to run. You c
 :::
 
 In `MO2`, in top right corner of the window, click on the dropdown menu and select `Synthesis`, then click `Run`:
-    <img 
+    <DocImage 
         src={require('./img/synthesis_guide/2_running_synthesis_in_mo2.png').default}
         alt="Opening Synthesis from Mod Organizer 2 (MO2)"
         style={{ maxHeight:100 }}
+        width={1424}
+        height={312}
     />
 
 ---
@@ -80,24 +85,30 @@ In `MO2`, in top right corner of the window, click on the dropdown menu and sele
 When `Synthesis` is launched, check out the left pane with patches. They should match this:
 
     - `Synthesis0` block:
-        <img 
+        <DocImage 
             src={require('./img/synthesis_guide/3_1_synthesis0.png').default}
             alt="Synthesis 0 patch list"
             style={{ maxHeight:150 }}
+            width={723}
+            height={648}
         />
 
     - `Synthesis1` block:
-        <img 
+        <DocImage 
             src={require('./img/synthesis_guide/3_2_synthesis1.png').default}
             alt="Synthesis 1 patch list"
             style={{ maxHeight:150 }}
+            width={741}
+            height={665}
         />
 
     - `Synthesis2` block:
-        <img 
+        <DocImage 
             src={require('./img/synthesis_guide/3_3_synthesis2.png').default}
             alt="Synthesis 2 patch list"
             style={{ maxHeight:170 }}
+            width={723}
+            height={741}
         />
 
         :::note
@@ -127,10 +138,12 @@ Failing to do that will break consistency of the patches!
 ## Step :five: &mdash; Move your new generated Synthesis outputs to a separate mod
 
 1. In `MO2`, scroll to the bottom in the left pane, and right click on the `ADDED MODS - Make your additions below this line` separator. In the submenu, click `All Mods`, then select `Create Empty Mod Inside`.
-    <img 
+    <DocImage 
         src={require('./img/synthesis_guide/5_1_creating_empty_mod_in_mo2.png').default}
         alt="Create Empty Mod"
         style={{ maxHeight:100 }}
+        width={2232}
+        height={341}
     />
 
     You will now be prompted to name your custom mod, this can be named however you want.
@@ -144,10 +157,12 @@ Failing to do that will break consistency of the patches!
     Now, right click on the newly created mod and select `Open in Explorer`. This will open the mod folder in your file explorer, **keep it open**.
 
 2. In the bottom of `MO2` left pane right-click on `Overwrite` and select `Open in Explorer`. This will open the `Overwrite` folder in your file explorer. **Keep it open**.
-    <img 
+    <DocImage 
         src={require('./img/synthesis_guide/5_2_overwrite.png').default}
         alt="Overwrite folder"
         style={{ maxHeight:120 }}
+        width={1328}
+        height={481}
     />
 
 3. Move all 3 `Synthesis` .esp's from Overwrite to your newly created mod in file explorer.
@@ -163,8 +178,10 @@ Failing to do that will break consistency of the patches!
 In right part of `MO2` just enable the plugins you disabled in Step :one:'s [second part](#step-one--disable-old-synthesis-outputs), and you're done!
 
 The final picture should look like this *(only the names of plugins matter here, not numbers)*:
-    <img 
+    <DocImage 
         src={require('./img/synthesis_guide/6_final.png').default}
         alt="Final Mod Organizer 2 (MO2) setup after Synthesis output installation"
         style={{ maxHeight:150 }}
+        width={1405}
+        height={609}
     />

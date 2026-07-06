@@ -7,8 +7,7 @@ description: "A list of small advices before starting a playthrough of Licentia 
 image: ./img/7-final-notes-social.png
 ---
 
-# ![Final notes](./img/7-final-notes-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">Final notes</span>
 ---
 
 ## :tiger2: **Survival mode**

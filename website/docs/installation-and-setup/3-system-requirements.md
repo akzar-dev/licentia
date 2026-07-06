@@ -8,8 +8,7 @@ description: "A list of system requirements for Licentia NEXT Skyrim modlist"
 image: ./img/3-system-requirements-social.png
 ---
 
-# ![System Requirements](./img/3-system-requirements-heading.png)
-
+# <span className="licentia-heading licentia-heading--h1">System Requirements</span>
 ---
 
 The minimally recommended setup for an enjoyable experience **at 1080p** is at least:

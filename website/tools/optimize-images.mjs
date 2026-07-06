@@ -286,16 +286,6 @@ async function optimizeOtherPngs(cache) {
     ...(await listFilesRecursive(DOCS_DIR, isPng)),
   ];
 
-  // Explicitly include root logo file.
-  const logoPng = path.join(STATIC_IMG_DIR, 'licentia-next-logo.png');
-  if (await exists(logoPng) && !pngTargets.includes(logoPng)) {
-    pngTargets.push(logoPng);
-  }
-  const logoNavbarPng = path.join(STATIC_IMG_DIR, 'licentia-next-logo-navbar.png');
-  if (await exists(logoNavbarPng) && !pngTargets.includes(logoNavbarPng)) {
-    pngTargets.push(logoNavbarPng);
-  }
-
   let optimized = 0;
   let skipped = 0;
   let cacheHits = 0;
@@ -323,6 +313,9 @@ async function optimizeOtherPngs(cache) {
 
 async function optimizeKeyWebpAssets(cache) {
   const webpTargets = [
+    path.join(STATIC_IMG_DIR, 'licentia-next-hero-logo.webp'),
+    path.join(STATIC_IMG_DIR, 'licentia-next-logo-footer.webp'),
+    path.join(STATIC_IMG_DIR, 'licentia-next-logo-navbar.webp'),
     path.join(STATIC_IMG_DIR, 'licentia-next-social-card.webp'),
     path.join(STATIC_PAGES_DIR, 'main', 'licentia-next-social-card-bg-dark.webp'),
     path.join(STATIC_PAGES_DIR, 'main', 'licentia-next-social-card-bg-light.webp'),
