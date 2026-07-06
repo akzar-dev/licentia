@@ -108,7 +108,7 @@ To do that, open your **NVIDIA Control Panel** (or AMD equivalent), navigate to 
     Hit `Save` at the bottom, and you're done!
     :::
 
-4. Wait untill the game loads, **it might take a while!** 
+4. Wait until the game loads, **it might take a while!** 
     :::note
     There's a game of `Flappy Dragon` that opens up while your Skyrim is loading:
     <img 

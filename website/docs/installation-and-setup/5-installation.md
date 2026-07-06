@@ -31,7 +31,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     4. Install the game via Steam as usual.
     :::
 
-2. **Start the game once**. You'd need to do it through the Skyrim Launcher (settings there don't matter, we just need to get the game registred properly). When the Launcher starts, you'd see a popup like this:
+2. **Start the game once**. You'd need to do it through the Skyrim Launcher (settings there don't matter, we just need to get the game registered properly). When the Launcher starts, you'd see a popup like this:
     <img 
         src={require('./img/5-installation/5_1_2_launcher_popup.png').default}
         alt="Skyrim launcher popup prompting first-time setup"
@@ -47,7 +47,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     />
 
     :::danger
-    **DON'T MINIMIZE THE GAME!** 
+    **DON'T MINIMIZE THE GAME!  DO NOT TAB OUT TO ANOTHER WINDOW!  BE PATIENT!!  148 MODS NEED TO DOWNLOAD!** 
 
     Wait till everything is downloaded and popups stop appearing.
     :::
@@ -136,7 +136,14 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         style={{ maxHeight:300 }}
     />
 
-2. Select filters on the left &mdash; `Skyrim Special Edition` as a game **(1)**, tick `Show NSFW` and `Show Unofficial Lists` **(2)**, and type `next` in search bar **(3)**. When you see `Licentia NEXT` &mdash; click on its card on the right **(4)**:
+2. Select filters on the left: 
+    
+    - `Skyrim Special Edition` as a game **(1)** 
+    - tick `Show NSFW` and `Show Unofficial Lists` **(2)**
+    - type `next` in search bar **(3)**. 
+    - When you see `Licentia NEXT` click on its card on the right **(4)**
+
+ 
 
     <img 
         src={require('./img/5-installation/5_4_2_wabbajack_filters_and_download.png').default}
@@ -164,7 +171,21 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
 
     Don't worry about the error at the bottom, it is normal and will be fixed in the next step.
 
-5. In this window, select the install directory we created for Licentia **(1)**, select the downloads directory we created **(2)** _(you can change where downloads would be stored if you want, i.e. on another, slower drive)_, and hit `Install` button **(3)**:
+5. In this window, select the install and downloads directories we created for Licentia:
+
+    - **(1)**, select the install directory we created 
+                                                             
+    - **(2)**, select the  downloads directory we created.   
+    
+            :::warning
+               Do NOT use the suggestion of Wabbajack
+            :::
+    
+            :::note
+             _(you can change where downloads would be stored if you want, i.e. on another, slower drive)_,  
+            :::
+    
+    - **(3)**, hit `Install` button :
 
     <img 
         src={require('./img/5-installation/5_4_5_wabbajack_start_installation.png').default}
@@ -175,6 +196,19 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     **This would begin the actual download and installation of the list.**
 
     You'd see a progress bar at the top, and some installation stats at the bottom. 
+
+    :::note
+    If you see this dialog, you are installing over an existing installation.  Probably for an update.  This is normal.  Click 'Continue' 
+    :::
+
+
+    <img 
+        src={require('./img/5-installation/5_4_5a_Install_File_Delete_Dialog.png').default}
+        alt="Installation file delete confirmation over an existing install"
+        style={{ maxHeight:300 }}
+    />
+
+
 
     :::note
     Depending on your system specs, the download and installation processes can take a **long time**.
@@ -194,8 +228,8 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     On the **right side** you'd see a `Log Viewer` that *usually* says something like `Failed to download X` or `Failed to install X`.
     :::
 
-    :::danger
-    **DON'T USE** `Retry` button in the bottom right corner!!!
+    :::note
+    **DON'T USE** `Retry` button in the bottom right corner.  Close and restart Wabbajack instead.  It has caused problems in the past and makes logs very large.
     :::
 
     :::tip

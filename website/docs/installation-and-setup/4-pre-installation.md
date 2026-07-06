@@ -26,7 +26,7 @@ image: ./img/4-pre-installation-social.png
 | :--- | :---: | :--- |
 | [Nexus Account](https://users.nexusmods.com/register) | :white_check_mark: | Basic Nexus account is **mandatory**; it **must** be created before continuing. |
 | [Nexus Premium](https://next.nexusmods.com/premium) | :x: | Nexus Premium is **strongly** recommended or the installation would take many more hours _(possibly days)_. |
-
+| [Google Account](https://wwww.google.com) | :white_check_mark: | Sign into your Google account on your **default** browser.  It's needed because Wabbajack downloads a few mods hosted on Google Drive. |
 ---
 
 ## ![General PC adjustments](img/4-pre-installation/4-3-general-pc-adjustments-heading.png)

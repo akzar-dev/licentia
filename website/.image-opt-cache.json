@@ -1165,6 +1165,36 @@
       "version": "optimize-images-v2",
       "hash": "0468ce6db9f554c5ec3629a08bd4cc6a80453265",
       "updatedAt": "2026-02-28T16:34:51.576Z"
+    },
+    "docs/installation-and-setup/img/5-installation/5_4_5a_Install_File_Delete_Dialog.png": {
+      "version": "optimize-images-v2",
+      "hash": "52a3ec203b049899840814ff31c5f7abee5a6e32",
+      "updatedAt": "2026-04-25T14:46:53.036Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_4_DynDOLOD_out_of_date.png": {
+      "version": "optimize-images-v2",
+      "hash": "7dc8c0e419cbb0f2f70744f02790673cd466e5ea",
+      "updatedAt": "2026-04-26T16:59:50.699Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_4_Dyndolod_Resources_FOMOD.png": {
+      "version": "optimize-images-v2",
+      "hash": "4328e41642ee2ecf4b9ff9be9d08126b684d9295",
+      "updatedAt": "2026-04-26T16:59:50.780Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_4_Dyndolod_tools_folders.png": {
+      "version": "optimize-images-v2",
+      "hash": "03682a87b82dc4ce1709bafef57cb53ad008988e",
+      "updatedAt": "2026-04-26T16:59:50.823Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_4_Update_DynDOLOD_Mods.png": {
+      "version": "optimize-images-v2",
+      "hash": "811a32bfca4494eb2ecf20c414f36cebd1b9caa0",
+      "updatedAt": "2026-04-26T16:59:50.846Z"
+    },
+    "docs/guides/img/lod_generation_guide/1_4_xLODGEN_download_link.png": {
+      "version": "optimize-images-v2",
+      "hash": "2c95fe947bea1b92707eb4fafe3df410d60c3439",
+      "updatedAt": "2026-04-26T16:59:50.970Z"
     }
   }
 }

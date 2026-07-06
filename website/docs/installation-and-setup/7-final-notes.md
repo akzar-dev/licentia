@@ -23,7 +23,7 @@ image: ./img/7-final-notes-social.png
 
     **Controls map** with nice graphics can be viewed by pressing `F11` in-game _(suggested and mapped by our amazing team member [CatastrophicApathy](https://github.com/KMan9454))_
 
-## :video_game: **Playing with the contriller**
+## :video_game: **Playing with the controller**
 
     **Want to play with a controller?** &mdash; read [this amazing Controller guide](/guides/controller) also written by [CatastrophicApathy](https://github.com/KMan9454)
 
