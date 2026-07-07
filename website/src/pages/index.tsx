@@ -77,7 +77,6 @@ function AboutSection() {
         <h2 className={styles.sectionTitle}>
           <span
             className="licentia-heading licentia-heading--display"
-           
           >
             About
           </span>
@@ -121,7 +120,6 @@ function FeatureIcons() {
         <h2 className={styles.sectionTitle}>
           <span
             className="licentia-heading licentia-heading--display"
-           
             aria-hidden
           >
             Features
@@ -192,14 +190,21 @@ function FeatureIcons() {
 function Showcase() {
   const LOOP_COPIES = 2;
   const MAX_UNIQUE_SHOWCASE_SHOTS = 24;
-  // Shuffle ONCE for this page load
-  const SHOTS = React.useMemo(() => {
+  // The server-rendered HTML and the first client render must be identical, so start from
+  // a stable (unshuffled) slice. Math.random() at render time would produce a different
+  // order on the client and cause an SSR hydration mismatch. Shuffle once after mount instead.
+  const INITIAL_SHOTS = React.useMemo(
+    () => ALL_SHOTS.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, ALL_SHOTS.length)),
+    []
+  );
+  const [SHOTS, setShots] = React.useState<ShowcaseShot[]>(INITIAL_SHOTS);
+  React.useEffect(() => {
     const a = [...ALL_SHOTS];
     for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
     }
-    return a.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, a.length));
+    setShots(a.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, a.length)));
   }, []);
 
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
@@ -474,7 +479,6 @@ function Showcase() {
         <h2 className={styles.sectionTitle}>
           <span
             className="licentia-heading licentia-heading--display"
-           
             aria-hidden
           >
             Showcase
@@ -553,9 +557,9 @@ export default function Home(): ReactNode {
   return (
     <Layout description={HOME_META_DESCRIPTION}>
       <Head>
-        <meta name="application-name" content="Licentia NEXT" />
-        <meta name="description" content={HOME_META_DESCRIPTION} />
-        <meta property="og:description" content={HOME_META_DESCRIPTION} />
+        {/* description + og:description are emitted by <Layout description=...> below. */}
+        {/* application-name + og:site_name are emitted site-wide via siteConfig.headTags. */}
+        {/* Only tags not covered by those sources are set here, to avoid duplicates. */}
         <meta name="twitter:description" content={HOME_META_DESCRIPTION} />
         <meta property="og:title" content="Licentia NEXT" />
         <meta name="twitter:title" content="Licentia NEXT" />

@@ -58,25 +58,50 @@ async function listFilesRecursive(dir, predicate = () => true) {
 }
 
 async function loadCache() {
+  // No cache file yet: legitimate on a first-ever run or an intentional regen.
+  // Warn loudly anyway — for lossy assets (WEBP), an empty cache means every image
+  // gets re-encoded, which is cumulative quality loss. This must never be silent.
   if (!(await exists(CACHE_FILE))) {
+    console.warn(
+      `[optimize-images] No cache found at ${getRel(CACHE_FILE)} — treating ALL images as ` +
+        `unprocessed. Lossy assets (WEBP) will be re-encoded from scratch. Continue only if this ` +
+        `is a deliberate first run / regeneration.`
+    );
     return { version: CACHE_VERSION, entries: {} };
   }
+
+  const raw = await fs.readFile(CACHE_FILE, 'utf8');
+  let parsed;
   try {
-    const raw = await fs.readFile(CACHE_FILE, 'utf8');
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== 'object') {
-      return { version: CACHE_VERSION, entries: {} };
-    }
-    if (!parsed.entries || typeof parsed.entries !== 'object') {
-      return { version: CACHE_VERSION, entries: {} };
-    }
-    if (parsed.version !== CACHE_VERSION) {
-      return { version: CACHE_VERSION, entries: {} };
-    }
-    return parsed;
-  } catch {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    // A cache that EXISTS but won't parse is almost always a bad merge (this happened
+    // once already). Silently falling back to an empty cache here would re-compress every
+    // lossy image and degrade quality. Refuse loudly instead.
+    throw new Error(
+      `[optimize-images] Cache file ${getRel(CACHE_FILE)} exists but is not valid JSON ` +
+        `(${err.message}). This is usually a bad merge. Fix the JSON — or delete the file to ` +
+        `intentionally regenerate — then re-run.`
+    );
+  }
+
+  if (!parsed || typeof parsed !== 'object' || !parsed.entries || typeof parsed.entries !== 'object') {
+    throw new Error(
+      `[optimize-images] Cache file ${getRel(CACHE_FILE)} parsed but has an unexpected shape ` +
+        `(missing "entries" object). Fix or delete it, then re-run.`
+    );
+  }
+
+  // Version mismatch is an intentional invalidation (we bumped CACHE_VERSION), not corruption.
+  if (parsed.version !== CACHE_VERSION) {
+    console.warn(
+      `[optimize-images] Cache version ${JSON.stringify(parsed.version)} != ` +
+        `${JSON.stringify(CACHE_VERSION)}; regenerating from scratch.`
+    );
     return { version: CACHE_VERSION, entries: {} };
   }
+
+  return parsed;
 }
 
 async function saveCache(cache) {

@@ -24,8 +24,7 @@ You added or updated:
 
 Any of the above **requires regenerating LODs** to avoid visual glitches, missing terrain, or pop-in.
 
-This Guide makes the assumption you have familiarity with MO2, basic modding and computer skills.
-
+This Guide makes an assumption that you have familiarity with MO2, basic modding and computer skills.
 :::
 
 These are the general steps to **regenerate LODs** for **Licentia NEXT**:
@@ -111,88 +110,84 @@ This block applies to everything below, so **read carefully**!
    Failing to **exclude** these files may lead to UNEXPECTED ERRORS, which you won't be able to get any help with.
    :::
 
-4. Last thing to do is check and see if Dyndolod has updated since the list was released.
+4. Last thing to do is check and see if _DynDOLOD_ has updated (the list always ships a version that's current at the time of its release):
    - Select `TexGenx64` from the executable dropdown at the top-right of MO2 and hit `Run`:
-      <img 
+      <DocImage 
          src={require('./img/lod_generation_guide/4_texgen_1_start.png').default}
          alt="Start TexGen from MO2 executable dropdown"
          style={{ maxHeight:100 }}
+         width={1284}
+         height={276}
       />
 
-      If Texgen opens normally, Dyndolod is up to date and you can go on to Step 2 xLODGen + ACMOS.
+   - If _TexGen_ opens normally without any additional warnings, _DynDOLOD_ is up to date and you can go on to [Step 2 xLODGen + ACMOS](#step-two--xlodgen--acmos).
 
-      If you see this
-      <img 
+   - If you see this:
+      <DocImage 
          src={require('./img/lod_generation_guide/1_4_DynDOLOD_out_of_date.png').default}
          alt="DynDOLOD Out of Date"
          style={{ maxHeight:300 }}
+         width={562}
+         height={337}
       />
 
-      You will need to update.  This is what you'll need to do.
+      You will need to update. This is what you'd need to do:
       <details>
-      <summary>How to Update TexGen and Dyndolod</summary>
-            - Locate the Licentia Next tools folders.  Then delete the contents of the DynDOLOD folder and the xLODGEN folder.  Do not delete the folders.
+      <summary>How to Update TexGen and DynDOLOD</summary>
+            1. Locate the Licentia Next tools folders.  Then delete the contents of the _DynDOLOD_ and the _xLODGEN_ folders.  **Do not delete the folders** themselves:
+               <DocImage 
+                  src={require('./img/lod_generation_guide/1_4_Dyndolod_tools_folders.png').default}
+                  alt="DynDOLOD Tools Folders"
+                  style={{ maxHeight:300 }}
+                  width={850}
+                  height={481}
+               />
 
-
-            <img 
-               src={require('./img/lod_generation_guide/1_4_Dyndolod_tools_folders.png').default}
-               alt="DynDOLOD Tools Folders"
-               style={{ maxHeight:300 }}
-            />
-
-            - Download DynDOLOD Alpha 3 [here](https://www.nexusmods.com/skyrimspecialedition/mods/68518?tab=files)
+            2. Download the latest `DynDOLOD Alpha 3`:
+               - Go [here](https://www.nexusmods.com/skyrimspecialedition/mods/68518?tab=files) and get the latest version
                - Save the download anywhere
-               - Extract the contents to the Tools/DynDOLOD folder 
+               - Extract the contents of the download to the `Tools/DynDOLOD` folder.
 
-            - Download xLODGen from [here](https://stepmodifications.org/forum/topic/13451-xlodgen-terrain-lod-beta-132-for-fnv-fo3-fo4-fo4vr-tes5-sse-tes5vr-enderal-enderalse/)
+            3. Download the latest `xLODGen`:
+               - Go [here](https://stepmodifications.org/forum/topic/13451-xlodgen-terrain-lod-beta-132-for-fnv-fo3-fo4-fo4vr-tes5-sse-tes5vr-enderal-enderalse/) and click this link to download the latest version (number may be different than shown in the image):
 
-            <img 
-               src={require('./img/lod_generation_guide/1_4_xLODGEN_download_link.png').default}
-               alt="xLODGEN Download"
-               style={{ maxHeight:300 }}
-            />
-            - Save the download anywhere
-            - Extract the contents of the download to the Tools/xLODGEN folder 
+                  <DocImage 
+                     src={require('./img/lod_generation_guide/1_4_xLODGEN_download_link.png').default}
+                     alt="xLODGEN Download"
+                     style={{ maxHeight:300 }}
+                     width={847}
+                     height={484}
+                  />
+               - Save the download anywhere
+               - Extract the contents of the download to the `Tools/xLODGEN` folder.
 
-            Now you need to update these two mods.  **If MO2 already has one or both of these, it will tell you and you won't need to.**
+            4. Now you need to update these two mods. **If MO2 already has one or both of these, it will tell you if you need to update.**
 
-            <img 
-               src={require('./img/lod_generation_guide/1_4_Update_DynDOLOD_Mods.png').default}
-               alt="Update these DynDOLOD Mods"
-               style={{ maxHeight:300 }}
-            />
+               <DocImage 
+                  src={require('./img/lod_generation_guide/1_4_Update_DynDOLOD_Mods.png').default}
+                  alt="Update these DynDOLOD Mods"
+                  style={{ maxHeight:300 }}
+                  width={760}
+                  height={151}
+               />
             
-            - Download DynDOLOD Resources SE [here](https://www.nexusmods.com/skyrimspecialedition/mods/52897?tab=files)
-            - Drag the download under the Resources mod and install
-            - Make these selections in the FOMOD
+               - Download DynDOLOD Resources SE [here](https://www.nexusmods.com/skyrimspecialedition/mods/52897?tab=files)
+               - Use `Ctrl + M` in MO2 to open the `Install from Archive` dialog and select the downloaded file
+               - Make these selections in the FOMOD:
 
-         
-            <img 
-               src={require('./img/lod_generation_guide/1_4_Dyndolod_Resources_FOMOD.png').default}
-               alt="FOMOD Choices"
-               style={{ maxHeight:300 }}
-            />
-            
-            - Install and choose Replace
+                  <DocImage 
+                     src={require('./img/lod_generation_guide/1_4_Dyndolod_Resources_FOMOD.png').default}
+                     alt="FOMOD Choices"
+                     style={{ maxHeight:300 }}
+                     width={766}
+                     height={568}
+                  />
 
-            - Download DynDOLOD DLL NG from [here](https://www.nexusmods.com/skyrimspecialedition/mods/97720?tab=files)
-            - There is every chance this mod is current.  We are just making sure.
-            - Drag the download under the mod and install. 
-            - Choose Replace
-
-         
+               - Install and choose `Replace`
+               - Download DynDOLOD DLL NG from [here](https://www.nexusmods.com/skyrimspecialedition/mods/97720?tab=files)
+               - Use `Ctrl + M` in MO2 to open the `Install from Archive` dialog and select the downloaded file
+               - Choose `Replace`
       </details>
-     
-
-
-
-
-
-
-
-
-
-
 
 ---
 ## Step :two: — xLODGen + ACMOS
@@ -847,11 +842,11 @@ If you don't - just omit anything related to it.
 :::tip
 :clock1: Grass cache generation **will take a long time** - **1-2** hours is completely normal *(depends on your additions size and/or your PC performance)*.
 
-The Guide recommends that you take a few minutes and read at least the stickied comments on the No Grass In Objects forum page found [here](https://www.nexusmods.com/skyrimspecialedition/mods/42161?tab=posts)
+The Guide recommends that you take a few minutes and read at least the stickied comments on the `No Grass In Objects` forum page found [here](https://www.nexusmods.com/skyrimspecialedition/mods/42161?tab=posts).
 
-Its your call what changes you choose to make and/or mods to disable, but in general its good to go through and look.
+It's your call what changes you choose to make and/or mods to disable, but in general **it's good to go through and look**.
 
-If you decide to make changes, its best to do so by making a new profile and make them there.  Call it Grass Profile or something.  Run the Grass Cache process on that profile.  You can delete it after it completes and your primary profile will remain untouched.   
+If you decide to make changes, its best to do so by making a new profile and make them there. Call it `Grass Profile` or something, run the `Grass Cache` process on that profile. You can delete it after and your primary profile would remain untouched.
 :::
 
 1. In `Mod Organizer 2` at the top click the `Puzzle` icon **(1)** and hit `Precache Grass` **(2)**:
@@ -1079,9 +1074,7 @@ Both `TexGen` and `DynDOLOD` are always run together!
       `TexGen` would run now, it would be fast *(around 5 minutes)*.
 
 :::note
-
-Licentia Next, as delivered, will not cause any errors in TexGen.  Mods that you have added may and any errors will need to be corrected before it can complete.  The nature of the error and possible corrections are available from DynDOLOD by clicking on the links in the error message
-
+_Licentia Next_, as delivered, **will not cause any errors in TexGen**. Mods that you have added may cause errors, and any errors will need to be corrected before it can complete. The nature of the error and possible corrections are available from DynDOLOD by clicking on the links in the error message.
 :::
 
 3. When `TexGen` finishes running, you'd be presented with this popup - click `Exit TexGen` *(the program would close after)*:
@@ -1331,8 +1324,8 @@ Licentia Next, as delivered, will not cause any errors in TexGen.  Mods that you
       :::
 
       :::note
-      As is the case with TexGen, Licentia Next will not have any critical errors that will stop DynDOLOD.  Any mods that you added may.  TexGen doesn't catch all errors but DynDOLOD will and those critical errors will need to be addressed.  A critical error is one that actually stops DynDOLOD and it won't go on until it is fixed.
-      ::: 
+      As is the case with TexGen, _Licentia Next_ will not have **any critical errors that will stop DynDOLOD**. Any mods that you added may! TexGen doesn't catch all errors, but DynDOLOD will and those critical errors will need to be addressed. A critical error is one that actually stops DynDOLOD and it won't go on until it is fixed.
+      :::
 
 8. When the `DynDOLOD` is done generating, you'd see this message - select `Save and Exit` *(and `DynDOLOD` would close after that)*:
       <DocImage 

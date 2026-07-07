@@ -49,7 +49,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     />
 
     :::danger
-    **DON'T MINIMIZE THE GAME!  DO NOT TAB OUT TO ANOTHER WINDOW!  BE PATIENT!!  148 MODS NEED TO DOWNLOAD!** 
+    **DON'T MINIMIZE THE GAME! DO NOT TAB OUT TO ANOTHER WINDOW! BE PATIENT!! 148 MODS NEED TO DOWNLOAD!**
 
     Wait till everything is downloaded and popups stop appearing.
     :::
@@ -72,7 +72,9 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     :::warning
     These folders **MUST NOT** be located in a protected folder such as `Program Files` or `Program Files (x86)`, or the installation would fail.
 
-    Also, it's **STRONGLY RECOMMENDED** that these folders are located on a Solid State Drive (SSD) rather than a Hard Disk Drive (HDD) for performance reasons. That's especially important for the installation folder, as the modlist would run from there. Downloads folder can be on a slower drive if necessary (it would only be used during installation and affect only the installation process speed).
+    Also, it's **STRONGLY RECOMMENDED** that these folders are located on a Solid State Drive (SSD) rather than a Hard Disk Drive (HDD) for performance reasons. That's especially important for the installation folder, as the modlist would run from there. 
+    
+    **Downloads folder** can be on a slower drive if necessary (it would only be used during installation and affect only the installation process speed).
     :::
 
     :::tip
@@ -143,15 +145,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         height={1410}
     />
 
-2. Select filters on the left: 
-    
-    - `Skyrim Special Edition` as a game **(1)** 
-    - tick `Show NSFW` and `Show Unofficial Lists` **(2)**
-    - type `next` in search bar **(3)**. 
-    - When you see `Licentia NEXT` click on its card on the right **(4)**
-
- 
-
+2. Select filters on the left:
     <DocImage 
         src={require('./img/5-installation/5_4_2_wabbajack_filters_and_download.png').default}
         alt="Wabbajack filters set for Skyrim SE and Licentia NEXT search result"
@@ -159,7 +153,14 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         width={3840}
         height={2010}
     />
- 
+
+    Choose the following filters:
+    - **(1)** - `Skyrim Special Edition` as a game
+    - **(2)** - tick `Show NSFW` and `Show Unofficial Lists`
+    - **(3)** - type `next` in search bar
+    - **(4)** - when you see `Licentia NEXT`, click on its card on the right
+
+
 3. In the newly opened window for _Licentia NEXT_, press `Download & Install` button in the bottom left:
 
     <DocImage 
@@ -169,7 +170,7 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         width={3840}
         height={2028}
     />
-    
+
     This will download _Licentia's_ **Wabbajack file** in the background, which is basically an installation package.
 
 4. After the Wabbajack file download is complete, you'll see this screen *(it's going to appear automatically)*.
@@ -185,21 +186,6 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
     Don't worry about the error at the bottom, it is normal and will be fixed in the next step.
 
 5. In this window, select the install and downloads directories we created for Licentia:
-
-    - **(1)**, select the install directory we created 
-                                                             
-    - **(2)**, select the  downloads directory we created.   
-    
-            :::warning
-               Do NOT use the suggestion of Wabbajack
-            :::
-    
-            :::note
-             _(you can change where downloads would be stored if you want, i.e. on another, slower drive)_,  
-            :::
-    
-    - **(3)**, hit `Install` button :
-
     <DocImage 
         src={require('./img/5-installation/5_4_5_wabbajack_start_installation.png').default}
         alt="Wabbajack install window with install and download paths configured"
@@ -207,60 +193,68 @@ Assuming you've **completed** the [Pre-installation](/pre-installation) part, le
         width={1291}
         height={685}
     />
+    - **(1)** - select the install directory we created
+    - **(2)** - select the  downloads directory we created
+        :::warning
+        Do NOT use the suggested directories Wabbajack auto-filled for you, they are **wrong** - use the directories we created earlier in this guide.
+        :::
 
-    **This would begin the actual download and installation of the list.**
+    - **(3)** - hit `Install` button
+        :::tip
+        If you see this dialog, you are installing over an existing installation (probably for an update). **This is normal**. Click `Continue`:
+            <DocImage 
+                src={require('./img/5-installation/5_4_5a_Install_File_Delete_Dialog.png').default}
+                alt="Installation file delete confirmation over an existing install"
+                style={{ maxHeight:300 }}
+                width={727}
+                height={421}
+            />
+        :::
 
-    You'd see a progress bar at the top, and some installation stats at the bottom. 
-
-    :::note
-    If you see this dialog, you are installing over an existing installation.  Probably for an update.  This is normal.  Click 'Continue' 
-    :::
-
-
-    <img 
-        src={require('./img/5-installation/5_4_5a_Install_File_Delete_Dialog.png').default}
-        alt="Installation file delete confirmation over an existing install"
-        style={{ maxHeight:300 }}
-    />
-
-
+    **This would begin the actual download and installation of the list.** You'd see a progress bar at the top, and some installation stats at the bottom. 
 
     :::note
     Depending on your system specs, the download and installation processes can take a **long time**.
     :::
 
     :::warning
-    There are many different scenarios where _Wabbajack_ would produce an **error**, that's going to look something like this *(this example is for another list for another game, but you get the idea)*:
-
-    <DocImage 
-        src={require('./img/5-installation/5_4_5_wabbajack_error_example.png').default}
-        alt="Example Wabbajack installation error with log viewer panel"
-        style={{ maxHeight:300 }}
-        width={3840}
-        height={2016}
-    />
-
-    On the **left side** of this window there's an error box that allows you to open full *Wabbajack* log file, which is useful for troubleshooting.
-
-    On the **right side** you'd see a `Log Viewer` that *usually* says something like `Failed to download X` or `Failed to install X`.
+    There are many different scenarios where _Wabbajack_ would produce an **error**. Open the **collapsible section below** to learn how to troubleshoot them!
     :::
+    
+    <details>
+    <summary>Wabbajack Errors</summary>
 
-    :::note
-    **DON'T USE** `Retry` button in the bottom right corner.  Close and restart Wabbajack instead.  It has caused problems in the past and makes logs very large.
-    :::
+        Usually, an error during installation will look something like this *(this example is for another list for another game, but you get the idea)*:
 
-    :::tip
-    **General advice** &mdash; **re-run _Wabbajack_ completely** before seeking assistance.
-    _Wabbajack_ will only download and reinstall the minimum necessary to get the modlist working. If you're re-running it on an existing install, follow [How to update](/how-to-update), since that is also the re-install process.
+        <DocImage 
+            src={require('./img/5-installation/5_4_5_wabbajack_error_example.png').default}
+            alt="Example Wabbajack installation error with log viewer panel"
+            style={{ maxHeight:300 }}
+            width={3840}
+            height={2016}
+        />
 
-    You can find most common *Wabbajack* issues below *(check Logs tab)*:
+        - On the **left side** of this window there's an error box that allows you to open full *Wabbajack* log file, which is useful for troubleshooting.
 
-    | Issue | Solution |
-    | :--- | :--- |
-    | **Various files beginning with `cc` and ending with `esl` or `esm` failed to download** | You did not purchase the [$20 upgrade to Skyrim](https://store.steampowered.com/app/1746860/The_Elder_Scrolls_V_Skyrim_Anniversary_Upgrade/), and this is not negotiable. Purchase it, verify it, delete it and re-download it if necessary, and try again. | 
-    | **Could not download X** | Some Internet providers have difficulty accessing the servers hosting the list's files. Use a VPN (Virtual Private Network) with a terminus set to the United States. Free options include _ProtonVPN_ and _Cloudflare WARP._ If a download gets interrupted, delete all corrupt local copies before trying again. |
-    | **Wabbajack could not find my game folder** | _Licentia NEXT_ will not work with a GOG or pirated game version. If you own the game on _Steam_ &mdash; ensure you are not running Wabbajack as an Administrator. **Asking for help with pirated copies of the game will get you banned from Discord Support.** |
-    :::
+        - On the **right side** you'd see a `Log Viewer` that *usually* says something like `Failed to download X` or `Failed to install X`.
+
+        :::warning
+        **DON'T USE** `Retry` button in the bottom right corner. Close and restart _Wabbajack_ instead. It has caused problems in the past and makes logs **very** large.
+        :::
+
+        :::tip
+        **General advice** &mdash; **re-run _Wabbajack_ completely** before seeking assistance.
+        _Wabbajack_ will only download and reinstall the minimum necessary to get the modlist working. If you're re-running it on an existing install, follow [How to update](/how-to-update), since that is also the re-install process.
+        :::
+
+        You can find most common *Wabbajack* issues below *(check Logs tab)*:
+
+        | Issue | Solution |
+        | :--- | :--- |
+        | **Various files beginning with `cc` and ending with `esl` or `esm` failed to download** | You did not purchase the [$20 upgrade to Skyrim](https://store.steampowered.com/app/1746860/The_Elder_Scrolls_V_Skyrim_Anniversary_Upgrade/), and this is not negotiable. Purchase it, verify it, delete it and re-download it if necessary, and try again. | 
+        | **Could not download X** | Some Internet providers have difficulty accessing the servers hosting the list's files. Use a VPN (Virtual Private Network) with a terminus set to the United States. Free options include _ProtonVPN_ and _Cloudflare WARP._ If a download gets interrupted, delete all corrupt local copies before trying again. |
+        | **Wabbajack could not find my game folder** | _Licentia NEXT_ will not work with a GOG or pirated game version. If you own the game on _Steam_ &mdash; ensure you are not running Wabbajack as an Administrator. **Asking for help with pirated copies of the game will get you banned from Discord Support.** |
+    </details>
 
 6. When you'd see this at the top of *Wabbajack* &mdash; it means your **installation is complete!**
 

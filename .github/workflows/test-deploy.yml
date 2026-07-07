@@ -5,6 +5,12 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Cancel an in-progress PR build when the same PR is pushed again — no point
+# finishing a build that's already superseded.
+concurrency:
+  group: test-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test-deploy:
     name: Test Docusaurus build
@@ -15,11 +21,11 @@ jobs:
         working-directory: website
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
@@ -28,5 +34,50 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Typecheck
+        id: typecheck
+        run: npm run typecheck
+
+      - name: Validate image-optimization cache is not corrupt
+        id: cache_check
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('.image-opt-cache.json','utf8'))" \
+            && echo "image cache JSON is valid"
+
+      - name: Check doc image dimensions are in sync
+        id: dims_check
+        run: |
+          npm run sync-doc-images
+          if ! git diff --quiet -- docs src/pages; then
+            echo "::error::Doc image dimensions are out of sync. Run 'npm run sync-doc-images' locally and commit the result."
+            git --no-pager diff --stat -- docs src/pages
+            exit 1
+          fi
+          echo "doc image dimensions are in sync"
+
       - name: Test build website
+        id: build
         run: npm run build
+
+      - name: Run summary
+        if: always()
+        run: |
+          icon() { case "$1" in success) echo "✅";; failure) echo "❌";; skipped) echo "⏭️";; cancelled) echo "🚫";; *) echo "➖";; esac; }
+          {
+            echo "## 🧪 Test build — \`${{ github.head_ref || github.ref_name }}\`"
+            echo ""
+            echo "Commit \`${GITHUB_SHA::7}\` · Node $(node -v) · Docusaurus $(node -p "require('@docusaurus/core/package.json').version" 2>/dev/null || echo n/a)"
+            echo ""
+            echo "| Check | Result |"
+            echo "| --- | :---: |"
+            echo "| Typecheck | $(icon '${{ steps.typecheck.outcome }}') |"
+            echo "| Image cache integrity | $(icon '${{ steps.cache_check.outcome }}') |"
+            echo "| Doc image dimensions in sync | $(icon '${{ steps.dims_check.outcome }}') |"
+            echo "| Production build | $(icon '${{ steps.build.outcome }}') |"
+            if [ "${{ steps.build.outcome }}" = "success" ]; then
+              pages=$(find build -name '*.html' | wc -l | tr -d ' ')
+              size=$(du -sh build | cut -f1 | tr -d ' ')
+              echo ""
+              echo "**Built site:** ${pages} HTML pages · ${size} total"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
