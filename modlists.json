@@ -20,7 +20,7 @@
     "utility_list": false,
     "image_contains_title": true,
     "DisplayVersionOnlyInInstallerView": false,
-    "force_down": false,
+    "force_down": true,
     "links": {
       "image": "https://raw.githubusercontent.com/akzar-dev/licentia/main/backup/images/Licentia_Next_logo_v1_4k_transparent.png",
       "readme": "https://licentia.quest/",
