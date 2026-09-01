@@ -522,7 +522,15 @@ function onDocumentClick(event: MouseEvent): void {
 function bind(): void {
   if (isBound) return;
   isBound = true;
-  document.addEventListener('click', onDocumentClick);
+  // Use the CAPTURE phase, not bubble. Some theme components legitimately call
+  // event.stopPropagation() on clicks inside them -- Docusaurus's <Details> (used by every
+  // collapsible `<details>` block) does it unconditionally to isolate nested summaries. A
+  // bubble-phase listener on `document` sits above React's delegation root, so those clicks
+  // never arrived here and images inside collapsibles were unzoomable (CSS still showed the
+  // zoom cursor, so it looked clickable). Capture runs before any descendant handler and
+  // cannot be vetoed by them. This handler no-ops for non-image targets, so summary clicks
+  // and the collapse toggle are unaffected.
+  document.addEventListener('click', onDocumentClick, true);
 }
 
 export default (() => {

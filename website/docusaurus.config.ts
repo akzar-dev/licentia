@@ -2,8 +2,74 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import path from 'path';
+import fs from 'fs';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+// ---------------------------------------------------------------------------
+// Maintenance banner
+//
+// The single source of truth for "can the list be installed right now" is `force_down`
+// in the repo-root modlists.json -- the same file that gates installation. Reading it here
+// at build time keeps the banner from ever drifting out of sync with the real list state:
+// flipping force_down and pushing to main triggers the deploy workflow (it has no path
+// filter), which rebuilds the site with the new value.
+//
+// This THROWS rather than quietly skipping the banner. A missing banner would tell visitors
+// the list is installable when it isn't, which is the more harmful failure; a build error is
+// caught immediately by CI.
+// ---------------------------------------------------------------------------
+const LN_MACHINE_URL = 'licentia_next';
+
+function isListForcedDown(): boolean {
+  const modlistsPath = path.resolve(__dirname, '..', 'modlists.json');
+
+  let raw: string;
+  try {
+    raw = fs.readFileSync(modlistsPath, 'utf8');
+  } catch (err) {
+    throw new Error(
+      `[maintenance-banner] Could not read ${modlistsPath}: ${(err as Error).message}`
+    );
+  }
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(
+      `[maintenance-banner] ${modlistsPath} is not valid JSON: ${(err as Error).message}`
+    );
+  }
+
+  if (!Array.isArray(parsed)) {
+    throw new Error(
+      `[maintenance-banner] Expected ${modlistsPath} to contain an array of modlists.`
+    );
+  }
+
+  const entry = parsed.find(
+    (m) =>
+      !!m && typeof m === 'object' && (m as {links?: {machineURL?: unknown}}).links?.machineURL === LN_MACHINE_URL
+  ) as {force_down?: unknown} | undefined;
+
+  if (!entry) {
+    throw new Error(
+      `[maintenance-banner] No modlist with links.machineURL === "${LN_MACHINE_URL}" in ${modlistsPath}.`
+    );
+  }
+
+  if (typeof entry.force_down !== 'boolean') {
+    throw new Error(
+      `[maintenance-banner] Expected a boolean "force_down" on the "${LN_MACHINE_URL}" entry in ` +
+        `${modlistsPath}, got ${JSON.stringify(entry.force_down)}.`
+    );
+  }
+
+  return entry.force_down;
+}
+
+const listForcedDown = isListForcedDown();
 
 const config: Config = {
   title: 'Licentia NEXT',
@@ -115,6 +181,21 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/licentia-next-social-card.webp',
+    // Shown automatically whenever modlists.json has force_down: true (see isListForcedDown).
+    // backgroundColor/textColor are deliberately NOT set: theme-classic applies them as inline
+    // styles, which cannot adapt to light/dark. Styled in src/css/custom.css instead.
+    ...(listForcedDown
+      ? {
+          announcementBar: {
+            id: 'ln-maintenance',
+            content:
+              '\u26a0\ufe0f <strong>Licentia NEXT is temporarily not installable</strong> \u2014 we\'re preparing an update. Check <a href="https://discord.gg/vermishub">Discord</a> for announcements.',
+            // A safety warning must not be dismissable: dismissal is persisted in localStorage
+            // per id, so one stray click would hide it permanently for that visitor.
+            isCloseable: false,
+          },
+        }
+      : {}),
     colorMode: {
       // when commented out, follows the user's system color scheme
       // defaultMode: 'dark',

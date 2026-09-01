@@ -4,8 +4,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     // @docusaurus/tsconfig still ships the (now-deprecated) `baseUrl`, which TS 6
-    // flags as an error. Silence it until Docusaurus drops baseUrl upstream; this
-    // must be removed before TS 7, where baseUrl stops functioning entirely.
+    // flags as an error. Silence it until Docusaurus drops baseUrl upstream.
+    //
+    // TypeScript is pinned to ^6 because of this. Verified against TS 7.0.2: it REMOVED
+    // baseUrl outright (error TS5102, which ignoreDeprecations no longer silences), and the
+    // error fires even with no local baseUrl -- the one inherited from @docusaurus/tsconfig
+    // is enough. So TS 7 is blocked upstream, not here; the only escape would be to stop
+    // extending @docusaurus/tsconfig and fork its contents, which isn't worth it for a
+    // config that isn't used for compilation. Revisit when Docusaurus ships a
+    // baseUrl-free tsconfig, then drop both baseUrl and ignoreDeprecations.
     "ignoreDeprecations": "6.0"
   },
   "exclude": [".docusaurus", "build"]

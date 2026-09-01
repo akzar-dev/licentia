@@ -1092,3 +1092,43 @@ img.zoomable {
       transparent 96%,
       transparent 100%);
 }
+
+/* ---------------------------------------------------------------------------
+   Maintenance announcement bar
+
+   Rendered only when modlists.json has force_down: true (see docusaurus.config.ts).
+   theme-classic's default is a white background with black text in BOTH color modes,
+   and its backgroundColor/textColor options are applied as inline styles that CSS
+   cannot override -- so those options are intentionally left unset and the bar is
+   styled here instead, with real light/dark values. The class is a hashed CSS module,
+   hence the attribute selector.
+   --------------------------------------------------------------------------- */
+div[class*='announcementBar_'] {
+  --licentia-announcement-bg: #fff4e0;
+  --licentia-announcement-fg: #5a3200;
+  --licentia-announcement-border: #e0a244;
+  --licentia-announcement-link: #8a4b00;
+
+  background-color: var(--licentia-announcement-bg);
+  color: var(--licentia-announcement-fg);
+  border-bottom: 1px solid var(--licentia-announcement-border);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+[data-theme='dark'] div[class*='announcementBar_'] {
+  --licentia-announcement-bg: #3b2a10;
+  --licentia-announcement-fg: #ffe6bf;
+  --licentia-announcement-border: #7a5518;
+  --licentia-announcement-link: #ffc46b;
+}
+
+div[class*='announcementBar_'] a {
+  color: var(--licentia-announcement-link);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+div[class*='announcementBar_'] a:hover {
+  text-decoration: none;
+}
