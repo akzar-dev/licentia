@@ -19,6 +19,389 @@ The versioning system works the following way:
 
 ---
 
+## LICENTIA NEXT `13.7.0`
+:::note
+- 🗓️ **Released** xx September 2026
+- :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.6.1/13.6.0`** _(and older versions)_
+:::
+
+### Added
+- As a MO2 plugins:
+	 - `1.7 and above ContentCatalog.txt Nuker for MO2` - 1.0 (to automatically remove the new ContentCatalog.txt file that is shipped with Skyrim 1.7+)
+	 - `Kodex - An Automated Mod List Support Reporter` - 1.5
+	 - `MO2 BodySlide Batch Builder` - 2.2.0
+	 - `Automatic CRDW (Faster Load Times)` - 1.2.7
+- `Cached Recursive Directory Walk` - 1.1.5
+- `Eternal Darkness - Oblivion Lighting Bug Fix` - 1.0.3
+- `Auto Resolution` - 1.1
+- `DPI Scaling Fix` - 1.0.1
+- `Racemenu(SKEE) cosave Load Crash Fix` - 1.1
+- `Seamless Saving - Skyrim Save Accelerator` - 1.0.6 (all saves version)
+- `Stormcloaks Fight With Thalmor and Penitus Oculatus` - 4.0
+- `Imperial Thalmor Stormcloak Patrols Fixes` - 1.3
+- `Rock Traps Trigger Fixes` - 1.6
+- `Robber's Gorge Fixes` - 2.5 (newer than the ones in USMP + OBIS patch)
+- `Vigilant's Molag Bal Dragon Retexture SE` - 1.0
+- `VIGILANT - CoMAP Addon` - 1.0
+- `Molag Bal Voice Unification Project (MBVUP)` - 1.0 (+ patches for Vigilant and Gray Cowl)
+- `VIGILANT - English Translation Subtitle Patch (MBVUP Version)` - 2.3
+- `FormList Manipulator - FLM` - 1.8.1
+- `Relationship Dialogue Overhaul - Update and MCM` - 1.0.5
+- `Keep Up - Follower Locomotion Fix` - 4.3.1
+- `Dragonborns Cohort` - 1.10
+- `Stuck Underwater Visuals and Sounds Fix SKSE` - 0.2.1
+- `Stuck on Screen Auto Load Door Fix SKSE` - 0.3.1
+- `No Load Door NPC Fade` - 0.2
+- `Saving on Steed - Horse Save Load Fix SKSE` - 0.2.1
+- `Bow Animation Fix` - 0.1.1
+- `World Encounter Noble Riding Horse Fix - WERoad02` - 0.1.1
+- `Number Icons for Ostim Standalone` - 1.0 (+ patched all our Animation packs with these icons that were not included in the mod itself + made our own icon for `BakaFactory` animations)
+- `Ostim Navigator` - 1.1.0 (access through SKSE Menu via F10)
+- `Disabled Reference Integrity Fix (SKSE)` - 1.5.0
+- `Smooth Arrow Trails NG` - 1.0.3-NG (the full version is not applicable due to many meshes conflicts)
+- `No Auto-Equip Behaviour` - 1.0.1
+- `Unpoisoned Blocking` - 1.0.1
+- `Death Drop Overhaul` - 1.3.6
+- `Remiel - Cleaned Audio` - 1.1
+- `First Person Animation Teleport Bug Fix` - 1.0
+- `Unique Jarl Throne Sitting Animation` - 1.0 (+ `Thrones of Skyrim` patch)
+- `3dnpcs Fixes and Tweaks` - 6.1 (+ patch for `3DNPCs LotD patch`, and our own NPC replacers + Lux were manually patched)
+- `TDM Target Lock Extension Patch` - 2.2.6.3
+- `Accurate Projectile Collision` - 2.0.1
+- `Smooth Terrain` - 0.6.0
+- `Horizon Fix` - 0.7.2
+- `Water Collision Crash Fix NG` - 1.1.0
+- `Skyrim Cave Fixes` - 1.0.4 (+ patch hub)
+- `HairColourSyncNG` - 1.3.2
+- `Hair Suppression Fix` - 1.3
+- `Container Distribution Framework` - 3.1
+- `Xavbio Cubemap Patch Hub (3BA - HIMBO)` - 2.8.2
+- `Blood and OStim` - 1.0d
+- `Sanguine Seductions - Ostim Animation Pack` - 3.0
+- `Undeath - Guest Of Volkihar` - 1.2.0
+- `Extended Cut Saints and Seducers - Undeath` - 1.0
+- `Precision - Attack Collision Fixes` - 1.18
+- `Simpler Dragon Targeting - True Directional Movement` - 1.01
+- `Variadic Collision Dynamics` - 1.3.4 (+ `Variadic Collision Dynamics - Resources` 1.0.11)
+- `Dwemer Gates Don't Reset - Base Object Swapper` - 2.0.1
+- `Texture Downscaler` - 2.4.0 (as an optional mod, disabled by default)
+- `Simple Offence Suppression MCM - Block Friendly Fire` - 0.6
+- `Faster Reanimation - SSE` - 50% version (1.0.1)
+- `Thieves Guild Plus Plus - A Questline Overhaul` (+ their patch hub) - 1.57, patched with LN manually
+- `Easy Console Commands` - 1.1
+- `Discord Rich Presence` - 1.2.1
+- `Hearthfire Multiple Adoptions Expanded` - 2.0.5
+- `ORefit Masterlist - 69 Beauties and much more - ULTIMATE MERGED OBody NG` - 3.2
+- `Dynamic Armor Physics` - 1.0.4
+- `MCM Unlocked` - 2.1.6
+- `Rogue's Gallery` - 1.0.1
+- `Papyrus Ini Manipulator` - 1.9.9
+- `Children Loading Screen Fix` - 1.0 (patched for our LO)
+- `Wait Your Turn Redux - Enemy Circling Behavior` - 1.1.0
+- `Portal Strict Lights Patcher Framework (SKSE)` - 1.0
+- `Khajiit Will Follow - Custom Voiced Khajiit Follower Mod` - 4.7.5 (+ patches: Vigilant, Forgotten City, CC Fishing, AE Houses Spouse Patch, Immersive Start, eeekie's replacer for the mod, LotD Follower's room patches + manually patched to work with RDO and Lux)
+- `Malryn - Custom Voiced Follower` - 1.8 (patched with Xelzaz, small conflict in DB10 trigger)
+- `Heart of Ice - Astrid. Custom Voiced Follower` - 1.6.0.1 (+ patches for 3BA, Ostim, Lux, non-unique body, and manually patched to work with LotD)
+- **Switched the behaviour engine from `Nemesis` to `Pandora`** (see the new [Pandora Guide](/guides/pandora)). Nemesis 0.84 has had no release since January 2025, is 32-bit, and was folding every OStim animation pack into a single `0_master.hkx` that had grown to the point the engine could no longer load it. Pandora reads the same Nemesis/FNIS patch formats, has native creature support, and writes to its own output folder. Mods added for it:
+	- `Pandora Behaviour Engine Plus` - 4.4.0-beta
+	- `Auto Skeleton Patch - Universal Behaviour Runtime` - 1.0.4 (SKSE plugin that patches skeleton behaviour at runtime, so XPMSSE no longer needs a behaviour-engine patch. Do **not** also use Pandora's own XPMSE patch - the author warns against running both)
+	- `TUDM - The Ultimate Dodge Mod - Pandora Fix` - 1.0
+	- `Horsepower - Pandora Cache` - 1.2PandoraCache
+	- `Unarmed Sprint and Sneak Roll Fix` - 1.0
+	- `Disabled Turn Animations` - 3.0.1 (replaces `Disable Turn Animation NG`)
+	- `Licentia NEXT - AGO Sneak Bow Fix (Pandora)` - our own patch. Pandora places multi-block array substitutions three elements too early, which corrupted the bone masks `Archery Gameplay Overhaul` uses to blend the bow-holding arms onto a crouched body. This patch replaces those blend layers with its own nodes so the mask is written correctly (see Fixed/Patched)
+	- `Licentia NEXT - TUDM Bow Aim Fix (Pandora)` - our own patch, a stripped-down Pandora port of [Third Person bows aiming misalignment bug fix for TK dodge or TUDM](https://www.nexusmods.com/skyrimspecialedition/mods/49988) carrying only the parts that apply to `TUDM`, so the Nemesis engine no longer has to be installed just to supply them
+- `PPA - Procedural Penis Animations` - 0.0.37
+	- FOMOD: `Procedural Sound Effects`, `Install my animation tags`, `XP32 Skeleton Fixes/Additions`
+	- our `accurate-penetration.toml` changes: `HotkeyWhileHoldingShiftOnly = true` (PPA's hotkeys only fire while Shift is held, which keeps those keys free for everything else), `TogglePenisSMPPhysics = true`, and rebalanced sound volumes using the values recommended by the author of [Penetration Physics PPA Sound Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/175107?tab=description)
+	- `PPA - Ostim and SexLab Mute Patch` - 1.0.0
+	- `Penetration Physics PPA Sound Replacer Custom` - 1.2.0
+	- `OStim Assorted Hubs patches and PPA configs` - PPA configs for the animation packs that ship none of their own:
+		- `Assorted PPA Configs` - PPA.1.1 (covers `OARE`, `OARE 3P` and `Sanguine Seductions` - the last one has more than the original mod's own config)
+		- `OARE V1.52.1 Patches` - OARE.1.0.1
+		- `OARE 3P V.1.12-Nex Patches` - OARE3P.1.0
+		- `Drago's Foot Addon V1.3a Patches` - DragoFoot.1.0
+		- `Drago's LTN V1.12 Patches` - DragoLTN.1.1
+		- `Drago's Potions V1.3 Patches` - DragoPotion.1.0
+		- `OStim Anal Addon V1.2 Patches` - DragoAnal.1.0
+
+### Removed
+- `CACO'S JUMPING` - not needed anymore (covered by another patch)
+- `CritterSpawn Congestion Fix - Script Call Reduction` - derived a bit too much from original idea, similar mod is included in UOSC anyway
+- `OnMagicEffectApply Replacer` - included in UOSC
+- `Dragonactorscript infinite loop fix` - included in UOSC
+- `Bonemold Armors and Weapons Retexture SE` - outdated, replaced with AIO retexture
+- `Falmer Armors and Weapons Retexture SE` - outdated, replaced with AIO retexture
+- `Horse Save Load Fix` - replaced with `Saving on Steed - Horse Save Load Fix SKSE`
+- `HDT-SMP Slot 32 Fix` - not needed with FSMP 3.x
+- Everything related to `Sunder and Wraithguard - Editable Vault Cell (Cell Bug Workaround)` - not needed anymore, the bug is fixed in `SSE Engine Fixes` 7.0.14+ via `bESLCELLLoadBug = true` (what used it: CACO'S LUX, Lux - Wraithguard patch, Navigator, kyryptopypr patches hub)
+- `Bone Wolf Shutdown Fix` - included in TCIY patch already
+- `No Silly Physics Damage - Carts Pots Bones etc` - included in USMP
+- `Lucien - Room Markers for Dumzbthar` - Unneeded since 1.7x of Lucien mod
+- `Katana Follower` - most people didn't like it, and it's a free ESP slot
+- `Elana Darkfire` - removed because it was a Patreon mod, and Patreon forces login to get NSFW stuff, which fails lots of downloads for our users.
+- `SMP-NPC crash fix` - included in FSMP 3.x+
+- `OWL - CC Crossbows` - included in `Open World Loot - Creation Club Integration` now
+- `Crossbow Integration` - OWL handles all that now
+- `Pets of Skyrim (CC) Collision Patch` - it's functionality is included in `I'm Walkin' Here NG Expanded` now
+- `Creation Club Integration - Armours` - OWL handles all that now
+- `Curated Curios - A Creation Club Integration Mod` - part of Tamrielic Distribution now
+- `Morrowind Threads (Netch Leather Distribution)` - part of Tamrielic Distribution now
+- `Pirate's Life for Me (Dead Man's Dread Distribution)` - part of Tamrielic Distribution now
+- `CBBE 3BA Creation Club` - done better by `CBBE 3BA Vanilla Outfits Redone`
+- `Creation Club Content - Properly Environment Mapped` - replaced by multiple better mods
+- `Devour` - replaced by `Blood and OStim`
+- `Undeath Classical Lichdom - The Ascension (Lite)` - old and incompatible with the latest UCL
+- `No Thieves Guild Grind`, `All Thieves Guild Jobs Concurrently`, `Stackable Stones of Barenziah with Optional Quest Markers` - replaced by `Thieves Guild Plus Plus - A Questline Overhaul`
+- `Chest Mimics - Mihail` - from suggestions
+- `OBody Next Generation ORefit JSON Master List` - replaced by `ORefit Masterlist - 69 Beauties and much more - ULTIMATE MERGED OBody NG`
+- `Eli's Coffee Mod` - very old, almost not used in LN at all
+- `Project New Reign - Nemesis Unlimited Behavior Engine` - replaced by `Pandora Behaviour Engine Plus`
+- `Nemesis Creature Behaivour - WereWolf Addon` and `Nemesis Creatures BEHAVIOUR compatibility` - not needed, Pandora has native creature support
+- `Disable Turn Animation NG` - replaced by `Disabled Turn Animations`
+- `OStim Better Blowjobs`, `Know Your Limits` - not needed anymore, `PPA - Procedural Penis Animations` covers what both of them did
+
+
+### Updated
+- `ENB` - updated to latest version of `0.505` (from 05.08.2026)
+- `SKSE` - 2.2.6 -> 2.2.8 (latest for 1.6.1170 version of Skyrim)
+- `Unofficial Skyrim Modder's Patch - USMP SE` - 2.6.7 -> 2.6.8b
+- `Auto Parallax` - 1.0.27 -> 1.0.28
+- `Address Library for SKSE Plugins` - 11 -> 13
+- `Notification Log SSE NG` - 1.4 -> 1.5
+- `Scaleform Translation Plus Plus NG` - 1.8 -> 1.10
+- `ConsoleUtilSSE NG` - 1.5.1 -> 1.6.1
+- `JContainers SE` - 4.2.9 -> 4.2.13.1
+- `powerofthree's Tweaks` - 1.15.1 -> 1.17.1
+- `Yes Im Sure NG` - 1.7 -> 1.8
+- `Stay At The System Page NG` - 1.6 -> 1.7
+- `I'm walkin' here NG` - 1.6 -> 1.9.1 (replaced with `I'm Walkin' Here NG Expanded`)
+- `Save and Load Accelerator for SKSE Cosaves - S.L.A.C.K.` - 1.3.2 -> 1.5.0
+- `Mum's the Word NG` - 2.1 -> 2.2
+- `Comprehensive Attack Speed Patch - SKSE` - 1.1.2.15 -> 1.1.5.1
+- `SKSE Menu Framework` - 3.7 -> 3.14.1
+- `Unofficial Skyrim Special Edition Patch` - 4.3.6c -> 4.3.9c
+- `Enhanced Reanimation` - 1.5.1 -> 1.5.2
+- `SSE Display Tweaks` - 0.5.16 -> 0.5.25
+- `More Informative Console` - 1.2.2 -> 1.2.3.1
+- `Ultimate Optimized Scripts Compilation` - 1.7 -> 1.83
+- `Auto Input Switch` - 1.2.3 -> 1.3.0
+- `SSE Engine Fixes` - 7.0.19 -> 7.0.20
+- `Mfg Fix NG` - 1.0.4 -> 1.0.9
+- `Keyword Item Distributor` - 3.4.0 -> 4.1.0
+- `Spell Perk Item Distributor (SPID)` - 7.1.3 -> 7.3.3
+- `Sound Record Distributor` - 1.5.1 -> 1.5.4
+- `Base Object Swapper` - 3.4.1 -> 3.5.0
+- `PhotoMode` - 2.0.3 -> 3.0.3
+- `Navigator - Navmesh Fixes` - 1.8.0 -> 1.8.3 (removed Vault Cell patch and Rift Tower patch, not needed anymore)
+- `Crash Logger SSE AE VR` - 1.20.1 -> 1.25.0
+- `powerofthree's Papyrus Extender` - 6.3.0 -> 6.5.2
+- `Behavior Data Injector Universal Support` - 0.13.0.1 -> 0.13.0.4
+- `Run For Your Lives` - 4.0.6 -> 4.0.7
+- `Alt-Tab Stuck Key Fix NG` - 1.1 -> 1.3.5
+- `Better Jumping AE` - 1.8.6 -> 1.9.4
+- `Encounter Zones Unlocked AE` - 1.5.4 -> 1.6.1
+- `Read Or Take SKSE` - 1.4 -> 1.5.1
+- `Animation Queue Fix` - 1.0.1 -> 1.0.2
+- `AGO - Nemesis Patch` -> `AGO - Nemesis or Pandora Patch` - 1.3.2
+- `Dual Wield Behavior Fixes - Nemesis Files` -> `Dual Wield Behavior Fixes - Nemesis or Pandora Files` - 2.0.0
+- `Stagger Effect Fix` - 1.0.3 -> 1.0.4
+- `Widescreen Scale Removed` - 1.0.4 -> 1.1.0
+- `Simple Offence Suppression` - 2.2.1 -> 2.3.1
+- `Whose Quest is it Anyway NG` - 1.5 -> 1.6
+- `Aurora Fix` - 1.0.1 -> 1.0.2
+- `Dual Casting Fix` - 1.0 -> 1.0.1
+- `Camera Persistence Fixes` - 1.1 -> 1.2
+- `Better Combat Escape - NG` - 1.0.1 -> 1.0.4
+- `Zero Bounty Hostility Fix` - 0.5 -> 0.8.1 (and switched to SKSE version)
+- `NPC AI Process Position Fix - NG` - 1.1.1 -> 1.1.3
+- `Media Keys Fix SKSE` - 1.0.1 -> 1.0.2
+- `ENB Anti-Aliasing - AMD FSR 3.1 - NVIDIA DLAA` - 1.2.3 -> 1.2.4
+- `ENB Terrain Blending Fix` - 1.1.0 -> 1.1.1
+- `Sky Reflection Fix for ENB` - 1.0.1 -> 1.0.2
+- `Essential Favorites` - 2.3 -> 2.4.2
+- `Favorite Misc Items` - 4.0 -> 4.0.1
+- `DynDOLOD Resources SE` - Alpha 58 -> Alpha 59
+- `DynDOLOD DLL NG` - Alpha 39 -> Alpha 42
+- `LOD Model Library for DynDOLOD` - 1.6.0 -> 1.8.3
+- `Chapter II - Jeremy Soule Inspired Music` - 3.6 -> 4.0
+- `RaceMenu` - 0.4.19.16 -> 0.4.20
+- `Racemenu(SKEE) cosave Load Crash Fix` - 1.1.0 -> 1.1.1
+- `Modex - A Mod Explorer Menu` - 1.2.3 -> 2.2.1 (3.0 is ignored for now, buggy)
+- `Static Mesh Improvement Mod Improvement Mod` - 1.13.1 -> 1.14.1
+- `Skyrim Landscape and Water Fixes` - 10.0.1 -> 10.6
+- `Assorted Mesh Fixes` - 0.139.1 -> 0.140
+- `Illustrious Whiterun - Complex Materials Parallax` - 3.8 -> 4.0
+- `SmoothCam` - 1.7 -> 1.7.1
+- `Random Main Menu Music` - 1.0.1 -> 1.0.2
+- `CoMAP - Common Marker Addon Project` - 4.3.0 -> 4.5.0
+- `Subtitles` - 0.6.2 -> 0.7.0
+- `Hotkey Reminder` - 1.0.6 -> 1.0.8
+- `Next-Gen Decapitations` - 1.4.3 -> 1.4.4
+- `Tween Menu Overhaul` - 1.1 -> 1.2
+- `Tween Menu Overhaul - Nordic UI - Alternative` - 2.1 -> 2.3
+- `Assorted Nordic UI Tweaks and Patches` - 1.1.2 -> 2.4
+- `Experience` - 3.7.3 -> 3.7.4
+- `Skyrim Skill Uncapper for SE and AE` - 2.2.3 -> 2.2.4
+- `Paired Animation Improvements` - 1.0.2 -> 1.0.3
+- `Auto Input Switch` - 1.3 -> 1.3.1
+- `Legacy of the Dragonborn SSE` - 6.10 -> 6.10.2
+- `Skyrim Extended Cut - Saints and Seducers` - 1.1.1 -> 1.1.3
+- `Vigilant SE` - 1.8.0 -> 1.8.2 (+ High Res Pack and Voiced Addon updates)
+- `Vigilant SE - TrueHUD Boss Bar` - 1.0 -> 1.8.1b
+- `VIGILANT - HIMBO V5 Refits` - 2.2.1 -> 2.2.4
+- `The Wheels of Lull SE` - 5.3.2.1 -> 6.0.0.3
+- `Paarthurnax - Quest Expansion` - 1.12 -> 1.13
+- `Headhunter - Bounties Redone` - 1.6 -> 1.6.1
+- `Extended Encounters` - 1.7 -> 1.7.1
+- `Unique Map Weather` - 1.1.1 -> 1.1.2
+- `Splashes of Storms` - 1.3.1 -> 1.4.0
+- `Icy Cave Remaster` - 2.2.3 -> 3.2.0
+- `CC's Enhanced Ore Veins` - 9.0.1 -> 10.0.0
+- `Additional Clockwork` - 3.0.5 -> 3.0.6
+- `Storm Lightning for SSE and VR (Minty Lightning 2019)` - 1.4.22 -> 1.4.25
+- `Water for ENB` - 2.17 -> 2.21
+- `Dynamic Things Alternative - Base Object Swapper` - 0.4.1 -> 0.5.0
+- `Nordic Cows` - 1.1 -> 1.3 (+ updated our patch for USSEP)
+- `Genesis Unleashed Levelled` - 6.5 -> 7.2
+- `Spark of Life` - 1.0.2 -> 1.0.4
+- `Deadly Dragons SE` - 6.6.1 -> 7.3.1 (+ updated the patches)
+- `HorsePower - Modernized Horse Riding (Total Riding Overhaul)` - 1.0.3 -> 1.2 (+ added Saturalia Reindeer and Dwemer Horse patches)
+- `Remiel-Custom Voiced Dwemer Specialist and Companion` - 1.7.5 -> 1.7.6 (+ separate hotfix)
+- `Lucien - Immersive Fully Voiced Male Follower` - 1.6.3 -> 1.7.2 (plus cleaned up the patches)
+- `Gore - A Companion Mod` - 1.8.18 -> 1.8.25
+- `Follower Dialogue Expansion - Brelyna Maryon` - 3.0 -> 3.0.1-MOST-UPDATED
+- `Follower Dialogue Expansion - Jenassa` - 6.0.1 -> 8.0
+- `Follower Dialogue Expansion - Aela the Huntress` - 8.0 -> 9.0 (+ patched the new combat block esp not to conflict with RDO and other mods touching Dialogue Topics)
+- `Follower Dialogue Expansion - Mjoll the Lioness` - 1.5 -> 2.0.2-MOST-UPDATED
+- `Follower Dialogue Expansion - Borgakh the Steel Heart` - 1.1 -> 2.0
+- `Serana Dialogue Add-On SE` - 4.3 -> 4.3.2
+- `SDA Patch Hub SE` - 2.9.6 -> 2.9.7
+- `Ashe - Crystal Heart SE` - 1.3.3 -> 1.3.7 (+ disabled Impressionist VO)
+- `Ashe and Serana Banter Patch` - 1.0.6 -> 1.0.10
+- `Milfactory Asset Hub - CBBE - CBBE Special - 3BA` - 2.2 -> 2.3
+- `CBPC - Physics with Collisions for SSE and VR` - 1.6.4 -> 1.7.2
+- `Enhanced Invisibility` - 1.4.1 -> 1.4.2
+- `FSMP - Faster HDT-SMP` - 2.5.1 -> 4.1.1
+- `The New Gentleman` - 4.2.5 -> 4.2.6
+- `Highly Improved Male Body Overhaul` - 5.6.1 -> 5.8.0 (+ updated BG-DG-DB Refits and CC Refits, removed Physics Addon, we don't use it anyway)
+- `Feminine Khajiit Textures (Grey Cat and Leopard) [CBBE]` - 3.2 -> 4.0
+- `Masculine Khajiit Textures (Grey Cat and Leopard) [SOS-FULL]` -> 2.1 -> 3.0
+- `Security Overhaul SKSE - Lock Variations` - 4.0 -> 4.1.0
+- `Security Overhaul SKSE - Some More Locks` - 1.0.12 -> 1.0.13
+- `Archery Locational Damage` - 2.1 -> 2.1.6
+- `Open World Loot` - 2.4.0 -> 2.8.0
+- `Open World Loot - Creation Club Integration` - 3.2 -> 4.5
+- `Unofficial Skyrim Creation Club Content Patch` - 8.2.0 -> 8.5.0
+- `Tamrielic Distribution` - 1.4.1 -> 2.0.5 (+ removed unneeded stuff, fixed leveled lists and other issues)
+- `Heavy Armory - New Weapons` - 6.1.7 -> 6.3.0
+- `CBBE 3BA Vanilla Outfits Redone` - 5.1.3 -> 5.5.1
+- `Ancient Nord Stalhrim` - 1.2.4.1 -> 1.3.1
+- `Ancient Nord Armors and Weapons Retexture SE` - 2.0 -> 2.0.2
+- `Chitin Armors Retexture SE` (now `Chitin Armors and Weapons Retexture SE`) - 1.0 -> 2.0
+- `Dragon Armors and Weapons Retexture SE` - 2.2.1 -> 2.2.2
+- `Dwemer Armors and Weapons Retexture SE` - 1.0 -> 2.0
+- `Ebony Armors and Weapons Retexture SE` - 2.0.2 -> 2.1.2
+- `Elven Armors and Weapons Retexture SE` - 2.0 -> 2.0.1
+- `Glass Armors and Weapons Retexture SE` - 2.2  -> 2.2.1
+- `Guards and Stormcloaks Armors Retexture SE` - 1.1 -> 1.1.1
+- `Imperial Armors and Weapons Retexture SE` - 2.0.2 -> 2.0.5
+- `Iron Armors and Weapons Retexture SE` - 2.1 -> 2.1.1
+- `Leather Armors Retexture SE` - 2.0 -> 2.0.1
+- `Silver Armor and Weapons Retexture SE` - 2.0.1 -> 2.1.1
+- `Steel Armors and Weapons Retexture SE` - 2.1.1 -> 2.1.2
+- `Divine Crusader Retexture SE` - 1.0 -> 2.0
+- `Faction Armors and Weapons Retexture SE` - 1.1 -> 1.1.1
+- `Growl - Werebeasts of Skyrim` - 3.4.1 -> 3.7.2
+- `Ricochet - Arrow Physics Framework` - 1.0.2 -> 1.1.3
+- `Smart Talk (Dialogue Menu Enhancer)` - 1.0.5 -> 1.0.6
+- `Broken Feathers (Full Skyrim Arrow Pack)` - 1.0 -> 1.0.1
+- `Skyrim Revamped - Complete Enemy Overhaul` - 2.43 -> 2.44
+- `Skyrim Revamped Rebalanced and Releveled` - 2.81 -> 2.84
+- `Embers XD` - 3.2 -> 3.2.8
+- `Simple Dual Sheath` - 1.5.7 -> 1.5.9
+- `Custom Skills Framework` - 3.1 -> 3.2
+- `Core Impact Framework` - 1.2.8 -> 2.0.7
+- `Inertia (Floating Gear Fix)` - 1.1.0 -> 1.1.1
+- `Soaking Wet - Character Wetness Effect` - 1.2.1 -> 1.2.2
+- `Dynamic Bloodpool Framework` - 1.0.1 -> 1.1.1
+- `Sanguine Symphony` - 1.2.1 -> 1.3.5
+- `FYX - Alpha Blood Blending Bug - NG` - 1.0 -> 1.0.1
+- `Death Idle Fix` - 1.0.1 -> 1.0.2
+- `Goetia Animations - Conditional Shouts` - 1.2 -> 1.4
+- `Goetia Animations - Enchanted Magic Staves` - 1.51 -> 1.7
+- `Goetia Animations - Magic Spell Casting` - 1.4 -> 1.5b
+- `Smooches of Skyrim` - 1.8.1 -> 1.9.2
+- `I'm Glad You're Here` - 3.4 -> 3.6 (it's config now lives in MCM Helper settings. Removed MCM recording)
+- `OStim Standalone - Advanced Adult Animation Framework` - 7.3.5d -> 7.5.1
+- `Lovemaking Compendium for OStim Standalone` - 1.23 -> 1.30
+- `Drago's Love Those Neighbours for OStim Standalone` - 1.9 -> 1.12
+- `Drago's Love Those Neighbours Foot Add On` - 1.1 -> 1.3a
+- `Anub's animations for Ostim Standalone` - 2.3.2 -> 3.0.2
+- `Leito's animations for Ostim Standalone` - 1.3.2 -> 3.0.0
+- `M2M Animations by Tweens for OStim Standalone` - 2.0 -> 3.0.0
+- `Nibbles' animations for Ostim Standalone` - 2.3.2 -> 3.0.1
+- `ORomance Plus` - 2.15 -> 3.01
+- `More Adventures For OStim` - 1.2.4 -> 1.2.5
+- `Relic Hunter- Guildmaster Start` - 3.0 -> 3.0.1
+- `Mesh patches for Lux and Lux Orbis` - 1.7.1 -> 1.9
+- `DF - Creatures by Xtudo - Wolves of Skyrim` - 2.3 -> 3.8
+- `FPS Boost for Quest Mods` - 1.12 -> 1.14.0
+- `KR2's Kaidan NPC Overhaul - No-IF De-Standalone` - 1.2.5 -> 1.2.6
+- `Serana Dialogue Add-On Patch Hub` - 2.9.7 -> 2.9.8
+- `Undeath - Classical Lichdom` - 3.60 -> 4.12 (+ updated the patches)
+- `CC Farming - Tweaks Enhancements and Quest Expansion` - 1.5.5 -> 1.5.7
+- `Fluffworks - Auto Patches` - 2.3 -> 2.4
+- `Frozen Electrocuted Combustion (FEC)` - 6.1 -> 6.1.3
+- `kryptopyr's Patch Hub` - 4.2.4 -> 4.4.1 (removed Wintersun Patch, switched to There is No Umbra TCIY + Wintersun patch instead. Also used regular Sunder and Wraithguard TCIY patch).
+- `ENB Frame Generation` - 1.0.2 -> 1.0.3
+- `Dismemberment Framework` - 1.2.2 -> 1.2.3
+- `Legacy of the Dragonborn Patches (Official)` - 6.10.2 -> 6.10.9
+- `Legacy of the Dragonborn - Creation Club Patch Hub` - 6.0.12 -> 6.0.13
+- `Legacy of the Dragonborn - The Curator's Companion` - 7.0.8 -> 7.0.9
+- `Legacy of the Dragonborn - Follower Room Patches` - 4.0.13 -> 4.0.16
+- `Grass Cache Helper NG` - 1.0.1 -> 1.0.2
+- `No Grass In Objects` 1.5.11 -> 1.6.14
+- `Config INI - GrassControl.ini` - 1.5.9 -> 1.6.3
+- `Open Animation Replacer` - 2.2.6 -> 3.2.1
+- Tools:
+	- `BodySlide and Outfit Studio` - 5.7.1 -> 5.8.2
+	- `Synthesis` - 0.35.5 -> 0.36.6
+	- `ACMOS Road Generator` - 4.0 -> 4.1
+	- `DynDOLOD 3 Alpha` (that ships both DynDOLOD and TexGen) - Alpha-198 -> Alpha-211
+
+
+### Fixed/Patched
+- Copied `Skyrim - Misc.bsa` and `Skyrim - Voices_en0.bsa` to Stock Game from the real 1.7.104 (otherwise it won't compile). Should not affect the game as tested by other modlists.
+- Added `bOverrideVanillaArmsOnMovement=1` in _Licentia NEXT - Improved Camera Configuration_
+- **Fixed third-person bow aiming and the crouched bow pose.** Switching to Pandora did *not* fix the long-standing arrow/bow misalignment on its own - it turned out to be three separate faults stacked on top of each other, and all three are now fixed:
+	- **Arrow hand tracking the camera.** `Precision NPC Combat Fix`'s behaviour patch applied an ungated twist to the right shoulder on every one-handed state, so the arrow hand drifted off the bow whenever the camera moved. Both of those mods were dropped (see Removed)
+	- **Drawn-bow aim.** `TUDM` replaces the aim modifier list in `PlayerBowModList` with its own, which drops the twist modifiers that keep the draw hand on the bow. Restored by `Licentia NEXT - TUDM Bow Aim Fix (Pandora)`, which reinstates them under its own patch id - so unlike the original fix on Nexus, the Nemesis engine no longer has to stay installed just to provide them
+	- **Crouched bow pose, standing and moving.** `Archery Gameplay Overhaul` builds that pose by blending the standing bow-holding arms onto the sneaking body, using bone masks to pick which bones the layer drives. Pandora writes those masks three elements out of position, so the layer drove `Spine/Spine1/Spine2` instead of the arm chain and dropped `R Forearm` entirely - arms splayed apart and the upper body leaned back. `Licentia NEXT - AGO Sneak Bow Fix (Pandora)` replaces the affected blend layers with its own correctly-written ones, in both `1hm_behavior` (crouched idle) and `1hm_locomotion` (crouch-walking). Reported upstream to Pandora
+- Updated hotkeys: Serio's Cycle Hotkeys - `Ctrl` + `Home`, updated MCM recordings, refreshed control map F11 menu (also locked it by default), photomode is Shift + U now
+- Various leveled item lists fixes (mostly for jewelry and OWL/Tamrielic Distribution)
+- `True Directional Movement` + `Precision` config updates by Jake and me:
+	- For TDM set:
+		bTargetLockEnableLockBehindTarget = 1
+		fTargetLockPitchAdjustSpeed = 4.000000
+		fTargetLockDistanceMultiplierSmall = 5.000000
+	- For Precision set:
+		fFirstPersonAttackLengthOffset = 9.000000
+		bDisableCharacterBumper = 0 (this is needed by `Variadic Collision Dynamic`)
+- Turned off Aela, Jenassa and Serana's `Amorous Adventures` quests in our small custom patch (they conflict with FDE, and Serana's one was disabled additionally by SDA)
+- Removed broken HPH replacers for Immersive Patrols
+- Fixed Archery Locational Damage's broken config (made our own based on the newest config format)
+- Fixed all Dark Faces reported by DarkFaceIssueReporter (fixed assets added to `Licentia NEXT - Facegen` mod), updated our ignore config for DarkFaceIssueReporter at `\tools\xEdit\Edit Scripts\DarkFaceIssueReporterIgnore.ini` to ignore all beast/moster races that don't actually have FaceGen-able faces (like ghosts, automatons, etc)
+- Fixed `Modpocalypse` mods broken Bretons tints causing "sunburned" faces, common issue for all their mods (7 NPCs were affected, all fixed via xEdit + CK facegen)
+- Patched a few child NPCs in the list that were not converted to RS Children properly
+- **Fixed 8 SPID distributions in `Enemy (R)Evolution of Skyrim` (EEOS) that were silently never applied.** Its `SacrosanctSpellsAndPerksForNPCs_DISTR.ini` had 8 lines carrying one pipe section too many (8 where SPID accepts 7), so SPID skipped each of those lines whole - the 4 *Weakness to Sunlight* and the 4 *Weakness to Fire* stages never reached vampire NPCs. There is no in-game symptom and nothing in the Papyrus log; it shows up only in SPID's own log as `Too many sections. Expected at most 7, but got 8`. Fixed by `Licentia NEXT - Enemy (R)Evolution of Skyrim - EEOS SPID Fix`, a copy of the file with the one redundant `NONE` removed from those 8 lines and nothing else changed, so it re-diffs cleanly against EEOS on an update. Verified in a live run: 8 parse failures, now 0
+- Re-ran Bodyslide
+- Re-ran Pandora
+- Re-ran Synthesis
+- Re-ran TexGen/ACMOS/Grass Cache/DynDOLOD
+
+---
+
 ## LICENTIA NEXT `13.6.1`
 :::note
 - 🗓️ **Released** 17 February 2026
