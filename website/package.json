@@ -14,6 +14,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "sync-doc-images": "node ./tools/sync-doc-image-dimensions.mjs",
+    "check-assets": "node ./tools/check-assets.mjs",
     "optimize-images": "node ./tools/optimize-images.mjs",
     "optimize-images:showcase": "node ./tools/optimize-images.mjs --showcase-only",
     "optimize-images:dry-run": "node ./tools/optimize-images.mjs --dry-run",

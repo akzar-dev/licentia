@@ -4,17 +4,7 @@ import Head from '@docusaurus/Head';
 import clsx from 'clsx';
 import styles from './media.module.css';
 import SiteImage from '@site/src/components/SiteImage';
-
-const shotsReq = (require as any).context(
-  '@site/static/img/pages/main/screenshots',
-  false,
-  /\.(png|jpe?g|webp)$/i
-);
-type MediaShot = { id: string; src: string };
-const ALL_SHOTS: MediaShot[] = shotsReq.keys().map((k: string) => ({
-  id: k,
-  src: shotsReq(k).default as string,
-}));
+import { ALL_SCREENSHOTS } from '@site/src/data/screenshots';
 
 const MEDIA_PAGE_URL = 'https://licentia.quest/media';
 const MEDIA_PAGE_TITLE = 'Media 📸';
@@ -63,7 +53,6 @@ export default function MediaPage(): React.JSX.Element {
           <header className={styles.header}>
             <h1
               className="licentia-heading licentia-heading--h1"
-             
             >
               Media
             </h1>
@@ -73,7 +62,7 @@ export default function MediaPage(): React.JSX.Element {
           <section id="screenshots" className={styles.section} aria-label="Full screenshot gallery">
             <h2 className={styles.sectionTitle}>📸 Screenshots</h2>
             <div className={styles.grid}>
-              {ALL_SHOTS.map((shot, i) => (
+              {ALL_SCREENSHOTS.map((shot, i) => (
                 <figure key={shot.id} className={styles.card}>
                   <SiteImage
                     src={shot.src}

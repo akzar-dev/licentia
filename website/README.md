@@ -17,6 +17,41 @@
 
 <div align="center">
 
+## 🧭 Dev flow cheat sheet
+
+</div>
+
+| I changed... | Run this | Why |
+| --- | --- | --- |
+| Added a **showcase screenshot** (dropped any file into `static/img/pages/main/screenshots/`) | `npm run optimize-images:showcase` | Converts to WEBP, caps width at 1920 (aspect ratio kept), renames canonically. Picked up automatically afterwards — no code change needed. |
+| Added/replaced a **docs image** used via `<img>` / `<DocImage>` | `npm run sync-doc-images` | Writes the real `width`/`height` into the source so the page doesn't shift while loading. **CI fails if you skip this.** |
+| Added a **decorative heading** in `.md` (the `<!-- licentia-heading -->` marker) | `npm run sync-doc-images` | Expands the marker into the styled span. |
+| Added images anywhere else | `npm run optimize-images` | Lossless PNG pass + key WEBP re-check (cache-guarded, so nothing is re-compressed twice). |
+| Anything at all, before pushing | `npm run typecheck && npm run build` | The same things CI will run. |
+| Just curious about dead or unprocessed assets | `npm run check-assets` | Lists orphan images and screenshots that still need optimizing. |
+
+Nothing needs running for: pure text edits, CSS-only changes, or `.tsx` images whose `width` / `height`
+you set by hand.
+
+### 🚦 What CI enforces
+
+Both workflows — `test-deploy.yml` on pull requests and `deploy.yml` on `main` — run these in order:
+
+1. **Typecheck** (`tsc`).
+2. **Image cache integrity** — fails if `.image-opt-cache.json` is not valid JSON. It has been
+   corrupted by a bad merge before, and a silently-discarded cache would re-compress every lossy
+   asset, so this is deliberately loud.
+3. **Doc image dimensions in sync** — runs `sync-doc-images` and fails if it changed anything,
+   i.e. someone added an image without recording its dimensions.
+4. **Asset hygiene report** — informational only. Orphan images and un-processed screenshots, written
+   to the run summary; never fails the build.
+5. **Build** (`docusaurus build`).
+
+Every run finishes by writing a status table to the GitHub Actions run summary, and the deploy
+workflow adds the live URL.
+
+<div align="center">
+
 ## ℹ️ Features
 
 </div>
@@ -194,13 +229,41 @@
     npm run optimize-images:showcase
     ```
   - The script will:
-    - convert new files to `webp` (`quality=85`, resized to `1920` width max),
-    - rename them to sequential names like `s4.webp`, `s5.webp`, etc. based on existing `sN.webp`,
+    - convert new files to `webp` (`quality=85`, resized to a **max width of `1920`**; height is
+      left alone, so the original aspect ratio is preserved and images are never upscaled),
+    - rename them to sequential names like `licentia-next-screenshot-4.webp`,
+      `licentia-next-screenshot-5.webp`, etc., continuing from the highest existing number
+      (the legacy `sN.webp` names are still recognised when counting),
     - remove the original dropped files after conversion.
+  - Once renamed, a screenshot is **never re-compressed**: the rename is what marks it as done,
+    because anything already matching the canonical name is skipped as a candidate. This is what
+    keeps repeated runs from degrading quality (WEBP is lossy, so each re-encode would lose a
+    little more).
+  - Screenshots are picked up automatically by [`src/data/screenshots.ts`](./src/data/screenshots.ts),
+    which bulk-loads the whole directory. **No code change is needed after adding one.**
+  - Aspect ratio: contributors send all sorts (16:9, 16:10, ...). The pipeline keeps whatever they
+    sent. The homepage showcase and the media grid frame them in fixed 16:9 cards with
+    `object-fit: cover`, so an off-ratio image is cropped in the *thumbnail* only; clicking it opens
+    the zoom viewer, which uses `object-fit: contain` and shows the whole image.
   - Preview only (no file changes):
     ```bash
     npm run optimize-images:showcase:dry-run
     ```
+
+- Team avatars directory: `static/img/pages/team`
+  - Drop in a new avatar named exactly after the existing one (e.g. `Vermillion.png` to replace
+    `Vermillion.webp`) in `.png/.jpg/.jpeg/.gif/.webp`, then run:
+    ```bash
+    npm run optimize-images
+    ```
+  - The script converts it to `webp` (`quality=82`), fits it inside `320x320` without upscaling,
+    **overwrites the matching `.webp`, and deletes the file you dropped in**. Animated GIFs are
+    handled too.
+  - Keeping the output name identical means `src/pages/team.tsx` needs no edit -- it imports the
+    `.webp` by name, and the content hash in the built filename changes automatically so browsers
+    pick up the new image.
+  - Only the resulting `.webp` is recorded in the cache, never the file you dropped in, so
+    re-dropping the same source always converts again rather than being silently skipped.
 
 - Full optimization pass:
     ```bash
@@ -222,10 +285,24 @@
     npm run optimize-images:dry-run
     ```
 
+- Asset hygiene report:
+    ```bash
+    npm run check-assets
+    ```
+  - Lists **orphan images** (files under `static/` or `docs/` that nothing references) and any
+    **showcase screenshots still carrying their drop-in names** (i.e. `optimize-images:showcase`
+    hasn't been run yet).
+  - Runs automatically in both workflows as an *informational* step and writes its findings to the
+    GitHub run summary. It never fails a build; add `--strict` if you ever want it to.
+
 - Notes:
   - Existing WEBP files are only rewritten when re-encoding results in a smaller file.
   - The script keeps a cache file at `.image-opt-cache.json` to avoid reprocessing unchanged files on later runs.
   - Use `node ./tools/optimize-images.mjs --force` if you intentionally want to ignore cache and re-check everything.
+  - On every real run the script prunes cache entries whose file no longer exists (deleted images).
+    If more than half the entries are missing it refuses to prune and warns instead, on the
+    assumption that the working tree is incomplete rather than the images being genuinely gone --
+    pruning in that situation would make the next run re-encode every lossy asset.
   - External image URLs are untouched.
 
 ### Image and heading pipeline

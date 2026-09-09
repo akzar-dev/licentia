@@ -55,6 +55,12 @@ jobs:
           fi
           echo "doc image dimensions are in sync"
 
+      - name: Asset hygiene report (informational)
+        # Report-only: never blocks a build. Writes its own section to the run summary
+        # listing unreferenced images and any showcase screenshots that still need
+        # `npm run optimize-images:showcase`. Add --strict to make it fail instead.
+        run: npm run check-assets
+
       - name: Test build website
         id: build
         run: npm run build

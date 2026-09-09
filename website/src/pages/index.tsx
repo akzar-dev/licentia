@@ -6,25 +6,21 @@ import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
 import SiteImage from '@site/src/components/SiteImage';
+import { ALL_SCREENSHOTS, type Screenshot } from '@site/src/data/screenshots';
 
 /** ------- CONFIG -------- */
-/** Load every image in /static/img/pages/main/screenshots */
-const shotsReq = (require as any).context(
-  '@site/static/img/pages/main/screenshots',
-  false,
-  /\.(png|jpe?g|webp)$/i
-);
-type ShowcaseShot = { id: string; src: string };
-const ALL_SHOTS: ShowcaseShot[] = shotsReq.keys().map((k: string) => ({
-  id: k,
-  src: shotsReq(k).default as string,
-}));
 const ABOUT_TAGLINE = '"Unleash Power, Indulge Desire, Leave Heads Rolling"';
 const FEATURES_TAGLINE = 'Everything you need, pre-configured and ready to play';
 const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may feature them here!';
 const SHOWCASE_CTA_LABEL = 'View full gallery';
 const HOME_META_DESCRIPTION =
   'Licentia NEXT: The ultimate 1-click install NSFW Skyrim AE modlist built around LotD. Better combat, graphics, quests & more!';
+/** Inline brand-gold emphasis. Wraps the highlight class so the long About copy
+ *  doesn't repeat a verbose styles.highlightText span dozens of times. */
+function Hl({ children }: { children: ReactNode }) {
+  return <span className={styles.highlightText}>{children}</span>;
+}
+
 /** Main Hero function */
 function Hero() {
   const { siteConfig } = useDocusaurusContext();
@@ -46,7 +42,7 @@ function Hero() {
         />
 
         <p className={styles.description}>
-          <span className={styles.highlightText}>Licentia NEXT</span> is a 1-click install NSFW
+          <Hl>Licentia NEXT</Hl> is a 1-click install NSFW
           Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim,
           combat/graphics upgrades, new quests, and followers!
         </p>
@@ -73,7 +69,7 @@ function Hero() {
 function AboutSection() {
   return (
     <section id="about" className={clsx(styles.aboutSection, styles.deferSection)}>
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+      <div className={clsx('container', styles.aboutContainer)}>
         <h2 className={styles.sectionTitle}>
           <span
             className="licentia-heading licentia-heading--display"
@@ -85,27 +81,27 @@ function AboutSection() {
         <p className={clsx(styles.tagline, styles.sectionTagline)}>
           <i>{ABOUT_TAGLINE}</i>
         </p>
-        <div style={{ fontSize: '1.15rem', lineHeight: '1.7', marginTop: '1rem' }}>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
-            <span className={styles.highlightText}>Licentia NEXT</span> is the direct descendant of the legendary <span className={styles.highlightText}>Licentia BLACK</span>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition <span className={styles.highlightText}>Wabbajack</span> modlist built around the massive <span className={styles.highlightText}>Legacy of the Dragonborn</span> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, it transforms Skyrim into a truly next-generation experience. We have carefully curated over <span className={styles.highlightText}>1,600 mods</span> to deliver stability and seamless integration without the hassle of manual conflict resolution.
+        <div className={styles.aboutBody}>
+          <p>
+            <Hl>Licentia NEXT</Hl> is the direct descendant of the legendary <Hl>Licentia BLACK</Hl>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition <Hl>Wabbajack</Hl> modlist built around the massive <Hl>Legacy of the Dragonborn</Hl> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, it transforms Skyrim into a truly next-generation experience. We have carefully curated over <Hl>1,600 mods</Hl> to deliver stability and seamless integration without the hassle of manual conflict resolution.
           </p>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
-            At its core, <span className={styles.highlightText}>Licentia NEXT</span> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <span className={styles.highlightText}>Precision</span>, <span className={styles.highlightText}>Combat Gameplay Overhaul</span>, <span className={styles.highlightText}>Archery Gameplay Overhaul</span> and <span className={styles.highlightText}>Dismemberment Framework</span> that make every encounter feel impactful. Mages are equally spoiled, with a huge spell toolbox built from overhauls like <span className={styles.highlightText}>Apocalypse</span>, <span className={styles.highlightText}>Odin</span>, and <span className={styles.highlightText}>Mysticism</span>.
+          <p>
+            At its core, <Hl>Licentia NEXT</Hl> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <Hl>Precision</Hl>, <Hl>Combat Gameplay Overhaul</Hl>, <Hl>Archery Gameplay Overhaul</Hl> and <Hl>Dismemberment Framework</Hl> that make every encounter feel impactful. Mages are equally spoiled, with a huge spell toolbox built from overhauls like <Hl>Apocalypse</Hl>, <Hl>Odin</Hl>, and <Hl>Mysticism</Hl>.
           </p>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
-            Progression is equally ambitious. A customized <span className={styles.highlightText}>Static Skill Leveling</span> setup and the massive <span className={styles.highlightText}>Vokriinator Black</span> perk package open up a huge range of character builds, letting you lean fully into the kind of overpowered <span className={styles.highlightText}>power fantasy</span> Skyrim is at its best at, whether that means a godlike battlemage, an unstoppable warrior, or a deadly stealth specialist.
+          <p>
+            Progression is equally ambitious. A customized <Hl>Static Skill Leveling</Hl> setup and the massive <Hl>Vokriinator Black</Hl> perk package open up a huge range of character builds, letting you lean fully into the kind of overpowered <Hl>power fantasy</Hl> Skyrim is at its best at, whether that means a godlike battlemage, an unstoppable warrior, or a deadly stealth specialist.
           </p>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
-            Visuals are stunningly upgraded with <span className={styles.highlightText}>Rudy ENB</span> with <span className={styles.highlightText}>NAT 3</span> weathers, <span className={styles.highlightText}>grass cache</span> for lush grass stretching beautifully to the horizon, and thousands of reworked high-resolution textures and meshes. A curated lineup of NPC overhauls, including <span className={styles.highlightText}>Pandorable's</span>, <span className={styles.highlightText}>Bijin</span>, and <span className={styles.highlightText}>Kalilies</span>, helps the world feel just as beautiful up close, while still maintaining a performance-friendly framerate on modern systems.
+          <p>
+            Visuals are stunningly upgraded with <Hl>Rudy ENB</Hl> with <Hl>NAT 3</Hl> weathers, <Hl>grass cache</Hl> for lush grass stretching beautifully to the horizon, and thousands of reworked high-resolution textures and meshes. A curated lineup of NPC overhauls, including <Hl>Pandorable's</Hl>, <Hl>Bijin</Hl>, and <Hl>Kalilies</Hl>, helps the world feel just as beautiful up close, while still maintaining a performance-friendly framerate on modern systems.
           </p>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
-            Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new <span className={styles.highlightText}>lands</span>, complete massive <span className={styles.highlightText}>quests</span>, and recruit unique, fully voiced <span className={styles.highlightText}>followers</span> with improved interactions.
+          <p>
+            Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new <Hl>lands</Hl>, complete massive <Hl>quests</Hl>, and recruit unique, fully voiced <Hl>followers</Hl> with improved interactions.
           </p>
-          <p style={{ marginBottom: '1.5rem', textAlign: 'justify', textJustify: 'inter-word' }}>
-            The <span className={styles.highlightText}>adult systems</span> are built on an optimized, non-intrusive <span className={styles.highlightText}>OStim</span> foundation, integrating <span className={styles.highlightText}>CBPC</span> and <span className={styles.highlightText}>FSMP</span> physics, <span className={styles.highlightText}>OBody</span>, and <span className={styles.highlightText}>Amorous Adventures</span>.
+          <p>
+            The <Hl>adult systems</Hl> are built on an optimized, non-intrusive <Hl>OStim</Hl> foundation, integrating <Hl>CBPC</Hl> and <Hl>FSMP</Hl> physics, <Hl>OBody</Hl>, and <Hl>Amorous Adventures</Hl>.
           </p>
-          <p style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-            Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <span className={styles.highlightText}>Licentia NEXT</span> offers the ultimate customized Skyrim journey.
+          <p>
+            Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <Hl>Licentia NEXT</Hl> offers the ultimate customized Skyrim journey.
           </p>
         </div>
       </div>
@@ -194,12 +190,12 @@ function Showcase() {
   // a stable (unshuffled) slice. Math.random() at render time would produce a different
   // order on the client and cause an SSR hydration mismatch. Shuffle once after mount instead.
   const INITIAL_SHOTS = React.useMemo(
-    () => ALL_SHOTS.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, ALL_SHOTS.length)),
+    () => ALL_SCREENSHOTS.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, ALL_SCREENSHOTS.length)),
     []
   );
-  const [SHOTS, setShots] = React.useState<ShowcaseShot[]>(INITIAL_SHOTS);
+  const [SHOTS, setShots] = React.useState<Screenshot[]>(INITIAL_SHOTS);
   React.useEffect(() => {
-    const a = [...ALL_SHOTS];
+    const a = [...ALL_SCREENSHOTS];
     for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];

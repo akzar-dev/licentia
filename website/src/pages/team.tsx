@@ -3,6 +3,19 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import styles from './team.module.css';
 import SiteImage from '@site/src/components/SiteImage';
+// Avatars are imported as modules rather than referenced by URL string, so the bundler
+// resolves them at build time: a renamed or missing file becomes a build error instead of
+// a silent broken image, and the emitted filenames are content-hashed for cache busting.
+import avatarAkzar from '@site/static/img/pages/team/akzar.webp';
+import avatarCatastrophicApathy from '@site/static/img/pages/team/CatastrophicApathy.webp';
+import avatarNinjawaffle from '@site/static/img/pages/team/ninjawaffle.webp';
+import avatarShadowlock from '@site/static/img/pages/team/shadowlock.webp';
+import avatarElegantDesklamp from '@site/static/img/pages/team/Elegant Desklamp.webp';
+import avatarRyan156 from '@site/static/img/pages/team/Ryan156.webp';
+import avatarNazar from '@site/static/img/pages/team/𝑁𝑎𝑧𝑎𝑟🪬.webp';
+import avatarVermillion from '@site/static/img/pages/team/Vermillion.webp';
+import avatarLeoMaximus from '@site/static/img/pages/team/LeoMaximus.webp';
+import avatarJake71887 from '@site/static/img/pages/team/Jake71887.webp';
 
 type TeamMember = {
   name: string;
@@ -11,33 +24,33 @@ type TeamMember = {
 };
 
 const CORE_TEAM: TeamMember[] = [
-  { name: 'akzar', avatar: '/img/pages/team/akzar.webp' },
-  { name: 'Catastrophic Apathy', avatar: '/img/pages/team/CatastrophicApathy.webp' },
-  { name: 'ninjawaffle', avatar: '/img/pages/team/ninjawaffle.webp' },
-  { name: 'shadowlock', avatar: '/img/pages/team/shadowlock.webp' },
+  { name: 'akzar', avatar: avatarAkzar },
+  { name: 'Catastrophic Apathy', avatar: avatarCatastrophicApathy },
+  { name: 'ninjawaffle', avatar: avatarNinjawaffle },
+  { name: 'shadowlock', avatar: avatarShadowlock },
 ];
 
 const INACTIVE_TEAM: TeamMember[] = [
-  { name: 'Elegant Desklamp', avatar: '/img/pages/team/Elegant Desklamp.webp' },
-  { name: 'Ryan156', avatar: '/img/pages/team/Ryan156.webp' },
-  { name: 'Nazar🪬', avatar: '/img/pages/team/𝑁𝑎𝑧𝑎𝑟🪬.webp' },
+  { name: 'Elegant Desklamp', avatar: avatarElegantDesklamp },
+  { name: 'Ryan156', avatar: avatarRyan156 },
+  { name: 'Nazar🪬', avatar: avatarNazar },
 ];
 
 const SPECIAL_THANKS: TeamMember[] = [
   {
     name: 'Vermillion',
     subtitle: 'The benevolent owner of our Discord server',
-    avatar: '/img/pages/team/Vermillion.webp',
+    avatar: avatarVermillion,
   },
   {
     name: 'LeoMaximus',
     subtitle: 'Our skillful Discord Moderator',
-    avatar: '/img/pages/team/LeoMaximus.webp',
+    avatar: avatarLeoMaximus,
   },
   {
     name: 'Jake71887',
     subtitle: 'The most active Beta Tester and Bug Reporter',
-    avatar: '/img/pages/team/Jake71887.webp',
+    avatar: avatarJake71887,
   },
 ];
 
@@ -93,7 +106,6 @@ export default function TeamPage(): React.JSX.Element {
           <header className={styles.header}>
             <h1
               className="licentia-heading licentia-heading--h1"
-             
             >
               Licentia Team
             </h1>
@@ -103,15 +115,6 @@ export default function TeamPage(): React.JSX.Element {
           <section className={styles.gridCore} aria-label="Core team members">
             {CORE_TEAM.map((member) => (
               <TeamCard key={member.name} member={member} large showSubtitle={false} />
-            ))}
-          </section>
-
-          <div className={styles.separator} aria-hidden />
-          <h2 className={styles.subheading}>⏳ Occasional Contributors</h2>
-
-          <section className={styles.gridInactive} aria-label="Occasional contributors">
-            {INACTIVE_TEAM.map((member) => (
-              <TeamCard key={member.name} member={member} showSubtitle={false} />
             ))}
           </section>
 
@@ -133,6 +136,15 @@ export default function TeamPage(): React.JSX.Element {
                 <h3 className={styles.name}>{person.name}</h3>
                 <p className={styles.role}>{person.subtitle}</p>
               </article>
+            ))}
+          </section>
+
+          <div className={styles.separator} aria-hidden />
+          <h2 className={styles.subheading}>⏳ Occasional Contributors</h2>
+
+          <section className={styles.gridInactive} aria-label="Occasional contributors">
+            {INACTIVE_TEAM.map((member) => (
+              <TeamCard key={member.name} member={member} showSubtitle={false} />
             ))}
           </section>
         </div>

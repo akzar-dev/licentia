@@ -588,3 +588,28 @@ html[data-theme='light'] .ctaSolid {
       drop-shadow(0 0 18px rgba(250, 203, 53, .55)) drop-shadow(0 0 36px rgba(250, 203, 53, .35)) drop-shadow(0 6px 24px rgba(0, 0, 0, .35)) !important;
   }
 }
+
+/* About section body typography.
+   Previously these were inline style={{...}} objects repeated on the wrapper and on
+   every one of the seven paragraphs. */
+.aboutContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aboutBody {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.aboutBody p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.aboutBody p:last-child {
+  margin-bottom: 0;
+}

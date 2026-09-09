@@ -255,7 +255,10 @@ async function optimizeTeamAvatars(cache) {
     converted += 1;
     deleted += 1;
     savedBytes += Math.max(0, input.length - webpBuffer.length) + Math.max(0, prevOutSize - webpBuffer.length);
-    setCacheEntry(cache, inPath, inputHash);
+    // Only the surviving output is cached. The input was just deleted, so caching its path
+    // would leave a dead key behind AND make a later re-drop of the same file a cache hit --
+    // which would skip the conversion (and the delete), silently stranding the source file
+    // in the repo. Drop `user.png` -> get `user.webp`, original removed, every time.
     setCacheEntry(cache, outPath, hashBuffer(webpBuffer));
 
     console.log(
@@ -375,12 +378,48 @@ async function optimizeKeyWebpAssets(cache) {
   return { optimized, unchanged, missing, cacheHits, savedBytes };
 }
 
+/**
+ * Drop cache entries whose file no longer exists (deleted images, or sources consumed by an
+ * earlier version of this script). Dead keys are harmless but they accumulate -- 42 of them
+ * had piled up from the move to CSS-text decorative headings.
+ */
+async function pruneDeadEntries(cache) {
+  const keys = Object.keys(cache.entries);
+  const dead = [];
+  for (const rel of keys) {
+    if (!(await exists(path.join(SITE_ROOT, rel)))) dead.push(rel);
+  }
+  if (dead.length === 0) return 0;
+
+  // A sweeping mismatch means the working tree is wrong (partial checkout, bad cwd), not that
+  // images were deleted. Pruning then would make the NEXT run re-encode every lossy asset, so
+  // refuse and let a human look instead.
+  const ratio = dead.length / keys.length;
+  if (ratio > 0.5) {
+    console.warn(
+      `[optimize-images] ${dead.length}/${keys.length} cache entries point at missing files ` +
+        `(${Math.round(ratio * 100)}%). That looks like an incomplete working tree rather than ` +
+        `deleted images, so NOT pruning. Investigate before re-running.`
+    );
+    return 0;
+  }
+
+  for (const rel of dead) delete cache.entries[rel];
+  console.log(
+    `[optimize-images] pruned ${dead.length} stale cache entr${dead.length === 1 ? 'y' : 'ies'} ` +
+      `for files that no longer exist${dryRun ? ' (dry-run)' : ''}.`
+  );
+  return dead.length;
+}
+
 async function main() {
   if (dryRun) {
     console.log('[optimize-images] Dry run mode enabled. No files will be modified.');
   }
 
   const cache = await loadCache();
+  // Prune first: a cache entry for a file that no longer exists must not influence this run.
+  const pruned = await pruneDeadEntries(cache);
   const showcase = await optimizeShowcaseAndRename();
   const team = await optimizeTeamAvatars(cache);
   let others = { optimized: 0, skipped: 0, cacheHits: 0, savedBytes: 0 };
@@ -401,6 +440,7 @@ async function main() {
   console.log(`[optimize-images] Team source files removed: ${team.deleted}`);
   console.log(`[optimize-images] Team cache hits: ${team.cacheHits}`);
   console.log(`[optimize-images] Team total bytes saved: ${team.savedBytes}`);
+  console.log(`[optimize-images] Stale cache entries pruned: ${pruned}`);
   if (!showcaseOnly) {
     console.log(`[optimize-images] Other PNG optimized: ${others.optimized}`);
     console.log(`[optimize-images] Other PNG unchanged/skipped: ${others.skipped}`);
