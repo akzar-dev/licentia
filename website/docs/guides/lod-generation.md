@@ -212,7 +212,7 @@ Don't just run `xLODGen` and skip `ACMOS`!
    - `Grass Cache Helper NG`
    - `No Grass In Objects` (should be already disabled)
    - `Config INI - GrassControl.ini`
-   - `Licentia NEXT - Grass Output`
+   - `Licentia NEXT - Grass Cache`
 
 2. Then **enable**:
    - `xLODGen Resource - SSE Terrain Tamriel`
@@ -806,7 +806,7 @@ If you don't - just omit anything related to it.
             height={1257}
          />
 
-3. And on the right pane in `Plugins` tab **DiSABLE** the following plugins:
+3. And on the right pane in `Plugins` tab **DISABLE** the following plugins:
    - `Grass FPS Booster - ***your grass mod name***.esp`
    - `LN_M_Grass_Bounds_Boost.esp` (or whatever your `Boost` plugin is called after [Bounds Recalculation](#optional-recalculate-grass-bounds))
 
@@ -999,8 +999,6 @@ Both `TexGen` and `DynDOLOD` are always run together!
    - Navigate to `your_LN_installation/tools/DynDOLOD/Edit Scripts/DynDOLOD/` folder, find the `DynDOLOD_SSE.ini` file and open it in any text editor
 
    - Using `CTRL-F`, search for `Expert`, and set `Expert=1` (default is `0`)
-
-   - Using `CTRL-F`, seach for `Level32`, and set `Level32=1` (default is `0`)
 
    - Using `CTRL-F`, search for `DoubleSidedTextureMask`. Remove the semi-colon `;` in front of this line. It should now read `DoubleSidedTextureMask=mountain,mtn`.
 
