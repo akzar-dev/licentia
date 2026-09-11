@@ -21,7 +21,7 @@ The versioning system works the following way:
 
 ## LICENTIA NEXT `13.7.0`
 :::note
-- 🗓️ **Released** xx September 2026
+- 🗓️ **Released** 11 September 2026
 - :no_entry: **NOT SAVE SAFE** with **Licentia NEXT `13.6.1/13.6.0`** _(and older versions)_
 :::
 
@@ -36,7 +36,7 @@ The versioning system works the following way:
 - `Auto Resolution` - 1.1
 - `DPI Scaling Fix` - 1.0.1
 - `Racemenu(SKEE) cosave Load Crash Fix` - 1.1
-- `Seamless Saving - Skyrim Save Accelerator` - 1.0.6 (all saves version)
+- `MFG Fix (ReNG'ed)` - 0.0.2 (replaces `Mfg Fix NG`, see Removed)
 - `Stormcloaks Fight With Thalmor and Penitus Oculatus` - 4.0
 - `Imperial Thalmor Stormcloak Patrols Fixes` - 1.3
 - `Rock Traps Trigger Fixes` - 1.6
@@ -70,7 +70,7 @@ The versioning system works the following way:
 - `Accurate Projectile Collision` - 2.0.1
 - `Smooth Terrain` - 0.6.0
 - `Horizon Fix` - 0.7.2
-- `Water Collision Crash Fix NG` - 1.1.0
+- `Water Collision Crash Fix NG` - 1.1.1
 - `Skyrim Cave Fixes` - 1.0.4 (+ patch hub)
 - `HairColourSyncNG` - 1.3.2
 - `Hair Suppression Fix` - 1.3
@@ -87,9 +87,9 @@ The versioning system works the following way:
 - `Texture Downscaler` - 2.4.0 (as an optional mod, disabled by default)
 - `Simple Offence Suppression MCM - Block Friendly Fire` - 0.6
 - `Faster Reanimation - SSE` - 50% version (1.0.1)
-- `Thieves Guild Plus Plus - A Questline Overhaul` (+ their patch hub) - 1.57, patched with LN manually
+- `Thieves Guild Plus Plus - A Questline Overhaul` (+ their patch hub) - 1.58, patched with LN manually (2 overrides removed so it wins over TCIY, plus a small fix to our patch for FDE Mjoll)
 - `Easy Console Commands` - 1.1
-- `Discord Rich Presence` - 1.2.1
+- `Discord Rich Presence` - 1.2.0 (1.2.1 is not compatible with our game version)
 - `Hearthfire Multiple Adoptions Expanded` - 2.0.5
 - `ORefit Masterlist - 69 Beauties and much more - ULTIMATE MERGED OBody NG` - 3.2
 - `Dynamic Armor Physics` - 1.0.4
@@ -98,7 +98,7 @@ The versioning system works the following way:
 - `Papyrus Ini Manipulator` - 1.9.9
 - `Children Loading Screen Fix` - 1.0 (patched for our LO)
 - `Wait Your Turn Redux - Enemy Circling Behavior` - 1.1.0
-- `Portal Strict Lights Patcher Framework (SKSE)` - 1.0
+- `Portal Strict Lights Patcher Framework (SKSE)` - 1.1
 - `Khajiit Will Follow - Custom Voiced Khajiit Follower Mod` - 4.7.5 (+ patches: Vigilant, Forgotten City, CC Fishing, AE Houses Spouse Patch, Immersive Start, eeekie's replacer for the mod, LotD Follower's room patches + manually patched to work with RDO and Lux)
 - `Malryn - Custom Voiced Follower` - 1.8 (patched with Xelzaz, small conflict in DB10 trigger)
 - `Heart of Ice - Astrid. Custom Voiced Follower` - 1.6.0.1 (+ patches for 3BA, Ostim, Lux, non-unique body, and manually patched to work with LotD)
@@ -160,6 +160,9 @@ The versioning system works the following way:
 - `Nemesis Creature Behaivour - WereWolf Addon` and `Nemesis Creatures BEHAVIOUR compatibility` - not needed, Pandora has native creature support
 - `Disable Turn Animation NG` - replaced by `Disabled Turn Animations`
 - `OStim Better Blowjobs`, `Know Your Limits` - not needed anymore, `PPA - Procedural Penis Animations` covers what both of them did
+- `Mfg Fix NG` - replaced by `MFG Fix (ReNG'ed)`. We don't use NG's extra functions, and it sometimes broke NPC eyes
+- `Undeath - XPMSSE - Strange Runes - Skeleton Patch` - not needed anymore, the newer `Undeath - Classical Lichdom` provides the fixed skeleton itself
+- `Locational Damage` - our old build didn't work at all, the newer AE build still has issues, and it overlaps with `Archery Locational Damage`
 
 
 ### Updated
@@ -171,12 +174,13 @@ The versioning system works the following way:
 - `Notification Log SSE NG` - 1.4 -> 1.5
 - `Scaleform Translation Plus Plus NG` - 1.8 -> 1.10
 - `ConsoleUtilSSE NG` - 1.5.1 -> 1.6.1
-- `JContainers SE` - 4.2.9 -> 4.2.13.1
+- `JContainers SE` - 4.2.9 -> 4.3.0
 - `powerofthree's Tweaks` - 1.15.1 -> 1.17.1
 - `Yes Im Sure NG` - 1.7 -> 1.8
 - `Stay At The System Page NG` - 1.6 -> 1.7
 - `I'm walkin' here NG` - 1.6 -> 1.9.1 (replaced with `I'm Walkin' Here NG Expanded`)
-- `Save and Load Accelerator for SKSE Cosaves - S.L.A.C.K.` - 1.3.2 -> 1.5.0
+- `Save and Load Accelerator for SKSE Cosaves - S.L.A.C.K.` - 1.3.2 -> 1.5.1
+- `Pause Menu After Load Screens` - 5.0 -> 6.1
 - `Mum's the Word NG` - 2.1 -> 2.2
 - `Comprehensive Attack Speed Patch - SKSE` - 1.1.2.15 -> 1.1.5.1
 - `SKSE Menu Framework` - 3.7 -> 3.14.1
@@ -187,7 +191,6 @@ The versioning system works the following way:
 - `Ultimate Optimized Scripts Compilation` - 1.7 -> 1.83
 - `Auto Input Switch` - 1.2.3 -> 1.3.0
 - `SSE Engine Fixes` - 7.0.19 -> 7.0.20
-- `Mfg Fix NG` - 1.0.4 -> 1.0.9
 - `Keyword Item Distributor` - 3.4.0 -> 4.1.0
 - `Spell Perk Item Distributor (SPID)` - 7.1.3 -> 7.3.3
 - `Sound Record Distributor` - 1.5.1 -> 1.5.4
@@ -212,7 +215,6 @@ The versioning system works the following way:
 - `Aurora Fix` - 1.0.1 -> 1.0.2
 - `Dual Casting Fix` - 1.0 -> 1.0.1
 - `Camera Persistence Fixes` - 1.1 -> 1.2
-- `Better Combat Escape - NG` - 1.0.1 -> 1.0.4
 - `Zero Bounty Hostility Fix` - 0.5 -> 0.8.1 (and switched to SKSE version)
 - `NPC AI Process Position Fix - NG` - 1.1.1 -> 1.1.3
 - `Media Keys Fix SKSE` - 1.0.1 -> 1.0.2
@@ -222,7 +224,7 @@ The versioning system works the following way:
 - `Essential Favorites` - 2.3 -> 2.4.2
 - `Favorite Misc Items` - 4.0 -> 4.0.1
 - `DynDOLOD Resources SE` - Alpha 58 -> Alpha 59
-- `DynDOLOD DLL NG` - Alpha 39 -> Alpha 42
+- `DynDOLOD DLL NG` - Alpha 39 -> Alpha 43
 - `LOD Model Library for DynDOLOD` - 1.6.0 -> 1.8.3
 - `Chapter II - Jeremy Soule Inspired Music` - 3.6 -> 4.0
 - `RaceMenu` - 0.4.19.16 -> 0.4.20
@@ -238,7 +240,7 @@ The versioning system works the following way:
 - `Subtitles` - 0.6.2 -> 0.7.0
 - `Hotkey Reminder` - 1.0.6 -> 1.0.8
 - `Next-Gen Decapitations` - 1.4.3 -> 1.4.4
-- `Tween Menu Overhaul` - 1.1 -> 1.2
+- `Tween Menu Overhaul` - 1.1 -> 1.2.1
 - `Tween Menu Overhaul - Nordic UI - Alternative` - 2.1 -> 2.3
 - `Assorted Nordic UI Tweaks and Patches` - 1.1.2 -> 2.4
 - `Experience` - 3.7.3 -> 3.7.4
@@ -256,7 +258,7 @@ The versioning system works the following way:
 - `Extended Encounters` - 1.7 -> 1.7.1
 - `Unique Map Weather` - 1.1.1 -> 1.1.2
 - `Splashes of Storms` - 1.3.1 -> 1.4.0
-- `Icy Cave Remaster` - 2.2.3 -> 3.2.0
+- `Icy Cave Remaster` - 2.2.3 -> 3.2.1
 - `CC's Enhanced Ore Veins` - 9.0.1 -> 10.0.0
 - `Additional Clockwork` - 3.0.5 -> 3.0.6
 - `Storm Lightning for SSE and VR (Minty Lightning 2019)` - 1.4.22 -> 1.4.25
@@ -357,8 +359,8 @@ The versioning system works the following way:
 - `ENB Frame Generation` - 1.0.2 -> 1.0.3
 - `Dismemberment Framework` - 1.2.2 -> 1.2.3
 - `Legacy of the Dragonborn Patches (Official)` - 6.10.2 -> 6.10.9
-- `Legacy of the Dragonborn - Creation Club Patch Hub` - 6.0.12 -> 6.0.13
-- `Legacy of the Dragonborn - The Curator's Companion` - 7.0.8 -> 7.0.9
+- `Legacy of the Dragonborn - Creation Club Patch Hub` - 6.0.12 -> 6.0.14
+- `Legacy of the Dragonborn - The Curator's Companion` - 7.0.8 -> 7.0.10
 - `Legacy of the Dragonborn - Follower Room Patches` - 4.0.13 -> 4.0.16
 - `Grass Cache Helper NG` - 1.0.1 -> 1.0.2
 - `No Grass In Objects` 1.5.11 -> 1.6.14
@@ -382,12 +384,12 @@ The versioning system works the following way:
 - Various leveled item lists fixes (mostly for jewelry and OWL/Tamrielic Distribution)
 - `True Directional Movement` + `Precision` config updates by Jake and me:
 	- For TDM set:
-		bTargetLockEnableLockBehindTarget = 1
-		fTargetLockPitchAdjustSpeed = 4.000000
-		fTargetLockDistanceMultiplierSmall = 5.000000
+		- bTargetLockEnableLockBehindTarget = 1
+		- fTargetLockPitchAdjustSpeed = 4.000000
+		- fTargetLockDistanceMultiplierSmall = 5.000000
 	- For Precision set:
-		fFirstPersonAttackLengthOffset = 9.000000
-		bDisableCharacterBumper = 0 (this is needed by `Variadic Collision Dynamic`)
+		- fFirstPersonAttackLengthOffset = 9.000000
+		- bDisableCharacterBumper = 0 (this is needed by `Variadic Collision Dynamic`)
 - Turned off Aela, Jenassa and Serana's `Amorous Adventures` quests in our small custom patch (they conflict with FDE, and Serana's one was disabled additionally by SDA)
 - Removed broken HPH replacers for Immersive Patrols
 - Fixed Archery Locational Damage's broken config (made our own based on the newest config format)
@@ -395,6 +397,10 @@ The versioning system works the following way:
 - Fixed `Modpocalypse` mods broken Bretons tints causing "sunburned" faces, common issue for all their mods (7 NPCs were affected, all fixed via xEdit + CK facegen)
 - Patched a few child NPCs in the list that were not converted to RS Children properly
 - **Fixed 8 SPID distributions in `Enemy (R)Evolution of Skyrim` (EEOS) that were silently never applied.** Its `SacrosanctSpellsAndPerksForNPCs_DISTR.ini` had 8 lines carrying one pipe section too many (8 where SPID accepts 7), so SPID skipped each of those lines whole - the 4 *Weakness to Sunlight* and the 4 *Weakness to Fire* stages never reached vampire NPCs. There is no in-game symptom and nothing in the Papyrus log; it shows up only in SPID's own log as `Too many sections. Expected at most 7, but got 8`. Fixed by `Licentia NEXT - Enemy (R)Evolution of Skyrim - EEOS SPID Fix`, a copy of the file with the one redundant `NONE` removed from those 8 lines and nothing else changed, so it re-diffs cleanly against EEOS on an update. Verified in a live run: 8 parse failures, now 0
+- **Fixed the Bard's College Lux issues finally.** A column on the upper floor was invisible (but still solid) - Lux's own room setup hid it from that floor; linked the two Lux rooms in `CACO'S LUX`. Also corrected our Lux/Undeath merge of the College's room bounds and one doorway portal, which could hide parts of the west wing depending on where you stood
+- Moved the note for Bikhai's quest (`Khajiit Will Follow`) from the bed to the floor - with our bed replacer it was hidden inside the bed model
+- `Undeath Remastered` reinstalled as a BSA again (not loose files), cleaned by `Undeath - Classical Lichdom`'s script
+- A few fixes to BodySlide's new build process (Immersive Armors conflicts), and fixed a few meshes by hand (added as inlined mods)
 - Re-ran Bodyslide
 - Re-ran Pandora
 - Re-ran Synthesis

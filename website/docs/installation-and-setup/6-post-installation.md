@@ -17,6 +17,21 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
 ---
 
 ## <span className="licentia-heading licentia-heading--h2">Fix High DPI Scaling</span>
+
+:::tip
+Since `13.7.0` Licentia NEXT ships two mods that handle this for you:
+- **`Auto Resolution`** - sets the game resolution to your Windows display resolution automatically;
+- **`DPI Scaling Fix`** - fixes the Skyrim window being scaled to the wrong size when Windows display scaling is above 100%.
+
+**One caveat:** `DPI Scaling Fix` only works **from the second launch** of the game. On the very first launch the game window may still look zoomed in or cut off - just close the game and start it again.
+:::
+
+- If your Windows display scaling is set to **100%** - **skip this step**, there is nothing to fix.
+- If you don't want to rely on the second launch (or the game still looks zoomed in after it), apply the fix manually - see below.
+
+<details>
+<summary>:wrench: Manual fix - Windows High DPI settings for `SkyrimSE.exe`</summary>
+
 1. Navigate to your Licentia NEXT installation directory, open the `Stock Game` folder, right click `SkyrimSE.exe` and left click `Properties` on the bottom:
     <DocImage 
         src={require('./img/6-post-installation/6_0_1_skyrimse_properties.png').default}
@@ -52,6 +67,8 @@ Assuming you've **completed** the [Installation](/installation) part, let's cont
         width={984}
         height={1182}
     />
+
+</details>
 
 :::warning
 **IF YOUR MONITOR IS 60 HZ OR LOWER** *([here's a guide](https://www.corsair.com/us/en/explorer/gamer/monitors/how-to-check-your-monitor-refresh-rate/) on how to check that)*, you would need to apply `VSync` *(Vertical Sync, or Vertical Synchronization)* to `SkyrimSE.exe` to avoid screen tearing in-game.

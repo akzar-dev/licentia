@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 title: "Nemesis Guide 👯‍♀️"
 hide_title: true
 slug: /guides/nemesis
@@ -11,6 +11,14 @@ image: ./img/nemesis-guide-social.png
 ---
 
 # 👯‍♀️ How to re-run Nemesis for Licentia NEXT
+
+:::danger
+**This guide is for Licentia NEXT `13.6.1` and older only.**
+
+Starting with **`13.7.0`**, Licentia NEXT uses **Pandora Behaviour Engine** instead of Nemesis - Nemesis and its output mod are no longer part of the list. If you are on `13.7.0` or newer, follow the **[Pandora Guide](/guides/pandora)** instead.
+
+Never run Nemesis on a `13.7.0+` install, and never have both a Nemesis and a Pandora output mod enabled at the same time.
+:::
 
 :::note
 **WHY YOU MIGHT NEED THIS?**

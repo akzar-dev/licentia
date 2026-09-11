@@ -23,8 +23,8 @@
     },
     "docs/guides/img/bodyslide_guide/1_empty_mod.png": {
       "version": "optimize-images-v2",
-      "hash": "1c07d6ff93fdbd9d5c0adc72dc8c216e8aface76",
-      "updatedAt": "2026-02-17T17:21:47.553Z"
+      "hash": "ddf921720d742027821175dbfb30c4d846926aa8",
+      "updatedAt": "2026-09-11T19:36:23.392Z"
     },
     "docs/guides/img/bodyslide_guide/2_create_mod.png": {
       "version": "optimize-images-v2",
@@ -33,38 +33,18 @@
     },
     "docs/guides/img/bodyslide_guide/3_run_bodyslide.png": {
       "version": "optimize-images-v2",
-      "hash": "7ad2cabe3fd632449a12f809c9abc239c031da96",
-      "updatedAt": "2026-02-17T17:21:47.623Z"
-    },
-    "docs/guides/img/bodyslide_guide/4_choose_groups.png": {
-      "version": "optimize-images-v2",
-      "hash": "f2312089b21b4b2806f57462eb5a7ac2760de51c",
-      "updatedAt": "2026-02-17T17:21:47.772Z"
-    },
-    "docs/guides/img/bodyslide_guide/4a_group_sample.png": {
-      "version": "optimize-images-v2",
-      "hash": "189b3539c3b3ec58cd74c1efc9086ca500db8b28",
-      "updatedAt": "2026-02-17T17:21:47.654Z"
-    },
-    "docs/guides/img/bodyslide_guide/4a_group_sample2.png": {
-      "version": "optimize-images-v2",
-      "hash": "8e668659193b073203c889fa769ef19438fa7544",
-      "updatedAt": "2026-02-17T17:21:47.687Z"
+      "hash": "16201d2d0ce8af9c6750556e578fd3cb67cd7885",
+      "updatedAt": "2026-09-11T19:36:23.615Z"
     },
     "docs/guides/img/bodyslide_guide/4b_preset_sample.png": {
       "version": "optimize-images-v2",
-      "hash": "44a23670ca8b14484b401ce312ec64fc67726674",
-      "updatedAt": "2026-02-17T17:21:47.699Z"
-    },
-    "docs/guides/img/bodyslide_guide/4c_unassigned.png": {
-      "version": "optimize-images-v2",
-      "hash": "be73545d23d5fafaf9922aa8f7ff6a56fa42c7e9",
-      "updatedAt": "2026-02-17T17:21:47.758Z"
+      "hash": "664d363707db12ddb76648e64a9cdb237359f107",
+      "updatedAt": "2026-09-11T19:36:23.629Z"
     },
     "docs/guides/img/bodyslide_guide/5_batch_build.png": {
       "version": "optimize-images-v2",
-      "hash": "8bbdd25b7242e953225bbe34c3eebef3a8cb5b05",
-      "updatedAt": "2026-02-17T17:21:47.778Z"
+      "hash": "88a0f276d515bc263fdb90c7caf727779a8bc99f",
+      "updatedAt": "2026-09-11T19:36:23.636Z"
     },
     "docs/guides/img/controller-guide-social.png": {
       "version": "optimize-images-v2",
@@ -1030,6 +1010,46 @@
       "version": "optimize-images-v2",
       "hash": "bea1b23bd8bc448d20cded6f4922ebff7193ad54",
       "updatedAt": "2026-03-20T23:38:13.545Z"
+    },
+    "docs/guides/img/pandora-guide-social.png": {
+      "version": "optimize-images-v2",
+      "hash": "153a068f4529ee37c32be8ca0d903a8f490b8294",
+      "updatedAt": "2026-09-11T19:36:22.322Z"
+    },
+    "docs/guides/img/synthesis_guide/0_1_data_folder_setting.png": {
+      "version": "optimize-images-v2",
+      "hash": "79d978a77d0fca8be9558aa0d72cf6f598bb3a5c",
+      "updatedAt": "2026-09-11T19:36:22.533Z"
+    },
+    "docs/guides/img/pandora_guide/1_1_run_pandora_from_mo2.png": {
+      "version": "optimize-images-v2",
+      "hash": "3bb04cc0c1617a0fbc435bb1a6edbeb5b3595e4a",
+      "updatedAt": "2026-09-11T19:36:22.589Z"
+    },
+    "docs/guides/img/pandora_guide/2_1_settings.png": {
+      "version": "optimize-images-v2",
+      "hash": "803587e205ec7a0badb9c952acdcaf28ea91df58",
+      "updatedAt": "2026-09-11T19:36:22.706Z"
+    },
+    "docs/guides/img/pandora_guide/3_1_select_patches.png": {
+      "version": "optimize-images-v2",
+      "hash": "9572080a6d9eb3682a2fb76b380e5f65a9c3b7a2",
+      "updatedAt": "2026-09-11T19:36:23.037Z"
+    },
+    "docs/guides/img/pandora_guide/4_1_launch_engine.png": {
+      "version": "optimize-images-v2",
+      "hash": "fc016b7c6fc4969ebb433906052adaf8f8aacaca",
+      "updatedAt": "2026-09-11T19:36:23.341Z"
+    },
+    "docs/guides/img/bodyslide_guide/1_run_BBSB.png": {
+      "version": "optimize-images-v2",
+      "hash": "dc0ff9d65d6123ce78ecc054b5f39e8812bfd652",
+      "updatedAt": "2026-09-11T19:36:23.467Z"
+    },
+    "docs/guides/img/bodyslide_guide/2_BBSB_build_all.png": {
+      "version": "optimize-images-v2",
+      "hash": "4f3d6106a4bc8761acc6cd7511a604f974a6bcab",
+      "updatedAt": "2026-09-11T19:36:23.574Z"
     }
   }
 }

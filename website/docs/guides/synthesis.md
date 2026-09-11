@@ -21,6 +21,7 @@ You want to rerun Synthesis for any other reason.
 :::
 
 These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
+0. *(first run, or after a Synthesis update)* `.NET 10` SDK, the `Data Folder` setting, and when to run outside MO2
 1. Disable old `Synthesis` outputs
 2. Launch `Synthesis` from MO2
 3. Check the patches list
@@ -30,6 +31,70 @@ These are the general steps to **re-running Synthesis** for **Licentia NEXT**:
 
 :::tip
 :clock1: This process takes around 5 minutes. Let's dive into the details!
+:::
+
+---
+
+## Step :zero: &mdash; First run, or after updating Synthesis
+
+Skip this if you have run Synthesis before and have not updated it since. Otherwise read it once - two of these will silently waste your time if they are wrong.
+
+### 🟡 `.NET 10` SDK
+
+Synthesis now needs the **[.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)**.
+
+:::warning
+Earlier versions of this guide told you to install `.NET 8` and to **remove** `.NET 9` and `.NET 10`. That is out of date - the [bug](https://github.com/Mutagen-Modding/Synthesis/issues/557) behind it is fixed. Install the `.NET 10` SDK (not just the Runtime - patchers are compiled on your machine, which needs the SDK). Leaving `.NET 8/9` installed alongside is fine.
+:::
+
+Check what you have with `dotnet --list-sdks` in a terminal. You want a `10.0.x` line.
+
+### 🟡 Updating Synthesis itself
+
+Synthesis does not update itself. Per the [official instructions](https://mutagen-modding.github.io/Synthesis/Updating-UI/), keep it reasonably current:
+
+1. Download the latest release from [the GitHub releases page](https://github.com/Mutagen-Modding/Synthesis/releases).
+2. **Back up these first** - they hold your entire patcher setup:
+    - `PipelineSettings.json`
+    - `GuiSettings.json`
+    - the `Data\` folder
+3. Unzip over your existing install, or unzip somewhere new and copy those three back in.
+
+In Licentia NEXT, Synthesis lives at `<your modlist folder>\tools\Synthesis`.
+
+:::tip
+If an update ever leaves the patcher list empty, you overwrote `PipelineSettings.json`. Restore it from your backup - nothing else needs to be redone.
+:::
+
+### 🟡 Check `Data Folder` setting in Synthesis
+
+You NEED to make sure that this setting is set up correctly *(usually it is, but check anyway after launching Synthesis for the first time in [Step 2](#step-two--launch-synthesis-from-mo2))*.
+
+Click the `Gear` icon on the top right of Synthesis window **(1)**, and then make sure that `Data folder` field is correctly populated (should be `<your_licentia_install_path>\Stock Game\Data`):
+
+<DocImage 
+    src={require('./img/synthesis_guide/0_1_data_folder_setting.png').default}
+    alt="Synthesis Data folder field setting"
+    style={{ maxHeight:100 }}
+    width={2269}
+    height={931}
+/>
+
+### 🟡 MO2 mode &mdash; when to run Synthesis outside MO2
+
+Recent Synthesis versions **refuse to build patchers while running inside MO2** (`BlockBuildingWithinMo2` in `PipelineSettings.json`). Building means compiling a patcher's source, which needs the SDK and does not work reliably through MO2's virtual filesystem.
+
+That splits your workflow in two:
+
+| What you're doing | How to launch |
+|---|---|
+| **Adding a patcher**, updating one, or changing patcher versions | Run **`tools\Synthesis\Synthesis.exe` directly**, by double-clicking it - **not** through MO2 |
+| **Running the patchers** to generate `Synthesis0/1/2.esp` | Run it **through MO2**, as in Step :two: below |
+
+So: add or update patchers outside MO2, let them finish building, close Synthesis, then relaunch it from MO2 to actually produce the patches.
+
+:::note
+Both launch methods share the same `PipelineSettings.json`, so patchers you add outside MO2 are there when you come back in. The `Data Folder` setting above is what lets the direct launch still see the right game.
 :::
 
 ---
@@ -64,9 +129,9 @@ Ensure that **all antivirus and antimalware applications are temporarily disable
 
 
 :::warning
-You would need `.NET 8` SDK installed on your system for Synthesis to run. You can download it from [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+You need the **`.NET 10` SDK** installed, and Synthesis's **`Data Folder`** pointed at your `Stock Game\Data`. Both are covered in [step :zero:](#step-zero--first-run-or-after-updating-synthesis) above - check them before your first run.
 
-**IF YOU HAVE** `.NET 9` **or** `.NET 10` **SDK's installed** - remove them! `Synthesis` would fail otherwise. Bug report [is here](https://github.com/Mutagen-Modding/Synthesis/issues/557).
+This is also the launch method for **running** patchers. If you are **adding or updating** a patcher, run `Synthesis.exe` directly instead - see [MO2 mode](#mo2-mode--when-to-run-synthesis-outside-mo2).
 :::
 
 In `MO2`, in top right corner of the window, click on the dropdown menu and select `Synthesis`, then click `Run`:
