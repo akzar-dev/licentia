@@ -28,6 +28,7 @@
 | Added a **decorative heading** in `.md` (the `<!-- licentia-heading -->` marker) | `npm run sync-doc-images` | Expands the marker into the styled span. |
 | Added images anywhere else | `npm run optimize-images` | Lossless PNG pass + key WEBP re-check (cache-guarded, so nothing is re-compressed twice). |
 | Anything at all, before pushing | `npm run typecheck && npm run build` | The same things CI will run. |
+| Added or reordered a **guide / FAQ page** | update that section's `index.md` cards **and** `sidebars.ts` | The sidebar and the card grid are maintained separately; they must contain the same pages in the same order. **CI fails otherwise** (`npm run check-doc-links`). |
 | Just curious about dead or unprocessed assets | `npm run check-assets` | Lists orphan images and screenshots that still need optimizing. |
 
 Nothing needs running for: pure text edits, CSS-only changes, or `.tsx` images whose `width` / `height`
@@ -43,9 +44,16 @@ Both workflows — `test-deploy.yml` on pull requests and `deploy.yml` on `main`
    asset, so this is deliberately loud.
 3. **Doc image dimensions in sync** — runs `sync-doc-images` and fails if it changed anything,
    i.e. someone added an image without recording its dimensions.
-4. **Asset hygiene report** — informational only. Orphan images and un-processed screenshots, written
+4. **Doc index links** — fails if a page in `docs/guides` or `docs/faqs` exists but nothing on that
+   section's `index.md` links to it (or a card points at a page that's gone), **and** if the card
+   order doesn't match that section's `items` array in `sidebars.ts`. The Pandora guide shipped in
+   the sidebar but never appeared on `/guides`, and the cards drifted out of order; this catches
+   both. Mark a page `unlisted: true` in its frontmatter to exclude it deliberately. If the
+   sidebar key can't be read it warns rather than failing, so restructuring `sidebars.ts` won't
+   block an unrelated build.
+5. **Asset hygiene report** — informational only. Orphan images and un-processed screenshots, written
    to the run summary; never fails the build.
-5. **Build** (`docusaurus build`).
+6. **Build** (`docusaurus build`).
 
 Every run finishes by writing a status table to the GitHub Actions run summary, and the deploy
 workflow adds the live URL.

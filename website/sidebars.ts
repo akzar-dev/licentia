@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'guides/controller',
         'guides/bodyslide',
-        `guides/pandora`,
+        'guides/pandora',
         'guides/synthesis',
         'guides/lod-generation',
         'guides/nemesis',

@@ -21,9 +21,9 @@ Need help with a specific workflow? Start here:
     <h3>👚 Bodyslide Guide</h3>
     <p>Build outfit and body outputs safely for your setup.</p>
   </a>
-  <a className="sectionCard" href="/guides/nemesis">
-    <h3>👯‍♀️ Nemesis Guide</h3>
-    <p>Re-run Nemesis after animation changes and avoid T-pose issues.</p>
+  <a className="sectionCard" href="/guides/pandora">
+    <h3>🦋 Pandora Guide</h3>
+    <p>Re-run Pandora Behaviour Engine after animation changes.</p>
   </a>
   <a className="sectionCard" href="/guides/synthesis">
     <h3>♻️ Synthesis Guide</h3>
@@ -32,6 +32,10 @@ Need help with a specific workflow? Start here:
   <a className="sectionCard" href="/guides/lod-generation">
     <h3>🌄 LOD Generation Guide</h3>
     <p>Generate xLODGen, grass cache, TexGen, and DynDOLOD outputs.</p>
+  </a>
+  <a className="sectionCard" href="/guides/nemesis">
+    <h3>👯‍♀️ Nemesis Guide</h3>
+    <p>Re-run Nemesis after animation changes. Pre-13.7.0 only — newer versions use Pandora.</p>
   </a>
 </div>
 
