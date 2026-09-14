@@ -4,6 +4,12 @@
  * work well for content-centric websites.
  */
 
+/* @licentia:brand-start
+   Everything between these markers is the shared brand layer: the colour scale,
+   the semantic colours and the motion tokens. The dev site (private repo
+   licentia-dev) pulls this block verbatim at build time, so this file stays the
+   single source of truth for both sites. Keep it free of anything specific to a
+   page or a component here - put that below the end marker. */
 /* Licentia theme colors */
 /* ---------- Light theme (site default) ---------- */
 
@@ -155,6 +161,7 @@ html {
   --ifm-color-danger-contrast-background: #2a0f12;
   --ifm-color-danger-contrast-foreground: #ffd1d1;
 }
+/* @licentia:brand-end */
 
 
 /* =========================
