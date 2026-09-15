@@ -27,6 +27,7 @@
 | Added/replaced a **docs image** used via `<img>` / `<DocImage>` | `npm run sync-doc-images` | Writes the real `width`/`height` into the source so the page doesn't shift while loading. **CI fails if you skip this.** |
 | Added a **decorative heading** in `.md` (the `<!-- licentia-heading -->` marker) | `npm run sync-doc-images` | Expands the marker into the styled span. |
 | Added images anywhere else | `npm run optimize-images` | Lossless PNG pass + key WEBP re-check (cache-guarded, so nothing is re-compressed twice). |
+| Added a page that needs a **share card**, or redrew a wordmark | drop the artwork into `social-cards/`, then `npm run build-social-cards` | Composites it onto the 1200×630 template and writes `static/img/social-cards/<name>.jpg`. Point the page's `image:` at that path. |
 | Anything at all, before pushing | `npm run typecheck && npm run build` | The same things CI will run. |
 | Added or reordered a **guide / FAQ page** | update that section's `index.md` cards **and** `sidebars.ts` | The sidebar and the card grid are maintained separately; they must contain the same pages in the same order. **CI fails otherwise** (`npm run check-doc-links`). |
 | Just curious about dead or unprocessed assets | `npm run check-assets` | Lists orphan images and screenshots that still need optimizing. |
@@ -285,7 +286,6 @@ workflow adds the live URL.
       - `static/img/licentia-next-hero-logo.webp`
       - `static/img/licentia-next-logo-footer.webp`
       - `static/img/licentia-next-logo-navbar.webp`
-      - `static/img/licentia-next-social-card.webp`
       - `static/img/pages/main/licentia-next-social-card-bg-dark.webp`
       - `static/img/pages/main/licentia-next-social-card-bg-light.webp`
   - Preview only (no file changes):
@@ -312,6 +312,45 @@ workflow adds the live URL.
     assumption that the working tree is incomplete rather than the images being genuinely gone --
     pruning in that situation would make the next run re-encode every lossy asset.
   - External image URLs are untouched.
+
+### 🔗 Social cards
+
+The image a link shows in Discord, on X, or in a Facebook preview. Every page has one, and they
+are **generated**, not drawn:
+
+```bash
+npm run build-social-cards           # rebuild every card
+npm run build-social-cards -- --check  # every artwork has a card? (builds nothing)
+```
+
+- **Artwork** — the bare wordmark for a page — lives in [`social-cards/`](./social-cards). That
+  folder is source material: it is never served, and `check-assets` deliberately doesn't scan it.
+- **Cards** are written to `static/img/social-cards/<same-name>.jpg`, always **1200×630**.
+- A page points at its card with an absolute path, `image: /img/social-cards/<name>-social.jpg`
+  in the frontmatter, or a `SOCIAL_IMAGE` constant in a `.tsx` page. The site-wide default is
+  `themeConfig.image` in `docusaurus.config.ts`.
+
+**Why the wordmarks aren't the cards.** They used to be, and two things were wrong with that.
+They are transparent PNGs with black lettering, so Facebook and X — which flatten onto white —
+looked right while **Discord composited them onto its own dark grey and the lettering vanished**,
+leaving only the gold outline. And their aspect ratios ran from 1.56:1 to 4.78:1, where every
+platform wants 1.91:1 (Facebook: stay "as close to 1.91:1 as possible to display the full image
+without any cropping"; X drops to a small card below 300×157). The generated card fixes both at
+once — the site's own hero backdrop blurred and dimmed, the hero's radial veil, a gold hairline,
+and the artwork centred inside a safe margin — so a card reads identically on any background and
+looks like the page it opens.
+
+JPEG rather than PNG because the background is a photograph: ~115 KB against ~210 KB for a
+palette PNG nobody could tell apart. To change the template, edit the constants at the top of
+[`tools/build-social-cards.mjs`](./tools/build-social-cards.mjs) and re-run — all 23 cards are
+rebuilt from one backdrop.
+
+**One piece of artwork sizes differently**, via the `MARGIN_OVERRIDES` table in that file. The
+default margins assume a wordmark — wide and short, so width runs out first and the vertical
+margin never binds. The site's own card is the winged logo, which is nearly square: height binds
+instead, and the default margins left it at 36% of the card width with empty space all round. It
+gets a 40px vertical margin of its own. Add an entry there if you ever drop in another
+non-wordmark; the tool warns about entries whose artwork has gone.
 
 ### Image and heading pipeline
 

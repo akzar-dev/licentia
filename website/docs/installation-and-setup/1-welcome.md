@@ -5,7 +5,7 @@ hide_title: true
 hide_table_of_contents: true
 slug: /welcome
 description: "An introduction to Licentia NEXT Skyrim modlist"
-image: ./img/1-welcome-social.png
+image: /img/social-cards/1-welcome-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Welcome</span>

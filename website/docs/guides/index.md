@@ -4,7 +4,7 @@ title: "Guides 📚"
 hide_title: true
 slug: /guides
 description: "Guides for setup, tools, and advanced workflows in Licentia NEXT"
-image: ./img/index-guides-social.png
+image: /img/social-cards/index-guides-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Guides</span>

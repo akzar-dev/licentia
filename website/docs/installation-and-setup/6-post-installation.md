@@ -4,7 +4,7 @@ title: "Post-Installation 3️⃣"
 hide_title: true
 slug: /post-installation
 description: "Post-installation instructions for Licentia NEXT Skyrim modlist"
-image: ./img/6-post-installation-social.png
+image: /img/social-cards/6-post-installation-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Post-Installation</span>

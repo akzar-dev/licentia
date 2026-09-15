@@ -214,7 +214,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/licentia-next-social-card.webp',
+    image: 'img/social-cards/licentia-next-social-card.jpg',
     // Shown automatically whenever modlists.json has force_down: true (see isListForcedDown).
     // backgroundColor/textColor are deliberately NOT set: theme-classic applies them as inline
     // styles, which cannot adapt to light/dark. Styled in src/css/custom.css instead.

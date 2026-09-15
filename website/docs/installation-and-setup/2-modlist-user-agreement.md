@@ -5,7 +5,7 @@ hide_title: true
 hide_table_of_contents: true
 slug: /modlist-user-agreement
 description: "An agreement between Licentia NEXT Skyrim modlist users and authors"
-image: ./img/2-modlist-user-agreement-social.png
+image: /img/social-cards/2-modlist-user-agreement-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Modlist user agreement</span>

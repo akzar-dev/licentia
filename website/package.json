@@ -15,6 +15,7 @@
     "typecheck": "tsc",
     "sync-doc-images": "node ./tools/sync-doc-image-dimensions.mjs",
     "import-load-order": "node ./tools/import-load-order.mjs",
+    "build-social-cards": "node ./tools/build-social-cards.mjs",
     "check-assets": "node ./tools/check-assets.mjs",
     "check-doc-links": "node ./tools/check-doc-links.mjs",
     "check-admonitions": "node ./tools/check-admonitions.mjs",

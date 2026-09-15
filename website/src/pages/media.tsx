@@ -11,7 +11,7 @@ const MEDIA_PAGE_TITLE = 'Media 📸';
 const MEDIA_SOCIAL_TITLE = 'Media 📸 | Licentia NEXT';
 const MEDIA_PAGE_DESCRIPTION =
   'Explore the full Licentia NEXT screenshot gallery and watch the reviews.';
-const MEDIA_SOCIAL_IMAGE = 'https://licentia.quest/img/social-cards/media-social.png';
+const MEDIA_SOCIAL_IMAGE = 'https://licentia.quest/img/social-cards/media-social.jpg';
 const YOUTUBE_REVIEW_URL = '';
 
 /**
@@ -72,6 +72,9 @@ export default function MediaPage(): React.JSX.Element {
         <meta property="og:description" content={MEDIA_PAGE_DESCRIPTION} />
         <meta property="og:url" content={MEDIA_PAGE_URL} />
         <meta property="og:image" content={MEDIA_SOCIAL_IMAGE} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={MEDIA_SOCIAL_TITLE} />
         <meta name="twitter:description" content={MEDIA_PAGE_DESCRIPTION} />

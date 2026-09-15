@@ -4,7 +4,7 @@ title: "Synthesis Guide ♻️"
 hide_title: true
 slug: /guides/synthesis
 description: "How to re-run Synthesis for Licentia NEXT Skyrim modlist"
-image: ./img/synthesis-guide-social.png
+image: /img/social-cards/synthesis-guide-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Synthesis Guide</span>

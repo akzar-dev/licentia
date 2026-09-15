@@ -4,7 +4,7 @@ title: "Gameplay FAQ 🎮"
 hide_title: true
 slug: "/faqs/gameplay"
 description: "Gameplay FAQ for Licentia NEXT Skyrim modlist"
-image: ./img/faq-gameplay-social.png
+image: /img/social-cards/faq-gameplay-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Gameplay FAQ</span>

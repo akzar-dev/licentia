@@ -4,7 +4,7 @@ title: "Bodyslide Guide 👚"
 hide_title: true
 slug: /guides/bodyslide
 description: "How BodySlide is built in Licentia NEXT Skyrim modlist, and how to build outfits you add yourself"
-image: ./img/bodyslide-guide-social.png
+image: /img/social-cards/bodyslide-guide-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Bodyslide Guide</span>

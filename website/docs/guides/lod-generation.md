@@ -4,7 +4,7 @@ title: "LOD Generation Guide 🌄"
 hide_title: true
 slug: /guides/lod-generation
 description: "How to generate xLODGen, Grass Cache, TexGen and DynDOLOD for Licentia NEXT"
-image: ./img/lod-generation-guide-social.png
+image: /img/social-cards/lod-generation-guide-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">LOD Generation Guide</span>
@@ -127,8 +127,8 @@ This block applies to everything below, so **read carefully**!
          src={require('./img/lod_generation_guide/1_4_DynDOLOD_out_of_date.png').default}
          alt="DynDOLOD Out of Date"
          style={{ maxHeight:300 }}
-         width={562}
-         height={337}
+         width={554}
+         height={334}
       />
 
       You will need to update. This is what you'd need to do:

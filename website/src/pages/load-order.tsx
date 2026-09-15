@@ -34,9 +34,12 @@ const KODEX = 'https://www.nexusmods.com/skyrimspecialedition/mods/157869';
 const changelogLink = (version: string | null) =>
   version ? `/changelog#licentia-next-${version.replace(/\./g, '')}` : '/changelog';
 
-const DESCRIPTION = `Every mod in Licentia NEXT ${data.version}, in load order — ${data.mods} mods across ${SECTION_COUNT} sections, with Nexus links.`;
+const DESCRIPTION = `Every mod in Licentia NEXT ${data.version}, in load order — ${data.mods.toLocaleString('en-US')} mods across ${SECTION_COUNT} sections, with Nexus links.`;
 const PAGE_URL = 'https://licentia.quest/load-order';
 const SOCIAL_TITLE = 'Load Order 📜 | Licentia NEXT';
+/* Absolute, because a share card is fetched by someone else's server, not by a browser
+   that knows where it came from. */
+const SOCIAL_IMAGE = 'https://licentia.quest/img/social-cards/load-order-social.jpg';
 
 /** A section's key has to survive two sections sharing a name in different groups. */
 const keyOf = (group: Group, section: Section) => `${group.name}//${section.name}`;
@@ -233,9 +236,14 @@ export default function LoadOrderPage(): React.JSX.Element {
         <meta property="og:title" content={SOCIAL_TITLE} />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:image" content={SOCIAL_IMAGE} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={SOCIAL_TITLE} />
         <meta name="twitter:description" content={DESCRIPTION} />
+        <meta name="twitter:image" content={SOCIAL_IMAGE} />
       </Head>
 
       <main className={styles.main}>

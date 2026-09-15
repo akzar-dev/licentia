@@ -4,7 +4,7 @@ title: "FAQs ❓"
 hide_title: true
 slug: /faqs
 description: "Frequently asked questions for gameplay and technical troubleshooting in Licentia NEXT"
-image: ./img/index-faqs-social.png
+image: /img/social-cards/index-faqs-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">FAQs</span>

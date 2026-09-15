@@ -350,7 +350,6 @@ async function optimizeKeyWebpAssets(cache) {
     path.join(STATIC_IMG_DIR, 'licentia-next-hero-logo.webp'),
     path.join(STATIC_IMG_DIR, 'licentia-next-logo-footer.webp'),
     path.join(STATIC_IMG_DIR, 'licentia-next-logo-navbar.webp'),
-    path.join(STATIC_IMG_DIR, 'licentia-next-social-card.webp'),
     path.join(STATIC_PAGES_DIR, 'main', 'licentia-next-social-card-bg-dark.webp'),
     path.join(STATIC_PAGES_DIR, 'main', 'licentia-next-social-card-bg-light.webp'),
   ];

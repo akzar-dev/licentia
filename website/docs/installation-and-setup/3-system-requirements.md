@@ -5,7 +5,7 @@ hide_title: true
 hide_table_of_contents: true
 slug: /system-requirements
 description: "A list of system requirements for Licentia NEXT Skyrim modlist"
-image: ./img/3-system-requirements-social.png
+image: /img/social-cards/3-system-requirements-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">System Requirements</span>

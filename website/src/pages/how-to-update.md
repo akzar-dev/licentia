@@ -3,7 +3,7 @@ title: "How to update 🔄"
 hide_title: true
 hide_table_of_contents: true
 description: "Instructions on how to update Licentia NEXT Skyrim modlist"
-image: /img/social-cards/how-to-update-social.png
+image: /img/social-cards/how-to-update-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">How to update</span>

@@ -4,7 +4,7 @@ title: "Pandora Guide 🦋"
 hide_title: true
 slug: /guides/pandora
 description: "How to re-run Pandora Behaviour Engine for Licentia NEXT Skyrim modlist"
-image: ./img/pandora-guide-social.png
+image: /img/social-cards/pandora-guide-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Pandora Guide</span>

@@ -4,7 +4,7 @@ title: "Installation 2️⃣"
 hide_title: true
 slug: /installation
 description: "Installation instructions for Licentia NEXT Skyrim modlist"
-image: ./img/5-installation-social.png
+image: /img/social-cards/5-installation-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Installation</span>

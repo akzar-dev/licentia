@@ -4,7 +4,7 @@ title: "Technical FAQ 🛠️"
 hide_title: true
 slug: "/faqs/technical"
 description: "Technical FAQ for Licentia NEXT Skyrim modlist"
-image: ./img/faq-technical-social.png
+image: /img/social-cards/faq-technical-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Technical FAQ</span>

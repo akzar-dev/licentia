@@ -4,7 +4,7 @@ title: "Final Notes 📝"
 hide_title: true
 slug: /final-notes
 description: "A list of small advices before starting a playthrough of Licentia NEXT Skyrim modlist"
-image: ./img/7-final-notes-social.png
+image: /img/social-cards/7-final-notes-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Final notes</span>

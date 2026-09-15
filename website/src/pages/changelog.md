@@ -2,7 +2,7 @@
 title: "Changelog 📑"
 hide_title: true
 description: "History of Licentia NEXT Skyrim modlist releases"
-image: /img/social-cards/changelog-social.png
+image: /img/social-cards/changelog-social.jpg
 # Only surface the version headings (##) in the right-hand TOC. The default depth of 3
 # would also list every Added/Removed/Updated/Fixed under each release (40+ entries).
 toc_max_heading_level: 2

@@ -4,7 +4,7 @@ title: "Nemesis Guide 👯‍♀️"
 hide_title: true
 slug: /guides/nemesis
 description: "How to re-run Nemesis for Licentia NEXT Skyrim modlist"
-image: ./img/nemesis-guide-social.png
+image: /img/social-cards/nemesis-guide-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Nemesis Guide</span>

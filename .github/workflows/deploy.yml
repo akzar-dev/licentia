@@ -66,6 +66,12 @@ jobs:
         # literal text and carries on, so it only shows up when a reader sees the colons.
         run: npm run check-admonitions
 
+      - name: Check every social card is built
+        # Existence only: artwork in social-cards/ with no card in static/. Deliberately does
+        # NOT rebuild and diff the way the doc-image check does -- JPEG bytes depend on the
+        # libvips build, so a Linux runner and a Windows desktop would disagree forever.
+        run: npm run build-social-cards -- --check
+
       - name: Asset hygiene report (informational)
         # Report-only: never blocks a build. Writes its own section to the run summary
         # listing unreferenced images and any showcase screenshots that still need

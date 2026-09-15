@@ -4,7 +4,7 @@ title: "Pre-Installation 1️⃣"
 hide_title: true
 slug: /pre-installation
 description: "Pre-installation instructions for Licentia NEXT Skyrim modlist"
-image: ./img/4-pre-installation-social.png
+image: /img/social-cards/4-pre-installation-social.jpg
 ---
 
 # <span className="licentia-heading licentia-heading--h1">Pre-Installation</span>
