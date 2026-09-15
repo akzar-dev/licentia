@@ -80,7 +80,7 @@ Click the `Gear` icon on the top right of Synthesis window **(1)**, and then mak
     height={931}
 />
 
-### 🟡 MO2 mode &mdash; when to run Synthesis outside MO2 {#mo2-mode}
+### 🟡 MO2 mode &mdash; when to run Synthesis outside MO2 \{#mo2-mode}
 
 Recent Synthesis versions **refuse to build patchers while running inside MO2** (`BlockBuildingWithinMo2` in `PipelineSettings.json`). Building means compiling a patcher's source, which needs the SDK and does not work reliably through MO2's virtual filesystem.
 

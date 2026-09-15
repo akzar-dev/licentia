@@ -28,7 +28,7 @@
 | Added a **decorative heading** in `.md` (the `<!-- licentia-heading -->` marker) | `npm run sync-doc-images` | Expands the marker into the styled span. |
 | Added images anywhere else | `npm run optimize-images` | Lossless PNG pass + key WEBP re-check (cache-guarded, so nothing is re-compressed twice). |
 | Added a page that needs a **share card**, or redrew a wordmark | drop the artwork into `social-cards/`, then `npm run build-social-cards` | Composites it onto the 1200×630 template and writes `static/img/social-cards/<name>.jpg`. Point the page's `image:` at that path. |
-| Anything at all, before pushing | `npm run typecheck && npm run build` | The same things CI will run. |
+| Anything at all, before pushing | `npm ci && npm run typecheck && npm run build` | The same things CI will run — **including the `npm ci`**. A `node_modules` that has drifted from `package-lock.json` builds against different versions than CI does, so a local pass proves nothing. This has passed a build locally and failed it on CI. |
 | Added or reordered a **guide / FAQ page** | update that section's `index.md` cards **and** `sidebars.ts` | The sidebar and the card grid are maintained separately; they must contain the same pages in the same order. **CI fails otherwise** (`npm run check-doc-links`). |
 | Just curious about dead or unprocessed assets | `npm run check-assets` | Lists orphan images and screenshots that still need optimizing. |
 
