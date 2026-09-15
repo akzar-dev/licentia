@@ -58,6 +58,11 @@ jobs:
       - name: Check every guide/FAQ is linked from its index page
         run: npm run check-doc-links
 
+      - name: Check admonitions render
+        # A malformed admonition is not a build error -- Docusaurus prints the block as
+        # literal text and carries on, so it only shows up when a reader sees the colons.
+        run: npm run check-admonitions
+
       - name: Asset hygiene report (informational)
         # Report-only: never blocks a build. Writes its own section to the run summary
         # listing unreferenced images and any showcase screenshots that still need

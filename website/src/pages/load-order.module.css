@@ -1,0 +1,464 @@
+.main {
+  padding: 2rem 0 3rem;
+}
+
+.header {
+  text-align: center;
+  max-width: 72ch;
+  margin: 0 auto 1.5rem;
+}
+
+/* The same gold rule the guides use under their h1. */
+.headerSeparator,
+.groupRule,
+.subGroupRule {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 6%,
+    var(--licentia-separator-core) 50%,
+    transparent 94%,
+    transparent 100%
+  );
+}
+
+.headerSeparator {
+  margin: 0.7rem auto 0;
+  width: min(520px, 86%);
+}
+
+.lede {
+  margin-top: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.provenance {
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* ---- the numbers at the top --------------------------------------------------------- */
+
+.counts {
+  max-width: 860px;
+  margin: 0 auto 2rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+}
+
+/* Centred rows rather than a five-column grid: the columns spread the numbers to the far
+   edges of the card, which put ESL a long way from the bar it belongs to. */
+.countRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 3rem;
+  text-align: center;
+}
+
+.countRow + .countRow {
+  margin-top: 1.1rem;
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.countValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ifm-color-primary);
+}
+
+.countLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.slots {
+  margin-top: 1.3rem;
+}
+
+.slotBar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-200);
+  overflow: hidden;
+}
+
+.slotFill {
+  height: 100%;
+  background: var(--ifm-color-primary);
+}
+
+.slotNote {
+  margin: 0.6rem 0 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ---- controls ------------------------------------------------------------------------ */
+
+.controls {
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.7rem 0;
+  background: var(--ifm-background-color);
+}
+
+.search {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.search,
+.jump,
+.action {
+  padding: 0.45rem 0.7rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+}
+
+.jump {
+  flex: 1 1 14rem;
+  /* A 118-entry dropdown must not stretch the row to the width of its longest option. */
+  min-width: 0;
+  max-width: 100%;
+}
+
+.action {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.action:hover,
+.search:focus,
+.jump:focus {
+  border-color: var(--ifm-color-primary);
+}
+
+.hits {
+  margin: 0.2rem 0 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ---- groups -------------------------------------------------------------------------- */
+
+.group {
+  margin-bottom: 1.8rem;
+}
+
+.groupName {
+  margin: 2.4rem 0 0.5rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+}
+
+.groupRule {
+  width: min(420px, 70%);
+  margin: 0 auto 1.1rem;
+}
+
+.subGroupName {
+  margin: 1.8rem 0 0.4rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.subGroupRule {
+  width: min(260px, 50%);
+  margin: 0 auto 1rem;
+  opacity: 0.6;
+}
+
+/* ---- a section ----------------------------------------------------------------------- */
+
+.section {
+  position: relative;
+  margin-bottom: 0.7rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  overflow: hidden;
+  /* The jump-to dropdown scrolls to these, and the sticky control bar would otherwise sit
+     on top of the heading it just took you to. */
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 4.5rem);
+}
+
+/* The flare down the left edge, lit only while the section is open. */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--ifm-color-emphasis-300);
+  transition: background 200ms ease;
+}
+
+.section[data-open]::before {
+  background: var(--ifm-color-primary);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: var(--licentia-disclosure-gap);
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem var(--licentia-disclosure-inset);
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: left;
+  color: var(--ifm-font-color-base);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  /* Eased, not snapped -- the background used to appear and vanish on the same frame as
+     the cursor crossing the edge. */
+  transition: background 180ms ease;
+}
+
+.sectionHead:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.sectionName {
+  flex: 1 1 auto;
+  font-weight: 700;
+}
+
+.sectionCount {
+  flex: none;
+  margin-left: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
+}
+
+/*
+   The disclosure triangle, drawn exactly as a docs <details> draws its own: a CSS border
+   triangle at the theme's arrow size, in brand gold, pointing right when shut and down
+   when open. Same shape, same size, same colour, same rotation, on the same side -- so
+   moving between a guide and this page there is nothing to notice.
+*/
+.chevron {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-width: var(--licentia-disclosure-size);
+  border-style: solid;
+  border-color: transparent transparent transparent var(--ifm-color-primary);
+  /* The right half of this box is transparent, so the flex gap after it would be measured
+     from an edge nobody can see. Pull it back, and the gap becomes the visible one. */
+  margin-right: calc(-1 * var(--licentia-disclosure-size));
+  transform: rotate(0deg);
+  transform-origin: calc(var(--licentia-disclosure-size) / 2) 50%;
+  transition: transform 200ms ease;
+}
+
+.section[data-open] .chevron {
+  transform: rotate(90deg);
+}
+
+/* ---- opening and closing ------------------------------------------------------------- */
+/* 0fr -> 1fr is the one way to transition to a height nobody measured. The inner wrapper
+   must own the overflow, or the rows spill out of the box mid-slide. */
+
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms ease;
+}
+
+.collapse[data-expanded] {
+  grid-template-rows: 1fr;
+}
+
+.collapseInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collapse,
+  .chevron,
+  .section::before {
+    transition: none;
+  }
+}
+
+/* ---- the mods ------------------------------------------------------------------------ */
+
+.table {
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.headRow,
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem 8.5rem 5rem;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.45rem 1rem 0.45rem 1.2rem;
+}
+
+.row + .row {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Its own band, so the eye reads three things: the section name, what the columns are,
+   and then the mods -- rather than one undifferentiated stack. */
+.headRow {
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+  background: var(--ifm-color-emphasis-100);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.row:first-of-type {
+  padding-top: 0.6rem;
+}
+
+.cellName {
+  min-width: 0;
+}
+
+.cellVersion,
+.cellPriority {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cellEnabled {
+  font-size: 0.78rem;
+}
+
+/* Both states are pills, because a bare word sitting next to a pill reads as unfinished.
+   "True" is the quiet one -- it is true on 1,555 of 1,562 rows, so it earns a whisper. */
+.on,
+.off,
+.offInline {
+  display: inline-block;
+  padding: 0.05rem 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.on {
+  color: var(--licentia-enabled-text);
+  background: var(--licentia-enabled-bg);
+}
+
+.off,
+.offInline {
+  color: var(--licentia-disabled-text);
+  background: var(--licentia-disabled-bg);
+}
+
+/* The phone-only copy that rides next to the mod name. */
+.offInline {
+  display: none;
+  margin-left: 0.5rem;
+  vertical-align: 1px;
+}
+
+.footnote {
+  max-width: 72ch;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* ---- phones -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .countRow {
+    gap: 0.8rem 1.6rem;
+  }
+
+  .countValue {
+    font-size: 1.25rem;
+  }
+
+  .action {
+    flex: 1 1 auto;
+  }
+
+  /* Four columns in 375px is the very problem the docs tables had. One block per mod,
+     each value labelled by the column it came from. */
+  .headRow {
+    display: none;
+  }
+
+  .headRow {
+    display: none;
+  }
+
+  /* Name on its own line, then version and priority on one. Two columns rather than an
+     inline flow, so Priority starts at the same x on every row instead of being pushed
+     around by however long the version above it happened to be. */
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.1rem 0.75rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .cellName {
+    grid-column: 1 / -1;
+  }
+
+  .cellVersion::before,
+  .cellPriority::before {
+    content: attr(data-label) ': ';
+    color: var(--ifm-color-emphasis-500);
+  }
+
+  .cellPriority {
+    text-align: right;
+  }
+
+  /* The whole "Is Enabled" column goes: the pill next to the name says it, and only
+     seven rows have anything to say. */
+  .cellEnabled {
+    display: none;
+  }
+
+  .offInline {
+    display: inline-block;
+  }
+}

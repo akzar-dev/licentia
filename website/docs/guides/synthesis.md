@@ -75,12 +75,12 @@ Click the `Gear` icon on the top right of Synthesis window **(1)**, and then mak
 <DocImage 
     src={require('./img/synthesis_guide/0_1_data_folder_setting.png').default}
     alt="Synthesis Data folder field setting"
-    style={{ maxHeight:100 }}
+    style={{ maxHeight:250 }}
     width={2269}
     height={931}
 />
 
-### 🟡 MO2 mode &mdash; when to run Synthesis outside MO2
+### 🟡 MO2 mode &mdash; when to run Synthesis outside MO2 {#mo2-mode}
 
 Recent Synthesis versions **refuse to build patchers while running inside MO2** (`BlockBuildingWithinMo2` in `PipelineSettings.json`). Building means compiling a patcher's source, which needs the SDK and does not work reliably through MO2's virtual filesystem.
 
@@ -131,7 +131,7 @@ Ensure that **all antivirus and antimalware applications are temporarily disable
 :::warning
 You need the **`.NET 10` SDK** installed, and Synthesis's **`Data Folder`** pointed at your `Stock Game\Data`. Both are covered in [step :zero:](#step-zero--first-run-or-after-updating-synthesis) above - check them before your first run.
 
-This is also the launch method for **running** patchers. If you are **adding or updating** a patcher, run `Synthesis.exe` directly instead - see [MO2 mode](#mo2-mode--when-to-run-synthesis-outside-mo2).
+This is also the launch method for **running** patchers. If you are **adding or updating** a patcher, run `Synthesis.exe` directly instead - see [MO2 mode](#mo2-mode).
 :::
 
 In `MO2`, in top right corner of the window, click on the dropdown menu and select `Synthesis`, then click `Run`:

@@ -48,7 +48,12 @@ function parseFrontmatter(src) {
   if (end === -1) return {};
   const block = src.slice(3, end);
   const out = {};
-  for (const line of block.split('\n')) {
+  // Split on either ending. On a Windows checkout every line keeps a trailing \r, and in
+  // JavaScript `.` does not match \r -- so `(.*)$` failed to match on EVERY key and the
+  // frontmatter came back empty. The symptom was this check insisting the FAQ index links
+  // to docs that do not exist: it never saw their `slug:` and guessed the URL from the
+  // filename. CI checks out LF on Linux and so never saw it.
+  for (const line of block.split(/\r?\n/)) {
     const m = line.match(/^([A-Za-z_][\w-]*):\s*(.*)$/);
     if (m) out[m[1]] = m[2].trim().replace(/^["']|["']$/g, '');
   }

@@ -1,1 +1,8 @@
 .DS_Store
+
+# MO2 support reports. website/tools/import-load-order.mjs reads one of these to generate
+# website/src/data/load-order.json, but the report itself must never land here: alongside
+# the mod table it carries the machine's hardware, its disk usage, and the full text of
+# every INI in the profile.
+support_output.html
+**/support_output.html

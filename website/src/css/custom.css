@@ -163,6 +163,26 @@ html {
 }
 /* @licentia:brand-end */
 
+/* ---- on/off state pills -------------------------------------------------------------- */
+/* /load-order's "Is Enabled" column. Deliberately low-contrast -- it is true on 1,555 of
+   1,562 rows, so it should label without shouting.
+
+   Below the brand marker on purpose: everything above it is copied verbatim into the dev
+   site by its sync-brand.mjs, and these are one page's colours, not the brand's. */
+:root {
+  --licentia-enabled-text: #1f7a3d;
+  --licentia-enabled-bg: rgba(31, 122, 61, 0.1);
+  --licentia-disabled-text: #8a6100;
+  --licentia-disabled-bg: rgba(138, 97, 0, 0.12);
+}
+
+[data-theme='dark'] {
+  --licentia-enabled-text: #6fcf87;
+  --licentia-enabled-bg: rgba(111, 207, 135, 0.12);
+  --licentia-disabled-text: #e0b558;
+  --licentia-disabled-bg: rgba(224, 181, 88, 0.14);
+}
+
 
 /* =========================
    COLLAPSIBLE SECTIONS
@@ -170,43 +190,140 @@ html {
    ========================= */
 
 /* Container */
+/* ---- disclosure geometry ------------------------------------------------------------- */
+/*
+   One set of numbers for every collapsible on the site, because the two of them kept
+   drifting apart by a few pixels and it showed.
+
+   The catch is that the triangle is drawn with the CSS border trick, so its box is twice
+   as wide as the shape: 12px of element, of which only the left 6px is ink. A flex gap
+   next to it is therefore measured from an edge nobody can see -- which is why the arrow
+   on /load-order sat 19px from its label while a docs <details> sat 8.6px from its own.
+   `--licentia-disclosure-gap` is the gap you can SEE; each side subtracts the invisible
+   half in its own way.
+*/
+:root {
+  --licentia-disclosure-size: 0.38rem;
+  --licentia-disclosure-inset: 0.9rem;
+  --licentia-disclosure-gap: 0.55rem;
+}
+
+/*
+   Collapsibles in docs, made to match the ones on /load-order.
+ 
+   No swizzle. The two already BEHAVE the same -- both animate a height from zero -- and
+   everything that made them look like different features is a handful of declarations:
+   the card's chrome, the left flare, and an arrow that was blue because <details> carries
+   `alert--info` and the theme points its decoration colour at the alert palette.
+
+   They should stay separate components, though. /load-order mounts and unmounts its rows
+   so that 1,562 of them are not in the document at once; a doc's collapsible must keep its
+   content in the DOM, or in-page search and anchor links stop finding what is inside it.
+   Same look, same feel, different job.
+*/
 .theme-doc-markdown details {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-left: 4px solid var(--ifm-color-primary);
-  border-radius: 10px;
-  background: var(--ifm-background-surface-color);
+  /* Gold, not the info-alert blue. Drives both the arrow and the divider. */
+  --docusaurus-details-decoration-color: var(--ifm-color-primary);
+
   margin: 1rem 0;
-  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+  /*
+     No padding of its own. Docusaurus renders <details> with the `alert` classes, and
+     Infima gives `.alert` a generous inset -- so the summary sat in the middle of the box
+     with a ring of dead space around it. That ring looked like part of the control and
+     wasn't: only the summary toggles anything, so clicking the gap did nothing. At zero,
+     the summary fills the card edge to edge and the whole header row is the hit area,
+     which is how a section on /load-order behaves. The box's outer width is untouched, so
+     it still lines up with the admonitions around it.
+  */
+  padding: 0;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  /* Grey until it is open, exactly like a section card on /load-order. */
+  border-left: 3px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.theme-doc-markdown details[data-collapsed='false'] {
+  border-left-color: var(--ifm-color-primary);
 }
 
 /* Header row */
 .theme-doc-markdown details>summary {
-  /* left padding for our chevron */
-  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem 0.85rem
+    calc(
+      var(--licentia-disclosure-inset) + var(--licentia-disclosure-size) +
+        var(--licentia-disclosure-gap)
+    );
+  font-weight: 700;
+  transition: background 180ms ease;
 }
 
-/* Body */
+.theme-doc-markdown details>summary::before {
+  left: var(--licentia-disclosure-inset);
+  top: 50%;
+  margin-top: calc(var(--docusaurus-details-summary-arrow-size) * -1);
+}
+
+.theme-doc-markdown details>summary:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/*
+   Body.
+
+   There are two elements here, and which one you style decides whether the thing animates.
+   Docusaurus renders:
+
+     <details> <summary/> <div>            <- this is what it animates, height 0 -> auto
+                            <div class="collapsibleContent_xxxx">   <- the actual content
+
+   The gap and the divider ship on the INNER one as `margin-top` and `border-top`, and a
+   margin is outside the height being animated -- so a click produced a 17px jump and a
+   line drawn out of nowhere before any sliding started. That was the sharp step.
+
+   So: the animated wrapper carries no padding of its own (or `height: 0` is not zero, it
+   is however tall the padding is), the inner element carries the spacing as padding, which
+   IS inside the animated height, and the rule fades in a beat after the slide begins
+   rather than being drawn across an element one pixel tall.
+*/
 .theme-doc-markdown details>*:not(summary) {
-  padding: 0 1rem 1rem 1rem;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Hover/active accents */
-.theme-doc-markdown details:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+.theme-doc-markdown details [class*='collapsibleContent'] {
+  margin-top: 0;
+  /* The rule sits on this element's own border box, so it spans the card edge to edge
+     however much padding the text inside it gets. */
+  padding: 1rem;
+  border-top-color: transparent;
+  transition: border-top-color 180ms ease 90ms;
 }
 
-[data-theme='dark'] .theme-doc-markdown details:hover {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+.theme-doc-markdown details[data-collapsed='false'] [class*='collapsibleContent'] {
+  border-top-color: var(--ifm-color-emphasis-200);
 }
+
+/*
+   Hovering lifts the header row and nothing else.
+ 
+   The whole border used to go gold, which said "open" -- and gold already means open here,
+   on the left flare. Two different things claiming the same colour. A section on
+   /load-order darkens its head and leaves its edges alone; so does this now.
+*/
 
 /* Focus ring for a11y */
 .theme-doc-markdown details>summary:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -2px;
   border-radius: 8px;
 }
 
@@ -229,18 +346,40 @@ html {
   font-display: swap;
 }
 
+/*
+   The stand-in for Cloister Black, scaled to take up the same room as the real thing.
+ 
+   `size-adjust: 100%` meant no adjustment at all, and Georgia sets type about 7% wider
+   than Cloister Black at the same size -- measured at 100px: 1033px against 964px. That
+   matters more than it sounds, because `.licentia-heading` is capped at `18ch`, and `ch`
+   is a unit of the font in use. So the heading wrapped at a different word before and
+   after the swap, and on a page like /post-installation the h1 went from two lines to one
+   the moment the font arrived: an 84px jump, which was the whole of that page's layout
+   shift. Every heading below it moved up by exactly one line height.
+ 
+   93.3% is the measured ratio. Re-measure it if the display face is ever changed:
+   render a string at 100px in both and divide the widths.
+*/
 @font-face {
   font-family: 'Cloister Black Fallback';
   src:
     local('Georgia');
   font-style: normal;
   font-weight: 400;
-  size-adjust: 100%;
+  size-adjust: 93.3%;
 }
 
 .licentia-heading {
   width: fit-content;
-  max-width: min(100%, 18ch);
+  /*
+     `em`, not `ch`. `ch` is the advance width of the "0" glyph, which is a per-glyph
+     property that `size-adjust` cannot equalise -- with the metrics matched the two faces
+     still disagreed about `18ch` by ten per cent (936px against 1031px at a 100px font),
+     so the heading could still choose a different word to wrap at before and after the
+     swap. 9.36em is what 18ch measures in Cloister Black, and it measures the same in
+     every font, which is the point.
+  */
+  max-width: min(100%, 9.36em);
   margin-inline: auto;
   font-family: 'Cloister Black', 'Cloister Black Fallback', serif;
   font-weight: 400;
@@ -631,6 +770,10 @@ h2 {
 /* Top-left logo hover micro-interaction */
 .navbar__brand {
   transition: none;
+  /* The wordmark is the one item that must never be the thing that gives way. Without
+     this, flex shrinks it first, and at 997px it went to 28px of its 57 and slid under
+     "Install". */
+  flex: 0 0 auto;
 }
 
 .navbar__logo {
@@ -738,27 +881,70 @@ h2 {
   opacity: 1;
 }
 
+/*
+   The placeholder fades in only if the wait earns it, and fades out rather than popping.
+ 
+   Both directions are plain transitions rather than animations, and that is deliberate:
+   the `--waiting` class is added after mount, so the browser has a real style change to
+   interpolate, and removing it on load interpolates back from wherever the opacity had
+   got to. An image that arrives inside the delay never leaves zero, so its placeholder
+   costs nothing and disappearing is invisible. See SKELETON_DELAY_MS in SiteImage.tsx.
+*/
 .site-image__skeleton {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(90deg,
-      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 0%,
-      color-mix(in oklab, var(--ifm-color-emphasis-100) 95%, transparent) 45%,
-      color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent) 100%);
-  background-size: 300% 100%;
-  animation: site-image-shimmer 2.8s linear infinite;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  background: color-mix(in oklab, var(--ifm-color-emphasis-200) 80%, transparent);
 }
 
-@keyframes site-image-shimmer {
-  0% {
-    background-position: 200% 0;
+.site-image--waiting .site-image__skeleton {
+  opacity: 1;
+}
+
+/*
+   A pulse, not a sweep, and on a child rather than on the placeholder itself.
+ 
+   The sweep clicked once per cycle, and the arithmetic says why: the gradient was
+   `background-size: 300%` while the animation travelled from 200% to -200%, which is 400%
+   of movement. A repeating background only loops seamlessly when the travel is a whole
+   number of tiles, so every restart landed on a different phase of the pattern and you
+   saw it jump. (Travelling 200% -> -100% would have fixed it.)
+
+   A pulse cannot have that problem: there is no travel to line up. It is also cheaper --
+   `background-position` repaints the element every frame, while opacity is composited, and
+   /media can have fifty of these going at once. It lives on ::after because the
+   placeholder's own opacity is spoken for by the fade in and out above; an animation there
+   would override those transitions outright.
+*/
+.site-image__skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: color-mix(in oklab, var(--ifm-color-emphasis-400) 55%, transparent);
+  opacity: 0;
+  animation: site-image-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes site-image-pulse {
+  0%,
+  100% {
+    opacity: 0;
   }
 
-  100% {
-    background-position: -200% 0;
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-image__skeleton::after {
+    animation: none;
+    opacity: 0.5;
   }
 }
 
@@ -981,6 +1167,77 @@ img.zoomable {
   cursor: zoom-in;
 }
 
+/*
+   Every image the lightbox will open says so on hover -- the selector is deliberately the
+   same one custom-zoom.ts binds to, so the affordance cannot drift away from the
+   behaviour: the frame's edge goes from grey to gold and the picture inside leans forward
+   a little, while the frame itself does not move a pixel. Nothing reflows on hover.
+*/
+img.zoomable {
+  transition: transform 320ms ease;
+}
+
+img.zoomable:hover,
+img.zoomable.lx-zoom-source {
+  transform: scale(1.045);
+}
+
+/*
+   Documentation screenshots get the same frame the gallery has.
+ 
+   Two things come with it. It gives every screenshot the same breathing room above and
+   below, which until now depended on whether a blank line happened to follow it in the
+   source -- so an image could end up flush against the admonition beneath it. And it gives
+   the picture an edge, which a dark screenshot on a dark page badly wanted.
+
+   It cannot shift the layout on load, because it does not touch the part that reserves
+   space: SiteImage already stamps the wrapper with an explicit width and aspect-ratio from
+   the dimensions the remark plugin reads off the file at build time, so the box is the
+   right size in the server-rendered HTML, before a single byte of the image arrives. A
+   border and a margin are the same before and after it loads.
+*/
+/* Docs live in `.markdown`; /how-to-update and /changelog are standalone MDX pages and
+   get no such wrapper, which is why they were the only prose pages still unframed. */
+.markdown .site-image,
+[class*='mdxPageWrapper'] .site-image {
+  display: block;
+  margin-block: 1.6rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.markdown .site-image:hover,
+[class*='mdxPageWrapper'] .site-image:hover,
+.markdown .site-image:has(> img.lx-zoom-source),
+[class*='mdxPageWrapper'] .site-image:has(> img.lx-zoom-source) {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+/* A list item's own indent already sets these in from the text; centring them there as
+   well would leave them looking adrift. */
+.markdown li .site-image,
+[class*='mdxPageWrapper'] li .site-image {
+  margin-block: 1.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.zoomable,
+  .markdown .site-image,
+  [class*='mdxPageWrapper'] .site-image {
+    transition: none;
+  }
+
+  img.zoomable:hover,
+  img.zoomable.lx-zoom-source {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .navbar__brand,
@@ -1138,4 +1395,236 @@ div[class*='announcementBar_'] a {
 
 div[class*='announcementBar_'] a:hover {
   text-decoration: none;
+}
+
+/* ---- tables on a phone -------------------------------------------------------------- */
+/*
+   A markdown table cannot be a grid on a 375px screen. Three columns leave ~120px each,
+   which breaks a sentence into a ladder of two-word lines; and because Docusaurus gives
+   tables `display: block; overflow: auto`, a table that spills over by even four pixels
+   (as /pre-installation's third one did) becomes a horizontal scroll container sitting in
+   the middle of the page, snagging vertical swipes on iOS. All the cost of scrolling, none
+   of the benefit.
+
+   So below 768px the grid is abandoned: each row becomes its own card and each cell gets
+   its column's name above it, from the `data-label` that plugins/remark-table-labels.cjs
+   writes at build time. Nothing scrolls sideways, and the long "Comment" column finally
+   gets the full width of the screen.
+
+   Wide screens are untouched -- a genuinely wide table still scrolls inside its own box
+   rather than dragging the page with it, which is the stock behaviour and the right one.
+*/
+@media (max-width: 768px) {
+  .markdown table,
+  .markdown table tbody,
+  .markdown table tr,
+  .markdown table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* The per-cell labels say everything the header row said. */
+  .markdown table thead {
+    display: none;
+  }
+
+  .markdown table {
+    overflow: visible;
+    border: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown table tr {
+    margin: 0 0 1rem;
+    border: 1px solid var(--ifm-table-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    /* Infima stripes alternate rows; as separate cards that reads as an error. */
+    background: none;
+  }
+
+  .markdown table td {
+    border: 0;
+    padding: 0.7rem 0.9rem;
+    /* Column alignment (`:---:`) arrives as an inline style on the cell, which nothing but
+       !important can outrank. It is alignment for a grid; in a stacked card a centred
+       value under a left-aligned label just looks like a mistake. */
+    text-align: left !important;
+  }
+
+  .markdown table td + td {
+    border-top: 1px solid var(--ifm-table-border-color);
+  }
+
+  .markdown table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ifm-color-emphasis-600);
+  }
+
+  /* Cells here hold real bullet lists; the stock indent is built for body copy. */
+  .markdown table td ul,
+  .markdown table td ol {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .markdown table td li + li {
+    margin-top: 0.4rem;
+  }
+}
+
+/* ---- the navbar between "fits" and "collapses" -------------------------------------- */
+/*
+   Docusaurus swaps the navbar for a hamburger at exactly 996px and not a pixel earlier, so
+   there is a band just above that where every item still has to be drawn and there is no
+   longer room for them. Adding "Load Order" put the left-hand side 89px over its box at
+   997px: flex shrank the brand to zero width and the logo ended up underneath "Install".
+
+   That number is not adjustable from here. It lives twice -- as DesktopBreakpoint in
+   @docusaurus/theme-common's useWindowSize (which decides whether the mobile sidebar is
+   even mounted) and again inside Infima's compiled CSS -- and theme-common's own source
+   says both must match. Changing it means aliasing a package internal in webpack; see
+   https://github.com/facebook/docusaurus/issues/9603.
+
+   So instead of moving the wall, the items get narrower as they approach it. Halving the
+   per-item padding returns ~112px across the seven links, which is more than the 89 owed;
+   the DocSearch shortcut hint goes too, since it is decoration and the widest single thing
+   on the right. Above 1200px nothing here applies and the navbar is the one you designed; that ceiling
+   is measured, not guessed - at 1121px the full-size spacing still overflowed by 30px.
+*/
+@media (min-width: 997px) and (max-width: 1200px) {
+  .navbar {
+    --ifm-navbar-item-padding-horizontal: 0.45rem;
+  }
+
+  /* The left links set their own spacing further up this file, to hang the divider rule
+     between them; that wins over the variable, so it has to be narrowed here too. */
+  .navbar .theme-layout-navbar-left.navbar__items > .navbar__item.navbar__link + .navbar__item.navbar__link {
+    padding-left: 0.4rem;
+    margin-left: 0.18rem;
+  }
+
+  /* The widest single thing on the right, and it is decoration. */
+  .navbar .DocSearch-Button-Keys {
+    display: none;
+  }
+
+  .navbar .header-kofi-btn {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---- the table of contents ----------------------------------------------------------- */
+/*
+   These headings are whole sentences -- "I'm not receiving the extra Thane weapons from
+   Balgruuf (or others, when I complete their quests)." -- so each entry wraps to two or
+   three lines, and with nothing between them the column reads as one paragraph of grey
+   text. There is no way to shorten the headings without making the FAQ worse, so the
+   entries are given edges instead: a gold marker to start each one, tight leading inside
+   an entry and real space between entries, and a rail down the left that fills in gold
+   against whichever one you are reading.
+*/
+.table-of-contents {
+  font-size: 0.82rem;
+}
+
+.table-of-contents__left-border {
+  border-left-color: var(--ifm-color-emphasis-200);
+}
+
+.table-of-contents li {
+  margin: 0.55rem 0;
+}
+
+.table-of-contents__link {
+  position: relative;
+  display: block;
+  padding-left: 0.95rem;
+  line-height: 1.4;
+  color: var(--ifm-color-emphasis-700);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+/* The marker, level-aware: a filled dot for a top-level entry, hollow for a nested one. */
+.table-of-contents__link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-400);
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.table-of-contents ul ul .table-of-contents__link::before {
+  background: none;
+  box-shadow: inset 0 0 0 1px var(--ifm-color-emphasis-400);
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link:hover code {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__link:hover::before {
+  background: var(--ifm-color-primary);
+  box-shadow: none;
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link--active code {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.table-of-contents__link--active::before {
+  background: var(--ifm-color-primary);
+  box-shadow: 0 0 6px color-mix(in oklab, var(--ifm-color-primary) 55%, transparent);
+}
+
+/* ---- the lightbox ---------------------------------------------------------------------- */
+/*
+   A gold rim-light around the open image.
+ 
+   A dark screenshot on a near-black overlay has no edges -- the picture simply fades into
+   the page behind it and you cannot tell where it stops. This is the same glow the
+   wordmark carries, so it reads as the site's own rather than a browser artefact. It
+   arrives a touch after the image does and leaves with it: quick enough not to be a
+   transition you wait for, soft enough not to be a border.
+
+   It does NOT change while zooming, and that is the point rather than an oversight. A
+   box-shadow always sits outside the border box, and the border box is what the transform
+   scales -- so it keeps hugging the picture at any zoom, with nothing to swap. The first
+   version cleared it on `--zoomed`, which looked harmless and was not: that class flips
+   the instant the script's `scale` changes, while the transform takes 360ms to get there,
+   so for a third of a second the shadow was being redrawn against geometry the image had
+   already left. What you saw was the rim, and the frame it belonged to, stranded at the
+   old size underneath the new one.
+*/
+.lx-zoom-overlay--open .lx-zoom-image {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--ifm-color-primary) 45%, transparent),
+    0 0 22px color-mix(in oklab, var(--ifm-color-primary) 30%, transparent),
+    0 0 60px color-mix(in oklab, var(--ifm-color-primary) 16%, transparent);
+  transition:
+    opacity 0.2s ease,
+    box-shadow 260ms ease 60ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lx-zoom-overlay--open .lx-zoom-image {
+    transition: none;
+  }
 }

@@ -23,7 +23,7 @@ It features optional non-fetish content with a series of _OStim-based_ mods/ques
 If you want to examine the complete list of mods in _Licentia NEXT_, [go here to Load Order Library.](https://loadorderlibrary.com/lists/licentia-next)
 :::
 
-:::info Already installed?
+:::info[Already installed?]
 If you want to update an existing installation, use the [How to Update](/how-to-update) guide.
 :::
 

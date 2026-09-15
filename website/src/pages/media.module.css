@@ -1,5 +1,17 @@
+/*
+   Tall enough that this page always has a scrollbar.
+ 
+   Switching from Screenshots to Videos takes the page from ninety-nine images to one
+   placeholder, and losing the scrollbar on the way shifts everything centred on the page
+   sideways by its width. Reserving the space globally (`scrollbar-gutter: stable`, or
+   `overflow-y: scroll`) fixes it everywhere and costs something everywhere too: the first
+   leaves an empty notch beside the navbar and footer, the second leaves a dead scrollbar
+   on every short page on the site. This is the only page with the problem, so this is
+   where it is solved.
+*/
 .main {
   padding: 2rem 0 3rem;
+  min-height: calc(100vh + 1px);
 }
 
 .header {
@@ -23,19 +35,6 @@
 
 .section {
   margin-top: 1.5rem;
-}
-
-.sectionTitle {
-  margin: 0 0 0.8rem;
-  text-align: center;
-  font-size: 1.35rem;
-  line-height: 1.2;
-  font-weight: 700;
-  color: var(--ifm-color-emphasis-700);
-}
-
-html[data-theme='light'] .sectionTitle {
-  color: var(--licentia-light-ink);
 }
 
 .videoWrap {
@@ -64,18 +63,34 @@ html[data-theme='light'] .sectionTitle {
   background: color-mix(in oklab, var(--ifm-background-surface-color) 94%, transparent);
 }
 
+/* The gallery fills whatever width it is given rather than stepping between three fixed
+   breakpoints: one rule instead of three, and no width where the tiles are awkwardly wide
+   because the next breakpoint has not arrived yet. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 14px;
 }
 
 .card {
+  position: relative;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--ifm-color-emphasis-300);
   background: var(--ifm-background-surface-color);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card:hover,
+.card:focus-within,
+.card:has(:global(.lx-zoom-source)) {
+  transform: translateY(-3px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
 .shot {
@@ -83,17 +98,67 @@ html[data-theme='light'] .sectionTitle {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  cursor: zoom-in;
+  /* The scale-on-hover lives on `img.zoomable` in custom.css now, shared with the
+     showcase marquee and anything else the lightbox opens. */
 }
 
-@media (max-width: 996px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* The lightbox is not obvious until you happen to click one, so say so once. */
+.hint {
+  margin: -0.6rem 0 1.2rem;
+  text-align: center;
+  font-size: 0.87rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: none;
   }
 }
 
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+/* ---- Screenshots / Videos ----------------------------------------------------------- */
+/* One control instead of two headings stacked down the page: the video was below a
+   hundred screenshots, which is to say nobody found it. Both panels stay rendered and are
+   toggled with `hidden`, so the gallery is still in the static HTML and /media#video still
+   lands on the video. */
+.switch {
+  /* `width: fit-content` + auto margins, because the row it sits in is not a flex box. */
+  display: flex;
+  width: fit-content;
+  gap: 0.25rem;
+  margin: 0 auto 1.6rem;
+  padding: 0.25rem;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+}
+
+.switchOn,
+.switchOff {
+  padding: 0.45rem 1.1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.switchOn {
+  background: var(--licentia-button-bg);
+  color: var(--licentia-button-text);
+}
+
+.switchOff {
+  background: none;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.switchOff:hover {
+  color: var(--ifm-color-primary);
 }

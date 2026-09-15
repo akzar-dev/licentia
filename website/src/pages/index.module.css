@@ -13,6 +13,12 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* The photo's own average tone, held until the photo arrives. A CSS background is only
+     discovered once the stylesheet is parsed and the element laid out, so for the first
+     ~80ms the hero is whatever is behind it -- and with the dark overlay gradient on top
+     that read as a dark band behind the text. This makes those frames look like the photo
+     rather than like something missing. */
+  background-color: #615145;
   background-image: url('/img/pages/main/licentia-next-social-card-bg-dark.webp');
   background-position: center;
   background-repeat: no-repeat;
@@ -22,6 +28,7 @@
 }
 
 html[data-theme='light'] .hero::before {
+  background-color: #a9aac3;
   background-image: url('/img/pages/main/licentia-next-social-card-bg-light.webp');
 }
 
@@ -53,11 +60,18 @@ html[data-theme='light'] .heroOverlay {
   --hero-content-width: min(30rem, 92vw);
 }
 
+/* The sizing lives on the wrapper now, so the reserved box and the picture are the same
+   shape; the image simply fills it. */
+.heroLogoWrap {
+  display: block;
+  margin-inline: auto;
+  border-radius: 12px;
+}
+
 .heroLogo {
-  width: min(90%, 400px);
+  width: 100%;
   max-width: 100%;
   height: auto;
-  margin-inline: auto;
   display: block;
 
   /* Static logo glow */
@@ -335,11 +349,16 @@ html[data-theme='light'] .ctaSolid {
   margin-bottom: .25rem;
 }
 
+/* These read as headings, so they get the treatment headings get elsewhere on this page:
+   brand gold with the same soft glow `.highlightText` uses. Plain body colour left them
+   looking like the first line of the paragraph underneath. */
 .iconTitle {
+  font-size: 1.15rem;
   font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ifm-color-primary);
+  text-shadow: 0 0 10px color-mix(in oklab, var(--ifm-color-primary) 28%, transparent);
 }
-
-/* removed .iconText (unused) */
 
 @media (max-width: 996px) {
   .iconRow {
@@ -481,6 +500,15 @@ html[data-theme='light'] .ctaSolid {
 /* Image frame */
 .shotFrame {
   position: relative;
+  /* The same resting grey edge the gallery and the doc screenshots have, going gold on
+     hover. The image inside scales (see img.zoomable in custom.css); the frame itself
+     stays put, because the marquee is already moving these and a transform would fight it.
+     border-box keeps the 1px from changing the tile's size. */
+  box-sizing: border-box;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
   height: 180px;
   aspect-ratio: 16/9;
   border-radius: 10px;
@@ -488,6 +516,12 @@ html[data-theme='light'] .ctaSolid {
   flex: 0 0 auto;
   content-visibility: auto;
   contain-intrinsic-size: 180px 320px;
+}
+
+.shotFrame:hover,
+.shotFrame:has(:global(.lx-zoom-source)) {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
 }
 
 .shot {
@@ -579,10 +613,6 @@ html[data-theme='light'] .ctaSolid {
     box-shadow: 0 2px 10px rgba(0, 0, 0, .25) !important;
   }
 
-  .site-image__skeleton {
-    animation: none !important;
-  }
-
   .heroLogo {
     filter:
       drop-shadow(0 0 18px rgba(250, 203, 53, .55)) drop-shadow(0 0 36px rgba(250, 203, 53, .35)) drop-shadow(0 6px 24px rgba(0, 0, 0, .35)) !important;
@@ -592,24 +622,86 @@ html[data-theme='light'] .ctaSolid {
 /* About section body typography.
    Previously these were inline style={{...}} objects repeated on the wrapper and on
    every one of the seven paragraphs. */
+/* The heading and tagline stay in a narrow centred column; the card below them spans the
+   full container, so it lines up with the feature grid rather than sitting inside it. */
 .aboutContainer {
-  max-width: 800px;
-  margin: 0 auto;
   text-align: center;
 }
 
+.aboutContainer > h2,
+.aboutContainer > .sectionTagline {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+/*
+   Seven paragraphs of dense prose, and every word of it is load-bearing for search. So
+   none of the text changes here -- only how much of it the eye has to take in at once:
+
+   * the card is as wide as the feature grid above it, which is the width this page
+     already establishes, and the prose runs the full width of it.
+   * ragged right instead of justified. Justification without hyphenation buys tidy edges
+     with uneven word spacing and vertical rivers -- a bad trade at any measure.
+   * a heading per topic, and a gold rule between them, so it can be skimmed.
+*/
 .aboutBody {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-top: 1rem;
+  margin: 1.2rem 0 0;
+  padding: clamp(1.4rem, 3.5vw, 2.8rem) clamp(1.1rem, 3vw, 2.4rem);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 14px;
+}
+
+/* The text runs the full width of the card, and so do the rules between topics. The card
+   already carries the page's padding; a narrower column inside it just looked inset. */
+.topic {
+  margin: 0;
+}
+
+/* The same gold rule the guides use, between topics rather than over the first one. */
+.topic + .topic {
+  margin-top: 1.9rem;
+  padding-top: 1.9rem;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--licentia-separator-core) 50%,
+      transparent 100%
+    )
+    1;
+}
+
+/* Centred, like every other heading on this page. */
+.topicTitle {
+  margin: 0 0 0.8rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ifm-color-primary);
 }
 
 .aboutBody p {
-  margin-bottom: 1.5rem;
-  text-align: justify;
-  text-justify: inter-word;
+  margin: 0;
+  /* The section centres its heading and tagline, and the prose used to escape that only
+     because `justify` happened to override it. Say it outright. */
+  text-align: left;
 }
 
-.aboutBody p:last-child {
-  margin-bottom: 0;
+
+/* The load-order button under the feature grid -- see FeatureIcons in index.tsx. */
+.featuresCtaRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+/* .ctaSolid pins itself to 180px, which fits "View full gallery" and not much else. */
+.ctaWide {
+  max-width: none;
+  padding-inline: 1.6rem;
 }

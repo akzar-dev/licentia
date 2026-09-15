@@ -34,6 +34,11 @@ function toCssWidth(value: React.ImgHTMLAttributes<HTMLImageElement>['width']): 
   return undefined;
 }
 
+/** How long a load has to take before the placeholder is worth showing. */
+const SKELETON_DELAY_MS = 180;
+/** How long it stays in the document after the image arrives, so it can fade. */
+const SKELETON_FADE_MS = 220;
+
 export default function SiteImage(props: SiteImageProps): React.JSX.Element {
   const {
     width,
@@ -48,6 +53,23 @@ export default function SiteImage(props: SiteImageProps): React.JSX.Element {
     ...rest
   } = props;
   const [isLoaded, setIsLoaded] = React.useState(false);
+  /**
+   * The placeholder has three states, not two, and the middle one is why it is worth the
+   * bookkeeping:
+   *
+   *   mounted but invisible - the usual case. Most images here are cached, preloaded, or
+   *     small, and a placeholder shown instantly on those is a one-frame grey flash on
+   *     exactly the images that were fastest. It reads as jank, not as loading.
+   *   visible - only once the wait has passed SKELETON_DELAY_MS and there is a real gap
+   *     to fill.
+   *   leaving - kept in the document for SKELETON_FADE_MS after the image arrives, so it
+   *     fades rather than vanishing between one frame and the next.
+   *
+   * An image that loads inside the delay is never shown one: `waiting` never turns true,
+   * the placeholder sits at zero opacity throughout, and unmounting it is invisible.
+   */
+  const [waiting, setWaiting] = React.useState(false);
+  const [keepSkeleton, setKeepSkeleton] = React.useState(true);
   const imgRef = React.useRef<HTMLImageElement | null>(null);
   const numericWidth = typeof width === 'number' ? width : Number(width);
   const numericHeight = typeof height === 'number' ? height : Number(height);
@@ -75,6 +97,24 @@ export default function SiteImage(props: SiteImageProps): React.JSX.Element {
     }
   }, [rest.src, rest.srcSet]);
 
+  // Long enough that a fast image never shows a placeholder; short enough that a slow one
+  // gets it before anybody wonders whether the page is broken.
+  React.useEffect(() => {
+    if (isLoaded) return undefined;
+    const timer = setTimeout(() => setWaiting(true), SKELETON_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [isLoaded, rest.src, rest.srcSet]);
+
+  React.useEffect(() => {
+    if (!isLoaded) {
+      setKeepSkeleton(true);
+      return undefined;
+    }
+    setWaiting(false);
+    const timer = setTimeout(() => setKeepSkeleton(false), SKELETON_FADE_MS);
+    return () => clearTimeout(timer);
+  }, [isLoaded]);
+
   const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     setIsLoaded(true);
     onLoad?.(event);
@@ -90,6 +130,7 @@ export default function SiteImage(props: SiteImageProps): React.JSX.Element {
       className={clsx(
         'site-image',
         isLoaded ? 'site-image--loaded' : 'site-image--loading',
+        waiting && 'site-image--waiting',
         wrapperClassName
       )}
       style={{
@@ -98,7 +139,7 @@ export default function SiteImage(props: SiteImageProps): React.JSX.Element {
         ...wrapperStyle,
       }}
     >
-      {!isLoaded ? <span className="site-image__skeleton" aria-hidden="true" /> : null}
+      {keepSkeleton ? <span className="site-image__skeleton" aria-hidden="true" /> : null}
       <img
         {...rest}
         ref={imgRef}

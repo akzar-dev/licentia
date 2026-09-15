@@ -173,7 +173,13 @@ async function optimizeShowcaseAndRename() {
     const inPath = path.join(SHOWCASE_DIR, name);
     const outPath = path.join(SHOWCASE_DIR, `licentia-next-screenshot-${maxN}.webp`);
     if (!dryRun) {
-      await sharp(inPath)
+      // Read the bytes first rather than handing sharp a path. Given a path on Windows it
+      // can keep the file open after toFile() resolves, and the unlink below then fails
+      // with EBUSY -- which is exactly what happened the first time a .webp was dropped in
+      // here: nine PNGs and JPEGs converted, then the run died on the one webp and left
+      // three files behind. A Buffer has no handle to keep.
+      const bytes = await fs.readFile(inPath);
+      await sharp(bytes)
         .resize({ width: 1920, withoutEnlargement: true })
         .webp({ quality: 85, effort: 5 })
         .toFile(outPath);

@@ -38,6 +38,29 @@ function getTargets(): HTMLImageElement[] {
   return Array.from(document.querySelectorAll<HTMLImageElement>(SELECTOR));
 }
 
+/**
+ * Marks the thumbnail the overlay is currently showing.
+ *
+ * The overlay does not cover the page opaquely, so the picture you clicked is still
+ * visible behind it -- and on a mouse it would drop its hover state the instant the
+ * pointer moved onto the overlay: the frame snapped from gold back to grey and the image
+ * un-zoomed while you were still looking at it. Touch has no hover to lose, which is why
+ * phones already behaved the way they should. This gives every platform the touch
+ * behaviour: the source keeps its raised look for as long as it is the one open, and
+ * settles back once the overlay is gone.
+ *
+ * It follows the arrow keys too, so paging through a gallery moves the mark along with it.
+ */
+const SOURCE_CLASS = 'lx-zoom-source';
+
+function markSource(index: number | null): void {
+  document
+    .querySelectorAll(`.${SOURCE_CLASS}`)
+    .forEach((el) => el.classList.remove(SOURCE_CLASS));
+  if (index === null) return;
+  getTargets()[index]?.classList.add(SOURCE_CLASS);
+}
+
 function getItemFromImage(img: HTMLImageElement): Item {
   return {
     src: img.currentSrc || img.src,
@@ -103,8 +126,21 @@ function applyTransform(animate = false): void {
   imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
 }
 
-function getScrollbarWidth(): number {
-  return window.innerWidth - document.documentElement.clientWidth;
+/**
+ * How much the page will shrink when scrolling is locked -- measured, not assumed.
+ *
+ * The old version compared innerWidth to clientWidth, which answers "is there a scrollbar",
+ * not "will locking remove it". Those stopped being the same question when the site took
+ * `overflow-y: scroll` on <html> (see custom.css): the scrollbar is now always there, so
+ * hiding body overflow removes nothing, and the old compensation padded the page by 15px
+ * that nobody had taken away -- shifting everything left the moment an image was opened.
+ *
+ * So this locks first and looks at what actually changed. Zero is a normal answer.
+ */
+function lockScrollAndMeasure(): number {
+  const before = document.documentElement.clientWidth;
+  document.body.style.overflow = 'hidden';
+  return document.documentElement.clientWidth - before;
 }
 function setScale(nextScale: number, animate = true): void {
   scale = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, nextScale));
@@ -150,6 +186,7 @@ function setImage(index: number, opacity = '1'): void {
   imageEl.style.opacity = opacity;
   imageEl.draggable = false;
 
+  markSource(currentIndex);
   resetOpenedState();
   applyTransform(false);
 }
@@ -208,11 +245,10 @@ function openOverlay(index: number): void {
   setImage(index);
   overlay.style.display = '';
 
-  const sw = getScrollbarWidth();
-  if (sw > 0) {
-    document.body.style.paddingRight = `${sw}px`;
+  const reclaimed = lockScrollAndMeasure();
+  if (reclaimed > 0) {
+    document.body.style.paddingRight = `${reclaimed}px`;
   }
-  document.body.style.overflow = 'hidden';
 
   animateOpen();
 }
@@ -223,6 +259,8 @@ async function closeOverlay(): Promise<void> {
   await animateClose();
   overlay.classList.remove('lx-zoom-overlay--open');
   overlay.style.display = 'none';
+  // Released only once the overlay is out of the way, so the thumbnail is seen settling.
+  markSource(null);
   window.dispatchEvent(new CustomEvent('licentia-zoom-change', { detail: { open: false } }));
   document.body.style.removeProperty('overflow');
   document.body.style.removeProperty('padding-right');

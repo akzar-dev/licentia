@@ -71,6 +71,29 @@ function isListForcedDown(): boolean {
 
 const listForcedDown = isListForcedDown();
 
+// ---------------------------------------------------------------------------
+// Load-order summary
+//
+// /load-order imports src/data/load-order.json in full (it is the page). The homepage
+// only wants the headline number, and a ~200 KB JSON import would land in the homepage
+// bundle to get it -- so the number is read here at build time and handed over through
+// customFields. Regenerate the JSON with `npm run import-load-order`.
+// ---------------------------------------------------------------------------
+function loadOrderSummary(): { mods: number; version: string | null } {
+  const file = path.resolve(__dirname, 'src', 'data', 'load-order.json');
+  try {
+    const parsed = JSON.parse(fs.readFileSync(file, 'utf8')) as { mods?: unknown; version?: unknown };
+    if (typeof parsed.mods !== 'number') {
+      throw new Error(`no numeric "mods" count in ${file}`);
+    }
+    return { mods: parsed.mods, version: typeof parsed.version === 'string' ? parsed.version : null };
+  } catch (err) {
+    throw new Error(`[load-order] ${(err as Error).message}`);
+  }
+}
+
+const loadOrder = loadOrderSummary();
+
 const config: Config = {
   title: 'Licentia NEXT',
   tagline: 'Ultimate 1-Click NSFW Skyrim AE Modlist 🐉',
@@ -133,6 +156,10 @@ const config: Config = {
   url: 'https://licentia.quest',
   baseUrl: '/',
 
+  customFields: {
+    loadOrder,
+  },
+
   organizationName: 'akzar-dev',
   projectName: 'licentia',
   deploymentBranch: "gh-pages",
@@ -161,7 +188,10 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           breadcrumbs: false,
           routeBasePath: '/',
-          remarkPlugins: [require('./plugins/remark-image-dimensions.cjs')],
+          remarkPlugins: [
+            require('./plugins/remark-image-dimensions.cjs'),
+            require('./plugins/remark-table-labels.cjs'),
+          ],
           // editUrl:
           //   'https://github.com/akzar-dev/licentia/edit/main/website/',
           // showLastUpdateTime: true,
@@ -170,6 +200,10 @@ const config: Config = {
           changefreq: 'weekly',
           priority: 0.5,
           ignorePatterns: ['/search', '/search/'],
+        },
+        pages: {
+          // Tables in src/pages get the same phone treatment as tables in docs.
+          remarkPlugins: [require('./plugins/remark-table-labels.cjs')],
         },
         blog: false,
         theme: {
@@ -234,6 +268,11 @@ const config: Config = {
           label: 'Changelog',
         },
         {
+          to: '/load-order',
+          position: 'left',
+          label: 'Load Order',
+        },
+        {
           type: 'docSidebar',
           sidebarId: 'faqsSidebar',
           position: 'left',
@@ -285,6 +324,10 @@ const config: Config = {
         {
           label: 'Load Order Library',
           href: 'https://loadorderlibrary.com/lists/licentia-next',
+        },
+        {
+          label: 'Modlist Grimoire',
+          href: 'https://modlistgrimoire.com/modlists/licentia-next',
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/akzar-dev">akzar</a> and <a href="/team">Licentia team</a>`,

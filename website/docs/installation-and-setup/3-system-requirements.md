@@ -18,7 +18,7 @@ The minimally recommended setup for an enjoyable experience **at 1080p** is at l
 - any SSD _(you'd have a really bad time with HDD's)_
 - **40 GB PAGEFILE, NO EXCEPTIONS** _(would be explained next in [pre-installation](pre-installation#general-pc-adjustments))_
 
-:::caution
+:::warning
 **IF YOU DO NOT MEET AT LEAST THESE TARGETS, THE MODLIST WILL PLAY LIKE A HARD FREEZING CRASH-PRONE PIECE OF CRAP!**
 :::
 

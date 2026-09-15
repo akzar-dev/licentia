@@ -31,13 +31,40 @@ function Hero() {
       <div className={styles.heroOverlay} />
 
       <div className={clsx('container', styles.heroInner)}>
-        <img
+        {/*
+          `decoding="sync"`, not async, and deliberately.
+
+          This logo carries its glow as `filter: drop-shadow()`, which follows the image's
+          alpha channel -- so the browser has to have decoded the bitmap to know what shape
+          to draw. `decoding="async"` explicitly permits presenting the frame before that
+          has happened, and in that window the filter is rasterised against the element's
+          BOX instead: a gold rectangle, for a frame or two, until the alpha arrives. That
+          is the flash. Sync decoding closes the window, and this is a 154 KB image already
+          marked high priority, so there is nothing to gain by deferring it anyway.
+        */}
+        {/*
+          `decoding="sync"`, not async, and deliberately.
+
+          This logo carries its glow as `filter: drop-shadow()`, which follows the image's
+          alpha channel -- so the browser has to have decoded the bitmap to know what shape
+          to draw. `decoding="async"` explicitly permits presenting the frame before that
+          has happened, and in that window the filter is rasterised against the element's
+          BOX instead: a gold rectangle, for a frame or two, until the alpha arrives.
+
+          `wrapperStyle` is not optional. SiteImage reserves the box from the `width` prop,
+          which is the file's intrinsic 700px, while this renders at 400 -- so without it
+          the placeholder would be a rectangle three-quarters as wide again as the logo.
+          The glow stays on the <img>, so the placeholder never wears it.
+        */}
+        <SiteImage
           className={styles.heroLogo}
+          wrapperClassName={styles.heroLogoWrap}
+          wrapperStyle={{ width: 'min(90%, 400px)' }}
           src="/img/licentia-next-hero-logo.webp"
           alt={`${siteConfig.title} logo`}
           width={700}
           height={659}
-          decoding="async"
+          decoding="sync"
           fetchPriority="high"
         />
 
@@ -81,28 +108,57 @@ function AboutSection() {
         <p className={clsx(styles.tagline, styles.sectionTagline)}>
           <i>{ABOUT_TAGLINE}</i>
         </p>
+        {/*
+          The same seven paragraphs, unchanged, with a heading over each.
+
+          They always had these topics; nothing said so, which left ~450 words of
+          dense prose looking like one undifferentiated block. Headings give it a
+          shape you can skim, and h3s carrying words like "combat", "progression"
+          and "adult systems" are worth having in the outline besides.
+        */}
         <div className={styles.aboutBody}>
-          <p>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>What Licentia NEXT is</h3>
+            <p>
             <Hl>Licentia NEXT</Hl> is the direct descendant of the legendary <Hl>Licentia BLACK</Hl>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition <Hl>Wabbajack</Hl> modlist built around the massive <Hl>Legacy of the Dragonborn</Hl> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, it transforms Skyrim into a truly next-generation experience. We have carefully curated over <Hl>1,600 mods</Hl> to deliver stability and seamless integration without the hassle of manual conflict resolution.
-          </p>
-          <p>
+            </p>
+          </section>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>Combat and magic</h3>
+            <p>
             At its core, <Hl>Licentia NEXT</Hl> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <Hl>Precision</Hl>, <Hl>Combat Gameplay Overhaul</Hl>, <Hl>Archery Gameplay Overhaul</Hl> and <Hl>Dismemberment Framework</Hl> that make every encounter feel impactful. Mages are equally spoiled, with a huge spell toolbox built from overhauls like <Hl>Apocalypse</Hl>, <Hl>Odin</Hl>, and <Hl>Mysticism</Hl>.
-          </p>
-          <p>
+            </p>
+          </section>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>Progression and builds</h3>
+            <p>
             Progression is equally ambitious. A customized <Hl>Static Skill Leveling</Hl> setup and the massive <Hl>Vokriinator Black</Hl> perk package open up a huge range of character builds, letting you lean fully into the kind of overpowered <Hl>power fantasy</Hl> Skyrim is at its best at, whether that means a godlike battlemage, an unstoppable warrior, or a deadly stealth specialist.
-          </p>
-          <p>
+            </p>
+          </section>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>Visuals</h3>
+            <p>
             Visuals are stunningly upgraded with <Hl>Rudy ENB</Hl> with <Hl>NAT 3</Hl> weathers, <Hl>grass cache</Hl> for lush grass stretching beautifully to the horizon, and thousands of reworked high-resolution textures and meshes. A curated lineup of NPC overhauls, including <Hl>Pandorable's</Hl>, <Hl>Bijin</Hl>, and <Hl>Kalilies</Hl>, helps the world feel just as beautiful up close, while still maintaining a performance-friendly framerate on modern systems.
-          </p>
-          <p>
+            </p>
+          </section>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>New lands, quests and followers</h3>
+            <p>
             Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new <Hl>lands</Hl>, complete massive <Hl>quests</Hl>, and recruit unique, fully voiced <Hl>followers</Hl> with improved interactions.
-          </p>
-          <p>
+            </p>
+          </section>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>Adult systems</h3>
+            <p>
             The <Hl>adult systems</Hl> are built on an optimized, non-intrusive <Hl>OStim</Hl> foundation, integrating <Hl>CBPC</Hl> and <Hl>FSMP</Hl> physics, <Hl>OBody</Hl>, and <Hl>Amorous Adventures</Hl>.
-          </p>
-          <p>
+            </p>
+          </section>
+          <section className={styles.topic}>
+            <h3 className={styles.topicTitle}>Who it's for</h3>
+            <p>
             Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <Hl>Licentia NEXT</Hl> offers the ultimate customized Skyrim journey.
-          </p>
+            </p>
+          </section>
         </div>
       </div>
     </section>
@@ -110,6 +166,11 @@ function AboutSection() {
 }
 
 function FeatureIcons() {
+  // Generated at build time from the list itself, so the headline number on the
+  // homepage cannot drift from what /load-order actually shows. See docusaurus.config.ts.
+  const { siteConfig } = useDocusaurusContext();
+  const modCount = (siteConfig.customFields!.loadOrder as { mods: number }).mods.toLocaleString();
+
   return (
     <section id="features" className={clsx(styles.iconsSection, styles.deferSection)} data-nosnippet>
       <div className="container">
@@ -177,6 +238,18 @@ function FeatureIcons() {
               <li>ORomance and more</li>
             </ul>
           </div>
+        </div>
+
+        {/* "How many mods is it, actually" is the question people ask before any other, and
+            /load-order answers it with all of them by name. Same button as the gallery's,
+            under the grid rather than inside a card, so it reads as a destination. */}
+        <div className={styles.featuresCtaRow}>
+          <a
+            className={clsx('button button--primary button--lg', styles.ctaSolid, styles.ctaWide)}
+            href="/load-order"
+          >
+            Browse all {modCount} mods
+          </a>
         </div>
       </div>
     </section>
