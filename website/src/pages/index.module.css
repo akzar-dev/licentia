@@ -515,7 +515,12 @@ html[data-theme='light'] .ctaSolid {
   overflow: hidden;
   flex: 0 0 auto;
   content-visibility: auto;
-  contain-intrinsic-size: 180px 320px;
+  /* Width then height, in that order. A tile is 320 wide by 180 tall; this used to read
+     180px 320px, the two the wrong way round. It is inert today — the explicit height plus
+     aspect-ratio already give the tile a definite size, and a definite size wins over the
+     intrinsic one — but it would mis-size every off-screen tile the moment that stopped
+     being true, and a wrong number that happens not to be read yet is still wrong. */
+  contain-intrinsic-size: 320px 180px;
 }
 
 .shotFrame:hover,
@@ -538,9 +543,15 @@ html[data-theme='light'] .ctaSolid {
 
 @media (max-width: 996px) {
 
+  /* 144, not 140, so that 16/9 comes out at exactly 256px.
+     140 gives 248.888…, which puts every tile after the first at a fractional offset, so
+     each tile's 1px border straddles two device pixels by a different fraction than its
+     neighbour's and re-resolves as the strip moves — a per-tile flicker, on top of the
+     judder. Desktop never had this because 180 × 16/9 is exactly 320. The gap is 12px and
+     the width is now whole, so every tile boundary in the row lands on a whole pixel. */
   .shotFrame,
   .shot {
-    height: 140px;
+    height: 144px;
   }
 }
 

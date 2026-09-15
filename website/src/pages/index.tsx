@@ -294,18 +294,42 @@ function Showcase() {
     [SHOTS]
   );
 
+  /**
+   * Width of one copy of the sequence — the distance the strip travels before it repeats.
+   *
+   * Measured from the tiles rather than derived from the track, because `scrollWidth /
+   * LOOP_COPIES` is NOT the period: a flex row of N tiles has N-1 gaps, not N, so dividing
+   * its width by the number of copies loses half a gap each time. Measured on a 390px
+   * viewport that is 6255.5 against a true 6261.25 — so every wrap shunted the whole strip
+   * 5.75px sideways, which is the "pop" where a tile seems to shove its neighbours along.
+   *
+   * Tile-to-same-tile-one-copy-later is the period by definition, whatever the gap is.
+   */
+  const measureUnitWidth = React.useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const tiles = track.children;
+    const perCopy = tiles.length / LOOP_COPIES;
+    if (tiles.length < 2 || !Number.isInteger(perCopy)) {
+      return (track.scrollWidth || 0) / LOOP_COPIES;
+    }
+    const first = tiles[0] as HTMLElement;
+    const next = tiles[perCopy] as HTMLElement;
+    return next.offsetLeft - first.offsetLeft;
+  }, [LOOP_COPIES]);
+
   // Initialize unit width (one sequence) and center on middle copy
   React.useLayoutEffect(() => {
     const scroller = scrollerRef.current;
     const track = trackRef.current;
     if (!scroller || !track) return;
-    const total = track.scrollWidth || 0;
-    if (!total) return;
-    unitWidthRef.current = total / LOOP_COPIES;
+    const unit = measureUnitWidth();
+    if (!unit) return;
+    unitWidthRef.current = unit;
     // jump to start of the middle copy
-    scroller.scrollLeft = unitWidthRef.current;
-    posRef.current = unitWidthRef.current;
-  }, [loop.length, LOOP_COPIES]);
+    scroller.scrollLeft = unit;
+    posRef.current = unit;
+  }, [loop.length, LOOP_COPIES, measureUnitWidth]);
 
   // Safari/iOS: track width may be 0 until images load; observe and re-center when ready
   React.useEffect(() => {
@@ -315,9 +339,8 @@ function Showcase() {
     if (!scroller || !track) return;
 
     const recompute = () => {
-      const total = track.scrollWidth || 0;
-      if (!total) return;
-      const newUnit = total / LOOP_COPIES;
+      const newUnit = measureUnitWidth();
+      if (!newUnit) return;
       const prevUnit = unitWidthRef.current || 0;
       unitWidthRef.current = newUnit;
       if (!isPausedRef.current && (prevUnit === 0 || Math.abs(newUnit - prevUnit) > 1)) {
@@ -363,7 +386,7 @@ function Showcase() {
     return () => {
       if (cleanup) cleanup();
     };
-  }, [loop.length, LOOP_COPIES]);
+  }, [loop.length, LOOP_COPIES, measureUnitWidth]);
   // Wrap around when reaching edges to simulate infinite scroll
   const wrapIfNeeded = React.useCallback(() => {
     const scroller = scrollerRef.current;
@@ -371,9 +394,12 @@ function Showcase() {
     if (!scroller || !uw) return;
     const left = scroller.scrollLeft;
     const viewport = scroller.clientWidth || 0;
-    const total = uw * LOOP_COPIES; // total width with repeated copies
     const near = Math.max(40, viewport * 0.1);
-    const maxScrollable = Math.max(0, total - viewport);
+    // Ask the scroller how far it actually scrolls rather than deriving it from the unit
+    // width. The two are not the same number — the strip is LOOP_COPIES periods minus the
+    // trailing gap — and the browser clamps to its own figure, so deriving it here would
+    // put the threshold somewhere the scroller can never reach.
+    const maxScrollable = Math.max(0, scroller.scrollWidth - viewport);
     // If we get too close to the left edge of the first copy, jump forward
     if (left <= near) {
       const next = left + uw;
@@ -389,7 +415,7 @@ function Showcase() {
       scroller.scrollLeft = next;
       posRef.current = next;
     }
-  }, [LOOP_COPIES]);
+  }, []);
 
   // Auto-scroll via rAF while not paused
   React.useEffect(() => {
@@ -502,9 +528,25 @@ function Showcase() {
   const onScroll = () => {
     const now = typeof performance !== 'undefined' ? performance.now() : Date.now();
     const scroller = scrollerRef.current;
+
+    if (now < ignoreScrollPauseUntilRef.current) {
+      // This is our own rAF write echoing back, so leave the accumulator alone.
+      //
+      // Adopting scroller.scrollLeft here is what made the strip judder. A scroll offset is
+      // snapped to the device-pixel grid, so the value that comes back is never the value
+      // written: writing 3000.6 returns 3000.667 on a 1.5x grid, 3000.5 on a 2x one. Feeding
+      // that back into posRef re-rounded the position EVERY frame, which meant the strip
+      // advanced in whole grid steps at whatever speed the grid happened to impose rather
+      // than the 36px/s set below. Measured on the reported iPhone: steps of 0, 1 and 3
+      // device px where a steady ~1.8 was intended, at roughly half the intended speed.
+      wrapIfNeeded();
+      return;
+    }
+
+    // A real user scroll — a swipe, the wheel, or a nav button. Take their position as the
+    // new truth, and get out of their way.
     if (scroller) posRef.current = scroller.scrollLeft;
     wrapIfNeeded();
-    if (now < ignoreScrollPauseUntilRef.current) return;
     pause();
     resumeSoon(1200);
   };

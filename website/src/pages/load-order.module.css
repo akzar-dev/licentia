@@ -415,16 +415,25 @@
     font-size: 1.25rem;
   }
 
-  .action {
-    flex: 1 1 auto;
+  /* Fixed rows instead of wrapping, because wrapping picks the rows by arithmetic and gets
+     them wrong here. The four controls are a 14rem search, a 14rem select and two buttons
+     sized by their labels; at 390px that lands as search / [Jump to section + Expand all] /
+     [Collapse all], with the last button stretched alone across a full row, which reads as
+     a mistake rather than a layout. Two explicit columns: the two wide controls span both,
+     the two buttons take one each and stay the same width as each other. */
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .search,
+  .jump {
+    grid-column: 1 / -1;
   }
 
   /* Four columns in 375px is the very problem the docs tables had. One block per mod,
      each value labelled by the column it came from. */
-  .headRow {
-    display: none;
-  }
-
   .headRow {
     display: none;
   }
