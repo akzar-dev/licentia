@@ -395,11 +395,14 @@ function Showcase() {
     const left = scroller.scrollLeft;
     const viewport = scroller.clientWidth || 0;
     const near = Math.max(40, viewport * 0.1);
-    // Ask the scroller how far it actually scrolls rather than deriving it from the unit
-    // width. The two are not the same number — the strip is LOOP_COPIES periods minus the
-    // trailing gap — and the browser clamps to its own figure, so deriving it here would
-    // put the threshold somewhere the scroller can never reach.
-    const maxScrollable = Math.max(0, scroller.scrollWidth - viewport);
+    // Where the content really ends, taken from the last tile's own box — never from
+    // scroller.scrollWidth. On iOS that figure has been wrong by thousands of pixels (WebKit
+    // sized the track's max-content 66px too wide per tile), and a threshold placed past the
+    // last screenshot is what let the strip scroll out into empty space. Tile boxes were
+    // correct in every engine tested, so the wrap is measured from them.
+    const last = trackRef.current?.lastElementChild as HTMLElement | null | undefined;
+    const contentEnd = last ? last.offsetLeft + last.offsetWidth : scroller.scrollWidth;
+    const maxScrollable = Math.max(0, contentEnd - viewport);
     // If we get too close to the left edge of the first copy, jump forward
     if (left <= near) {
       const next = left + uw;

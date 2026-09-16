@@ -492,7 +492,12 @@ html[data-theme='light'] .ctaSolid {
   display: flex;
   gap: 12px;
   padding: 8px 0;
-  width: max-content;
+  /* Not `width: max-content`, which was the iPhone "screenshots run out" bug. WebKit works
+     that out 66px too wide per tile on a phone — 16020px for a strip whose last tile ends at
+     12852 — so the scroller could travel ~3200px past the final screenshot into nothing.
+     Chrome gets it right, hence iOS-only. At the default width the tiles (flex: 0 0 auto)
+     simply overflow the track, and the scroller measures its range from the tiles' real
+     boxes: 12852 in both engines. */
   animation: none;
   will-change: scroll-position;
 }
@@ -515,11 +520,6 @@ html[data-theme='light'] .ctaSolid {
   overflow: hidden;
   flex: 0 0 auto;
   content-visibility: auto;
-  /* Width then height, in that order. A tile is 320 wide by 180 tall; this used to read
-     180px 320px, the two the wrong way round. It is inert today — the explicit height plus
-     aspect-ratio already give the tile a definite size, and a definite size wins over the
-     intrinsic one — but it would mis-size every off-screen tile the moment that stopped
-     being true, and a wrong number that happens not to be read yet is still wrong. */
   contain-intrinsic-size: 320px 180px;
 }
 
