@@ -43,7 +43,7 @@
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--ifm-color-emphasis-300);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--lx-frame-soft), 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .video {
@@ -78,6 +78,8 @@
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--ifm-color-emphasis-300);
+  /* Soft copy of the edge, so it does not flicker as the card lifts -- see --lx-frame-soft. */
+  box-shadow: var(--lx-frame-soft);
   background: var(--ifm-background-surface-color);
   transition:
     transform 220ms ease,
@@ -90,7 +92,7 @@
 .card:has(:global(.lx-zoom-source)) {
   transform: translateY(-3px);
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--lx-frame-soft-gold), 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
 .shot {
@@ -99,7 +101,7 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   /* The scale-on-hover lives on `img.zoomable` in custom.css now, shared with the
-     showcase marquee and anything else the lightbox opens. */
+     showcase strip and anything else the lightbox opens. */
 }
 
 /* The lightbox is not obvious until you happen to click one, so say so once. */

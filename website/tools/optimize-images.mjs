@@ -9,6 +9,34 @@ const __dirname = path.dirname(__filename);
 const SITE_ROOT = path.resolve(__dirname, '..');
 
 const SHOWCASE_DIR = path.join(SITE_ROOT, 'static', 'img', 'pages', 'main', 'screenshots');
+/**
+ * Tile-sized copies of every screenshot, for the homepage strip.
+ *
+ * The strip used to load each full 1920x1080 file (~219 KB, ~7.9 MB once decoded) to show it
+ * at 320x180. A strip tile is 256x144 CSS px on a phone, which at 3x density is 768x432 real
+ * pixels, and 320x180 on desktop, which at 2x is 640x360 — so 768 wide covers both. Measured
+ * across all 51: ~29 KB each, ~1.3 MB decoded. The full file still opens in the zoom.
+ */
+const SHOWCASE_THUMBS_DIR = path.join(SHOWCASE_DIR, 'thumbs');
+const SHOWCASE_THUMB_WIDTH = 768;
+const CANONICAL_SHOWCASE_NAME = /^licentia-next-screenshot-\d+\.webp$/i;
+/** `licentia-next-screenshot-4.webp` -> `licentia-next-screenshot-4-thumb.webp`. The `-thumb` in
+ *  the name survives bundling (`...-4-thumb-<hash>.webp`), which is what robots.txt matches on. */
+const thumbNameFor = (name) => name.replace(/\.webp$/i, '-thumb.webp');
+
+/**
+ * Every showcase screenshot is 16:9, so clicking "next" through the gallery never makes the picture
+ * change size and shape (a 16:10 shot came out taller than its neighbours). The strip crops to 16:9
+ * anyway, so nothing that was visible there is lost.
+ * A shot of any other shape is centre-cropped: the widest 16:9 box that fits.
+ */
+const SHOWCASE_RATIO = 16 / 9;
+function cropBoxTo16x9(width, height) {
+  const cropW = Math.min(width, Math.round(height * SHOWCASE_RATIO));
+  const cropH = Math.min(height, Math.round(cropW / SHOWCASE_RATIO));
+  return { left: Math.floor((width - cropW) / 2), top: Math.floor((height - cropH) / 2), width: cropW, height: cropH };
+}
+const is16x9 = (width, height) => Math.abs(height - Math.round(width / SHOWCASE_RATIO)) <= 1;
 const STATIC_PAGES_DIR = path.join(SITE_ROOT, 'static', 'img', 'pages');
 const STATIC_IMG_DIR = path.join(SITE_ROOT, 'static', 'img');
 const TEAM_DIR = path.join(STATIC_PAGES_DIR, 'team');
@@ -179,7 +207,9 @@ async function optimizeShowcaseAndRename() {
       // here: nine PNGs and JPEGs converted, then the run died on the one webp and left
       // three files behind. A Buffer has no handle to keep.
       const bytes = await fs.readFile(inPath);
+      const { width, height } = await sharp(bytes).metadata();
       await sharp(bytes)
+        .extract(cropBoxTo16x9(width, height))
         .resize({ width: 1920, withoutEnlargement: true })
         .webp({ quality: 85, effort: 5 })
         .toFile(outPath);
@@ -193,6 +223,89 @@ async function optimizeShowcaseAndRename() {
   return { converted, deleted };
 }
 
+/**
+ * Crops any already-named screenshot that is not 16:9 (see SHOWCASE_RATIO). Only files of the wrong
+ * shape are touched, so a run over a folder that is already right re-encodes nothing.
+ */
+async function cropShowcaseTo16x9() {
+  let cropped = 0;
+  if (!(await exists(SHOWCASE_DIR))) return cropped;
+  const names = (await fs.readdir(SHOWCASE_DIR, { withFileTypes: true }))
+    .filter((e) => e.isFile() && CANONICAL_SHOWCASE_NAME.test(e.name))
+    .map((e) => e.name);
+  for (const name of names) {
+    const filePath = path.join(SHOWCASE_DIR, name);
+    const bytes = await fs.readFile(filePath);
+    const { width, height } = await sharp(bytes).metadata();
+    if (is16x9(width, height)) continue;
+    const box = cropBoxTo16x9(width, height);
+    if (!dryRun) {
+      const out = await sharp(bytes).extract(box).webp({ quality: 85, effort: 5 }).toBuffer();
+      await fs.writeFile(filePath, out);
+    }
+    cropped += 1;
+    console.log(`[showcase] ${name} ${width}x${height} -> ${box.width}x${box.height} (centre crop to 16:9)${dryRun ? ' (dry-run)' : ''}`);
+  }
+  return cropped;
+}
+
+/**
+ * Makes sure every canonical screenshot has an up-to-date thumbnail, and that no thumbnail
+ * outlives its screenshot.
+ *
+ * "Up to date" is judged by the SOURCE's content hash, recorded in the cache against the
+ * thumbnail: replace a screenshot in place and its thumbnail is rebuilt on the next run, even
+ * though both files still exist. The thumbnail keeps the source's own proportions (width 768,
+ * height whatever the ratio gives) rather than being cropped to 16:9 — the zoom shows the
+ * thumbnail first and swaps the full image in over it, and a thumbnail of a different shape
+ * would make the picture jump when it does.
+ */
+async function generateShowcaseThumbs(cache) {
+  const result = { generated: 0, upToDate: 0, removed: 0 };
+  if (!(await exists(SHOWCASE_DIR))) return result;
+  if (!dryRun) await fs.mkdir(SHOWCASE_THUMBS_DIR, { recursive: true });
+
+  const sources = (await fs.readdir(SHOWCASE_DIR, { withFileTypes: true }))
+    .filter((e) => e.isFile() && CANONICAL_SHOWCASE_NAME.test(e.name))
+    .map((e) => e.name)
+    .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
+
+  for (const name of sources) {
+    const bytes = await fs.readFile(path.join(SHOWCASE_DIR, name));
+    const sourceHash = hashBuffer(bytes);
+    const thumbPath = path.join(SHOWCASE_THUMBS_DIR, thumbNameFor(name));
+    if ((await exists(thumbPath)) && isCacheHit(cache, thumbPath, sourceHash)) {
+      result.upToDate += 1;
+      continue;
+    }
+    if (!dryRun) {
+      await sharp(bytes)
+        .resize({ width: SHOWCASE_THUMB_WIDTH, withoutEnlargement: true })
+        .webp({ quality: 80, effort: 5 })
+        .toFile(thumbPath);
+      setCacheEntry(cache, thumbPath, sourceHash);
+    }
+    result.generated += 1;
+    console.log(`[thumbs] ${name} -> thumbs/${thumbNameFor(name)}${dryRun ? ' (dry-run)' : ''}`);
+  }
+
+  // A thumbnail whose screenshot is gone would be bundled for nothing.
+  const wanted = new Set(sources.map(thumbNameFor));
+  const existing = (await exists(SHOWCASE_THUMBS_DIR))
+    ? (await fs.readdir(SHOWCASE_THUMBS_DIR, { withFileTypes: true })).filter((e) => e.isFile()).map((e) => e.name)
+    : [];
+  for (const name of existing) {
+    if (wanted.has(name)) continue;
+    const orphan = path.join(SHOWCASE_THUMBS_DIR, name);
+    if (!dryRun) {
+      await fs.unlink(orphan);
+      delete cache.entries[getRel(orphan)];
+    }
+    result.removed += 1;
+    console.log(`[thumbs] removed thumbs/${name} — its screenshot is gone${dryRun ? ' (dry-run)' : ''}`);
+  }
+  return result;
+}
 
 async function optimizeTeamAvatars(cache) {
   if (!(await exists(TEAM_DIR))) {
@@ -426,6 +539,9 @@ async function main() {
   // Prune first: a cache entry for a file that no longer exists must not influence this run.
   const pruned = await pruneDeadEntries(cache);
   const showcase = await optimizeShowcaseAndRename();
+  const croppedToRatio = await cropShowcaseTo16x9();
+  // After the rename, so a screenshot dropped in this run gets its thumbnail in this run too.
+  const thumbs = await generateShowcaseThumbs(cache);
   const team = await optimizeTeamAvatars(cache);
   let others = { optimized: 0, skipped: 0, cacheHits: 0, savedBytes: 0 };
   let webp = { optimized: 0, unchanged: 0, missing: 0, cacheHits: 0, savedBytes: 0 };
@@ -439,6 +555,10 @@ async function main() {
   console.log('[optimize-images] Done.');
   console.log(`[optimize-images] Showcase converted: ${showcase.converted}`);
   console.log(`[optimize-images] Showcase source files removed: ${showcase.deleted}`);
+  console.log(`[optimize-images] Showcase cropped to 16:9: ${croppedToRatio}`);
+  console.log(`[optimize-images] Showcase thumbnails generated: ${thumbs.generated}`);
+  console.log(`[optimize-images] Showcase thumbnails up to date: ${thumbs.upToDate}`);
+  console.log(`[optimize-images] Showcase thumbnails removed (screenshot gone): ${thumbs.removed}`);
   console.log(`[optimize-images] Team converted to WEBP: ${team.converted}`);
   console.log(`[optimize-images] Team WEBP optimized: ${team.optimizedWebp}`);
   console.log(`[optimize-images] Team WEBP unchanged: ${team.unchangedWebp}`);

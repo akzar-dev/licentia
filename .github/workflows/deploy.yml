@@ -72,6 +72,11 @@ jobs:
         # libvips build, so a Linux runner and a Windows desktop would disagree forever.
         run: npm run build-social-cards -- --check
 
+      - name: Check every showcase screenshot has its thumbnail
+        # A missing thumbnail fails silently otherwise: the strip falls back to the full 1920px
+        # file and just gets slower. Existence and dimensions only, never a byte comparison.
+        run: npm run check-showcase-thumbs
+
       - name: Asset hygiene report (informational)
         # Report-only: never blocks a build. Writes its own section to the run summary
         # listing unreferenced images and any showcase screenshots that still need

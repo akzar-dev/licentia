@@ -952,26 +952,53 @@ h2 {
    ZOOM Styling
    ========================= */
 /* Lightweight custom zoom overlay */
+/* No background, no opacity and no transition on the overlay itself: it is a transparent layer that
+   appears in one step, and custom-zoom.ts fades what is inside it. */
 .lx-zoom-overlay {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity .32s cubic-bezier(0.2, 0, 0.2, 1), visibility .32s linear;
+
+  /* Buttons: one size everywhere, 44px being the smallest comfortable touch target. */
+  --lx-btn: 44px;
+  --lx-icon: 20px;
+  /* Space between the picture or the button bar and the screen edge. */
+  --lx-gap: clamp(10px, 1.6vmin, 18px);
+  /* The button bar's height: a button, the bar's padding and its border. */
+  --lx-bar: calc(var(--lx-btn) + 2 * 5px + 2 * 2px);
+  /* On an iPhone without a home button, the strip Safari keeps clear at the bottom. */
+  --lx-safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* The area the picture is kept out of, so no button can ever sit on it: one row at the bottom for
+     the bar. Everywhere else only the gap. */
+  --lx-top: var(--lx-gap);
+  --lx-bottom: calc(var(--lx-bar) + 2 * var(--lx-gap) + var(--lx-safe-bottom));
+  --lx-side: var(--lx-gap);
+  --lx-vh: 100vh;
+}
+
+/* The visible height without the browser's toolbars, where supported — on a phone 100vh includes
+   the area under Safari's controls, which would let the picture run in behind them. */
+@supports (height: 100dvh) {
+  .lx-zoom-overlay {
+    --lx-vh: 100dvh;
+  }
 }
 
 .lx-zoom-overlay--open {
-  opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.lx-zoom-backdrop {
+
+/* The tint behind the picture: the page dimmed, faded in and out with the button bar (custom-zoom.ts). */
+.lx-zoom-dim {
   position: absolute;
   inset: 0;
   background: rgba(50, 50, 50, 0.72);
+  pointer-events: none;
 }
 
 .lx-zoom-stage {
@@ -979,7 +1006,7 @@ h2 {
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 4.25rem 1.75rem 6.25rem;
+  padding: var(--lx-top) var(--lx-side) var(--lx-bottom);
   touch-action: none;
   cursor: default;
   opacity: 0;
@@ -990,9 +1017,12 @@ h2 {
   opacity: 1;
 }
 
+/* The caps are exactly the space the stage leaves between the screen edges and the button bar — they used to be 82vh and
+   100vw minus a little, which on a shorter window is more than that space, so the picture grew into
+   the zoom buttons' row. */
 .lx-zoom-image {
-  max-width: min(calc(100vw - 3.5rem), 1920px);
-  max-height: min(82vh, 1080px);
+  max-width: min(1920px, calc(100vw - 2 * var(--lx-side)));
+  max-height: min(1080px, calc(var(--lx-vh) - var(--lx-top) - var(--lx-bottom)));
   display: block;
   width: auto;
   height: auto;
@@ -1019,63 +1049,158 @@ h2 {
   cursor: grabbing;
 }
 
-.lx-zoom-btn {
+/* The image and the spinner share the stage's one grid cell, so the spinner sits on the centre of
+   the picture whatever the stage's uneven top and bottom padding does. */
+.lx-zoom-stage > .lx-zoom-image,
+.lx-zoom-stage > .lx-zoom-spinner {
+  grid-area: 1 / 1;
+}
+
+/* Holding a source that cannot be painted yet. Hidden rather than shown as an empty box — which
+   is what the rim-light made of it: a glowing outline of nothing, before the picture arrived. */
+.lx-zoom-image.lx-zoom-image--pending {
+  visibility: hidden;
+}
+
+/* Loading indicator. custom-zoom.ts adds `--loading` only once a load has lasted ~280ms, so a fast
+   load never shows it; it then fades in, and fades out quickly the moment the full image is in.
+   (The delay is a timer there, not a transition-delay here — see setLoading for why.) The dark disc
+   keeps the gold ring legible over a bright screenshot. */
+.lx-zoom-spinner {
+  position: relative;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: color-mix(in oklab, #000 50%, transparent);
+  box-shadow: 0 0 18px color-mix(in oklab, #000 35%, transparent);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.lx-zoom-spinner::after {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border-radius: 50%;
+  border: 2.5px solid color-mix(in oklab, var(--ifm-color-primary) 22%, transparent);
+  border-top-color: var(--ifm-color-primary);
+  animation: lx-zoom-spin 0.85s linear infinite;
+}
+
+.lx-zoom-overlay--loading .lx-zoom-spinner {
+  opacity: 1;
+  transition: opacity 240ms ease;
+}
+
+@keyframes lx-zoom-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Still says "loading", without the motion. */
+  .lx-zoom-spinner::after {
+    animation: none;
+  }
+}
+
+/*
+   Zoom buttons.
+
+   Rebuilt from scratch. They used to be text characters (✕ ❮ ❯ + −) inside circles of different sizes,
+   scattered to three corners — so no symbol was reliably centred, and the close button was hard to find
+   over a busy screenshot. Now all of them sit in one gold bar at the bottom, ‹ − ✕ + ›, the same on a
+   phone and a desktop: within thumb reach, never on the picture, and readable over anything because
+   the bar carries its own blurred, dark backing. Close is in the middle, in the logo's red.
+
+   Icons are drawn SVGs centred by the grid rather than by font metrics. The bar keeps clear of the
+   iPhone home indicator.
+*/
+.lx-zoom-bar {
   position: absolute;
   z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in oklab, var(--ifm-color-primary) 60%, transparent);
-  background: color-mix(in oklab, var(--ifm-background-surface-color) 98%, transparent);
-  color: var(--ifm-font-color-base);
-  font-size: 20px;
-  line-height: 1;
+  left: 50%;
+  bottom: calc(var(--lx-gap) + var(--lx-safe-bottom));
+  translate: -50% 0;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border: 2px solid color-mix(in oklab, var(--ifm-color-primary) 85%, transparent);
+  border-radius: 999px;
+  background: rgba(16, 16, 18, 0.62);
+  -webkit-backdrop-filter: blur(12px) saturate(1.15);
+  backdrop-filter: blur(12px) saturate(1.15);
+  /* Gold glow only: a dark drop shadow read as a black smudge under the bar on a phone. */
+  box-shadow: 0 0 10px color-mix(in oklab, var(--ifm-color-primary) 30%, transparent);
+}
+
+.lx-zoom-btn {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--lx-btn);
+  height: var(--lx-btn);
+  margin: 0;
   padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
   -webkit-appearance: none;
   appearance: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.15s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
+.lx-zoom-btn svg {
+  display: block;
+  width: var(--lx-icon);
+  height: var(--lx-icon);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* Close: the logo's red, filled, so it is the first thing found. */
 .lx-zoom-close {
-  top: 10px;
-  right: 10px;
-  width: 38px;
-  height: 38px;
-  transform: none;
+  background: #c41010;
+  box-shadow: 0 0 12px rgba(196, 16, 16, 0.45);
 }
 
-.lx-zoom-plus {
-  left: calc(50% + 32px);
-  bottom: 24px;
-  width: 32px;
-  height: 32px;
-  transform: translateX(-50%);
+.lx-zoom-close svg {
+  stroke-width: 2.5;
 }
 
-.lx-zoom-minus {
-  left: calc(50% - 32px);
-  bottom: 24px;
-  width: 32px;
-  height: 32px;
-  transform: translateX(-50%);
+.lx-zoom-btn:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
 }
 
-.lx-zoom-prev {
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
+@media (hover: hover) and (pointer: fine) {
+  .lx-zoom-btn:hover {
+    color: var(--ifm-color-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .lx-zoom-close:hover {
+    color: #fff;
+    background-color: #e01e1e;
+  }
 }
 
-.lx-zoom-next {
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+.lx-zoom-btn:active {
+  transform: scale(0.92);
 }
 
 .lx-zoom-overlay--nav-disabled .lx-zoom-prev,
@@ -1083,74 +1208,62 @@ h2 {
   display: none;
 }
 
-.lx-zoom-prev:hover,
-.lx-zoom-next:hover {
-  transform: translateY(-50%);
+/*
+   The page scrollbar, styled so that it can fade.
+
+   Opening the zoom has to stop the page from scrolling. Hiding the scrollbar does that, but a
+   browser removes a scrollbar in one step, so it popped out and back; leaving it and blocking
+   scrolling instead still let someone drag it, and the page jerked as it was put back. A scrollbar
+   with our own colours can transition them, which a system-drawn one cannot: custom-zoom.ts fades
+   the thumb out (--hidden), and only once it is invisible hides it for real (--locked). The space
+   stays reserved while it is hidden (scrollbar-gutter), so nothing shifts sideways.
+
+   Colours: the thumb is the site's neutral grey with a touch of gold, the track is the page
+   itself. Chrome, Edge and Firefox draw these; Safari keeps its own floating scrollbars, which
+   never took room and never popped.
+*/
+:root {
+  --lx-scrollbar-thumb: color-mix(in oklab, var(--ifm-color-emphasis-500) 82%, var(--ifm-color-primary));
+  /* Transparent, so the track is the page background itself. The zoom tints that background (below);
+     animating a track colour instead made Chrome flash the scrollbar yellow and black mid-fade. */
+  --lx-scrollbar-track: transparent;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .lx-zoom-btn:hover {
-    transform: scale(1.06);
-    box-shadow:
-      0 0 10px var(--licentia-glow-hover-1),
-      0 0 18px var(--licentia-glow-hover-2);
-  }
-
-  .lx-zoom-prev:hover,
-  .lx-zoom-next:hover {
-    transform: translateY(-50%) scale(1.06);
-  }
-
-  .lx-zoom-close:hover,
-  .lx-zoom-plus:hover,
-  .lx-zoom-minus:hover {
-    transform: translateX(-50%) scale(1.06);
-  }
-
-  .lx-zoom-close:hover {
-    transform: scale(1.06);
-  }
+html {
+  scrollbar-color: var(--lx-scrollbar-thumb) var(--lx-scrollbar-track);
+  transition:
+    scrollbar-color 0.22s ease,
+    background-color 0.22s ease;
 }
 
-@media (max-width: 996px) {
-  .lx-zoom-stage {
-    padding: 0 .75rem;
-  }
+/* 2% of the thumb, not `transparent`: Chrome fades out to fully transparent but will not fade back
+   in from it -- the thumb stayed invisible, the arrows darkened to black, and then it all snapped
+   back at once. From 2% it fades both ways, and 2% cannot be seen. */
+html.lx-scrollbar--hidden {
+  scrollbar-color: color-mix(in srgb, var(--lx-scrollbar-thumb) 2%, transparent) var(--lx-scrollbar-track);
+}
 
-  .lx-zoom-image {
-    max-width: calc(100vw - 1.5rem);
-    max-height: 100vh;
-  }
+/* Only where the scrollbar took room; elsewhere reserving a gutter would push things aside for nothing. */
+html.lx-scrollbar--keep-room {
+  scrollbar-gutter: stable;
+}
 
-  .lx-zoom-prev {
-    left: 6px;
-  }
+/* The kept room sits outside the zoom's tint (a fixed layer stops at the scrollbar), so tint it the
+   same way -- the strip and the page background under it -- or a light stripe runs down the right
+   edge on the light theme. Faded with the tint. */
+html.lx-scrollbar--hidden {
+  background-color: color-mix(in srgb, rgb(50 50 50) 72%, var(--ifm-background-color));
+}
 
-  .lx-zoom-next {
-    right: 6px;
-  }
+/* !important because Docusaurus writes an inline `overflow: visible` on body when its mobile menu
+   closes, and an inline style would otherwise quietly win. */
+html.lx-scrollbar--locked body {
+  overflow: hidden !important;
+}
 
-  .lx-zoom-close {
-    top: 10px;
-    right: 10px;
-    left: auto;
-    width: 44px;
-    height: 44px;
-    transform: none;
-  }
-
-  .lx-zoom-plus {
-    left: calc(50% + 36px);
-    bottom: 26px;
-    width: 36px;
-    height: 36px;
-  }
-
-  .lx-zoom-minus {
-    left: calc(50% - 36px);
-    bottom: 26px;
-    width: 36px;
-    height: 36px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none;
   }
 }
 
@@ -1196,6 +1309,21 @@ img.zoomable.lx-zoom-source {
    right size in the server-rendered HTML, before a single byte of the image arrives. A
    border and a margin are the same before and after it loads.
 */
+/*
+   The frame edge on screenshots is a 1px border plus a half-pixel soft copy of it.
+
+   A bare 1px line flickers whenever it moves by fractions of a pixel -- the showcase strip drifting
+   at a few tenths of a pixel per frame, a gallery card lifting on hover.
+   At a whole-pixel position it lands in one pixel column at full strength; at half a pixel it is
+   split across two at half strength, and back again, many times a second. Measured in Chrome at 1x,
+   across 20 sub-pixel positions: the edge's strength swung by 50%, in both themes, grey and gold.
+   With the soft copy underneath it swings by 6-8%, and at its sharpest it is no heavier than before.
+*/
+:root {
+  --lx-frame-soft: 0 0 0.8px 0.2px var(--ifm-color-emphasis-300);
+  --lx-frame-soft-gold: 0 0 0.8px 0.2px var(--ifm-color-primary);
+}
+
 /* Docs live in `.markdown`; /how-to-update and /changelog are standalone MDX pages and
    get no such wrapper, which is why they were the only prose pages still unframed. */
 .markdown .site-image,
@@ -1203,6 +1331,7 @@ img.zoomable.lx-zoom-source {
   display: block;
   margin-block: 1.6rem;
   border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: var(--lx-frame-soft);
   border-radius: 12px;
   overflow: hidden;
   transition:
@@ -1215,7 +1344,7 @@ img.zoomable.lx-zoom-source {
 .markdown .site-image:has(> img.lx-zoom-source),
 [class*='mdxPageWrapper'] .site-image:has(> img.lx-zoom-source) {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--lx-frame-soft-gold), 0 10px 26px rgba(0, 0, 0, 0.25);
 }
 
 /* A list item's own indent already sets these in from the text; centring them there as

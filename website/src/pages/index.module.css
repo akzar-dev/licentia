@@ -453,7 +453,7 @@ html[data-theme='light'] .ctaSolid {
   }
 }
 
-/* -------- SHOWCASE (Marquee) -------- */
+/* -------- SHOWCASE (Embla strip) -------- */
 .showcaseCtaRow {
   display: flex;
   justify-content: center;
@@ -464,42 +464,41 @@ html[data-theme='light'] .ctaSolid {
 .marqueeOuter {
   position: relative;
   overflow: hidden;
+  /* The one place the tile size is decided; the slide, frame and image all read it. */
+  --shot-height: 180px;
+  --shot-width: calc(var(--shot-height) * 16 / 9);
 }
 
-/* Showcase scroller */
-.scroller {
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
+/* Embla viewport: clips the strip, and carries the fade at both ends. Nothing here scrolls —
+   Embla moves the container below with a transform. */
+.emblaViewport {
+  overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  scrollbar-gutter: stable;
-  -webkit-overflow-scrolling: touch;
 }
 
-/* Hide scrollbars (we use buttons/swipe) */
-.scroller::-webkit-scrollbar {
-  display: none;
-}
-
-.scroller {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Track (JS-driven auto-scroll) */
-.marqueeTrack {
+/* `pan-y pinch-zoom` hands horizontal drags to Embla and leaves vertical page scrolling and
+   pinch-zoom to the browser. Without it a sideways swipe on a phone also scrolls the page. */
+.emblaContainer {
   display: flex;
-  gap: 12px;
   padding: 8px 0;
-  /* Not `width: max-content`, which was the iPhone "screenshots run out" bug. WebKit works
-     that out 66px too wide per tile on a phone — 16020px for a strip whose last tile ends at
-     12852 — so the scroller could travel ~3200px past the final screenshot into nothing.
-     Chrome gets it right, hence iOS-only. At the default width the tiles (flex: 0 0 auto)
-     simply overflow the track, and the scroller measures its range from the tiles' real
-     boxes: 12852 in both engines. */
-  animation: none;
-  will-change: scroll-position;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Spacing is a margin on every slide, not `gap` on the container. Embla measures the space
+   between slides from their positions, but it reads the space after the LAST slide from that
+   slide's margin — so with `gap` the join where the loop wraps comes out 12px short, a seam
+   exactly like the one the old strip had. */
+.emblaSlide {
+  /* An explicit size, never `auto`. Left to size itself, WebKit gives this wrapper the image's
+     intrinsic 320px plus the frame's border rather than the tile's real width: 322px around a
+     256px tile on a phone, so every screenshot sat 78px from the next instead of 12. It is the
+     same WebKit miscalculation that made the old strip run out of screenshots. Chrome sized it
+     correctly, which is why only the WebKit test caught it. */
+  flex: 0 0 var(--shot-width);
+  width: var(--shot-width);
+  min-width: 0;
+  margin-right: 12px;
 }
 
 /* Image frame */
@@ -507,32 +506,34 @@ html[data-theme='light'] .ctaSolid {
   position: relative;
   /* The same resting grey edge the gallery and the doc screenshots have, going gold on
      hover. The image inside scales (see img.zoomable in custom.css); the frame itself
-     stays put, because the marquee is already moving these and a transform would fight it.
+     stays put, because the strip is already moving these and a transform would fight it.
      border-box keeps the 1px from changing the tile's size. */
   box-sizing: border-box;
   border: 1px solid var(--ifm-color-emphasis-300);
+  /* Soft copy of the edge, so it does not flicker as the strip drifts -- see --lx-frame-soft. */
+  box-shadow: var(--lx-frame-soft);
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease;
-  height: 180px;
+  height: var(--shot-height);
   aspect-ratio: 16/9;
   border-radius: 10px;
   overflow: hidden;
-  flex: 0 0 auto;
-  content-visibility: auto;
-  contain-intrinsic-size: 320px 180px;
+  /* No content-visibility. It made WebKit disagree with Chrome about how wide unrendered
+     tiles are, and Embla moves slides with transforms, which that skipping is not built
+     around. 24 tiles of lazy-loaded images have nothing to gain from it. */
 }
 
 .shotFrame:hover,
 .shotFrame:has(:global(.lx-zoom-source)) {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--lx-frame-soft-gold), 0 10px 26px rgba(0, 0, 0, 0.3);
 }
 
 .shot {
   position: relative;
   z-index: 1;
-  height: 180px;
+  height: var(--shot-height);
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: inherit;
@@ -549,9 +550,8 @@ html[data-theme='light'] .ctaSolid {
      neighbour's and re-resolves as the strip moves — a per-tile flicker, on top of the
      judder. Desktop never had this because 180 × 16/9 is exactly 320. The gap is 12px and
      the width is now whole, so every tile boundary in the row lands on a whole pixel. */
-  .shotFrame,
-  .shot {
-    height: 144px;
+  .marqueeOuter {
+    --shot-height: 144px;
   }
 }
 
@@ -571,7 +571,16 @@ html[data-theme='light'] .ctaSolid {
   background: color-mix(in oklab, var(--ifm-background-surface-color) 90%, transparent);
   box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, opacity .2s ease;
+}
+
+/* While a screenshot is open in the zoom, the strip's own arrows step aside, so they cannot be read as
+   the zoom's controls through the tint.
+   A class custom-zoom.ts sets on <html>, rather than html:has(.lx-zoom-overlay--open): Safari on
+   iPhone did not run the fade when the :has() match went away, and the arrows popped back in. */
+:global(html.lx-zoom-active) .navBtn {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navBtn:hover {

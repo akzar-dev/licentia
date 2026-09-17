@@ -4,4 +4,6 @@ Disallow: /img/licentia-next-logo-navbar.webp
 Disallow: /img/licentia-next-logo-apple.png
 Disallow: /img/pages/main/licentia-next-social-card-bg-light.webp
 Disallow: /img/pages/main/licentia-next-social-card-bg-dark.webp
+# Showcase thumbnails: 768px copies of screenshots whose full-size files stay crawlable.
+Disallow: /assets/images/*-thumb-*.webp
 Sitemap: https://licentia.quest/sitemap.xml

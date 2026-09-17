@@ -23,7 +23,7 @@
 
 | I changed... | Run this | Why |
 | --- | --- | --- |
-| Added a **showcase screenshot** (dropped any file into `static/img/pages/main/screenshots/`) | `npm run optimize-images:showcase` | Converts to WEBP, caps width at 1920 (aspect ratio kept), renames canonically. Picked up automatically afterwards — no code change needed. |
+| Added a **showcase screenshot** (dropped any file into `static/img/pages/main/screenshots/`) | `npm run optimize-images:showcase` | Converts to WEBP, centre-crops to **16:9**, caps width at 1920, renames canonically, and writes its 768px **thumbnail** into `thumbs/`. Picked up automatically afterwards — no code change needed. **CI fails if a thumbnail is missing or a screenshot is not 16:9** (`npm run check-showcase-thumbs`). |
 | Added/replaced a **docs image** used via `<img>` / `<DocImage>` | `npm run sync-doc-images` | Writes the real `width`/`height` into the source so the page doesn't shift while loading. **CI fails if you skip this.** |
 | Added a **decorative heading** in `.md` (the `<!-- licentia-heading -->` marker) | `npm run sync-doc-images` | Expands the marker into the styled span. |
 | Added images anywhere else | `npm run optimize-images` | Lossless PNG pass + key WEBP re-check (cache-guarded, so nothing is re-compressed twice). |
@@ -52,9 +52,15 @@ Both workflows — `test-deploy.yml` on pull requests and `deploy.yml` on `main`
    both. Mark a page `unlisted: true` in its frontmatter to exclude it deliberately. If the
    sidebar key can't be read it warns rather than failing, so restructuring `sidebars.ts` won't
    block an unrelated build.
-5. **Asset hygiene report** — informational only. Orphan images and un-processed screenshots, written
+5. **Admonitions render** — fails on a malformed `:::` block, which Docusaurus would otherwise
+   print as literal text.
+6. **Social cards built** — every artwork in `social-cards/` has its card (existence only).
+7. **Showcase thumbnails** — every screenshot is 16:9, has a thumbnail of the right proportions, and no
+   thumbnail is left over. A missing one would not break anything visibly — the strip falls back
+   to the full 1920px file — which is exactly why it has to fail here.
+8. **Asset hygiene report** — informational only. Orphan images and un-processed screenshots, written
    to the run summary; never fails the build.
-6. **Build** (`docusaurus build`).
+9. **Build** (`docusaurus build`).
 
 Every run finishes by writing a status table to the GitHub Actions run summary, and the deploy
 workflow adds the live URL.
@@ -238,26 +244,48 @@ workflow adds the live URL.
     npm run optimize-images:showcase
     ```
   - The script will:
-    - convert new files to `webp` (`quality=85`, resized to a **max width of `1920`**; height is
-      left alone, so the original aspect ratio is preserved and images are never upscaled),
+    - convert new files to `webp` (`quality=85`, centre-cropped to **16:9**, then resized to a
+      **max width of `1920`**; images are never upscaled),
     - rename them to sequential names like `licentia-next-screenshot-4.webp`,
       `licentia-next-screenshot-5.webp`, etc., continuing from the highest existing number
       (the legacy `sN.webp` names are still recognised when counting),
-    - remove the original dropped files after conversion.
+    - remove the original dropped files after conversion,
+    - write a **thumbnail** for every screenshot into `screenshots/thumbs/` (see below).
   - Once renamed, a screenshot is **never re-compressed**: the rename is what marks it as done,
     because anything already matching the canonical name is skipped as a candidate. This is what
     keeps repeated runs from degrading quality (WEBP is lossy, so each re-encode would lose a
     little more).
   - Screenshots are picked up automatically by [`src/data/screenshots.ts`](./src/data/screenshots.ts),
     which bulk-loads the whole directory. **No code change is needed after adding one.**
-  - Aspect ratio: contributors send all sorts (16:9, 16:10, ...). The pipeline keeps whatever they
-    sent. The homepage showcase and the media grid frame them in fixed 16:9 cards with
-    `object-fit: cover`, so an off-ratio image is cropped in the *thumbnail* only; clicking it opens
-    the zoom viewer, which uses `object-fit: contain` and shows the whole image.
+  - Aspect ratio: contributors send all sorts (16:9, 16:10, ...). **Every screenshot is centre-cropped
+    to 16:9** (the widest 16:9 box that fits), both when it is dropped in and, for a file that already
+    has its canonical name but the wrong shape, on the next run — only those files are re-encoded.
+    Why: clicking "next" through the gallery should not make the picture change size and shape
+    from one shot to the next. The strip and the media grid showed 16:9 crops anyway.
   - Preview only (no file changes):
     ```bash
     npm run optimize-images:showcase:dry-run
     ```
+  - **Thumbnails** (`screenshots/thumbs/<name>-thumb.webp`, 768px wide, same proportions as the
+    screenshot, ~29 KB each against ~219 KB for the full file):
+    - The homepage strip shows these instead of the full 1920px files. A strip tile is 256×144 on a
+      phone (768×432 real pixels at 3×) and 320×180 on desktop (640×360 at 2×), so 768 wide covers
+      both. Across all 51 screenshots that is ~1.5 MB to download instead of ~11 MB, and roughly
+      1.3 MB of memory per decoded image instead of ~7.9 MB.
+    - Clicking a tile opens the **full** image: each tile names it in `data-zoom-src`. The zoom
+      opens on the thumbnail at the size the full image will have, fetches and decodes the full
+      file behind it, and swaps it in when ready — no size jump, no blank frame. Nothing is shown
+      until something can actually be painted (a tile clicked before it loaded no longer flashes an
+      empty glowing box), a picture already opened this visit goes straight to the full file, and a
+      small gold spinner fades in over the picture only if loading lasts past ~280ms.
+    - Generated whenever missing, **and rebuilt if a screenshot is replaced in place** (judged by the
+      screenshot's content hash in `.image-opt-cache.json`). A thumbnail whose screenshot is deleted
+      is removed on the next run.
+    - Thumbnails keep the screenshot's own proportions (16:9, since the screenshot is), because the
+      zoom swaps one for the other: a different shape would make the picture jump.
+    - Kept out of search engines by `static/robots.txt` (`Disallow: /assets/images/*-thumb-*.webp`),
+      so image search indexes the full-size files, which `/media` still shows. The two smallest
+      thumbnails (under ~10 KB) are inlined into the JavaScript by the bundler and have no URL at all.
 
 - Team avatars directory: `static/img/pages/team`
   - Drop in a new avatar named exactly after the existing one (e.g. `Vermillion.png` to replace

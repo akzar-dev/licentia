@@ -6,6 +6,8 @@ import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
 import SiteImage from '@site/src/components/SiteImage';
+import useEmblaCarousel from 'embla-carousel-react';
+import ShowcaseDrift from '@site/src/components/showcaseDrift';
 import { ALL_SCREENSHOTS, type Screenshot } from '@site/src/data/screenshots';
 
 /** ------- CONFIG -------- */
@@ -256,8 +258,68 @@ function FeatureIcons() {
   );
 }
 
+/**
+ * The showcase strip: an endless, slowly drifting row of screenshots you can also fling.
+ *
+ * Built on Embla rather than a native scroller, because a native scroller cannot be infinite —
+ * it has to be faked with duplicated content and a `scrollLeft` jump at each end, and every
+ * part of that fake depends on the browser reporting exact geometry. Browsers do not agree on
+ * it, and two years of showcase bugs were each one of those numbers: a 5.75px lurch at the
+ * wrap (the period was measured a half-gap short), judder (scrollLeft snaps to device pixels),
+ * and screenshots running out on iPhone (WebKit sized the track ~3200px too wide).
+ *
+ * Embla owns the position as a plain number and draws it with a transform. It loops by moving
+ * individual slides from one end to the other as the strip travels, so there is no edge to
+ * reach, no duplicate DOM (24 tiles, not 48), and a fling in either direction just keeps going.
+ * Its engine steps at a fixed 60Hz and interpolates on render, so the speed is the same on a
+ * 60Hz laptop and a 120Hz iPhone.
+ */
+const SHOWCASE_SPEED_PX_PER_SEC = 36;
+/**
+ * How long a restart takes to reach cruising speed. Short enough that it plainly sets off
+ * straight away, long enough not to lurch — it covers about 18px getting there.
+ */
+const SHOWCASE_EASE_IN_MS = 1000;
+/** How long the strip waits after a swipe or fling has fully come to rest. */
+const RESUME_AFTER_TOUCH_MS = 1200;
+/** After the arrow buttons, measured from the end of their animation. */
+const RESUME_AFTER_NAV_MS = 900;
+/** After the zoom closes. */
+const RESUME_AFTER_ZOOM_MS = 300;
+/** After a mouse leaves the strip. */
+const RESUME_AFTER_HOVER_MS = 200;
+/** How much of the visible width one arrow press moves, as before. */
+const NAV_STEP_OF_VIEWPORT = 0.6;
+
+const SHOWCASE_EMBLA_OPTIONS = {
+  loop: true,
+  dragFree: true,
+  align: 'start',
+} as const;
+
+/**
+ * A MediaQueryList change listener that survives Safari before 14, which only had addListener.
+ * Throwing here would take the whole homepage down with it, not just the strip.
+ */
+function onMediaChange(media: MediaQueryList, listener: () => void): () => void {
+  if (typeof media.addEventListener === 'function') {
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }
+  media.addListener(listener);
+  return () => media.removeListener(listener);
+}
+
+/** Every reason the strip should be standing still. It drifts only when none of them hold. */
+type Holds = {
+  hovered: boolean;
+  touching: boolean;
+  zoomOpen: boolean;
+  reducedMotion: boolean;
+  offscreen: boolean;
+};
+
 function Showcase() {
-  const LOOP_COPIES = 2;
   const MAX_UNIQUE_SHOWCASE_SHOTS = 24;
   // The server-rendered HTML and the first client render must be identical, so start from
   // a stable (unshuffled) slice. Math.random() at render time would produce a different
@@ -276,316 +338,175 @@ function Showcase() {
     setShots(a.slice(0, Math.min(MAX_UNIQUE_SHOWCASE_SHOTS, a.length)));
   }, []);
 
-  const scrollerRef = React.useRef<HTMLDivElement | null>(null);
-  const trackRef = React.useRef<HTMLDivElement | null>(null);
-  const unitWidthRef = React.useRef<number>(0); // width of one sequence
-  const isPausedRef = React.useRef<boolean>(false);
-  const isZoomOpenRef = React.useRef<boolean>(false);
-  const canHoverPauseRef = React.useRef<boolean>(false);
-  const ignoreScrollPauseUntilRef = React.useRef<number>(0);
-  const autoResumeTimerRef = React.useRef<number | null>(null);
-  const speedRef = React.useRef<number>(36); // px per second
-  const posRef = React.useRef<number>(0); // fractional scroll position accumulator (Safari-safe)
-  const lastTsRef = React.useRef<number | null>(null); // rAF timestamp for time-based scrolling
-
-  // Build repeated list based on LOOP_COPIES.
-  const loop = React.useMemo(
-    () => Array.from({ length: LOOP_COPIES }, () => SHOTS).flat(),
-    [SHOTS]
+  // One drift instance for the component's life. It never starts or stops itself: every play
+  // and stop decision is made in sync() below. See showcaseDrift.ts for why this is not
+  // embla-carousel-auto-scroll.
+  const drift = React.useMemo(
+    () => ShowcaseDrift({ speedPxPerSec: SHOWCASE_SPEED_PX_PER_SEC, easeInMs: SHOWCASE_EASE_IN_MS }),
+    []
   );
+  const [viewportRef, emblaApi] = useEmblaCarousel(SHOWCASE_EMBLA_OPTIONS, [drift]);
 
-  /**
-   * Width of one copy of the sequence — the distance the strip travels before it repeats.
-   *
-   * Measured from the tiles rather than derived from the track, because `scrollWidth /
-   * LOOP_COPIES` is NOT the period: a flex row of N tiles has N-1 gaps, not N, so dividing
-   * its width by the number of copies loses half a gap each time. Measured on a 390px
-   * viewport that is 6255.5 against a true 6261.25 — so every wrap shunted the whole strip
-   * 5.75px sideways, which is the "pop" where a tile seems to shove its neighbours along.
-   *
-   * Tile-to-same-tile-one-copy-later is the period by definition, whatever the gap is.
-   */
-  const measureUnitWidth = React.useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return 0;
-    const tiles = track.children;
-    const perCopy = tiles.length / LOOP_COPIES;
-    if (tiles.length < 2 || !Number.isInteger(perCopy)) {
-      return (track.scrollWidth || 0) / LOOP_COPIES;
-    }
-    const first = tiles[0] as HTMLElement;
-    const next = tiles[perCopy] as HTMLElement;
-    return next.offsetLeft - first.offsetLeft;
-  }, [LOOP_COPIES]);
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const holds = React.useRef<Holds>({
+    hovered: false,
+    touching: false,
+    zoomOpen: false,
+    reducedMotion: false,
+    offscreen: true,
+  });
+  const resumeTimer = React.useRef<number | undefined>(undefined);
+  // The delay a pending resume was scheduled with, so a strip still gliding can push it back.
+  const pendingResumeMs = React.useRef<number | null>(null);
 
-  // Initialize unit width (one sequence) and center on middle copy
-  React.useLayoutEffect(() => {
-    const scroller = scrollerRef.current;
-    const track = trackRef.current;
-    if (!scroller || !track) return;
-    const unit = measureUnitWidth();
-    if (!unit) return;
-    unitWidthRef.current = unit;
-    // jump to start of the middle copy
-    scroller.scrollLeft = unit;
-    posRef.current = unit;
-  }, [loop.length, LOOP_COPIES, measureUnitWidth]);
-
-  // Safari/iOS: track width may be 0 until images load; observe and re-center when ready
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const scroller = scrollerRef.current;
-    const track = trackRef.current;
-    if (!scroller || !track) return;
-
-    const recompute = () => {
-      const newUnit = measureUnitWidth();
-      if (!newUnit) return;
-      const prevUnit = unitWidthRef.current || 0;
-      unitWidthRef.current = newUnit;
-      if (!isPausedRef.current && (prevUnit === 0 || Math.abs(newUnit - prevUnit) > 1)) {
-        if (prevUnit > 0) {
-          const relPrev = ((posRef.current % prevUnit) + prevUnit) % prevUnit;
-          const target = newUnit + relPrev;
-          scroller.scrollLeft = target;
-          posRef.current = target;
-        } else {
-          scroller.scrollLeft = newUnit;
-          posRef.current = newUnit;
-        }
-      }
-    };
-
-    // initial attempt
-    recompute();
-
-    let cleanup: (() => void) | undefined;
-    if ('ResizeObserver' in window) {
-      const ro = new ResizeObserver(() => recompute());
-      ro.observe(track);
-      cleanup = () => ro.disconnect();
-    } else {
-      let timeoutId: number | null = null;
-      const poll = () => {
-        if (track.scrollWidth) {
-          recompute();
-          if (timeoutId) {
-            window.clearTimeout(timeoutId);
-            timeoutId = null;
-          }
-        } else {
-          timeoutId = window.setTimeout(poll, 400);
-        }
-      };
-      poll();
-      cleanup = () => {
-        if (timeoutId) window.clearTimeout(timeoutId);
-      };
-    }
-
-    return () => {
-      if (cleanup) cleanup();
-    };
-  }, [loop.length, LOOP_COPIES, measureUnitWidth]);
-  // Wrap around when reaching edges to simulate infinite scroll
-  const wrapIfNeeded = React.useCallback(() => {
-    const scroller = scrollerRef.current;
-    const uw = unitWidthRef.current;
-    if (!scroller || !uw) return;
-    const left = scroller.scrollLeft;
-    const viewport = scroller.clientWidth || 0;
-    const near = Math.max(40, viewport * 0.1);
-    // Where the content really ends, taken from the last tile's own box — never from
-    // scroller.scrollWidth. On iOS that figure has been wrong by thousands of pixels (WebKit
-    // sized the track's max-content 66px too wide per tile), and a threshold placed past the
-    // last screenshot is what let the strip scroll out into empty space. Tile boxes were
-    // correct in every engine tested, so the wrap is measured from them.
-    const last = trackRef.current?.lastElementChild as HTMLElement | null | undefined;
-    const contentEnd = last ? last.offsetLeft + last.offsetWidth : scroller.scrollWidth;
-    const maxScrollable = Math.max(0, contentEnd - viewport);
-    // If we get too close to the left edge of the first copy, jump forward
-    if (left <= near) {
-      const next = left + uw;
-      ignoreScrollPauseUntilRef.current = performance.now() + 80;
-      scroller.scrollLeft = next;
-      posRef.current = next;
-      return;
-    }
-    // If we get too close to the right edge of the last copy, jump back
-    if (left >= maxScrollable - near) {
-      const next = left - uw;
-      ignoreScrollPauseUntilRef.current = performance.now() + 80;
-      scroller.scrollLeft = next;
-      posRef.current = next;
-    }
+  const canPlay = React.useCallback(() => {
+    const h = holds.current;
+    return !h.hovered && !h.touching && !h.zoomOpen && !h.reducedMotion && !h.offscreen;
   }, []);
 
-  // Auto-scroll via rAF while not paused
-  React.useEffect(() => {
-    let raf = 0;
-    const tick = (ts: number) => {
-      if (lastTsRef.current == null) {
-        lastTsRef.current = ts;
-      }
-      const dtSec = (ts - lastTsRef.current) / 1000;
-      lastTsRef.current = ts;
-      const scroller = scrollerRef.current;
-      if (scroller && !isPausedRef.current && unitWidthRef.current) {
-        posRef.current += speedRef.current * dtSec;
-        ignoreScrollPauseUntilRef.current = performance.now() + 80;
-        scroller.scrollLeft = posRef.current;
-        wrapIfNeeded();
-      } else {
-        // keep timestamp fresh while paused or unavailable to avoid large jumps
-        lastTsRef.current = ts;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [wrapIfNeeded]);
+  /** Make the strip match the holds: stop now, or play after `delayMs`. */
+  const sync = React.useCallback(
+    (delayMs = 0) => {
+      const plugin = emblaApi?.plugins().drift;
+      if (!plugin) return;
+      window.clearTimeout(resumeTimer.current);
+      pendingResumeMs.current = null;
 
-  // Respect reduced motion: disable auto-scroll when user prefers reduced motion
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const apply = () => {
-      speedRef.current = media.matches ? 0 : 36;
-    };
-    apply();
-    // Safari compatibility: addEventListener not supported on older versions
-    const mql: any = media as any;
-    if (typeof mql.addEventListener === 'function') {
-      mql.addEventListener('change', apply);
-      return () => mql.removeEventListener('change', apply);
-    } else if (typeof mql.addListener === 'function') {
-      mql.addListener(apply);
-      return () => mql.removeListener(apply);
-    }
-    return;
-  }, []);
-
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const media = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const apply = () => {
-      canHoverPauseRef.current = media.matches;
-    };
-    apply();
-    const mql: any = media as any;
-    if (typeof mql.addEventListener === 'function') {
-      mql.addEventListener('change', apply);
-      return () => mql.removeEventListener('change', apply);
-    } else if (typeof mql.addListener === 'function') {
-      mql.addListener(apply);
-      return () => mql.removeListener(apply);
-    }
-    return;
-  }, []);
-
-  // Pause/resume helpers
-  const pause = React.useCallback(() => {
-    isPausedRef.current = true;
-    if (autoResumeTimerRef.current) {
-      window.clearTimeout(autoResumeTimerRef.current);
-      autoResumeTimerRef.current = null;
-    }
-  }, []);
-  const resumeSoon = React.useCallback((ms = 1200) => {
-    if (isZoomOpenRef.current) return;
-    if (autoResumeTimerRef.current) window.clearTimeout(autoResumeTimerRef.current);
-    autoResumeTimerRef.current = window.setTimeout(() => {
-      if (isZoomOpenRef.current) {
-        autoResumeTimerRef.current = null;
+      if (!canPlay()) {
+        plugin.stop();
         return;
       }
-      isPausedRef.current = false;
-      autoResumeTimerRef.current = null;
-    }, ms);
-  }, []);
+      if (plugin.isPlaying()) return;
+      if (delayMs <= 0) {
+        plugin.play();
+        return;
+      }
+      pendingResumeMs.current = delayMs;
+      resumeTimer.current = window.setTimeout(() => {
+        pendingResumeMs.current = null;
+        // Re-check: anything may have changed while we waited.
+        if (canPlay()) emblaApi?.plugins().drift?.play();
+      }, delayMs);
+    },
+    [emblaApi, canPlay]
+  );
 
-  // Handlers
-  const onMouseEnter = () => {
-    if (!canHoverPauseRef.current) return;
-    pause();
-  };
-  const onMouseLeave = () => {
-    if (!canHoverPauseRef.current) return;
-    resumeSoon(200);
-  };
-  const onTouchStart = () => {
-    pause();
-  };
-  const onTouchEnd = () => {
-    if (isZoomOpenRef.current) return;
-    resumeSoon(1200);
-  };
-  const onTouchCancel = () => {
-    if (isZoomOpenRef.current) return;
-    resumeSoon(1200);
-  };
-  const onWheel = () => {
-    pause();
-    resumeSoon(1500);
-  };
-  const onScroll = () => {
-    const now = typeof performance !== 'undefined' ? performance.now() : Date.now();
-    const scroller = scrollerRef.current;
-
-    if (now < ignoreScrollPauseUntilRef.current) {
-      // This is our own rAF write echoing back, so leave the accumulator alone.
-      //
-      // Adopting scroller.scrollLeft here is what made the strip judder. A scroll offset is
-      // snapped to the device-pixel grid, so the value that comes back is never the value
-      // written: writing 3000.6 returns 3000.667 on a 1.5x grid, 3000.5 on a 2x one. Feeding
-      // that back into posRef re-rounded the position EVERY frame, which meant the strip
-      // advanced in whole grid steps at whatever speed the grid happened to impose rather
-      // than the 36px/s set below. Measured on the reported iPhone: steps of 0, 1 and 3
-      // device px where a steady ~1.8 was intended, at roughly half the intended speed.
-      wrapIfNeeded();
-      return;
-    }
-
-    // A real user scroll — a swipe, the wheel, or a nav button. Take their position as the
-    // new truth, and get out of their way.
-    if (scroller) posRef.current = scroller.scrollLeft;
-    wrapIfNeeded();
-    pause();
-    resumeSoon(1200);
-  };
-
-  // Nav buttons
-  const scrollByAmount = React.useCallback((dir: 1 | -1) => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    pause();
-    const delta = Math.max(200, Math.round(scroller.clientWidth * 0.6)) * dir;
-    scroller.scrollBy({ left: delta, behavior: 'smooth' });
-    resumeSoon(900);
-  }, [pause, resumeSoon]);
-
+  // Drags, flings and taps.
   React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const handle = (event: Event) => {
-      const detail = (event as CustomEvent<{ open?: boolean }>).detail;
-      if (detail?.open) {
-        isZoomOpenRef.current = true;
-        pause();
-      } else {
-        isZoomOpenRef.current = false;
-        if (autoResumeTimerRef.current) {
-          window.clearTimeout(autoResumeTimerRef.current);
-        }
-        autoResumeTimerRef.current = window.setTimeout(() => {
-          isPausedRef.current = false;
-          autoResumeTimerRef.current = null;
-        }, 300);
+    if (!emblaApi) return undefined;
+    const onPointerDown = () => {
+      holds.current.touching = true;
+      sync();
+    };
+    const onPointerUp = () => {
+      holds.current.touching = false;
+      sync(RESUME_AFTER_TOUCH_MS);
+    };
+    // A fling keeps gliding after the finger lifts. While it does, keep pushing the resume
+    // back, so the strip only picks up again once it has genuinely come to rest — resuming
+    // mid-glide would swap the momentum for the slow drift in a single frame.
+    const onScroll = () => {
+      const plugin = emblaApi.plugins().drift;
+      if (pendingResumeMs.current != null && plugin && !plugin.isPlaying()) {
+        sync(pendingResumeMs.current);
       }
     };
+    // Slides were re-measured (the shuffle after mount, a resize): the plugin is re-created
+    // stopped, so start it again if nothing is holding it.
+    const onReInit = () => sync();
 
-    window.addEventListener('licentia-zoom-change', handle as EventListener);
-    return () => window.removeEventListener('licentia-zoom-change', handle as EventListener);
-  }, [pause, resumeSoon]);
+    emblaApi.on('pointerDown', onPointerDown);
+    emblaApi.on('pointerUp', onPointerUp);
+    emblaApi.on('scroll', onScroll);
+    emblaApi.on('reInit', onReInit);
+    sync();
+    return () => {
+      emblaApi.off('pointerDown', onPointerDown);
+      emblaApi.off('pointerUp', onPointerUp);
+      emblaApi.off('scroll', onScroll);
+      emblaApi.off('reInit', onReInit);
+      window.clearTimeout(resumeTimer.current);
+    };
+  }, [emblaApi, sync]);
+
+  // Hover pauses, but only for a real mouse. On a touchscreen "hover" is a tap that sticks.
+  React.useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return undefined;
+    const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const enter = () => {
+      if (!fineHover.matches) return;
+      holds.current.hovered = true;
+      sync();
+    };
+    const leave = () => {
+      if (!holds.current.hovered) return;
+      holds.current.hovered = false;
+      sync(RESUME_AFTER_HOVER_MS);
+    };
+    root.addEventListener('mouseenter', enter);
+    root.addEventListener('mouseleave', leave);
+    return () => {
+      root.removeEventListener('mouseenter', enter);
+      root.removeEventListener('mouseleave', leave);
+    };
+  }, [sync]);
+
+  // Stand still while a screenshot is zoomed. custom-zoom announces open and close.
+  React.useEffect(() => {
+    const handle = (event: Event) => {
+      const open = Boolean((event as CustomEvent<{ open?: boolean }>).detail?.open);
+      holds.current.zoomOpen = open;
+      // The overlay covering the strip fired mouseleave on the way in, so hover is already
+      // clear; a mouse that is still over the strip sets it again on its next move.
+      sync(open ? 0 : RESUME_AFTER_ZOOM_MS);
+    };
+    window.addEventListener('licentia-zoom-change', handle);
+    return () => window.removeEventListener('licentia-zoom-change', handle);
+  }, [sync]);
+
+  // Respect reduced motion: the strip still drags and the arrows still work, it just never drifts.
+  React.useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => {
+      holds.current.reducedMotion = media.matches;
+      sync();
+    };
+    apply();
+    return onMediaChange(media, apply);
+  }, [sync]);
+
+  // Only animate while it can be seen. Otherwise the engine runs a frame loop for a strip
+  // nobody is looking at, for as long as the page is open.
+  React.useEffect(() => {
+    const root = rootRef.current;
+    if (!root || !('IntersectionObserver' in window)) {
+      holds.current.offscreen = false;
+      sync();
+      return undefined;
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      holds.current.offscreen = !entry.isIntersecting;
+      sync();
+    });
+    io.observe(root);
+    return () => io.disconnect();
+  }, [sync]);
+
+  const scrollByAmount = React.useCallback(
+    (dir: 1 | -1) => {
+      if (!emblaApi) return;
+      // Stop first: while the drift drives the engine it ignores scroll targets.
+      emblaApi.plugins().drift?.stop();
+      const viewport = emblaApi.rootNode().clientWidth;
+      const slide = emblaApi.slideNodes()[0];
+      const step = slide ? slide.getBoundingClientRect().width + parseFloat(getComputedStyle(slide).marginRight) : 268;
+      const slides = Math.max(1, Math.round((viewport * NAV_STEP_OF_VIEWPORT) / step));
+      emblaApi.scrollTo(emblaApi.selectedScrollSnap() + dir * slides);
+      sync(RESUME_AFTER_NAV_MS);
+    },
+    [emblaApi, sync]
+  );
 
   return (
     <section id="showcase" className={clsx(styles.showcase, styles.altSection)} data-nosnippet>
@@ -604,7 +525,7 @@ function Showcase() {
         </p>
       </div>
 
-      <div className={styles.marqueeOuter}>
+      <div className={styles.marqueeOuter} ref={rootRef}>
         <button
           type="button"
           aria-label="Scroll left"
@@ -625,24 +546,17 @@ function Showcase() {
             <path fill="currentColor" d="m10 6-1.41 1.41L13.17 12l-4.58 4.59L10 18l6-6z" />
           </svg>
         </button>
-        <div
-          className={styles.scroller}
-          ref={scrollerRef}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-          onTouchCancel={onTouchCancel}
-          onWheel={onWheel}
-          onScroll={onScroll}
-        >
-          <div ref={trackRef} className={styles.marqueeTrack}>
-            {loop.map((shot, i) => {
-              const key = `${shot.id}-${i}`;
-              return (
+        <div className={styles.emblaViewport} ref={viewportRef}>
+          <div className={styles.emblaContainer}>
+            {SHOTS.map((shot, i) => (
+              // Embla writes a transform onto each slide to loop it, so the slide is a plain
+              // wrapper it can own; the framed image inside stays React's.
+              <div key={shot.id} className={styles.emblaSlide}>
                 <SiteImage
-                  key={key}
-                  src={shot.src}
+                  // The tile shows the 768px thumbnail; the zoom opens the full file, and shows
+                  // this thumbnail while the full one loads (see custom-zoom.ts).
+                  src={shot.thumb}
+                  data-zoom-src={shot.src}
                   alt={`Licentia NEXT showcase screenshot ${i + 1}`}
                   className={clsx('zoomable', styles.shot)}
                   wrapperClassName={styles.shotFrame}
@@ -653,8 +567,8 @@ function Showcase() {
                   decoding="async"
                   fetchPriority="low"
                 />
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
