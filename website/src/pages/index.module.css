@@ -300,13 +300,6 @@ html[data-theme='light'] .ctaSolid {
   opacity: 0.5;
 }
 
-.highlightText {
-  color: var(--ifm-color-primary);
-  /* Gold accent color used in bullet points/text shadow */
-  font-weight: 600;
-  text-shadow: 0 0 8px color-mix(in oklab, var(--ifm-color-primary) 25%, transparent);
-}
-
 /* -------- ICON FEATURES STRIP -------- */
 .sectionTitle {
   text-align: center;
@@ -330,6 +323,10 @@ html[data-theme='light'] .ctaSolid {
   gap: 14px;
 }
 
+/* Each card spans five rows of the row grid -- glyph, title, intro, list, "Read more" --
+   and lays its children on them through subgrid. So the rows are sized by the tallest
+   card in the row: an intro that wraps to two lines pushes every list in that row down
+   together, instead of leaving one card's list lower than its neighbours'. */
 .iconCard {
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-200);
@@ -337,9 +334,14 @@ html[data-theme='light'] .ctaSolid {
   padding: 1rem .75rem;
   text-align: center;
   /* keep titles/intro centered */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  /* One column the width of the card. Left auto, it sizes to the widest content -- the
+     28rem list -- and everything spills out of the card instead of wrapping. */
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 0;
+  justify-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
 }
 
@@ -349,15 +351,13 @@ html[data-theme='light'] .ctaSolid {
   margin-bottom: .25rem;
 }
 
-/* These read as headings, so they get the treatment headings get elsewhere on this page:
-   brand gold with the same soft glow `.highlightText` uses. Plain body colour left them
-   looking like the first line of the paragraph underneath. */
+/* Body colour, not gold: on this site gold text is a link, and these are not. Size and
+   weight are what set them apart from the intro line underneath. */
 .iconTitle {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: var(--ifm-color-primary);
-  text-shadow: 0 0 10px color-mix(in oklab, var(--ifm-color-primary) 28%, transparent);
+  color: var(--ifm-heading-color);
 }
 
 @media (max-width: 996px) {
@@ -402,6 +402,14 @@ html[data-theme='light'] .ctaSolid {
   color: var(--ifm-color-primary);
   /* our gold */
   font-size: 0.9rem;
+}
+
+/* Each card's link to its long form in About, on the last subgrid row and at its bottom,
+   so the links line up across a row whatever the list lengths. */
+.iconMore {
+  align-self: end;
+  padding-top: 0.75rem;
+  font-weight: 600;
 }
 
 /* Slightly tighten the intro → list gap */
@@ -658,43 +666,43 @@ html[data-theme='light'] .ctaSolid {
    Seven paragraphs of dense prose, and every word of it is load-bearing for search. So
    none of the text changes here -- only how much of it the eye has to take in at once:
 
-   * the card is as wide as the feature grid above it, which is the width this page
-     already establishes, and the prose runs the full width of it.
+   * the cards are as wide as the feature grid above them, which is the width this page
+     already establishes, and the prose runs the full width of each.
    * ragged right instead of justified. Justification without hyphenation buys tidy edges
      with uneven word spacing and vertical rivers -- a bad trade at any measure.
-   * a heading per topic, and a gold rule between them, so it can be skimmed.
+   * a card per topic, styled like the feature cards, with the same glyph-over-title
+     heading, so it can be skimmed and reads as the long form of those cards.
 */
 .aboutBody {
+  display: grid;
+  gap: 14px;
   margin: 1.2rem 0 0;
-  padding: clamp(1.4rem, 3.5vw, 2.8rem) clamp(1.1rem, 3vw, 2.4rem);
   font-size: 1.08rem;
   line-height: 1.75;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 14px;
 }
 
-/* The text runs the full width of the card, and so do the rules between topics. The card
-   already carries the page's padding; a narrower column inside it just looked inset. */
 .topic {
   margin: 0;
+  /* Feature cards' "Read more" lands here; leave the card's top edge clear of the navbar. */
+  scroll-margin-top: 1rem;
+  padding: clamp(1.1rem, 2.6vw, 1.6rem) clamp(1.1rem, 3vw, 2.4rem);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
 }
 
-/* The same gold rule the guides use, between topics rather than over the first one. */
-.topic + .topic {
-  margin-top: 1.9rem;
-  padding-top: 1.9rem;
-  border-top: 2px solid transparent;
-  border-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--licentia-separator-core) 50%,
-      transparent 100%
-    )
-    1;
+.topicGlyph {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: .25rem;
+  text-align: center;
 }
 
-/* Centred, like every other heading on this page. */
+/* Centred, like every other heading on this page. Body colour rather than gold, which on
+   this site means a link; the short faded rule underneath (the site's separator, in
+   miniature) keeps the brand accent without reading as one. */
 .topicTitle {
   margin: 0 0 0.8rem;
   font-size: 1.08rem;
@@ -702,7 +710,28 @@ html[data-theme='light'] .ctaSolid {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
-  color: var(--ifm-color-primary);
+  color: var(--ifm-heading-color);
+}
+
+/* The feature card titles (above) get the same rule, shorter to suit the narrower cards. */
+.iconTitle::after,
+.topicTitle::after {
+  content: '';
+  display: block;
+  width: min(12rem, 60%);
+  height: 2px;
+  margin: 0.5rem auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--licentia-separator-core) 50%,
+    transparent 100%
+  );
+}
+
+.iconTitle::after {
+  width: min(6rem, 60%);
+  margin-top: 0.35rem;
 }
 
 .aboutBody p {
@@ -710,6 +739,10 @@ html[data-theme='light'] .ctaSolid {
   /* The section centres its heading and tagline, and the prose used to escape that only
      because `justify` happened to override it. Say it outright. */
   text-align: left;
+}
+
+.topic p + p {
+  margin-top: 0.9rem;
 }
 
 

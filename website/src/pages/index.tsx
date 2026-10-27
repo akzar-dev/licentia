@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import styles from './index.module.css';
 import React from 'react';
 import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
 import SiteImage from '@site/src/components/SiteImage';
 import useEmblaCarousel from 'embla-carousel-react';
 import ShowcaseDrift from '@site/src/components/showcaseDrift';
@@ -17,10 +18,22 @@ const SHOWCASE_TAGLINE = 'Join our Discord, share your screenshots, and we may f
 const SHOWCASE_CTA_LABEL = 'View full gallery';
 const HOME_META_DESCRIPTION =
   'Licentia NEXT: The ultimate 1-click install NSFW Skyrim AE modlist built around LotD. Better combat, graphics, quests & more!';
-/** Inline brand-gold emphasis. Wraps the highlight class so the long About copy
- *  doesn't repeat a verbose styles.highlightText span dozens of times. */
-function Hl({ children }: { children: ReactNode }) {
-  return <span className={styles.highlightText}>{children}</span>;
+/** Gold means "you can click this" everywhere else on the site, so the homepage only uses
+ *  it on links. Mod names in the About copy are those links, to the Nexus page the load
+ *  order points at (same URL shape as /load-order). */
+function Mod({ nexus, children }: { nexus: number; children: ReactNode }) {
+  return (
+    <a href={`https://www.nexusmods.com/skyrimspecialedition/mods/${nexus}`} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+}
+
+/** The mod count, generated at build time from the list itself, so the number on the
+ *  homepage cannot drift from what /load-order actually shows. See docusaurus.config.ts. */
+function useModCount(): string {
+  const { siteConfig } = useDocusaurusContext();
+  return (siteConfig.customFields!.loadOrder as { mods: number }).mods.toLocaleString();
 }
 
 /** Main Hero function */
@@ -71,7 +84,7 @@ function Hero() {
         />
 
         <p className={styles.description}>
-          <Hl>Licentia NEXT</Hl> is a 1-click install NSFW
+          <strong>Licentia NEXT</strong> is a 1-click install NSFW
           Skyrim AE modlist built around Legacy of the Dragonborn with non-intrusive OStim,
           combat/graphics upgrades, new quests, and followers!
         </p>
@@ -96,6 +109,8 @@ function Hero() {
 }
 
 function AboutSection() {
+  const modCount = useModCount();
+
   return (
     <section id="about" className={clsx(styles.aboutSection, styles.deferSection)}>
       <div className={clsx('container', styles.aboutContainer)}>
@@ -111,54 +126,58 @@ function AboutSection() {
           <i>{ABOUT_TAGLINE}</i>
         </p>
         {/*
-          The same seven paragraphs, unchanged, with a heading over each.
+          An intro, then one card per feature card above, in the same order, with the same
+          glyph and an id the feature card's "Read more" jumps to. Everything a feature card
+          lists is explained in its card here, so the two can't drift into different stories.
 
-          They always had these topics; nothing said so, which left ~450 words of
-          dense prose looking like one undifferentiated block. Headings give it a
-          shape you can skim, and h3s carrying words like "combat", "progression"
-          and "adult systems" are worth having in the outline besides.
+          The prose is the same as it was as seven paragraphs, merged into these five, plus
+          the few things the feature cards named and this never did (landscape fixes, Lux,
+          ORomance, PPA, Legacy of the Dragonborn as new content). It is most of the indexable text on the page -- the feature grid is
+          data-nosnippet -- so the h3s keep the words people search for.
         */}
         <div className={styles.aboutBody}>
-          <section className={styles.topic}>
+          <section id="what-is-licentia-next" className={styles.topic}>
+            <span className={styles.topicGlyph} aria-hidden>🐉</span>
             <h3 className={styles.topicTitle}>What Licentia NEXT is</h3>
             <p>
-            <Hl>Licentia NEXT</Hl> is the direct descendant of the legendary <Hl>Licentia BLACK</Hl>. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition <Hl>Wabbajack</Hl> modlist built around the massive <Hl>Legacy of the Dragonborn</Hl> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, it transforms Skyrim into a truly next-generation experience. We have carefully curated over <Hl>1,600 mods</Hl> to deliver stability and seamless integration without the hassle of manual conflict resolution.
+            Licentia NEXT is the direct descendant of the legendary Licentia BLACK. It is a comprehensive, 1-click install NSFW Skyrim Anniversary Edition <a href="https://www.wabbajack.org/" target="_blank" rel="noopener noreferrer">Wabbajack</a> modlist built around the massive <Mod nexus={11802}>Legacy of the Dragonborn</Mod> expansion. Designed for players who want an uncompromising blend of beautiful graphics, intense gameplay, and extensive adult content, it transforms Skyrim into a truly next-generation experience. We have carefully curated <Link to="/load-order">{modCount} mods</Link> to deliver stability and seamless integration without the hassle of manual conflict resolution.
             </p>
-          </section>
-          <section className={styles.topic}>
-            <h3 className={styles.topicTitle}>Combat and magic</h3>
             <p>
-            At its core, <Hl>Licentia NEXT</Hl> overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <Hl>Precision</Hl>, <Hl>Combat Gameplay Overhaul</Hl>, <Hl>Archery Gameplay Overhaul</Hl> and <Hl>Dismemberment Framework</Hl> that make every encounter feel impactful. Mages are equally spoiled, with a huge spell toolbox built from overhauls like <Hl>Apocalypse</Hl>, <Hl>Odin</Hl>, and <Hl>Mysticism</Hl>.
+            Whether you're a seasoned veteran or returning to Tamriel for the first time in years, Licentia NEXT offers the ultimate customized Skyrim journey.
             </p>
           </section>
-          <section className={styles.topic}>
-            <h3 className={styles.topicTitle}>Progression and builds</h3>
+          <section id="combat" className={styles.topic}>
+            <span className={styles.topicGlyph} aria-hidden>⚔️</span>
+            <h3 className={styles.topicTitle}>Combat, magic and builds</h3>
             <p>
-            Progression is equally ambitious. A customized <Hl>Static Skill Leveling</Hl> setup and the massive <Hl>Vokriinator Black</Hl> perk package open up a huge range of character builds, letting you lean fully into the kind of overpowered <Hl>power fantasy</Hl> Skyrim is at its best at, whether that means a godlike battlemage, an unstoppable warrior, or a deadly stealth specialist.
+            At its core, Licentia NEXT overhauls Skyrim's combat to be fast-paced, visceral, and physics-based, featuring <Mod nexus={72347}>Precision</Mod>, <Mod nexus={33767}>Combat Gameplay Overhaul</Mod>, <Mod nexus={24296}>Archery Gameplay Overhaul</Mod> and <Mod nexus={126203}>Dismembering Framework</Mod> that make every encounter feel impactful. Mages are equally spoiled, with a huge spell toolbox built from overhauls like <Mod nexus={1090}>Apocalypse</Mod>, <Mod nexus={46000}>Odin</Mod>, and <Mod nexus={27839}>Mysticism</Mod>.
             </p>
-          </section>
-          <section className={styles.topic}>
-            <h3 className={styles.topicTitle}>Visuals</h3>
             <p>
-            Visuals are stunningly upgraded with <Hl>Rudy ENB</Hl> with <Hl>NAT 3</Hl> weathers, <Hl>grass cache</Hl> for lush grass stretching beautifully to the horizon, and thousands of reworked high-resolution textures and meshes. A curated lineup of NPC overhauls, including <Hl>Pandorable's</Hl>, <Hl>Bijin</Hl>, and <Hl>Kalilies</Hl>, helps the world feel just as beautiful up close, while still maintaining a performance-friendly framerate on modern systems.
+            Progression is equally ambitious. A customized <Mod nexus={89940}>Static Skill Leveling</Mod> setup and the massive <Mod nexus={26702}>Vokriinator Black</Mod> perk package open up a huge range of character builds, letting you lean fully into the kind of overpowered power fantasy Skyrim is at its best at, whether that means a godlike battlemage, an unstoppable warrior, or a deadly stealth specialist.
             </p>
           </section>
-          <section className={styles.topic}>
+          <section id="graphics" className={styles.topic}>
+            <span className={styles.topicGlyph} aria-hidden>🖼️</span>
+            <h3 className={styles.topicTitle}>Graphics and visuals</h3>
+            <p>
+            Visuals are stunningly upgraded with <Mod nexus={91675}>Rudy ENB</Mod> with <Mod nexus={27141}>NAT 3</Mod> weathers, grass cache for lush grass stretching beautifully to the horizon, landscape fixes, <Mod nexus={43158}>Lux</Mod> lighting inside and out, and thousands of reworked high-resolution textures and meshes. A curated lineup of NPC overhauls, including <Mod nexus={19012}>Pandorable's</Mod>, <Mod nexus={11287}>Bijin</Mod>, and <Mod nexus={30247}>Kalilies</Mod>, helps the world feel just as beautiful up close, while still maintaining a performance-friendly framerate on modern systems.
+            </p>
+          </section>
+          <section id="variety" className={styles.topic}>
+            <span className={styles.topicGlyph} aria-hidden>🧩</span>
             <h3 className={styles.topicTitle}>New lands, quests and followers</h3>
             <p>
-            Beyond combat and aesthetics, the modlist introduces a wealth of new content. Explore new <Hl>lands</Hl>, complete massive <Hl>quests</Hl>, and recruit unique, fully voiced <Hl>followers</Hl> with improved interactions.
+            Beyond combat and aesthetics, the modlist introduces a wealth of new content, built around <Mod nexus={11802}>Legacy of the Dragonborn</Mod> and its museum. Explore whole new lands in <Mod nexus={2057}>Falskaar</Mod> and <Mod nexus={45565}>Wyrmstooth</Mod>, and take on massive questlines like <Mod nexus={11849}>Vigilant</Mod>, <Mod nexus={1179}>The Forgotten City</Mod>, <Mod nexus={4155}>Clockwork</Mod>, <Mod nexus={5673}>Helgen Reborn</Mod> and <Mod nexus={4509}>The Gray Cowl of Nocturnal</Mod>.
+            </p>
+            <p>
+            You are never short of company, either. Recruit unique, fully voiced followers like <Mod nexus={1461}>Inigo</Mod>, <Mod nexus={11278}>Auri</Mod>, <Mod nexus={51874}>Remiel</Mod>, <Mod nexus={20035}>Lucien</Mod> and <Mod nexus={19075}>Kaidan</Mod>, or travel with <Mod nexus={135085}>Ashe</Mod> and a Serana with far more to say thanks to the <Mod nexus={32161}>Serana Dialogue Add-On</Mod>. Vanilla companions get the same treatment: the Follower Dialogue Expansion series gives <Mod nexus={119226}>Lydia</Mod>, <Mod nexus={114801}>Aela</Mod>, <Mod nexus={116025}>Mjoll</Mod> and others new dialogue and improved interactions.
             </p>
           </section>
-          <section className={styles.topic}>
+          <section id="adult" className={styles.topic}>
+            <span className={styles.topicGlyph} aria-hidden>🔞</span>
             <h3 className={styles.topicTitle}>Adult systems</h3>
             <p>
-            The <Hl>adult systems</Hl> are built on an optimized, non-intrusive <Hl>OStim</Hl> foundation, integrating <Hl>CBPC</Hl> and <Hl>FSMP</Hl> physics, <Hl>OBody</Hl>, and <Hl>Amorous Adventures</Hl>.
-            </p>
-          </section>
-          <section className={styles.topic}>
-            <h3 className={styles.topicTitle}>Who it's for</h3>
-            <p>
-            Whether you're a seasoned veteran or returning to Tamriel for the first time in years, <Hl>Licentia NEXT</Hl> offers the ultimate customized Skyrim journey.
+            The adult systems are built on an optimized, non-intrusive <Mod nexus={98163}>OStim</Mod> foundation, with proper physics throughout from <Mod nexus={21224}>CBPC</Mod>, <Mod nexus={57339}>FSMP</Mod> and <Mod nexus={172002}>PPA</Mod>, and body variety from <Mod nexus={77016}>OBody</Mod>. Romance and relationships come through <Mod nexus={69248}>Amorous Adventures</Mod> and <Mod nexus={48564}>ORomance</Mod>.
             </p>
           </section>
         </div>
@@ -168,10 +187,7 @@ function AboutSection() {
 }
 
 function FeatureIcons() {
-  // Generated at build time from the list itself, so the headline number on the
-  // homepage cannot drift from what /load-order actually shows. See docusaurus.config.ts.
-  const { siteConfig } = useDocusaurusContext();
-  const modCount = (siteConfig.customFields!.loadOrder as { mods: number }).mods.toLocaleString();
+  const modCount = useModCount();
 
   return (
     <section id="features" className={clsx(styles.iconsSection, styles.deferSection)} data-nosnippet>
@@ -193,13 +209,15 @@ function FeatureIcons() {
           <div className={styles.iconCard}>
             <span className={styles.iconGlyph} aria-hidden>⚔️</span>
             <div className={styles.iconTitle}>Combat</div>
-            <p className={styles.iconIntro}>Physics-based and gory:</p>
+            <p className={styles.iconIntro}>Physics-based and gory, with deep builds:</p>
             <ul className={styles.iconList}>
               <li>Precision</li>
               <li>CGO + AGO</li>
-              <li>Dismemberment Framework</li>
+              <li>Dismembering Framework</li>
               <li>Apocalypse, Odin, Mysticism</li>
+              <li>Huge perk trees and new leveling system</li>
             </ul>
+            <a className={styles.iconMore} href="#combat">Read more ↓</a>
           </div>
 
           {/* Graphics */}
@@ -212,7 +230,9 @@ function FeatureIcons() {
               <li>Beautiful NPC replacers</li>
               <li>Reworked meshes and textures</li>
               <li>Landscape fixes, Grass cache</li>
+              <li>Lux lighting overhaul</li>
             </ul>
+            <a className={styles.iconMore} href="#graphics">Read more ↓</a>
           </div>
 
           {/* Variety */}
@@ -222,10 +242,12 @@ function FeatureIcons() {
             <p className={styles.iconIntro}>Tons of new content:</p>
             <ul className={styles.iconList}>
               <li>Legacy of the Dragonborn</li>
-              <li>Huge quest mods</li>
-              <li>New (and improved vanilla) followers</li>
-              <li>Huge perk trees and new leveling system</li>
+              <li>Huge quest mods like Vigilant</li>
+              <li>New lands: Falskaar, Wyrmstooth</li>
+              <li>Voiced followers: Inigo, Auri, Ashe</li>
+              <li>Expanded Serana and vanilla followers</li>
             </ul>
+            <a className={styles.iconMore} href="#variety">Read more ↓</a>
           </div>
 
           {/* Adult systems */}
@@ -235,10 +257,12 @@ function FeatureIcons() {
             <p className={styles.iconIntro}>The full suite:</p>
             <ul className={styles.iconList}>
               <li>OStim based NSFW</li>
-              <li>Physics and OBody</li>
+              <li>CBPC, FSMP and PPA physics</li>
+              <li>OBody body variety</li>
               <li>Amorous Adventures</li>
               <li>ORomance and more</li>
             </ul>
+            <a className={styles.iconMore} href="#adult">Read more ↓</a>
           </div>
         </div>
 
