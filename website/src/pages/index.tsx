@@ -132,7 +132,7 @@ function AboutSection() {
 
           The prose is the same as it was as seven paragraphs, merged into these five, plus
           the few things the feature cards named and this never did (landscape fixes, Lux,
-          ORomance, PPA, Legacy of the Dragonborn as new content). It is most of the indexable text on the page -- the feature grid is
+          ORomance Plus, PPA, Legacy of the Dragonborn as new content). It is most of the indexable text on the page -- the feature grid is
           data-nosnippet -- so the h3s keep the words people search for.
         */}
         <div className={styles.aboutBody}>
@@ -177,7 +177,7 @@ function AboutSection() {
             <span className={styles.topicGlyph} aria-hidden>🔞</span>
             <h3 className={styles.topicTitle}>Adult systems</h3>
             <p>
-            The adult systems are built on an optimized, non-intrusive <Mod nexus={98163}>OStim</Mod> foundation, with proper physics throughout from <Mod nexus={21224}>CBPC</Mod>, <Mod nexus={57339}>FSMP</Mod> and <Mod nexus={172002}>PPA</Mod>, and body variety from <Mod nexus={77016}>OBody</Mod>. Romance and relationships come through <Mod nexus={69248}>Amorous Adventures</Mod> and <Mod nexus={48564}>ORomance</Mod>.
+            The adult systems are built on an optimized, non-intrusive <Mod nexus={98163}>OStim</Mod> foundation, with proper physics throughout from <Mod nexus={21224}>CBPC</Mod>, <Mod nexus={57339}>FSMP</Mod> and <Mod nexus={172002}>PPA</Mod>, and body variety from <Mod nexus={77016}>OBody</Mod>. Romance and relationships come through <Mod nexus={69248}>Amorous Adventures</Mod> and <Mod nexus={81635}>ORomance Plus</Mod>.
             </p>
           </section>
         </div>
@@ -260,7 +260,7 @@ function FeatureIcons() {
               <li>CBPC, FSMP and PPA physics</li>
               <li>OBody body variety</li>
               <li>Amorous Adventures</li>
-              <li>ORomance and more</li>
+              <li>ORomance Plus and more</li>
             </ul>
             <a className={styles.iconMore} href="#adult">Read more ↓</a>
           </div>
